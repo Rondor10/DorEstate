@@ -1,4 +1,4 @@
-modules = ["nodejs-20", "python-3.11", "postgresql-16"]
+modules = ["nodejs-20", "web", "python-3.11"]
 
 [nix]
 channel = "stable-25_05"
@@ -14,31 +14,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Real Estate Node.js Server"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Real Estate Basic Server"
+args = "Static Server"
 
 [[workflows.workflow]]
-name = "Real Estate Node.js Server"
+name = "Static Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx tsx server/index.ts"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
-[[workflows.workflow]]
-name = "Real Estate Basic Server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npx tsx server/basicServer.ts"
+args = "python3 -m http.server 5000"
 waitForPort = 5000
 
 [workflows.workflow.metadata]
@@ -47,3 +31,6 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[agent]
+expertMode = true
