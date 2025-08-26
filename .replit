@@ -1,0 +1,49 @@
+modules = ["nodejs-20", "python-3.11", "postgresql-16"]
+
+[nix]
+channel = "stable-25_05"
+packages = ["file"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Real Estate Node.js Server"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Real Estate Basic Server"
+
+[[workflows.workflow]]
+name = "Real Estate Node.js Server"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsx server/index.ts"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow]]
+name = "Real Estate Basic Server"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsx server/basicServer.ts"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
