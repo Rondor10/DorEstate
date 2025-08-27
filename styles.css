@@ -324,7 +324,6 @@ body {
     font-weight: 400;
     opacity: 0.9;
     margin-bottom: 2rem;
-    opacity: 0;
     animation: fadeInUp 3s ease-out 0.8s forwards;
 }
 
