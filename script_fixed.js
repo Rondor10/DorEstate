@@ -322,16 +322,6 @@ const modalContents = {
 
             <li class="svc-item" tabindex="0">
               <div class="svc-cover">
-                <img src="gen_pic/bg_blurred.png" alt="ניהול נכסים">
-              </div>
-              <div class="svc-meta">
-                <h3 class="svc-title">ניהול נכסים</h3>
-                <p class="svc-desc">השכרה, תחזוקה וניהול תקציב בשקיפות מלאה, עם דגש על שמירה ועל הגדלת ערך הנכס. מתן שקט נפשי מלא לבעלי הנכס לאורך כל תקופת ההחזקה.</p>
-              </div>
-            </li>
-
-            <li class="svc-item" tabindex="0">
-              <div class="svc-cover">
                 <img src="gen_pic/bg_blurred.png" alt="המחלקה הפיננסית">
               </div>
               <div class="svc-meta">
@@ -339,17 +329,6 @@ const modalContents = {
                 <p class="svc-desc">מודלי תשואה מתקדמים, פתרונות מימון מותאמים ועסקאות מיזוגים ורכישות מנוהלות בקפדנות. בקרת סיכונים רציפה להבטחת יציבות וצמיחה בכל שלב.</p>
               </div>
             </li>
-
-            <li class="svc-item" tabindex="0">
-              <div class="svc-cover">
-                <img src="gen_pic/bg_blurred.png" alt="האגף האסטרטגי">
-              </div>
-              <div class="svc-meta">
-                <h3 class="svc-title">האגף האסטרטגי</h3>
-                <p class="svc-desc">שירותים ייחודיים, בקנה מידה בינלאומי, דוגמת שיתופי פעולה עם מועדוני כדורגל, סיוע טכנולוגי, שיווקי, רעיונות חדשניים ופורצי דרך לסקלביליות ארגונית ולתהליכים תוך־ארגוניים.</p>
-              </div>
-            </li>
-
 
           </ol>
 
@@ -474,9 +453,9 @@ const modalContents = {
                 </div>
             </div>
 
-            <div class="carousel-nav" style="margin-top: 3rem;">
-                <button onclick="switchExecutive(-1)">></button>
-                <button onclick="switchExecutive(1)"><</button>
+            <div class="exec-nav">
+              <button class="exec-nav__btn" onclick="switchExecutive(-1)">‹</button>
+              <button class="exec-nav__btn" onclick="switchExecutive(1)">›</button>
             </div>
         `,
   },
@@ -2013,6 +1992,10 @@ let activeSwipePool = [];
 let currentPropertyIndex = 0;
 let likedProperties = [];
 
+// ---- Image Cache System ----
+const imageCache = new Map(); // propertyId -> images array
+const preloadingQueue = new Set(); // Track what's being preloaded
+
 // Format helpers
 const fmtNIS = (n) => {
   try {
@@ -2022,19 +2005,13 @@ const fmtNIS = (n) => {
   }
 };
 
-const areaLabel = (slug) =>
-  ({ givatayim: "גבעתיים", "ramat-gan": "רמת גן", "tel-aviv": "תל אביב" })[
-    slug
-  ] || slug;
-
+////// SWIPE FROM HERE
 // Build the swipe pool from DB + onboarding filters
 function startPropertySwiping() {
   const swipeInterface = document.getElementById("swipeInterface");
   const db = window.__dorDB;
-
   const filters = deriveSwipeFilters();
   let pool = db.getProperties(filters);
-
   // If the strict query is empty, build a constrained fallback from trending
   if (!pool || pool.length === 0) {
     const broad = db.getTrendingProperties(60);
@@ -2048,7 +2025,6 @@ function startPropertySwiping() {
       return true;
     });
   }
-
   // Still nothing? Be honest—show results screen with “no matches” messaging
   if (!pool || pool.length === 0) {
     activeSwipePool = [];
@@ -2058,45 +2034,359 @@ function startPropertySwiping() {
     showSwipeResults();
     return;
   }
-
   activeSwipePool = pool;
   currentPropertyIndex = 0;
   likedProperties = [];
   swipeInterface.style.display = "block";
   loadProperty();
-
   const likeBtn = document.getElementById("likeBtn");
   const dislikeBtn = document.getElementById("dislikeBtn");
   if (likeBtn) likeBtn.onclick = () => swipeProperty("like");
   if (dislikeBtn) dislikeBtn.onclick = () => swipeProperty("dislike");
 }
+// --- Helpers: load images for a property ---
+const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
+/**
+ * Attempts to discover images for a property.
+ * Priority:
+ * 1) p.images if provided (absolute or relative paths)
+ * 2) Fallback probe: prop_pics/<id>/pic_1..12.(jpg|jpeg|png|webp)
+ */
+async function getPropertyImages(p, maxPics = 12) {
+  // Check cache first for instant retrieval
+  if (imageCache.has(p.id)) {
+    console.log(`🚀 Cache hit for ${p.id} - instant load!`);
+    return imageCache.get(p.id);
+  }
+  
+  let urls = [];
+  if (Array.isArray(p.images) && p.images.length > 0) {
+    urls = p.images;
+  } else {
+    const base = `/prop_pics/${p.id}`;
+    // Smart detection: check one extension per picture index sequentially
+    // Check ALL indices - don't stop at gaps
+    for (let i = 1; i <= maxPics; i++) {
+      for (const ext of IMAGE_EXTS) {
+        const src = `${base}/pic_${i}.${ext}`;
+        try {
+          const exists = await checkImageExists(src);
+          if (exists) {
+            urls.push(src);
+            break; // Found this pic index, move to next
+          }
+        } catch (e) {
+          continue; // Try next extension
+        }
+      }
+    }
+  }
+  if (urls.length === 0) {
+    urls.push("/gen_pic/placeholder.jpg"); // Better fallback
+  }
+  
+  // Cache the result for future instant access
+  imageCache.set(p.id, urls);
+  console.log(`✅ Found ${urls.length} images for ${p.id} - cached for instant future access`);
+  return urls;
+}
 
-// Show current property card from activeSwipePool
-function loadProperty() {
+// Clear cache function for debugging
+window.clearImageCache = function() {
+  imageCache.clear();
+  console.log('🗑️ Image cache cleared - properties will be re-scanned');
+}
+
+// Fast image existence check without loading full image
+function checkImageExists(src) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const timer = setTimeout(() => resolve(false), 100); // Quick 100ms timeout
+    img.onload = () => {
+      clearTimeout(timer);
+      resolve(true);
+    };
+    img.onerror = () => {
+      clearTimeout(timer);
+      resolve(false);
+    };
+    img.src = src;
+  });
+}
+
+// Smart image resizing based on aspect ratio
+function smartImageResize(img) {
+  if (!img || !img.naturalWidth || !img.naturalHeight) return;
+  
+  const aspectRatio = img.naturalWidth / img.naturalHeight;
+  const isVertical = aspectRatio < 0.75; // Portrait orientation
+  
+  if (isVertical) {
+    img.classList.add('vertical-image');
+    console.log(`📱 Detected vertical image: ${img.src} (${img.naturalWidth}x${img.naturalHeight})`);
+  } else {
+    img.classList.remove('vertical-image');
+    console.log(`🖼️ Standard image: ${img.src} (${img.naturalWidth}x${img.naturalHeight})`);
+  }
+}
+
+// --- Feature map to Hebrew labels and icons ---
+const FEATURE_ICONS = {
+  "safe-room": "fas fa-shield-alt",    // Safe room icon
+  balcony: "fas fa-coffee",          // Balcony icon (custom or use fa-window)
+  parking: "fas fa-parking",          // Parking icon
+  elevator: "fas fa-elevator",        // Elevator icon
+  ac: "fas fa-snowflake",             // Air conditioning icon
+  bars: "fas fa-lock",                // Bars (security) icon
+  accessible: "fas fa-wheelchair",    // Accessibility icon
+};
+const FEATURE_LABELS_HE = {
+  "safe-room": 'ממ"ד',
+  balcony: "מרפסת",
+  parking: "חניה",
+  elevator: "מעלית",
+  ac: "מיזוג",
+  bars: "סורגים",
+  accessible: "נגיש",
+};
+// --- Render feature pills ---
+function renderFeaturePills(p) {
+  const features = Array.isArray(p.features) ? p.features : [];
+  if (!features.length) return "";
+  const pills = features
+    .filter((f) => FEATURE_LABELS_HE[f])
+    .map(
+      (f) => `
+      <li class="feature-pill" dir="rtl">
+        <span class="feature-icon"><i class="${FEATURE_ICONS[f]}"></i></span>
+        <span class="feature-text">${FEATURE_LABELS_HE[f]}</span>
+      </li>`,
+    )
+    .join("");
+  return `
+    <ul class="feature-pills">
+      ${pills}
+    </ul>`;
+}
+
+// --- Render description with toggle ---
+function renderDescription(p) {
+  const desc = p.description?.trim();
+  if (!desc) return "";
+  const safe = desc.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return `
+    <div class="property-desc" dir="rtl">
+      <div class="desc-text">${safe}</div>
+    </div>`;
+}
+// --- Carousel controls wiring ---
+function wireCarousel(cardEl) {
+  const track = cardEl.querySelector(".carousel-track");
+  const slides = Array.from(cardEl.querySelectorAll(".carousel-slide"));
+  const prev = cardEl.querySelector(".carousel-prev");
+  const next = cardEl.querySelector(".carousel-next");
+  const dots = Array.from(cardEl.querySelectorAll(".carousel-dot"));
+  if (!track || slides.length === 0) return;
+  // Size track and slides: track = N*100%, each slide = 100% of viewport width
+  const applyTrackLayout = () => {
+    track.style.width = `${slides.length * 100}%`;
+    const each = 100 / slides.length;
+    slides.forEach((s) => {
+      s.style.width = `${each}%`;
+      s.style.flex = `0 0 ${each}%`;
+    });
+  };
+  applyTrackLayout();
+  window.addEventListener("resize", applyTrackLayout, { passive: true });
+  let index = 0;
+  // ✅ Move by one-slide fraction of the track: 100/N
+  const goTo = (i) => {
+    index = Math.max(0, Math.min(i, slides.length - 1));
+    const perSlide = 100 / slides.length;
+    track.style.transform = `translateX(${-index * perSlide}%)`;
+    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+  };
+  prev?.addEventListener("click", () => goTo(index - 1));
+  next?.addEventListener("click", () => goTo(index + 1));
+  dots.forEach((d, di) => d.addEventListener("click", () => goTo(di)));
+  // Touch
+  let startX = 0, dx = 0, touching = false;
+  track.addEventListener("touchstart", (e) => { touching = true; startX = e.touches[0].clientX; dx = 0; }, { passive: true });
+  track.addEventListener("touchmove", (e) => { if (!touching) return; dx = e.touches[0].clientX - startX; }, { passive: true });
+  track.addEventListener("touchend", () => { touching = false; if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1)); }, { passive: true });
+  goTo(0);
+}
+
+// --- INSTANT Property Loading with Full Carousel - User-First Approach ---
+async function loadProperty() {
   const propertyCards = document.getElementById("propertyCards");
   if (!activeSwipePool || currentPropertyIndex >= activeSwipePool.length) {
     showSwipeResults();
     return;
   }
-
+  
   const p = activeSwipePool[currentPropertyIndex];
+  
+  // INSTANT display with placeholder carousel structure
   propertyCards.innerHTML = `
-    <div class="property-card" id="currentCard">
-      <div class="property-image">
-        <i class="${p.image || "fas fa-building"}"></i>
-      </div>
-      <div class="property-info">
-        <div class="property-title">${p.title || ""}</div>
-        <div class="property-price">${fmtNIS(p.price)} ₪</div>
-        <div class="property-location">
-          ${p.neighborhood ? p.neighborhood + " · " : ""}${areaLabel(p.area)}
+    <div class="property-card big" id="currentCard">
+      <div class="property-carousel" id="property-carousel">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide">
+            <img class="property-image-placeholder loading" 
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' dy='.3em' fill='%23666'%3E🏠%3C/text%3E%3C/svg%3E"
+                 alt="Loading property...">
+          </div>
         </div>
-        <div class="property-meta" style="margin-top:.4rem; color:#666; font-size:.9rem;">
+        <button class="carousel-nav carousel-prev" type="button" aria-label="Previous" style="opacity: 0.3;">&#10094;</button>
+        <button class="carousel-nav carousel-next" type="button" aria-label="Next" style="opacity: 0.3;">&#10095;</button>
+        <div class="carousel-dots" id="carousel-dots">
+          <button class="carousel-dot active" aria-label="slide 1"></button>
+        </div>
+      </div>
+      
+      <div class="property-info" dir="rtl">
+        <div class="property-title">${p.title || "נכס מעולה"}</div>
+        <div class="property-meta" style="margin-top:.2rem; color:#666; font-size:.95rem;">
           ${p.rooms ?? "-"} חד׳ · ${p.sqm ?? "-"} מ״ר ${p.floor != null ? "· קומה " + p.floor : ""}
         </div>
+        <div class="property-price">${fmtNIS(p.price)} ₪</div>
+        ${renderFeaturePills(p)}
+        ${renderDescription(p)}
       </div>
     </div>`;
+
+  // Load ALL images and build carousel (but prioritize first image)
+  loadPropertyCarouselAsync(p);
+  
+  // Preload next properties while user views current
+  preloadNextProperties();
 }
+
+// Load full property carousel asynchronously - show first image instantly, load rest progressively
+async function loadPropertyCarouselAsync(property) {
+  console.log(`🎠 Loading carousel for property:`, property.id);
+  
+  // Use the existing getPropertyImages function to find all images
+  const imgs = await getPropertyImages(property, 12, 3000); // 12 max images, 3s timeout
+  
+  console.log(`📸 Found ${imgs.length} images:`, imgs);
+  
+  const carouselTrack = document.getElementById("carousel-track");
+  const carouselDots = document.getElementById("carousel-dots");
+  const prevBtn = document.querySelector(".carousel-prev");
+  const nextBtn = document.querySelector(".carousel-next");
+  
+  if (!carouselTrack || !carouselDots) return;
+  
+  if (imgs.length > 0) {
+    // Build carousel with all images and smart sizing
+    const slides = imgs.map((src, index) => `
+      <div class="carousel-slide">
+        <img src="${src}" alt="${property.title || "property"}" 
+             loading="${index === 0 ? 'eager' : 'lazy'}"
+             onload="smartImageResize(this)"/>
+      </div>
+    `).join("");
+    
+    const dots = imgs.map((_, index) => 
+      `<button class="carousel-dot${index === 0 ? ' active' : ''}" aria-label="slide ${index + 1}"></button>`
+    ).join("");
+    
+    // Update carousel
+    carouselTrack.innerHTML = slides;
+    carouselDots.innerHTML = dots;
+    
+    // Enable navigation if multiple images
+    if (imgs.length > 1) {
+      prevBtn.style.opacity = "1";
+      nextBtn.style.opacity = "1";
+      
+      // Wire up carousel functionality
+      const cardEl = document.getElementById("currentCard");
+      wireCarousel(cardEl);
+    }
+    
+    console.log(`✅ Carousel built with ${imgs.length} images`);
+  } else {
+    // Fallback: no images found
+    carouselTrack.innerHTML = `
+      <div class="carousel-slide">
+        <div class="property-image placeholder">
+          <i class="${property.image || "fas fa-building"}" style="font-size: 4rem; color: #ccc;"></i>
+        </div>
+      </div>
+    `;
+    
+    console.log(`🏠 No images found for ${property.id}, using icon fallback`);
+  }
+}
+
+// Helper: Load image with timeout
+function loadImageWithTimeout(src, timeout = 2000) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    let loaded = false;
+    
+    const timer = setTimeout(() => {
+      if (!loaded) {
+        loaded = true;
+        resolve(false);
+      }
+    }, timeout);
+    
+    img.onload = () => {
+      if (!loaded) {
+        loaded = true;
+        clearTimeout(timer);
+        resolve(true);
+      }
+    };
+    
+    img.onerror = () => {
+      if (!loaded) {
+        loaded = true;
+        clearTimeout(timer);  
+        resolve(false);
+      }
+    };
+    
+    img.src = src;
+  });
+}
+
+// Smart preloading system - load next property completely in background
+async function preloadNextProperties() {
+  const nextIndex = currentPropertyIndex + 1;
+  if (nextIndex >= activeSwipePool.length) return;
+  
+  const nextProp = activeSwipePool[nextIndex];
+  
+  // Skip if already cached or currently being preloaded
+  if (imageCache.has(nextProp.id) || preloadingQueue.has(nextProp.id)) {
+    return;
+  }
+  
+  // Add to preloading queue
+  preloadingQueue.add(nextProp.id);
+  console.log(`🔄 Background preloading: ${nextProp.id}`);
+  
+  // Non-blocking background preload
+  setTimeout(async () => {
+    try {
+      // This will cache the images for instant future access
+      await getPropertyImages(nextProp, 12);
+      console.log(`✅ Background preload complete: ${nextProp.id}`);
+    } catch (error) {
+      console.log(`❌ Preload failed for ${nextProp.id}:`, error);
+    } finally {
+      // Remove from preloading queue
+      preloadingQueue.delete(nextProp.id);
+    }
+  }, 300); // Small delay to not interfere with current property display
+}
+
+////// SWIPE ENDS HERE
 
 // Handle swipe action (like/dislike) and advance
 function swipeProperty(action) {

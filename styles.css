@@ -74,7 +74,6 @@ body {
     }
 }
 
-
 /* TOP BAR STARTS HERE — FINAL */
 
 .container {
@@ -118,7 +117,7 @@ body {
   max-width: 1220px;        /* adjust 1120–1320 to taste */
   margin-inline: auto;      /* true horizontal centering */
   padding-inline: 2rem;     /* equal side insets */
-  transform: translateX(4rem);          /* no manual shifts */
+  transform: translateX(0);          /* remove problematic manual shift */
 }
 
 /* --- NAV CORE --- */
@@ -219,7 +218,76 @@ body {
   }
 }
 
-@media (max-width: 680px) {
+/* iPhone 13 Pro specific fix (390px) */
+@media (max-width: 390px) {
+  /* CRITICAL: Prevent horizontal overflow */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    position: relative;
+  }
+  
+  * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Remove the problematic transform completely */
+  .top-bar .container {
+    transform: none !important;
+    padding-inline: 0.8rem;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Simplify navigation to a single row with smaller logo */
+  .main-nav { 
+    width: 100%; 
+    overflow: hidden;
+  }
+  
+  .main-nav > ul.nav-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0;
+  }
+  
+  /* Logo in center, smaller */
+  .logo-cell { 
+    order: 4;
+    flex: 0 0 auto;
+  }
+  
+  .logo { 
+    height: 1.8rem; 
+    width: auto;
+  }
+  
+  /* Menu items arranged around logo */
+  .nav-grid > li:nth-child(1) { order: 1; flex: 1; text-align: left; }
+  .nav-grid > li:nth-child(2) { order: 2; flex: 1; text-align: left; }
+  .nav-grid > li:nth-child(3) { order: 3; flex: 1; text-align: center; }
+  .nav-grid > li:nth-child(5) { order: 5; flex: 1; text-align: center; }
+  .nav-grid > li:nth-child(6) { order: 6; flex: 1; text-align: right; }
+  .nav-grid > li:nth-child(7) { order: 7; flex: 1; text-align: right; }
+  
+  /* Better text styling */
+  .main-nav > ul.nav-grid > li > a {
+    white-space: nowrap;
+    font-size: 0.7rem;
+    line-height: 1.1;
+    padding: 0.4rem 0.2rem;
+    display: block;
+  }
+}
+
+/* Tablets and larger phones (391px-680px) */
+@media (min-width: 391px) and (max-width: 680px) {
   .main-nav { width: 100%; }
   .main-nav > ul.nav-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -271,7 +339,6 @@ body {
 .top-bar, .main-nav { direction: rtl; }
 
 /* TOP BAR ENDS HERE */
-
 
 /* Hero Section - Reduce from 45vh to 35vh */
 .hero-section {
@@ -398,8 +465,8 @@ body {
 
 /* Category Grid - Add fixed height */
 .category-grid {
-    height: 45vh; /* Add this line */
-    padding: 2rem 0; /* Reduce padding from 4rem to 2rem */
+    min-height: 40vh;
+    padding: 2rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -411,7 +478,8 @@ body {
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
     width: 100%;
-    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .category-card {
@@ -774,7 +842,6 @@ body {
   background: rgba(212, 175, 55, 0.05);
 }
 
-
 .option-card.selected {
     border-color: var(--primary-color);
     background: rgba(212, 175, 55, 0.1);
@@ -825,64 +892,9 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.property-cards {
-    position: relative;
-    width: 350px;
-    height: 500px;
-    margin-bottom: 3rem;
-}
-
-.property-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-heavy);
-    cursor: grab;
-    transition: transform 0.3s ease;
-}
-
 .property-card.dragging {
     cursor: grabbing;
     transform: rotate(5deg);
-}
-
-.property-image {
-    height: 60%;
-    background: linear-gradient(45deg, #ddd, #f0f0f0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: #999;
-}
-
-.property-info {
-    padding: 1.5rem;
-    height: 40%;
-}
-
-.property-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-}
-
-.property-price {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.property-location {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
 }
 
 .swipe-actions {
@@ -1023,8 +1035,207 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    /* Top bar adjustments */
+/* iPhone 13 Pro button and layout fixes */
+@media (max-width: 390px) {
+    /* Top bar adjustments - reduced height since we fixed navigation */
+    .top-bar {
+        height: 8vh;
+        min-height: 60px;
+    }
+    
+    /* Hero section adjustments - more space since nav is smaller */
+    .hero-section {
+        height: 55vh;
+        padding: 1rem 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem !important;
+        line-height: 1.2;
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 30px;
+        min-width: 240px;
+        max-width: 85vw;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* Category grid optimized for iPhone 13 Pro */
+    .category-grid {
+        min-height: 35vh;
+        padding: 1rem 0.5rem;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .category-card {
+        padding: 1rem;
+        border-radius: 12px;
+        min-height: 120px;
+    }
+    
+    .category-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .category-card p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .card-icon i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Fix property cards */
+    .property-cards {
+        width: 100vw;
+        height: min(75vh, 600px);
+        margin: 0;
+    }
+    
+    /* Fix modal positioning - full screen on iPhone 13 Pro */
+    .modal-overlay {
+        padding: 0;
+    }
+    
+    .modal-container {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        flex: 1;
+        padding: 1.5rem 1rem;
+        font-size: 0.9rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        left: auto;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        z-index: 20;
+    }
+    
+    /* Fix social links positioning - move higher to avoid bottom bar */
+    .social-fixed {
+        bottom: 12vh;
+        left: 8px;
+        gap: 6px;
+    }
+    
+    .social-fixed .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        padding: 8px;
+    }
+    
+    /* Fix contact bar positioning - move higher and make more compact */
+    .contact-fixed {
+        bottom: 12vh;
+        right: 8px;
+        font-size: 0.7rem;
+        padding: 8px 10px;
+        line-height: 1.2;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+    }
+    
+    /* Fix bottom bar - make it more compact */
+    .bottom-bar {
+        height: 10vh;
+        min-height: 60px;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    
+    .footer-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-nav a {
+        font-size: 0.75rem;
+        padding: 0.3rem;
+    }
+    
+    /* Fix onboarding for iPhone 13 Pro */
+    .onboarding-container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .question-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    .question-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .question-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    
+    .option-card {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (min-width: 391px) and (max-width: 480px) {
+    /* Top bar adjustments for other small phones */
     .top-bar {
         height: 12vh;
     }
@@ -1056,6 +1267,7 @@ body {
         padding: 0.6rem 1.2rem;
         font-size: 0.8rem;
         border-radius: 25px;
+        min-width: 220px;
     }
     
     /* Grid adjustments */
@@ -1184,7 +1396,6 @@ body {
     }
 }
 
-
 /* Contact Bar */
 .contact-fixed {
     position: fixed;
@@ -1194,7 +1405,6 @@ body {
     color: white;
     font-size: 1.4em;
     line-height: 1.6;
-    background-color: none;
     padding: 10px 14px;
     border-radius: 12px;
     z-index: 1000;
@@ -1205,83 +1415,6 @@ body {
 
 .contact-fixed p {
     margin: 0;
-}
-
-/* Executives Scroll */
-.executive-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 500px; /* גובה שמספיק להכיל את הכרטיס הכי ארוך */
-  position: relative;
-}
-
-.executive-slide {
-  width: 100%;
-  max-width: 600px;
-  height: 600px; /* קובע גובה אחיד לכולם */
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  display: none;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  overflow: hidden; /* מונע מהתוכן לפרוץ את הגובה */
-  gap: 0.5rem; /* רווח מאוזן בין האלמנטים הפנימיים */
-
-}
-
-.executive-slide.active {
-  display: flex;
-}
-
-.executive-description {
-  margin-top: 0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 1rem;
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-.executive-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    margin-bottom: 1rem;
-}
-
-.executive-name {
-    font-weight: bold;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-}
-
-.carousel-nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.carousel-nav button {
-    background-color: var(--primary-color);
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.arrow-icon {
-    margin-left: 10px; /* Adjust the value (e.g., 5px, 15px) to control the gap */
 }
 
 /* Bottom Bar - 10vh */
@@ -1644,3 +1777,292 @@ html.a11y-font-200 { font-size: 200%; }
   animation: spin .7s linear infinite;
 }
 @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+/* === Dor Real Estate — Property Card (Clean Responsive) === */
+
+.property-cards {
+  position: relative;
+  width: min(92vw, 860px);      /* stretch but cap */
+  height: min(90vh, 940px);     /* almost full viewport, capped */
+  margin-bottom: 2rem;
+}
+
+/* Instant loading with smooth transitions */
+.property-image-placeholder.loading {
+  filter: blur(1px);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.property-image-placeholder:not(.loading) {
+  filter: none;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.property-card {
+  transition: opacity 0.15s ease;
+}
+
+.property-card {
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- Carousel --- */
+.property-carousel {
+  position: relative;
+  flex: 1 0 68%;               /* take ~2/3 of card */
+  background: #f4f4f4;
+  overflow: hidden;
+  direction: ltr;              /* Force LTR for carousel to prevent RTL reversal */
+}
+
+.property-carousel .carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform .35s ease;
+  will-change: transform;
+  /* JS should override width dynamically to slides*100% */
+}
+
+.carousel-slide {
+  height: 100%;                /* Keep height */
+  display: flex;               /* Ensure flex for centering if needed */
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;              /* Prevent shrinking; JS will set explicit width/flex */
+  /* Removed min-width: 100%; to avoid overriding JS sizing */
+}
+
+.carousel-slide {
+  background-color: #f8f9fa; /* Fill background for any gaps */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Default for most images */
+  object-position: center;
+  display: block;
+}
+
+/* For vertical images - prioritize width fill */
+.carousel-slide img.vertical-image {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center top; /* Prefer top portion for tall images */
+}
+
+.property-image.placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #999;
+  background: linear-gradient(45deg, #ececec, #f7f7f7);
+}
+
+/* Carousel nav */
+.carousel-nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border: 0; border-radius: 50%;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  font-size: 1.25rem;
+  display: grid; place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background .2s ease, transform .1s ease;
+}
+.carousel-nav:hover { background: rgba(0,0,0,.5); transform: translateY(-50%) scale(1.08); }
+.carousel-prev { left: 12px; }
+.carousel-next { right: 12px; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 8px;
+  z-index: 2;
+}
+.carousel-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%; border: 0;
+  background: rgba(255,255,255,.6);
+  cursor: pointer;
+}
+.carousel-dot.active { background: #fff; }
+
+/* --- Info section --- */
+.property-info {
+  flex: 1 0 auto;              /* grow naturally */
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.property-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary, #111);
+}
+
+.property-price {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--primary-color, #0f766e);
+}
+
+.property-location {
+  font-size: 1rem;
+  color: var(--text-secondary, #555);
+}
+
+.property-meta {
+  font-size: .95rem;
+  color: #666;
+}
+
+/* --- Feature pills --- */
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: .6rem 0 .3rem;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .4rem .7rem;
+  border-radius: 999px;
+  background: #e9f7ef;
+  color: #14532d;
+  font-size: .9rem;
+  font-weight: 700;
+  border: 1px solid #c7ead5;
+}
+
+.feature-pill .checkmark {
+  width: 18px; height: 18px;
+  display: grid; place-items: center;
+  background: #22c55e; color: #fff;
+  border-radius: 4px;
+  font-size: .85rem;
+}
+
+/* --- Description --- */
+.property-desc { margin-top: .4rem; }
+.desc-text {
+  font-size: 1rem;
+  color: #2a2a2a;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+.line-clamp {
+  display: -webkit-box;          /* legacy flexbox-like mode */
+  -webkit-box-orient: vertical;  /* required for -webkit-line-clamp */
+  -webkit-line-clamp: 6;         /* Safari/Chromium */
+  line-clamp: 6;                 /* future-standard property */
+  overflow: hidden;              /* hide the rest */
+}
+.desc-toggle {
+  margin-top: .35rem;
+  background: none; border: 0;
+  color: var(--primary-color, #0f766e);
+  font-weight: 800;
+  cursor: pointer;
+  padding: .25rem 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .property-cards {
+    width: 95vw;
+    height: min(90vh, 820px);
+  }
+  .property-info { padding: 1.1rem; }
+  .desc-text { font-size: .95rem; }
+}
+
+/* === Executives Scroll (team modal only, isolated) === */
+
+.executive-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+  position: relative;
+}
+
+.executive-slide {
+  width: 100%;
+  max-width: 600px;
+  height: 600px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+.executive-slide.active { display: flex; }
+
+.executive-photo {
+  width: 250px; height: 250px; border-radius: 50%;
+  object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+}
+.executive-name {
+  font-weight: 700; color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.executive-description {
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+/* === NEW: Executives-only nav (no conflict with Tinder) === */
+.exec-nav {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+  padding: 0;
+}
+
+.exec-nav__btn {
+  background: var(--primary-color);
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: #fff; cursor: pointer;
+  margin: 0 .5rem;
+}
+.exec-nav__btn:hover { background: #d4af37; }
