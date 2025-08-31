@@ -4319,7 +4319,7 @@ window.DorTeam = (function () {
     { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics/Ari.jpg",
       description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
       skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"] },
-    { name: "שחר צור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shachar.jpg",
+    { name: "שחר צור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shahar.jpg",
       description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
       skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"] }
   ];
