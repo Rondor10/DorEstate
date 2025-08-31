@@ -1899,109 +1899,6 @@ const modalContents = {
   </div>
 </div>
 
-<script>
-(function () {
-  // Private data
-  const executiveData = [
-    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
-      skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"] },
-    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics/Revital.png",
-      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
-      skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"] },
-    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
-      skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"] },
-    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics/Din.jpeg",
-      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
-      skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"] },
-    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics/Ron.jpg",
-      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-      skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"] },
-    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics/Niv.jpeg",
-      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
-      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"] },
-    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics/Ari.jpg",
-      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
-      skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"] },
-    { name: "שחר צור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shachar.jpg",
-      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
-      skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"] }
-  ];
-
-  let idx = 0;
-
-  function total() { return Array.isArray(executiveData) ? executiveData.length : 0; }
-  function mod(n, m) { return m ? ((n % m) + m) % m : 0; }
-
-  function render() {
-    const t = total();
-    const counter = document.getElementById('executive-counter');
-    const bar = document.getElementById('progress-bar');
-
-    if (!t) { if (counter) counter.textContent = '0/0'; if (bar) bar.style.width = '0%'; return; }
-    if (!Number.isFinite(idx)) idx = 0;
-    idx = Math.max(0, Math.min(idx, t - 1));
-
-    const e = executiveData[idx];
-
-    const photo = document.getElementById('exec-photo');
-    const name = document.getElementById('exec-name');
-    const title = document.getElementById('exec-title');
-    const desc  = document.getElementById('exec-description');
-    const skills= document.getElementById('exec-skills');
-
-    if (photo) { photo.src = e.image; photo.alt = e.name; }
-    if (name) name.textContent = e.name;
-    if (title) title.textContent = e.title;
-    if (desc)  desc.textContent  = e.description;
-    if (skills) skills.innerHTML = e.skills.map(s => '<div class="skill-chip">' + s + '</div>').join('');
-
-    if (counter) counter.textContent = (idx + 1) + '/' + t;
-    if (bar) bar.style.width = (((idx + 1) / t) * 100) + '%';
-
-    document.querySelectorAll('.team-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === idx);
-    });
-  }
-
-  function buildDots() {
-    const t = total();
-    const wrap = document.getElementById('team-dots');
-    if (!wrap) return;
-    let html = '';
-    for (let i = 0; i < t; i++) {
-      html += '<div class="team-dot' + (i === 0 ? ' active' : '') + '" data-dot="' + i + '"></div>';
-    }
-    wrap.innerHTML = html;
-    wrap.addEventListener('click', (ev) => {
-      const el = ev.target.closest('[data-dot]');
-      if (!el) return;
-      idx = Number(el.getAttribute('data-dot')) || 0;
-      render();
-    });
-  }
-
-  function init() {
-    buildDots();
-    render();
-  }
-
-  // Public, namespaced
-  window.DorTeam = {
-    init,
-    next() { idx = mod(idx + 1, total()); render(); },
-    prev() { idx = mod(idx - 1, total()); render(); }
-  };
-
-  // Run immediately (works even if this HTML is injected after DOM loaded)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-})();
-</script>
   `
   },
   join: {
@@ -3169,8 +3066,17 @@ function openModal(type) {
     modalOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
 
+    // 🔹 Init the Team widget when that modal is opened
+    if (type === "team" && window.DorTeam && typeof window.DorTeam.init === "function") {
+      // ensure DOM nodes are in place
+      queueMicrotask(() => window.DorTeam.init());
+      // (optional) bridge if your buttons still call the old handlers:
+      window.switchExecutive = (dir) => (dir < 0 ? window.DorTeam.prev() : window.DorTeam.next());
+      window.goToExecutive = (i) => window.DorTeam.goTo ? window.DorTeam.goTo(i) : null;
+    }
+
     // (re)bind inside the modal
-    initContactForm(modalContent); // <— add this
+    initContactForm(modalContent);
 
     modalContent.querySelectorAll("[data-modal]").forEach((trigger) => {
       trigger.addEventListener("click", function (e) {
@@ -3182,38 +3088,17 @@ function openModal(type) {
   }
 
   if (type === "assets") {
-    try {
-      initAssetsModal(modalContent);
-    } catch (e) {
-      console.warn(e);
-    }
+    try { initAssetsModal(modalContent); } catch (e) { console.warn(e); }
   }
 
   if (
-    type === "team" ||
-    type === "join" ||
-    type === "knowledge" ||
-    type === "picks" ||
-    type === "assets" ||
-    type === "projects" ||
-    type === "about" ||
-    type === "services" ||
-    type === "contact" ||
-    type === "accessibility" ||
-    type === "privacy" ||
-    type === "ethics" ||
-    type === "terms"
+    type === "team" || type === "join" || type === "knowledge" || type === "picks" ||
+    type === "assets" || type === "projects" || type === "about" || type === "services" ||
+    type === "contact" || type === "accessibility" || type === "privacy" ||
+    type === "ethics" || type === "terms"
   ) {
-    if (type === "about") {
-      try {
-        initAboutTimeline();
-      } catch (_) {}
-    }
-    if (type === "services") {
-      try {
-        initServicesTimeline();
-      } catch (_) {}
-    }
+    if (type === "about") { try { initAboutTimeline(); } catch (_) {} }
+    if (type === "services") { try { initServicesTimeline(); } catch (_) {} }
     const contactFixed = document.querySelector(".contact-fixed");
     if (contactFixed) contactFixed.style.display = "none";
   }
@@ -4409,3 +4294,89 @@ function setLoading(btn, isLoading) {
   btn.disabled = !!isLoading;
   btn.classList.toggle("btn-loading", !!isLoading);
 }
+
+// ---- Team widget (global, executed always) ----
+window.DorTeam = (function () {
+  const executiveData = [
+    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+      skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"] },
+    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics/Revital.png",
+      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+      skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"] },
+    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+      skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"] },
+    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics/Din.jpeg",
+      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
+      skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"] },
+    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics/Ron.jpg",
+      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
+      skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"] },
+    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics/Niv.jpeg",
+      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
+      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"] },
+    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics/Ari.jpg",
+      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+      skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"] },
+    { name: "שחר צור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shachar.jpg",
+      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+      skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"] }
+  ];
+
+  let idx = 0;
+  const total = () => executiveData.length;
+  const mod = (n, m) => ((n % m) + m) % m;
+
+  function render() {
+    const t = total();
+    const counter = document.getElementById('executive-counter');
+    const bar = document.getElementById('progress-bar');
+    if (!t) { if (counter) counter.textContent = '0/0'; if (bar) bar.style.width = '0%'; return; }
+
+    const e = executiveData[idx = Math.max(0, Math.min(idx, t - 1))];
+
+    const photo = document.getElementById('exec-photo');
+    const name  = document.getElementById('exec-name');
+    const title = document.getElementById('exec-title');
+    const desc  = document.getElementById('exec-description');
+    const skills= document.getElementById('exec-skills');
+
+    if (photo) { photo.src = e.image; photo.alt = e.name; }
+    if (name)  name.textContent = e.name;
+    if (title) title.textContent = e.title;
+    if (desc)  desc.textContent  = e.description;
+    if (skills) skills.innerHTML = e.skills.map(s => '<div class="skill-chip">' + s + '</div>').join('');
+
+    if (counter) counter.textContent = (idx + 1) + '/' + t;
+    if (bar)     bar.style.width = (((idx + 1) / t) * 100) + '%';
+
+    document.querySelectorAll('.team-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === idx);
+    });
+  }
+
+  function buildDots() {
+    const wrap = document.getElementById('team-dots');
+    if (!wrap) return;
+    let html = '';
+    for (let i = 0; i < total(); i++) {
+      html += '<div class="team-dot' + (i === 0 ? ' active' : '') + '" data-dot="' + i + '"></div>';
+    }
+    wrap.innerHTML = html;
+    wrap.addEventListener('click', (ev) => {
+      const el = ev.target.closest('[data-dot]');
+      if (!el) return;
+      idx = Number(el.getAttribute('data-dot')) || 0;
+      render();
+    });
+  }
+
+  function init() { buildDots(); render(); }
+
+  return {
+    init,
+    next() { if (total()) { idx = mod(idx + 1, total()); render(); } },
+    prev() { if (total()) { idx = mod(idx - 1, total()); render(); } }
+  };
+})();
