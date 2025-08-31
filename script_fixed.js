@@ -4321,7 +4321,7 @@ window.DorTeam = (function () {
       skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"] },
     { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics/Niv.jpeg",
       description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
-      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"] },
+      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"] }
   ];
 
   let idx = 0;
