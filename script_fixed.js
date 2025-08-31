@@ -2360,7 +2360,7 @@ const modalContents = {
         `,
   },
   assets: {
-    title: "נכסים",
+    title: "לא להיכנס",
     content: `
             <h2>מנוע חיפוש עם קטגוריות משלנו</h2>
             <p style="margin-bottom: 2rem;">חפשו ומצאו את הנכס המושלם עבורכם.</p>
