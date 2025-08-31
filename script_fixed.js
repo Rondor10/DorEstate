@@ -623,7 +623,7 @@ const modalContents = {
           </div>
           
           <div class="legacy-footer">
-            <button class="legacy-cta">על מה אתם חולמים?</button>
+            <button class="legacy-cta" data-start-journey>על מה אתם חולמים?</button>
           </div>
         </div>
       </div>
@@ -2227,8 +2227,9 @@ const modalContents = {
           // Update counter and progress
           const counter = document.getElementById('executive-counter');
           const progressBar = document.getElementById('progress-bar');
-          if (counter) counter.textContent = \`\${currentExecutive + 1}/8\`;
-          if (progressBar) progressBar.style.width = \`\${((currentExecutive + 1) / 8) * 100}%\`;
+          const totalExecs = executiveData.length;
+          if (counter) counter.textContent = \`\${currentExecutive + 1}/\${totalExecs}\`;
+          if (progressBar) progressBar.style.width = \`\${((currentExecutive + 1) / totalExecs) * 100}%\`;
           
           // Update dots
           document.querySelectorAll('.team-dot').forEach((dot, index) => {
@@ -2238,13 +2239,16 @@ const modalContents = {
         
         // Navigation functions for global access
         window.switchExecutive = function(direction) {
-          currentExecutive = (currentExecutive + direction + 8) % 8;
+          const totalExecs = executiveData.length;
+          currentExecutive = (currentExecutive + direction + totalExecs) % totalExecs;
           updateExecutiveDisplay();
         };
         
         window.goToExecutive = function(index) {
-          currentExecutive = index;
-          updateExecutiveDisplay();
+          if (index >= 0 && index < executiveData.length) {
+            currentExecutive = index;
+            updateExecutiveDisplay();
+          }
         };
         
         // Initialize
@@ -2756,533 +2760,158 @@ const modalContents = {
         `,
   },
   projects: {
-    title: "Innovation Labs | מעבדות החדשנות",
+    title: "פרויקטים",
     content: `
+        <h2>פרויקטי פיתוח והשקעה</h2>
+        <p style="margin-bottom: 2rem;">הפרויקטים המובילים שלנו בגבעתיים והסביבה</p>
+
         <style>
-          @keyframes quantumFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-10px, -10px) rotate(90deg); }
-            50% { transform: translate(10px, -20px) rotate(180deg); }
-            75% { transform: translate(-5px, -15px) rotate(270deg); }
+          .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
           }
 
-          @keyframes quantumPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-          }
-
-          @keyframes energyFlow {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-          }
-
-          .quantum-header {
-            text-align: center;
-            margin-bottom: 3rem;
+          .project-card {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, 
-              rgba(255, 107, 107, 0.1) 0%,
-              rgba(255, 71, 87, 0.1) 25%,
-              rgba(255, 56, 56, 0.1) 50%,
-              rgba(255, 87, 34, 0.1) 75%,
-              rgba(233, 30, 99, 0.1) 100%);
-            border-radius: 25px;
-            padding: 3rem 2rem;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-          }
-
-          .quantum-title {
-            font-size: 3rem;
-            background: linear-gradient(45deg, #ff6b6b, #ff4757, #ff3838, #e91e63);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: energyFlow 3s ease-in-out infinite;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
-          }
-
-          .quantum-subtitle {
-            color: #ffffff;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-          }
-
-          .quantum-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-          }
-
-          .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            animation: quantumFloat 4s infinite linear;
-          }
-
-          .particle:nth-child(2) { background: #ff4757; animation-delay: 0.5s; top: 20%; left: 20%; }
-          .particle:nth-child(3) { background: #ff3838; animation-delay: 1s; top: 60%; left: 80%; }
-          .particle:nth-child(4) { background: #ff5722; animation-delay: 1.5s; top: 80%; left: 10%; }
-          .particle:nth-child(5) { background: #e91e63; animation-delay: 2s; top: 40%; left: 60%; }
-
-          .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-          }
-
-          .stat-card {
-            background: rgba(255, 107, 107, 0.1);
-            border: 1px solid rgba(255, 107, 107, 0.3);
             border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-          }
-
-          .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.2), transparent);
-            transition: left 0.6s ease;
-          }
-
-          .stat-card:hover::before {
-            left: 100%;
-          }
-
-          .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.3);
-            border-color: rgba(255, 107, 107, 0.6);
-          }
-
-          .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ff6b6b;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-          }
-
-          .stat-label {
-            color: #ffffff;
-            font-size: 1.1rem;
-            opacity: 0.9;
-          }
-
-          .quantum-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-          }
-
-          .quantum-project-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 107, 107, 0.2);
-            border-radius: 25px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            position: relative;
             cursor: pointer;
+            aspect-ratio: 4 / 3;
           }
 
-          .quantum-project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b6b, #ff4757, #ff3838, #e91e63);
-            background-size: 300% 100%;
-            animation: energyFlow 2s ease-in-out infinite;
-          }
-
-          .quantum-project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-              0 20px 60px rgba(255, 107, 107, 0.3),
-              0 0 30px rgba(255, 107, 107, 0.2);
-            border-color: rgba(255, 107, 107, 0.5);
-          }
-
-          .project-image-container {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-          }
-
-          .project-image {
+          .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
+            display: block;
+            z-index: 0;
           }
 
-          .quantum-project-card:hover .project-image {
-            transform: scale(1.1);
+          .project-card:hover img {
+            transform: scale(1.05);
           }
 
-          .project-status {
+          .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+            padding: 1rem;
+            text-align: center;
+          }
+
+        /* شכבת כהות בפרויקטים רגילים – רק בהובר */
+        .project-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0);
+          z-index: 1;
+          transition: background 0.3s ease;
+        }
+
+        /* רק כשמזיזים עכבר, השכבה תופיע */
+        .project-card:hover::before {
+          background: rgba(0, 0, 0, 0.25);
+        }
+
+
+          .project-card:hover .project-overlay {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.25);
+          }
+
+          .project-overlay.show-always {
+              opacity: 1;
+              background: rgba(0, 0, 0, 0.5);
+        }
+
+          .project-sold::after {
+            content: "נמכר";
             position: absolute;
             top: 1rem;
             right: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            z-index: 2;
-          }
-
-          .status-sold {
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-          }
-
-          .status-active {
-            background: linear-gradient(45deg, #ff6b6b, #ff4757);
-            color: white;
-            animation: quantumPulse 2s infinite;
-          }
-
-          .project-info {
-            padding: 2rem;
-          }
-
-          .project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1rem;
-          }
-
-          .project-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-          }
-
-          .project-location {
-            color: #ff6b6b;
-            font-weight: 600;
-            font-size: 0.95rem;
-          }
-
-          .project-type {
-            background: rgba(255, 107, 107, 0.2);
-            color: #ff6b6b;
+            background: white;
+            color: black;
             padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-          }
-
-          .cta-section {
-            background: rgba(255, 107, 107, 0.05);
-            border-radius: 25px;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 3rem 0;
-            border: 1px solid rgba(255, 107, 107, 0.2);
-            position: relative;
-            overflow: hidden;
-          }
-
-          .cta-title {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-weight: 700;
-          }
-
-          .cta-description {
-            color: #cccccc;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-          }
-
-          .quantum-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-          }
-
-          .quantum-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ff4757);
-            border: none;
-            padding: 1rem 2.5rem;
+            font-weight: bold;
             border-radius: 30px;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            display: inline-block;
+            z-index: 3;
           }
 
-          .quantum-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-          }
-
-          .quantum-btn:hover::before {
-            left: 100%;
-          }
-
-          .quantum-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
-            background: linear-gradient(45deg, #ff4757, #ff3838);
-          }
-
-          .quantum-btn.secondary {
-            background: transparent;
-            border: 2px solid #ff6b6b;
-            color: #ff6b6b;
-          }
-
-          .quantum-btn.secondary:hover {
-            background: #ff6b6b;
-            color: white;
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
-          }
-
-          @media (max-width: 768px) {
-            .quantum-projects-grid {
-              grid-template-columns: 1fr;
-              gap: 1.5rem;
+          .project-sold::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0.25);
+              z-index: 1;
             }
 
-            .quantum-title {
-              font-size: 2.2rem;
-            }
 
-            .stats-container {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 1rem;
-            }
-
-            .stat-card {
-              padding: 1.5rem;
-            }
-
-            .quantum-buttons {
-              flex-direction: column;
-              align-items: center;
-            }
-
-            .quantum-btn {
-              width: 100%;
-              max-width: 300px;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .stats-container {
+          @media (max-width: 900px) {
+            .projects-grid {
               grid-template-columns: 1fr;
             }
-
-            .quantum-header {
-              padding: 2rem 1rem;
-            }
-
-            .project-info {
-              padding: 1.5rem;
-            }
           }
+
+
         </style>
 
-        <div class="quantum-header">
-          <div class="quantum-particles">
-            <div class="particle" style="top: 10%; left: 15%;"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-          </div>
-          
-          <h1 class="quantum-title">Innovation Labs</h1>
-          <h2 class="quantum-title" style="font-size: 2rem; margin-top: -0.5rem;">מעבדות החדשנות</h2>
-          <p class="quantum-subtitle">חדשנות בפיתוח נדל"ן | פרויקטים חכמים לעתיד</p>
+        <div class="projects-grid">
+          <!-- Sold Projects -->
+          <a class="project-card project-sold">
+            <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
+            <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-sold">
+            <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
+            <div class="project-overlay show-always">יצחק שדה 3, גבעתיים</div>
+          </a>
+
+  <!-- Active Projects -->
+            <a class="project-card">
+              <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+              <div class="project-overlay">גולומב 54, גבעתיים</div>
+            </a>
+
+          <a class="project-card">
+            <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+            <div class="project-overlay">יצחק שדה 5, גבעתיים</div>
+          </a>
+
+          <a class="project-card">
+            <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+            <div class="project-overlay">ז'בוטינסקי 37, גבעתיים</div>
+          </a>
+
+          <a class="project-card">
+            <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+            <div class="project-overlay">ריינס 23, גבעתיים</div>
+          </a>
+
+            <a class="project-card">
+              <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+              <div class="project-overlay">יצחק שדה 7, גבעתיים</div>
+            </a>
+
+              <a class="project-card">
+                <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
+                <div class="project-overlay">ברדיצ'בסקי 37, גבעתיים</div>
+              </a>
+
         </div>
 
-        <div class="stats-container">
-          <div class="stat-card">
-            <div class="stat-number">25+</div>
-            <div class="stat-label">פרויקטים מושלמים</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">1,200+</div>
-            <div class="stat-label">יחידות דיור</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">15</div>
-            <div class="stat-label">שנות ניסיון</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">95%</div>
-            <div class="stat-label">שביעות רצון</div>
-          </div>
-        </div>
-
-        <div class="quantum-projects-grid">
-          <!-- Completed Projects -->
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" class="project-image" />
-              <div class="project-status status-sold">נמכר</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">המעיין 7, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">פרויקט יוקרה</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" class="project-image" />
-              <div class="project-status status-sold">נמכר</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">יצחק שדה 3, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">פרויקט יוקרה</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Active Projects -->
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">גולומב 54, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">יצחק שדה 5, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">ז'בוטינסקי 37, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">ריינס 23, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">יצחק שדה 7, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quantum-project-card">
-            <div class="project-image-container">
-              <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" class="project-image" />
-              <div class="project-status status-active">פעיל</div>
-            </div>
-            <div class="project-info">
-              <h3 class="project-title">ברדיצ'בסקי 37, גבעתיים</h3>
-              <div class="project-details">
-                <span class="project-location">גבעתיים</span>
-                <span class="project-type">בפיתוח</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cta-section">
-          <h3 class="cta-title">מעוניינים בפרויקט חדשני?</h3>
-          <p class="cta-description">
-            הצטרפו אלינו למסע החדשנות בפיתוח נדל"ן. פרויקטים חכמים, טכנולוגיה מתקדמת, וחוויית מגורים עתידנית.
-          </p>
-          <div class="quantum-buttons">
-            <a href="#contact" class="quantum-btn" onclick="showModal('contact')">צור קשר לפרטים</a>
-            <a href="#" class="quantum-btn secondary">הורד קטלוג פרויקטים</a>
-          </div>
-        </div>
       `,
   },
   terms: {
