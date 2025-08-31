@@ -460,35 +460,386 @@ const modalContents = {
         `,
   },
   join: {
-    title: "הצטרפו אלינו",
+    title: "Shape The Future | עצב את העתיד",
     content: `
-            <h2>הזדמנויות קריירה ושותפויות</h2>
-            <p style="margin-bottom: 2rem;">אנחנו תמיד מחפשים אנשים מוכשרים להצטרף אלינו במגוון תפקידים ופרויקטים.</p>
-
-            <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
-                    <h3>תחומי פעילות</h3>
-                    <ul style="margin-top: 1rem; padding-right: 1rem;">
-                        <li>יזמות נדל"ן</li>
-                        <li>שיווק ומכירות</li>
-                        <li>ניהול פרויקטים</li>
-                        <li>ייעוץ פיננסי</li>
-                    </ul>
-                </div>
-
-                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
-                    <h3>מועמד אידיאלי</h3>
-                    <ul style="margin-top: 1rem; padding-right: 1rem;">
-                        <li>בן אדם עצמאי עם חוש עסקי</li>
-                        <li>יכולת לקחת פרויקט ולהוביל אותו להצלחה</li>
-                        <li>נכונות לעבוד בצוות דינמי ומאתגר</li>
-                        <li>ניסיון בתחום מקנה יתרון משמעותי</li>
-                    </ul>
-                </div>
+      <style>
+        .quantum-career {
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 80vh;
+        }
+        
+        .quantum-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #00ff88;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: quantumFloat 4s infinite linear;
+        }
+        
+        .particle:nth-child(2n) { background: #0084ff; animation-delay: -1s; }
+        .particle:nth-child(3n) { background: #ff6b6b; animation-delay: -2s; }
+        .particle:nth-child(4n) { background: #feca57; animation-delay: -3s; }
+        
+        @keyframes quantumFloat {
+          0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+          10% { opacity: 0.7; }
+          90% { opacity: 0.7; }
+          100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+        
+        .career-content {
+          position: relative;
+          z-index: 10;
+          padding: 3rem 2rem;
+          backdrop-filter: blur(5px);
+        }
+        
+        .quantum-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .quantum-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: quantumPulse 2s infinite alternate;
+        }
+        
+        @keyframes quantumPulse {
+          0% { transform: scale(1); filter: brightness(1); }
+          100% { transform: scale(1.02); filter: brightness(1.2); }
+        }
+        
+        .quantum-subtitle {
+          font-size: 1.2rem;
+          color: #b0b3b8;
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+        }
+        
+        .opportunities-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+        }
+        
+        .opportunity-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(0, 255, 136, 0.2);
+          border-radius: 15px;
+          padding: 2rem;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .opportunity-card:hover {
+          transform: translateY(-5px);
+          border-color: #00ff88;
+          box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .opportunity-card::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
+          z-index: -1;
+          border-radius: 15px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        
+        .opportunity-card:hover::before {
+          opacity: 1;
+        }
+        
+        .card-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: #00ff88;
+        }
+        
+        .card-title {
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: #ffffff;
+        }
+        
+        .card-description {
+          color: #b0b3b8;
+          line-height: 1.5;
+          font-size: 0.95rem;
+        }
+        
+        .skills-section {
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 20px;
+          padding: 2rem;
+          margin: 3rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skills-title {
+          text-align: center;
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+          color: #ffffff;
+        }
+        
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+        }
+        
+        .skill-tag {
+          background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 132, 255, 0.1));
+          border: 1px solid rgba(0, 255, 136, 0.3);
+          padding: 0.8rem 1rem;
+          border-radius: 25px;
+          text-align: center;
+          color: #ffffff;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .skill-tag:hover {
+          background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 132, 255, 0.2));
+          transform: scale(1.05);
+          box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .cta-section {
+          text-align: center;
+          margin-top: 3rem;
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .quantum-cta {
+          background: linear-gradient(45deg, #00ff88, #0084ff);
+          border: none;
+          padding: 1rem 3rem;
+          border-radius: 30px;
+          color: #000;
+          font-weight: 600;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          margin: 0.5rem;
+        }
+        
+        .quantum-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+        }
+        
+        .quantum-cta::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .quantum-cta:hover::before {
+          left: 100%;
+        }
+        
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+          margin: 2rem 0;
+          text-align: center;
+        }
+        
+        .stat-item {
+          padding: 1rem;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .stat-number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #00ff88;
+          display: block;
+        }
+        
+        .stat-label {
+          color: #b0b3b8;
+          font-size: 0.9rem;
+        }
+      </style>
+      
+      <div class="quantum-career">
+        <!-- Quantum Particle Background -->
+        <div class="quantum-particles">
+          <div class="particle" style="left: 10%; animation-duration: 3s;"></div>
+          <div class="particle" style="left: 20%; animation-duration: 4s;"></div>
+          <div class="particle" style="left: 30%; animation-duration: 5s;"></div>
+          <div class="particle" style="left: 40%; animation-duration: 3.5s;"></div>
+          <div class="particle" style="left: 50%; animation-duration: 4.5s;"></div>
+          <div class="particle" style="left: 60%; animation-duration: 3.8s;"></div>
+          <div class="particle" style="left: 70%; animation-duration: 4.2s;"></div>
+          <div class="particle" style="left: 80%; animation-duration: 5.5s;"></div>
+          <div class="particle" style="left: 90%; animation-duration: 3.2s;"></div>
+        </div>
+        
+        <div class="career-content">
+          <!-- Hero Section -->
+          <div class="quantum-hero">
+            <h1 class="quantum-title">הדור הבא של הנדל"ן</h1>
+            <p class="quantum-subtitle">
+              בואו תהיו חלק מהמהפכה שמעצבת את עתיד הנדל"ן בישראל. 
+              אנחנו מחפשים חזונאים, חדשנים ומובילי שינוי שרוצים לבנות משהו גדול.
+            </p>
+            
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">50M+</span>
+                <span class="stat-label">₪ בעסקאות</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">200+</span>
+                <span class="stat-label">לקוחות מרוצים</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">פרויקטים פעילים</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">שביעות רצון</span>
+              </div>
             </div>
-
-<div style="text-align: center; margin-top: 2rem;"> <button class="cta-button contact" data-modal="contact" type="button" style="background: var(--primary-color); color: var(--text-light); border: 2px solid var(--primary-color); padding: 1rem 2rem; border-radius: 25px; cursor: pointer; margin: 0.5rem;">צור קשר</button> </div>
-        `,
+          </div>
+          
+          <!-- Opportunities -->
+          <div class="opportunities-grid">
+            <div class="opportunity-card">
+              <div class="card-icon">🚀</div>
+              <h3 class="card-title">Real Estate Innovation</h3>
+              <p class="card-description">
+                הובל את המהפכה הטכנולוגית בנדל"ן. פתח פתרונות חדשניים שישנו את הדרך שבה אנשים קונים ומוכרים נכסים.
+              </p>
+            </div>
+            
+            <div class="opportunity-card">
+              <div class="card-icon">💡</div>
+              <h3 class="card-title">Strategic Partnerships</h3>
+              <p class="card-description">
+                בנה קשרים אסטרטגיים עם השחקנים המובילים בשוק. צור שותפויות שיניבו תוצאות מדהימות.
+              </p>
+            </div>
+            
+            <div class="opportunity-card">
+              <div class="card-icon">📊</div>
+              <h3 class="card-title">Data-Driven Growth</h3>
+              <p class="card-description">
+                השתמש בביג דאטה ובינה מלאכותית כדי לזהות הזדמנויות חדשות ולהוביל את השוק קדימה.
+              </p>
+            </div>
+            
+            <div class="opportunity-card">
+              <div class="card-icon">🎯</div>
+              <h3 class="card-title">Market Leadership</h3>
+              <p class="card-description">
+                הובל פרויקטים פורצי דרך שיקבעו את הסטנדרטים החדשים של התעשייה בישראל ובעולם.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Skills Section -->
+          <div class="skills-section">
+            <h2 class="skills-title">What We're Looking For</h2>
+            <div class="skills-grid">
+              <div class="skill-tag">חשיבה אסטרטגית</div>
+              <div class="skill-tag">מנהיגות טבעית</div>
+              <div class="skill-tag">יכולות אנליטיות</div>
+              <div class="skill-tag">חדשנות דיגיטלית</div>
+              <div class="skill-tag">ניהול פרויקטים</div>
+              <div class="skill-tag">תקשורת מצוינת</div>
+              <div class="skill-tag">חזון עסקי</div>
+              <div class="skill-tag">מוטיבציה עצמית</div>
+            </div>
+          </div>
+          
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <h2 style="color: #ffffff; margin-bottom: 1rem;">Ready to Build the Future?</h2>
+            <p style="color: #b0b3b8; margin-bottom: 2rem;">
+              אם אתה מוכן לקחת את הקריירה שלך לשלב הבא ולהיות חלק ממשהו מהפכני, בוא נדבר.
+            </p>
+            <button class="quantum-cta contact" data-modal="contact" type="button">
+              <i class="fas fa-rocket" style="margin-left: 0.5rem;"></i>
+              Apply Now | הגש מועמדות
+            </button>
+            <button class="quantum-cta" onclick="window.open('https://wa.me/972505534488?text=היי, אני מעוניין לשמוע עוד על הזדמנויות קריירה ב-Dor Israel', '_blank')" style="background: linear-gradient(45deg, #25d366, #128c7e);">
+              <i class="fab fa-whatsapp" style="margin-left: 0.5rem;"></i>
+              WhatsApp Chat
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Initialize quantum effects
+        setTimeout(() => {
+          const particles = document.querySelectorAll('.particle');
+          particles.forEach((particle, i) => {
+            particle.style.animationDelay = (i * 0.3) + 's';
+            particle.style.left = Math.random() * 100 + '%';
+          });
+          
+          // Add interactive hover effects
+          const cards = document.querySelectorAll('.opportunity-card');
+          cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+              card.style.transform = 'translateY(-8px) rotateX(5deg)';
+            });
+            card.addEventListener('mouseleave', () => {
+              card.style.transform = 'translateY(0) rotateX(0)';
+            });
+          });
+        }, 100);
+      </script>
+    `,
   },
   knowledge: {
     title: 'רגע של נדל"ן',
