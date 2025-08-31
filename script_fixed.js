@@ -171,128 +171,487 @@ let onboardingSteps = [];
 // Modal Content Database
 const modalContents = {
   about: {
-    title: "מורשת בכתב",
+    title: "Legacy Protocol | פרוטוקול המורשת",
     content: `
-            <section class="about-timeline" dir="rtl" aria-label="קו הזמן של דור נכסים">
-              <header class="about-tl-header">
-                <h2>הסיפור שלנו</h2>
-    <p class="about-tl-sub">
-    בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים. כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
-    </p>
-    <p class="about-tl-sub">
-    עבורנו, נדל"ן מהווה שליחות. המסע שלנו התחיל ברצון לגעת בכל אדם דרך האנרגיה הקיומית המרתקת של הנדל"ן, בתצורה של חיבור למרחב ההגשמה המדויק עבורו.
-    </p>
-    <p class="about-tl-sub">
-    בהמשך, אף להגשים את חזון בניין ארץ ישראל ולבנות בתים חדשים.</p>
-    <p class="about-tl-sub">
-    למעשה, זו זכות להגיד כי אנו כאן. ענפים יותר, חדשניים יותר, חזקים יותר, והזרוע עוד נטויה.</p>
-              </header>
-
-              <div class="about-tl-rail">
-                <button class="about-tl-nav prev" aria-label="אחורה" title="אחורה">‹</button>
-
-                <ol class="about-tl-list" id="aboutTlList">
-                  <!-- 1997 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="תחילת הדרך – בית מסחר נכסים, 1997">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">1997</span>
-                      <h3 class="tl-title">בית מסחר נכסים</h3>
-                      <p class="tl-desc">כניסה לעולם העסקאות, מיקוד בתמחור מדויק ובמצוינות משא ומתן. הונחו היסודות לאמון ארוך טווח.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2006 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="יזמות נדל״ן, 2006">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">2006</span>
-                      <h3 class="tl-title">יזמות</h3>
-                      <p class="tl-desc">הרחבת הפעילות לפיתוח פרויקטים: מימון, תכנון ורישוי, ניהול קצה לקצה.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2008 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="שיווק פרויקטים, 2008">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">2008</span>
-                      <h3 class="tl-title">שיווק פרויקטים</h3>
-                      <p class="tl-desc">בניית מנוע שיווקי עם דאטת שוק, קהלים וחוויית לקוח, על מנת להאיץ קליטה ומכירות.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2011 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="בית השקעות, 2011">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">2011</span>
-                      <h3 class="tl-title">בית השקעות</h3>
-                      <p class="tl-desc">מסגרות השקעה למשקיעים פרטיים ומשפחתיים, בקרת סיכונים ודיווחיות.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2014 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="התרחבות ופריסה, 2014">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">2014</span>
-                      <h3 class="tl-title">התרחבות</h3>
-                      <p class="tl-desc">צמיחה אורגנית, חיזוק שרשרת הערך ומעבר לפעילות רב‑תחומית.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2020 -->
-                  <li class="tl-item" tabindex="0">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="דור הבא, 2020">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year">2020</span>
-                      <h3 class="tl-title">דור הבא</h3>
-                      <p class="tl-desc">מתודות מבוססות דאטה, אוטומציה וניתוח קבלת החלטות, מכפילי ביצוע ותשואה.</p>
-                    </div>
-                  </li>
-
-                  <!-- 2025 -->
-                  <li class="tl-item tl-highlight" tabindex="0" aria-current="step">
-                    <div class="tl-cover">
-                      <img src="gen_pic/bg_blurred.png" alt="REDOR – יוזמת השקעות, 2025">
-                    </div>
-                    <div class="tl-meta">
-                      <span class="tl-year tl-badge">2025</span>
-                      <h3 class="tl-title">REDOR</h3>
-                      <p class="tl-desc">יוזמת השקעות ממוקדת. מסגרות קפיטליות, תהליכי סינון ושותפויות. <span class="tl-note">בשלבי פריסה והרחבה</span>.</p>
-                    </div>
-                  </li>
-                </ol>
-
-                <button class="about-tl-nav next" aria-label="קדימה" title="קדימה">›</button>
+      <style>
+        .quantum-about {
+          background: linear-gradient(135deg, #1a1000 0%, #2e1a00 25%, #3e2500 50%, #2e1a00 75%, #1a1000 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 90vh;
+          direction: rtl;
+        }
+        
+        .about-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        
+        .about-particle {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          background: #ffd700;
+          border-radius: 50%;
+          opacity: 0.8;
+          animation: aboutFloat 8s infinite linear;
+        }
+        
+        .about-particle:nth-child(2n) { 
+          background: #ffb347; 
+          animation-delay: -2s; 
+          animation-duration: 12s;
+        }
+        .about-particle:nth-child(3n) { 
+          background: #daa520; 
+          animation-delay: -4s; 
+          animation-duration: 10s;
+        }
+        .about-particle:nth-child(4n) { 
+          background: #ff8c00; 
+          animation-delay: -6s; 
+          animation-duration: 14s;
+        }
+        .about-particle:nth-child(5n) { 
+          background: #ffd700; 
+          animation-delay: -1s; 
+          animation-duration: 9s;
+        }
+        
+        @keyframes aboutFloat {
+          0% { 
+            transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0); 
+            opacity: 0; 
+          }
+          10% { 
+            opacity: 0.8; 
+            transform: scale(1); 
+          }
+          90% { 
+            opacity: 0.8; 
+          }
+          100% { 
+            transform: translateY(-50px) translateX(20px) rotate(360deg) scale(0); 
+            opacity: 0; 
+          }
+        }
+        
+        .about-content {
+          position: relative;
+          z-index: 10;
+          padding: 3rem 2rem;
+          backdrop-filter: blur(2px);
+        }
+        
+        .about-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .about-title {
+          font-size: 3rem;
+          font-weight: 800;
+          background: linear-gradient(45deg, #ffd700, #ffb347, #daa520, #ff8c00);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 1.5rem;
+          animation: aboutTitleGlow 4s infinite alternate;
+          text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        @keyframes aboutTitleGlow {
+          0% { 
+            transform: scale(1) rotateZ(0deg); 
+            filter: brightness(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); 
+          }
+          100% { 
+            transform: scale(1.05) rotateZ(1deg); 
+            filter: brightness(1.4) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); 
+          }
+        }
+        
+        .about-subtitle {
+          font-size: 1.4rem;
+          color: #e6c68a;
+          max-width: 800px;
+          margin: 0 auto 1rem auto;
+          line-height: 1.6;
+          text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+        
+        .legacy-story {
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 179, 71, 0.1));
+          border: 2px solid rgba(255, 215, 0, 0.3);
+          border-radius: 20px;
+          padding: 2rem;
+          margin: 2rem 0 3rem 0;
+          backdrop-filter: blur(5px);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .legacy-story::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #ffd700, #ffb347, #daa520, #ff8c00, #ffd700);
+          background-size: 400% 400%;
+          z-index: -1;
+          border-radius: 22px;
+          animation: aboutBorderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes aboutBorderGlow {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .story-text {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: #f0e6d2;
+          margin-bottom: 1rem;
+          text-align: justify;
+        }
+        
+        .quantum-timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .timeline-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .timeline-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #ffd700, #ff8c00);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 1rem;
+          animation: timelinePulse 2s infinite alternate;
+        }
+        
+        @keyframes timelinePulse {
+          0% { transform: scale(1); filter: brightness(1); }
+          100% { transform: scale(1.02); filter: brightness(1.2); }
+        }
+        
+        .timeline-container {
+          position: relative;
+        }
+        
+        .timeline-line {
+          position: absolute;
+          right: 50%;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          background: linear-gradient(to bottom, #ffd700, #ffb347, #daa520, #ff8c00);
+          transform: translateX(50%);
+          border-radius: 2px;
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+          animation: timelineGlow 3s infinite alternate;
+        }
+        
+        @keyframes timelineGlow {
+          0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+          100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .timeline-item {
+          display: flex;
+          margin-bottom: 4rem;
+          position: relative;
+          opacity: 0;
+          animation: timelineSlideIn 0.8s forwards;
+        }
+        
+        .timeline-item:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1.0s; }
+        .timeline-item:nth-child(6) { animation-delay: 1.2s; }
+        .timeline-item:nth-child(7) { animation-delay: 1.4s; }
+        
+        @keyframes timelineSlideIn {
+          from {
+            opacity: 0;
+            transform: translateY(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .timeline-content {
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 179, 71, 0.1));
+          border: 2px solid rgba(255, 215, 0, 0.3);
+          border-radius: 20px;
+          padding: 2rem;
+          width: 45%;
+          position: relative;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .timeline-content:hover {
+          transform: scale(1.05) translateY(-10px);
+          border-color: rgba(255, 215, 0, 0.8);
+          box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 179, 71, 0.2));
+        }
+        
+        .timeline-dot {
+          position: absolute;
+          right: 50%;
+          top: 50%;
+          width: 20px;
+          height: 20px;
+          background: linear-gradient(45deg, #ffd700, #ff8c00);
+          border-radius: 50%;
+          transform: translate(50%, -50%);
+          border: 4px solid rgba(255, 215, 0, 0.3);
+          box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+          animation: dotPulse 2s infinite;
+          z-index: 10;
+        }
+        
+        @keyframes dotPulse {
+          0%, 100% {
+            transform: translate(50%, -50%) scale(1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+          }
+          50% {
+            transform: translate(50%, -50%) scale(1.3);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+          }
+        }
+        
+        .timeline-year {
+          font-size: 2rem;
+          font-weight: 800;
+          background: linear-gradient(45deg, #ffd700, #ff8c00);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+          text-align: center;
+        }
+        
+        .timeline-milestone {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #ffd700;
+          margin-bottom: 1rem;
+          text-align: center;
+          text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .timeline-description {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #e6c68a;
+          text-align: center;
+        }
+        
+        .timeline-item.current .timeline-content {
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 179, 71, 0.25));
+          border-color: rgba(255, 215, 0, 0.8);
+          box-shadow: 0 0 50px rgba(255, 215, 0, 0.4);
+        }
+        
+        .timeline-item.current .timeline-dot {
+          background: linear-gradient(45deg, #ffd700, #ffffff, #ff8c00);
+          animation: currentDotPulse 1.5s infinite;
+        }
+        
+        @keyframes currentDotPulse {
+          0%, 100% {
+            transform: translate(50%, -50%) scale(1.2);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 1);
+          }
+          50% {
+            transform: translate(50%, -50%) scale(1.6);
+            box-shadow: 0 0 80px rgba(255, 255, 255, 0.8);
+          }
+        }
+        
+        .legacy-footer {
+          text-align: center;
+          margin-top: 4rem;
+          padding: 2rem;
+        }
+        
+        .legacy-cta {
+          background: linear-gradient(45deg, #ffd700, #ff8c00);
+          color: #1a1000;
+          border: none;
+          padding: 1rem 2.5rem;
+          font-size: 1.2rem;
+          font-weight: 700;
+          border-radius: 50px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-shadow: none;
+          box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .legacy-cta:hover {
+          transform: scale(1.1) translateY(-3px);
+          box-shadow: 0 20px 50px rgba(255, 215, 0, 0.5);
+          background: linear-gradient(45deg, #ffffff, #ffd700);
+        }
+        
+        @media (max-width: 768px) {
+          .about-title { font-size: 2.2rem; }
+          .about-subtitle { font-size: 1.1rem; padding: 0 1rem; }
+          .timeline-line { display: none; }
+          .timeline-item { flex-direction: column !important; margin-bottom: 2rem; }
+          .timeline-content { width: 100%; margin: 0 auto; }
+          .timeline-dot { position: relative; right: auto; top: auto; margin: 1rem auto; transform: none; }
+        }
+      </style>
+      
+      <div class="quantum-about">
+        <div class="about-particles"></div>
+        
+        <div class="about-content">
+          <div class="about-hero">
+            <h1 class="about-title">Legacy Protocol</h1>
+          </div>
+          
+          <div class="legacy-story">
+            <p class="story-text">
+              בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים. כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
+            </p>
+            <p class="story-text">
+              עבורנו, נדל"ן מהווה שליחות. המסע שלנו התחיל ברצון לגעת בכל אדם דרך האנרגיה הקיומית המרתקת של הנדל"ן, בתצורה של חיבור למרחב ההגשמה המדויק עבורו.
+            </p>
+            <p class="story-text">
+              בהמשך, אף להגשים את חזון בניין ארץ ישראל ולבנות בתים חדשים.
+            </p>
+            <p class="story-text">
+              למעשה, זו זכות להגיד כי אנו כאן. ענפים יותר, חדשניים יותר, חזקים יותר, והזרוע עוד נטויה.
+            </p>
+          </div>
+          
+          <div class="quantum-timeline">
+            <div class="timeline-header">
+              <h2 class="timeline-title">מסלול הזמן הקוונטי</h2>
+            </div>
+            
+            <div class="timeline-container">
+              <div class="timeline-line"></div>
+              
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year">1997</div>
+                  <h3 class="timeline-milestone">בית מסחר נכסים</h3>
+                  <p class="timeline-description">כניסה לעולם העסקאות, מיקוד בתמחור מדויק ובמצוינות משא ומתן. הונחו היסודות לאמון ארוך טווח.</p>
+                </div>
+                <div class="timeline-dot"></div>
               </div>
-
-            <footer class="about-tl-foot">
-              <button class="cta-button start-journey">על מה אתם חולמים?</button>
-            </footer>
-
-            </section>
-          `,
+              
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year">2006</div>
+                  <h3 class="timeline-milestone">יזמות</h3>
+                  <p class="timeline-description">הרחבת הפעילות לפיתוח פרויקטים: מימון, תכנון ורישוי, ניהול קצה לקצה.</p>
+                </div>
+                <div class="timeline-dot"></div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year">2008</div>
+                  <h3 class="timeline-milestone">שיווק פרויקטים</h3>
+                  <p class="timeline-description">בניית מנוע שיווקי עם דאטת שוק, קהלים וחוויית לקוח, על מנת להאיץ קליטה ומכירות.</p>
+                </div>
+                <div class="timeline-dot"></div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year">2012</div>
+                  <h3 class="timeline-milestone">חיזוק תשתיות</h3>
+                  <p class="timeline-description">בניית יכולות פנימיות, שיפור תהליכים, והרחבת הידע והמומחיות המקצועית.</p>
+                </div>
+                <div class="timeline-dot"></div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-content">
+                  <div class="timeline-year">2020</div>
+                  <h3 class="timeline-milestone">דיגיטליזציה</h3>
+                  <p class="timeline-description">מתודות מבוססות דאטה, אוטומציה וניתוח קבלת החלטות, מכפילי ביצוע ותשואה.</p>
+                </div>
+                <div class="timeline-dot"></div>
+              </div>
+              
+              <div class="timeline-item current">
+                <div class="timeline-content">
+                  <div class="timeline-year">2025</div>
+                  <h3 class="timeline-milestone">עתיד חכם</h3>
+                  <p class="timeline-description">יוזמת השקעות ממוקדת. מסגרות קפיטליות, תהליכי סינון ושותפויות. בשלבי פריסה והרחבה.</p>
+                </div>
+                <div class="timeline-dot"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="legacy-footer">
+            <button class="legacy-cta">על מה אתם חולמים?</button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Create floating particles
+        (function() {
+          const particlesContainer = document.querySelector('.about-particles');
+          if (!particlesContainer) return;
+          
+          for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'about-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (8 + Math.random() * 6) + 's';
+            particlesContainer.appendChild(particle);
+          }
+        })();
+      </script>
+    `,
   },
   services: {
     title: "Innovation Hub | רכזת החדשנות",
     content: `
       <style>
         .quantum-services {
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a2e1a 50%, #163e21 100%);
+          background: linear-gradient(135deg, #1a0a0a 0%, #2e1a0a 50%, #3e2010 100%);
           color: #ffffff;
           position: relative;
           overflow: hidden;
@@ -314,15 +673,15 @@ const modalContents = {
           position: absolute;
           width: 1px;
           height: 1px;
-          background: #00ff88;
+          background: #ff8c42;
           border-radius: 50%;
-          opacity: 0.8;
+          opacity: 0.6;
           animation: serviceFloat 6s infinite linear;
         }
         
-        .service-particle:nth-child(2n) { background: #88ff00; animation-delay: -1.5s; }
-        .service-particle:nth-child(3n) { background: #00ffaa; animation-delay: -3s; }
-        .service-particle:nth-child(4n) { background: #44ff44; animation-delay: -4.5s; }
+        .service-particle:nth-child(2n) { background: #ff6b35; animation-delay: -1.5s; }
+        .service-particle:nth-child(3n) { background: #ff9a56; animation-delay: -3s; }
+        .service-particle:nth-child(4n) { background: #ffb377; animation-delay: -4.5s; }
         
         @keyframes serviceFloat {
           0% { transform: translateY(100vh) translateX(0px) scale(0); opacity: 0; }
@@ -346,7 +705,7 @@ const modalContents = {
         .services-title {
           font-size: 2.8rem;
           font-weight: 700;
-          background: linear-gradient(45deg, #00ff88, #88ff00, #00ffaa);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           margin-bottom: 1rem;
@@ -360,7 +719,7 @@ const modalContents = {
         
         .services-subtitle {
           font-size: 1.3rem;
-          color: #b8d8b8;
+          color: #d8b8a8;
           max-width: 700px;
           margin: 0 auto 3rem;
           line-height: 1.6;
@@ -376,7 +735,7 @@ const modalContents = {
         .service-hexagon {
           position: relative;
           background: rgba(255, 255, 255, 0.03);
-          border: 2px solid rgba(0, 255, 136, 0.2);
+          border: 2px solid rgba(255, 140, 66, 0.3);
           border-radius: 20px;
           padding: 3rem;
           transition: all 0.4s ease;
@@ -385,10 +744,10 @@ const modalContents = {
         
         .service-hexagon:hover {
           transform: translateY(-10px) scale(1.02);
-          border-color: #00ff88;
+          border-color: #ff8c42;
           box-shadow: 
-            0 20px 40px rgba(0, 255, 136, 0.2),
-            0 0 50px rgba(0, 255, 136, 0.1);
+            0 20px 40px rgba(255, 140, 66, 0.3),
+            0 0 50px rgba(255, 107, 53, 0.2);
         }
         
         .service-hexagon::before {
@@ -398,7 +757,7 @@ const modalContents = {
           left: -3px;
           right: -3px;
           bottom: -3px;
-          background: linear-gradient(45deg, #00ff88, #88ff00, #00ffaa, #44ff44);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff9a56);
           z-index: -1;
           border-radius: 20px;
           opacity: 0;
@@ -418,8 +777,8 @@ const modalContents = {
         .service-icon {
           font-size: 3rem;
           margin-left: 1.5rem;
-          color: #00ff88;
-          text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+          color: #ff8c42;
+          text-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
         }
         
         .service-title {
@@ -431,14 +790,14 @@ const modalContents = {
         
         .service-title-en {
           font-size: 1rem;
-          color: #00ff88;
+          color: #ff8c42;
           font-weight: 400;
           display: block;
           margin-top: 0.2rem;
         }
         
         .service-description {
-          color: #b8d8b8;
+          color: #d8b8a8;
           line-height: 1.7;
           font-size: 1rem;
           margin-bottom: 1.5rem;
@@ -452,8 +811,8 @@ const modalContents = {
         }
         
         .feature-tag {
-          background: rgba(0, 255, 136, 0.1);
-          border: 1px solid rgba(0, 255, 136, 0.3);
+          background: rgba(255, 140, 66, 0.15);
+          border: 1px solid rgba(255, 140, 66, 0.4);
           padding: 0.6rem 1rem;
           border-radius: 20px;
           text-align: center;
@@ -463,9 +822,9 @@ const modalContents = {
         }
         
         .feature-tag:hover {
-          background: rgba(0, 255, 136, 0.2);
+          background: rgba(255, 140, 66, 0.25);
           transform: scale(1.05);
-          box-shadow: 0 3px 10px rgba(0, 255, 136, 0.3);
+          box-shadow: 0 3px 10px rgba(255, 140, 66, 0.4);
         }
         
         .tech-stats {
@@ -480,18 +839,18 @@ const modalContents = {
           background: rgba(255, 255, 255, 0.02);
           padding: 1rem;
           border-radius: 15px;
-          border: 1px solid rgba(0, 255, 136, 0.1);
+          border: 1px solid rgba(255, 140, 66, 0.2);
         }
         
         .tech-number {
           font-size: 1.8rem;
           font-weight: 700;
-          color: #00ff88;
+          color: #ff8c42;
           display: block;
         }
         
         .tech-label {
-          color: #b8d8b8;
+          color: #d8b8a8;
           font-size: 0.8rem;
           margin-top: 0.3rem;
         }
@@ -502,11 +861,11 @@ const modalContents = {
           padding: 2.5rem;
           background: rgba(255, 255, 255, 0.02);
           border-radius: 25px;
-          border: 1px solid rgba(0, 255, 136, 0.1);
+          border: 1px solid rgba(255, 140, 66, 0.2);
         }
         
         .quantum-cta-services {
-          background: linear-gradient(45deg, #00ff88, #88ff00);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           border: none;
           padding: 1rem 2.5rem;
           border-radius: 25px;
@@ -522,7 +881,7 @@ const modalContents = {
         
         .quantum-cta-services:hover {
           transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+          box-shadow: 0 10px 30px rgba(255, 140, 66, 0.5);
         }
         
         .quantum-cta-services::before {
@@ -593,67 +952,67 @@ const modalContents = {
           <div class="services-grid">
             <div class="service-hexagon">
               <div class="service-header">
-                <div class="service-icon">🚀</div>
+                <div class="service-icon">🏗️</div>
                 <div>
                   <h3 class="service-title">
-                    יזמות דיגיטלית
-                    <span class="service-title-en">Digital Entrepreneurship</span>
+                    יזמות נדל"ן
+                    <span class="service-title-en">Real Estate Entrepreneurship</span>
                   </h3>
                 </div>
               </div>
               <p class="service-description">
-                איתור קרקעות חכם באמצעות בינה מלאכותית ולמידת מכונה. אלגוריתמים מתקדמים מנתחים מאות פרמטרים 
-                כדי לזהות הזדמנויות חבויות בשוק. מהרעיון ועד המפתח - עם דיוק של 95%.
+                איתור קרקעות מדויק באמצעות מודלים מבוססי למידת מכונה, פרדיקציות ובינה מלאכותית. 
+                ניתוח תב"ע ותכנון מותאם, לצד ניהול רישוי וביצוע מוקפד. יצירת ערך אמיתי כבר מהרעיון ועד המפתח.
               </p>
               <div class="service-features">
-                <div class="feature-tag">AI Land Detection</div>
-                <div class="feature-tag">Predictive Analytics</div>
-                <div class="feature-tag">Smart Zoning</div>
-                <div class="feature-tag">Risk Assessment</div>
+                <div class="feature-tag">Machine Learning Models</div>
+                <div class="feature-tag">AI Predictions</div>
+                <div class="feature-tag">Zoning Analysis</div>
+                <div class="feature-tag">Licensing Management</div>
               </div>
             </div>
             
             <div class="service-hexagon">
               <div class="service-header">
-                <div class="service-icon">🧠</div>
+                <div class="service-icon">📈</div>
                 <div>
                   <h3 class="service-title">
-                    שיווק קוואנטי
-                    <span class="service-title-en">Quantum Marketing</span>
+                    שיווק מתקדם
+                    <span class="service-title-en">Advanced Marketing</span>
                   </h3>
                 </div>
               </div>
               <p class="service-description">
-                אסטרטגיה מונחית דאטה עם פילוח שוק מבוסס AI. חווית לקוח היפר-מותאמת אישית שמנבאת התנהגות צרכנים 
-                ומייצרת מיתוג עוצמתי בפרויקטים ובשוק היד השנייה.
+                אסטרטגיה מונחית דאטה, בהשראה משיווק קוואנטי. חווית לקוח מותאמת אישית לצורך פילוח שוק מבוסס בינה מלאכותית. 
+                מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה.
               </p>
               <div class="service-features">
-                <div class="feature-tag">Behavioral Prediction</div>
-                <div class="feature-tag">Hyper-Personalization</div>
-                <div class="feature-tag">Dynamic Pricing</div>
-                <div class="feature-tag">Brand Intelligence</div>
+                <div class="feature-tag">Data-Driven Strategy</div>
+                <div class="feature-tag">Quantum Marketing</div>
+                <div class="feature-tag">AI Market Segmentation</div>
+                <div class="feature-tag">Powerful Branding</div>
               </div>
             </div>
             
             <div class="service-hexagon">
               <div class="service-header">
-                <div class="service-icon">📊</div>
+                <div class="service-icon">💰</div>
                 <div>
                   <h3 class="service-title">
-                    פיננסים חכמים
-                    <span class="service-title-en">Smart Finance</span>
+                    המחלקה הפיננסית
+                    <span class="service-title-en">Financial Department</span>
                   </h3>
                 </div>
               </div>
               <p class="service-description">
-                מודלי תשואה אוטונומיים עם ניהול סיכונים בזמן אמת. פתרונות מימון דינמיים המתבססים על ביג דאטה 
-                ועסקאות M&A מנוהלות בדיוק כירורגי עם בקרה רציפה.
+                מודלי תשואה מתקדמים, פתרונות מימון מותאמים ועסקאות מיזוגים ורכישות מנוהלות בקפדנות. 
+                בקרת סיכונים רציפה להבטחת יציבות וצמיחה בכל שלב.
               </p>
               <div class="service-features">
-                <div class="feature-tag">Autonomous ROI Models</div>
-                <div class="feature-tag">Real-time Risk Control</div>
-                <div class="feature-tag">Dynamic Financing</div>
-                <div class="feature-tag">M&A Intelligence</div>
+                <div class="feature-tag">Advanced ROI Models</div>
+                <div class="feature-tag">Custom Financing</div>
+                <div class="feature-tag">M&A Management</div>
+                <div class="feature-tag">Risk Control</div>
               </div>
             </div>
           </div>
@@ -700,45 +1059,730 @@ const modalContents = {
     `,
   },
   contact: {
-    title: "צור קשר",
+    title: "Communication Hub | מרכז תקשורת",
     content: `
-            <h2>מחכים לך בבית..</h2>
-            <div style="margin-top: 1rem;">
-                <div style="margin-bottom: 1rem;">
-                    <h3> </h3>
-                    <p><strong>כתובת:</strong> ויצמן 37, גבעתיים</p>
-                    <p><strong>טלפון:</strong> 050-5534488</p>
-                    <p><strong>אימייל:</strong> inquiries@dorealestate.com</p>
+      <style>
+        .quantum-contact {
+          background: linear-gradient(135deg, #0a0a1a 0%, #001a33 50%, #003d66 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 85vh;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .contact-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        .contact-particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #00bcd4;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: contactFloat 8s infinite linear;
+        }
+        
+        .contact-particle:nth-child(2n) { 
+          background: #4fc3f7; 
+          animation-delay: -1s; 
+          animation-duration: 6s;
+        }
+        .contact-particle:nth-child(3n) { 
+          background: #ff8a65; 
+          animation-delay: -3s; 
+          animation-duration: 7s;
+        }
+        .contact-particle:nth-child(4n) { 
+          background: #ff7043; 
+          animation-delay: -2s; 
+          animation-duration: 9s;
+        }
+        .contact-particle:nth-child(5n) { 
+          background: #ff5722; 
+          animation-delay: -4s; 
+          animation-duration: 5s;
+        }
+        
+        @keyframes contactFloat {
+          0% { 
+            transform: translateY(100vh) translateX(-30px) scale(0) rotate(0deg); 
+            opacity: 0; 
+          }
+          10% { 
+            opacity: 0.7; 
+            transform: scale(1); 
+          }
+          90% { 
+            opacity: 0.7; 
+          }
+          100% { 
+            transform: translateY(-100px) translateX(30px) scale(0) rotate(360deg); 
+            opacity: 0; 
+          }
+        }
+        
+        .contact-content {
+          position: relative;
+          z-index: 10;
+          padding: 2rem;
+          backdrop-filter: blur(3px);
+        }
+        
+        .contact-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .contact-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #00bcd4, #4fc3f7, #ff8a65);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: contactPulse 3s infinite alternate;
+          text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+        }
+        
+        @keyframes contactPulse {
+          0% { 
+            transform: scale(1) rotateY(0deg); 
+            filter: brightness(1); 
+          }
+          100% { 
+            transform: scale(1.03) rotateY(2deg); 
+            filter: brightness(1.2); 
+          }
+        }
+        
+        .contact-subtitle {
+          font-size: 1.2rem;
+          color: #b3e5fc;
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+          opacity: 0.9;
+        }
+        
+        .communication-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .contact-methods {
+          background: rgba(0, 188, 212, 0.03);
+          border: 1px solid rgba(0, 188, 212, 0.2);
+          border-radius: 20px;
+          padding: 2rem;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+        }
+        
+        .contact-methods:hover {
+          border-color: #00bcd4;
+          box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+          transform: translateY(-5px);
+        }
+        
+        .methods-title {
+          font-size: 1.5rem;
+          color: #00bcd4;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-weight: 600;
+        }
+        
+        .method-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 15px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .method-item:hover {
+          background: rgba(0, 188, 212, 0.1);
+          transform: translateX(10px);
+          box-shadow: 0 5px 15px rgba(0, 188, 212, 0.15);
+        }
+        
+        .method-icon {
+          font-size: 1.8rem;
+          color: #ff8a65;
+          min-width: 40px;
+          text-align: center;
+          text-shadow: 0 0 10px rgba(255, 138, 101, 0.5);
+        }
+        
+        .method-details {
+          flex: 1;
+        }
+        
+        .method-label {
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 0.3rem;
+        }
+        
+        .method-value {
+          color: #4fc3f7;
+          font-size: 0.95rem;
+          direction: ltr;
+          text-align: left;
+        }
+        
+        .contact-form-section {
+          background: rgba(255, 138, 101, 0.03);
+          border: 1px solid rgba(255, 138, 101, 0.2);
+          border-radius: 20px;
+          padding: 2rem;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+        }
+        
+        .contact-form-section:hover {
+          border-color: #ff8a65;
+          box-shadow: 0 10px 30px rgba(255, 138, 101, 0.2);
+          transform: translateY(-5px);
+        }
+        
+        .form-title {
+          font-size: 1.5rem;
+          color: #ff8a65;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-weight: 600;
+        }
+        
+        .quantum-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        
+        .input-group {
+          position: relative;
+        }
+        
+        .quantum-input, .quantum-textarea {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(0, 188, 212, 0.3);
+          border-radius: 15px;
+          color: #ffffff;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-sizing: border-box;
+          backdrop-filter: blur(10px);
+        }
+        
+        .quantum-input::placeholder, .quantum-textarea::placeholder {
+          color: #4fc3f7;
+          opacity: 0.7;
+        }
+        
+        .quantum-input:focus, .quantum-textarea:focus {
+          outline: none;
+          border-color: #00bcd4;
+          box-shadow: 
+            0 0 20px rgba(0, 188, 212, 0.3),
+            inset 0 0 20px rgba(0, 188, 212, 0.1);
+          transform: scale(1.02);
+          background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .quantum-input:valid, .quantum-textarea:valid {
+          border-color: #ff8a65;
+          box-shadow: 0 0 15px rgba(255, 138, 101, 0.2);
+        }
+        
+        .quantum-input:invalid:not(:placeholder-shown), 
+        .quantum-textarea:invalid:not(:placeholder-shown) {
+          border-color: #ff5722;
+          box-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
+        }
+        
+        .submit-btn {
+          background: linear-gradient(45deg, #00bcd4, #ff8a65);
+          border: none;
+          padding: 1rem 3rem;
+          border-radius: 25px;
+          color: #ffffff;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          align-self: center;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .submit-btn:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 
+            0 10px 25px rgba(0, 188, 212, 0.3),
+            0 0 30px rgba(255, 138, 101, 0.2);
+          background: linear-gradient(45deg, #4fc3f7, #ff7043);
+        }
+        
+        .submit-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .submit-btn:hover::before {
+          left: 100%;
+        }
+        
+        .contact-methods-quick {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+        
+        .quick-contact-btn {
+          background: rgba(0, 188, 212, 0.1);
+          border: 1px solid rgba(0, 188, 212, 0.3);
+          border-radius: 15px;
+          padding: 1rem;
+          color: #ffffff;
+          text-decoration: none;
+          text-align: center;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .quick-contact-btn:hover {
+          background: rgba(0, 188, 212, 0.2);
+          border-color: #00bcd4;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0, 188, 212, 0.25);
+        }
+        
+        .quick-contact-icon {
+          font-size: 1.5rem;
+          color: #ff8a65;
+        }
+        
+        .quick-contact-text {
+          font-size: 0.9rem;
+          color: #4fc3f7;
+          font-weight: 500;
+        }
+        
+        .success-message {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+          color: #ffffff;
+          padding: 2rem 3rem;
+          border-radius: 20px;
+          box-shadow: 0 20px 40px rgba(0, 188, 212, 0.3);
+          z-index: 1000;
+          font-size: 1.2rem;
+          font-weight: 600;
+          text-align: center;
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+          transition: all 0.4s ease;
+        }
+        
+        .success-message.show {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .quantum-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: quantumGlow 6s infinite ease-in-out;
+          z-index: 2;
+        }
+        
+        @keyframes quantumGlow {
+          0%, 100% { 
+            transform: translate(-50%, -50%) scale(1); 
+            opacity: 0.3; 
+          }
+          50% { 
+            transform: translate(-50%, -50%) scale(1.5); 
+            opacity: 0.1; 
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .contact-title {
+            font-size: 2.2rem;
+          }
+          
+          .communication-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          
+          .contact-content {
+            padding: 1.5rem;
+          }
+          
+          .contact-methods,
+          .contact-form-section {
+            padding: 1.5rem;
+          }
+          
+          .method-item {
+            padding: 0.8rem;
+          }
+          
+          .contact-methods-quick {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .contact-title {
+            font-size: 1.8rem;
+          }
+          
+          .contact-methods-quick {
+            grid-template-columns: 1fr;
+          }
+          
+          .method-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+          }
+        }
+      </style>
+      
+      <div class="quantum-contact">
+        <!-- Background Elements -->
+        <div class="quantum-glow"></div>
+        
+        <!-- Floating Particles -->
+        <div class="contact-particles">
+          <div class="contact-particle" style="left: 10%; animation-duration: 7s;"></div>
+          <div class="contact-particle" style="left: 20%; animation-duration: 8s;"></div>
+          <div class="contact-particle" style="left: 30%; animation-duration: 6s;"></div>
+          <div class="contact-particle" style="left: 40%; animation-duration: 9s;"></div>
+          <div class="contact-particle" style="left: 50%; animation-duration: 5s;"></div>
+          <div class="contact-particle" style="left: 60%; animation-duration: 7.5s;"></div>
+          <div class="contact-particle" style="left: 70%; animation-duration: 6.5s;"></div>
+          <div class="contact-particle" style="left: 80%; animation-duration: 8.5s;"></div>
+          <div class="contact-particle" style="left: 90%; animation-duration: 5.5s;"></div>
+        </div>
+        
+        <div class="contact-content">
+          <!-- Hero Section -->
+          <div class="contact-hero">
+            <h1 class="contact-title">Communication Hub</h1>
+            <p class="contact-subtitle">
+              מרכז תקשורת מתקדם למענה מיידי ויעיל. צרו קשר בדרך הנוחה לכם ביותר
+            </p>
+          </div>
+          
+          <!-- Main Communication Grid -->
+          <div class="communication-grid">
+            <!-- Contact Information -->
+            <div class="contact-methods">
+              <h3 class="methods-title">📡 Contact Information</h3>
+              
+              <div class="method-item" onclick="copyToClipboard('ויצמן 37, גבעתיים')">
+                <div class="method-icon">📍</div>
+                <div class="method-details">
+                  <div class="method-label">כתובת</div>
+                  <div class="method-value">ויצמן 37, גבעתיים</div>
                 </div>
-
-            <form id="contactForm" style="margin-top: 1rem;">
-              <div style="margin-bottom: 1rem;">
-                <input id="contactName" type="text" placeholder="שם מלא"
-                       style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px;" required>
               </div>
-              <div style="margin-bottom: 1rem;">
-                <input id="contactEmail" type="email" placeholder="כתובת אימייל"
-                       style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px;" required>
+              
+              <div class="method-item" onclick="callPhone('050-5534488')">
+                <div class="method-icon">📞</div>
+                <div class="method-details">
+                  <div class="method-label">טלפון</div>
+                  <div class="method-value">050-5534488</div>
+                </div>
               </div>
-              <div style="margin-bottom: 1rem;">
-                <textarea id="contactMsg" placeholder="הודעה" rows="4"
-                          style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; resize: vertical;" required></textarea>
+              
+              <div class="method-item" onclick="sendEmail('inquiries@dorealestate.com')">
+                <div class="method-icon">📧</div>
+                <div class="method-details">
+                  <div class="method-label">אימייל</div>
+                  <div class="method-value">inquiries@dorealestate.com</div>
+                </div>
               </div>
-              <button type="submit" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 2rem; border-radius: 25px; cursor: pointer;">
-                שלח הודעה
-              </button>
-            </form>
-
-
-                <script>
-                document.getElementById("contactForm").addEventListener("submit", function(e) {
-                  e.preventDefault(); // stop normal submit
-                  // here you could send data if you want
-                  window.location.href = "/"; // redirect to homepage
-                });
-                </script>
-
+              
+              <!-- Quick Contact Methods -->
+              <div class="contact-methods-quick">
+                <div class="quick-contact-btn" onclick="callPhone('050-5534488')">
+                  <div class="quick-contact-icon">📱</div>
+                  <div class="quick-contact-text">התקשר עכשיו</div>
+                </div>
+                
+                <div class="quick-contact-btn" onclick="openWhatsApp('972505534488')">
+                  <div class="quick-contact-icon">💬</div>
+                  <div class="quick-contact-text">WhatsApp</div>
+                </div>
+              </div>
             </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+              <h3 class="form-title">🚀 Send Message</h3>
+              
+              <form id="contactForm" class="quantum-form">
+                <div class="input-group">
+                  <input 
+                    id="contactName" 
+                    type="text" 
+                    placeholder="שם מלא *"
+                    class="quantum-input"
+                    required>
+                </div>
+                
+                <div class="input-group">
+                  <input 
+                    id="contactEmail" 
+                    type="email" 
+                    placeholder="כתובת אימייל *"
+                    class="quantum-input"
+                    required>
+                </div>
+                
+                <div class="input-group">
+                  <input 
+                    id="contactPhone" 
+                    type="tel" 
+                    placeholder="מספר טלפון"
+                    class="quantum-input">
+                </div>
+                
+                <div class="input-group">
+                  <textarea 
+                    id="contactMsg" 
+                    placeholder="הודעה *" 
+                    rows="4"
+                    class="quantum-textarea"
+                    required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                  🚀 שלח הודעה
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Success Message Template -->
+        <div id="successMessage" class="success-message">
+          ✅ ההודעה נשלחה בהצלחה!<br>
+          <small style="opacity: 0.8;">נחזור אליך בהקדם</small>
+        </div>
+      </div>
+      
+      <script>
+        // Enhanced form submission with validation and success feedback
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+          e.preventDefault();
+          
+          // Get form values
+          const name = document.getElementById("contactName").value.trim();
+          const email = document.getElementById("contactEmail").value.trim();
+          const phone = document.getElementById("contactPhone").value.trim();
+          const message = document.getElementById("contactMsg").value.trim();
+          
+          // Basic validation
+          if (!name || !email || !message) {
+            showValidationError("אנא מלא את כל השדות הנדרשים");
+            return;
+          }
+          
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showValidationError("כתובת האימייל אינה תקינה");
+            return;
+          }
+          
+          // Show success message
+          showSuccessMessage();
+          
+          // Reset form
+          document.getElementById("contactForm").reset();
+          
+          // Redirect after success message
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2500);
+        });
+        
+        function showSuccessMessage() {
+          const successMsg = document.getElementById("successMessage");
+          successMsg.classList.add("show");
+          
+          setTimeout(() => {
+            successMsg.classList.remove("show");
+          }, 2000);
+        }
+        
+        function showValidationError(message) {
+          // Create temporary error message
+          const errorDiv = document.createElement("div");
+          errorDiv.style.cssText = \`
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+            z-index: 1001;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          \`;
+          errorDiv.textContent = message;
+          document.body.appendChild(errorDiv);
+          
+          // Show error
+          setTimeout(() => errorDiv.style.opacity = "1", 100);
+          
+          // Hide and remove error
+          setTimeout(() => {
+            errorDiv.style.opacity = "0";
+            setTimeout(() => document.body.removeChild(errorDiv), 300);
+          }, 3000);
+        }
+        
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text).then(() => {
+            showCopySuccess("כתובת הועתקה ללוח");
+          }).catch(() => {
+            showCopySuccess("כתובת: " + text);
+          });
+        }
+        
+        function callPhone(phone) {
+          window.open(\`tel:\${phone}\`, '_self');
+        }
+        
+        function sendEmail(email) {
+          window.open(\`mailto:\${email}?subject=פנייה מאתר DorEstate\`, '_blank');
+        }
+        
+        function openWhatsApp(phone) {
+          const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
+          window.open(\`https://wa.me/\${phone}?text=\${message}\`, '_blank');
+        }
+        
+        function showCopySuccess(message) {
+          const copyMsg = document.createElement("div");
+          copyMsg.style.cssText = \`
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+            z-index: 1002;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.3s ease;
+          \`;
+          copyMsg.textContent = message;
+          document.body.appendChild(copyMsg);
+          
+          // Show message
+          setTimeout(() => {
+            copyMsg.style.opacity = "1";
+            copyMsg.style.transform = "translateX(0)";
+          }, 100);
+          
+          // Hide and remove message
+          setTimeout(() => {
+            copyMsg.style.opacity = "0";
+            copyMsg.style.transform = "translateX(100px)";
+            setTimeout(() => document.body.removeChild(copyMsg), 300);
+          }, 2500);
+        }
+        
+        // Add real-time validation styling
+        document.addEventListener('DOMContentLoaded', function() {
+          const inputs = document.querySelectorAll('.quantum-input, .quantum-textarea');
+          
+          inputs.forEach(input => {
+            input.addEventListener('input', function() {
+              if (this.checkValidity() && this.value.trim()) {
+                this.style.borderColor = '#ff8a65';
+                this.style.boxShadow = '0 0 15px rgba(255, 138, 101, 0.2)';
+              } else if (this.value.trim() && !this.checkValidity()) {
+                this.style.borderColor = '#ff5722';
+                this.style.boxShadow = '0 0 15px rgba(255, 87, 34, 0.3)';
+              } else {
+                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+            
+            input.addEventListener('focus', function() {
+              this.style.borderColor = '#00bcd4';
+              this.style.boxShadow = '0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1)';
+            });
+            
+            input.addEventListener('blur', function() {
+              if (!this.value.trim()) {
+                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+          });
+        });
+      </script>
         `,
   },
   team: {
@@ -1181,8 +2225,10 @@ const modalContents = {
           ).join('');
           
           // Update counter and progress
-          document.getElementById('executive-counter').textContent = \`\${currentExecutive + 1}/8\`;
-          document.getElementById('progress-bar').style.width = \`\${((currentExecutive + 1) / 8) * 100}%\`;
+          const counter = document.getElementById('executive-counter');
+          const progressBar = document.getElementById('progress-bar');
+          if (counter) counter.textContent = \`\${currentExecutive + 1}/8\`;
+          if (progressBar) progressBar.style.width = \`\${((currentExecutive + 1) / 8) * 100}%\`;
           
           // Update dots
           document.querySelectorAll('.team-dot').forEach((dot, index) => {
@@ -1710,154 +2756,532 @@ const modalContents = {
         `,
   },
   projects: {
-    title: "פרויקטים",
+    title: "Innovation Labs | מעבדות החדשנות",
     content: `
-        <h2>פרויקטי פיתוח והשקעה</h2>
-        <p style="margin-bottom: 2rem;">הפרויקטים המובילים שלנו בגבעתיים והסביבה</p>
-
         <style>
-          .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
+          @keyframes quantumFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-10px, -10px) rotate(90deg); }
+            50% { transform: translate(10px, -20px) rotate(180deg); }
+            75% { transform: translate(-5px, -15px) rotate(270deg); }
           }
 
-          .project-card {
+          @keyframes quantumPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+          }
+
+          @keyframes energyFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+          }
+
+          .quantum-header {
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
-            cursor: pointer;
-            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, 
+              rgba(255, 107, 107, 0.1) 0%,
+              rgba(255, 71, 87, 0.1) 25%,
+              rgba(255, 56, 56, 0.1) 50%,
+              rgba(255, 87, 34, 0.1) 75%,
+              rgba(233, 30, 99, 0.1) 100%);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
           }
 
-          .project-card img {
+          .quantum-title {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff4757, #ff3838, #e91e63);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: energyFlow 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+          }
+
+          .quantum-subtitle {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+          }
+
+          .quantum-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+          }
+
+          .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: quantumFloat 4s infinite linear;
+          }
+
+          .particle:nth-child(2) { background: #ff4757; animation-delay: 0.5s; top: 20%; left: 20%; }
+          .particle:nth-child(3) { background: #ff3838; animation-delay: 1s; top: 60%; left: 80%; }
+          .particle:nth-child(4) { background: #ff5722; animation-delay: 1.5s; top: 80%; left: 10%; }
+          .particle:nth-child(5) { background: #e91e63; animation-delay: 2s; top: 40%; left: 60%; }
+
+          .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+          }
+
+          .stat-card {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.2), transparent);
+            transition: left 0.6s ease;
+          }
+
+          .stat-card:hover::before {
+            left: 100%;
+          }
+
+          .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.3);
+            border-color: rgba(255, 107, 107, 0.6);
+          }
+
+          .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+          }
+
+          .stat-label {
+            color: #ffffff;
+            font-size: 1.1rem;
+            opacity: 0.9;
+          }
+
+          .quantum-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+          }
+
+          .quantum-project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+          }
+
+          .quantum-project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ff4757, #ff3838, #e91e63);
+            background-size: 300% 100%;
+            animation: energyFlow 2s ease-in-out infinite;
+          }
+
+          .quantum-project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+              0 20px 60px rgba(255, 107, 107, 0.3),
+              0 0 30px rgba(255, 107, 107, 0.2);
+            border-color: rgba(255, 107, 107, 0.5);
+          }
+
+          .project-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+          }
+
+          .project-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
-            display: block;
-            z-index: 0;
           }
 
-          .project-card:hover img {
-            transform: scale(1.05);
+          .quantum-project-card:hover .project-image {
+            transform: scale(1.1);
           }
 
-          .project-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2;
-            padding: 1rem;
-            text-align: center;
-          }
-
-        /* שכבת כהות בפרויקטים רגילים – רק בהובר */
-        .project-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 1;
-          transition: background 0.3s ease;
-        }
-
-        /* רק כשמזיזים עכבר, השכבה תופיע */
-        .project-card:hover::before {
-          background: rgba(0, 0, 0, 0.25);
-        }
-
-
-          .project-card:hover .project-overlay {
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.25);
-          }
-
-          .project-overlay.show-always {
-              opacity: 1;
-              background: rgba(0, 0, 0, 0.5);
-        }
-
-          .project-sold::after {
-            content: "נמכר";
+          .project-status {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: white;
-            color: black;
-            padding: 0.3rem 0.8rem;
-            font-weight: bold;
-            border-radius: 30px;
-            z-index: 3;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
           }
 
-          .project-sold::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-              background: rgba(0, 0, 0, 0.25);
-              z-index: 1;
+          .status-sold {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+          }
+
+          .status-active {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            color: white;
+            animation: quantumPulse 2s infinite;
+          }
+
+          .project-info {
+            padding: 2rem;
+          }
+
+          .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+          }
+
+          .project-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+          }
+
+          .project-location {
+            color: #ff6b6b;
+            font-weight: 600;
+            font-size: 0.95rem;
+          }
+
+          .project-type {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+          }
+
+          .cta-section {
+            background: rgba(255, 107, 107, 0.05);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .cta-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 700;
+          }
+
+          .cta-description {
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+          }
+
+          .quantum-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+
+          .quantum-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff4757);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+          }
+
+          .quantum-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+          }
+
+          .quantum-btn:hover::before {
+            left: 100%;
+          }
+
+          .quantum-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+          }
+
+          .quantum-btn.secondary {
+            background: transparent;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+          }
+
+          .quantum-btn.secondary:hover {
+            background: #ff6b6b;
+            color: white;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .quantum-projects-grid {
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
             }
 
+            .quantum-title {
+              font-size: 2.2rem;
+            }
 
-          @media (max-width: 900px) {
-            .projects-grid {
+            .stats-container {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
+            }
+
+            .stat-card {
+              padding: 1.5rem;
+            }
+
+            .quantum-buttons {
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .quantum-btn {
+              width: 100%;
+              max-width: 300px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .stats-container {
               grid-template-columns: 1fr;
+            }
+
+            .quantum-header {
+              padding: 2rem 1rem;
+            }
+
+            .project-info {
+              padding: 1.5rem;
             }
           }
         </style>
 
-        <div class="projects-grid">
-          <!-- Sold Projects -->
-          <a class="project-card project-sold">
-            <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
-            <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
-          </a>
+        <div class="quantum-header">
+          <div class="quantum-particles">
+            <div class="particle" style="top: 10%; left: 15%;"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          
+          <h1 class="quantum-title">Innovation Labs</h1>
+          <h2 class="quantum-title" style="font-size: 2rem; margin-top: -0.5rem;">מעבדות החדשנות</h2>
+          <p class="quantum-subtitle">חדשנות בפיתוח נדל"ן | פרויקטים חכמים לעתיד</p>
+        </div>
 
-          <a class="project-card project-sold">
-            <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
-            <div class="project-overlay show-always">יצחק שדה 3, גבעתיים</div>
-          </a>
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">פרויקטים מושלמים</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1,200+</div>
+            <div class="stat-label">יחידות דיור</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15</div>
+            <div class="stat-label">שנות ניסיון</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">שביעות רצון</div>
+          </div>
+        </div>
 
-  <!-- Active Projects -->
-            <a class="project-card">
-              <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
-              <div class="project-overlay">גולומב 54, גבעתיים</div>
-            </a>
+        <div class="quantum-projects-grid">
+          <!-- Completed Projects -->
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" class="project-image" />
+              <div class="project-status status-sold">נמכר</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">המעיין 7, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">פרויקט יוקרה</span>
+              </div>
+            </div>
+          </div>
 
-          <a class="project-card">
-            <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
-            <div class="project-overlay">יצחק שדה 5, גבעתיים</div>
-          </a>
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" class="project-image" />
+              <div class="project-status status-sold">נמכר</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">יצחק שדה 3, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">פרויקט יוקרה</span>
+              </div>
+            </div>
+          </div>
 
-          <a class="project-card">
-            <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
-            <div class="project-overlay">ז'בוטינסקי 37, גבעתיים</div>
-          </a>
+          <!-- Active Projects -->
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">גולומב 54, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
 
-          <a class="project-card">
-            <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
-            <div class="project-overlay">ריינס 23, גבעתיים</div>
-          </a>
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">יצחק שדה 5, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
 
-            <a class="project-card">
-              <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
-              <div class="project-overlay">יצחק שדה 7, גבעתיים</div>
-            </a>
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">ז'בוטינסקי 37, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
 
-              <a class="project-card">
-                <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
-                <div class="project-overlay">ברדיצ'בסקי 37, גבעתיים</div>
-              </a>
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">ריינס 23, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
 
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">יצחק שדה 7, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quantum-project-card">
+            <div class="project-image-container">
+              <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" class="project-image" />
+              <div class="project-status status-active">פעיל</div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">ברדיצ'בסקי 37, גבעתיים</h3>
+              <div class="project-details">
+                <span class="project-location">גבעתיים</span>
+                <span class="project-type">בפיתוח</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3 class="cta-title">מעוניינים בפרויקט חדשני?</h3>
+          <p class="cta-description">
+            הצטרפו אלינו למסע החדשנות בפיתוח נדל"ן. פרויקטים חכמים, טכנולוגיה מתקדמת, וחוויית מגורים עתידנית.
+          </p>
+          <div class="quantum-buttons">
+            <a href="#contact" class="quantum-btn" onclick="showModal('contact')">צור קשר לפרטים</a>
+            <a href="#" class="quantum-btn secondary">הורד קטלוג פרויקטים</a>
+          </div>
         </div>
       `,
   },
