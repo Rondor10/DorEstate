@@ -2044,105 +2044,93 @@ function startPropertySwiping() {
   if (likeBtn) likeBtn.onclick = () => swipeProperty("like");
   if (dislikeBtn) dislikeBtn.onclick = () => swipeProperty("dislike");
 }
-// --- Helpers: load images for a property ---
-/**
- * Attempts to discover images for a property.
- * Priority:
- * 1) p.images if provided (absolute or relative paths)
- * 2) Fallback probe: prop_pics/<id>/pic_1..12.(jpg|jpeg|png|webp)
- */
-const IMAGE_EXTS = ['webp','jpg','jpeg','png'];
-const IMAGE_TIMEOUT_MS = 1200;
-const GAP_STOP_AFTER = 3;
 
-async function headExists(url, timeoutMs = IMAGE_TIMEOUT_MS) {
-  const ctl = new AbortController();
-  const t = setTimeout(() => ctl.abort(), timeoutMs);
+// --- Helpers: load images for a property (manifest-based, zero probing) ---
+
+// Path to your generated manifest (you said you added it at project root)
+const MANIFEST_URL = '/manifest.json';
+
+// Use the imageCache you already declared above
+// const imageCache = new Map();
+
+let IMG_MANIFEST = null;
+
+async function loadManifest() {
+  if (IMG_MANIFEST) return IMG_MANIFEST;
   try {
-    const res = await fetch(url, { method: 'HEAD', cache: 'no-store', signal: ctl.signal });
-    clearTimeout(t);
-    if (res.ok) return true;
-    if (res.status === 405) return await imgExists(url, timeoutMs); // fallback
-    return false;
-  } catch {
-    clearTimeout(t);
-    return await imgExists(url, timeoutMs); // fallback
+    const res = await fetch(MANIFEST_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Manifest fetch failed: ${res.status}`);
+    IMG_MANIFEST = await res.json();
+  } catch (e) {
+    console.error('[manifest] failed to load:', e);
+    IMG_MANIFEST = {};
   }
+  return IMG_MANIFEST;
 }
 
-function imgExists(src, timeoutMs = IMAGE_TIMEOUT_MS) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    let done = false;
-    const timer = setTimeout(() => { if (!done) { done = true; resolve(false); } }, timeoutMs);
-    img.onload  = () => { if (!done) { done = true; clearTimeout(timer); resolve(true); } };
-    img.onerror = () => { if (!done) { done = true; clearTimeout(timer); resolve(false); } };
-    img.src = src + (src.includes('?') ? '&' : '?') + 'v=' + (window.APP_BUILD_VERSION || '1');
-  });
+function urlsFromManifestEntry(propId, entry) {
+  const base = `/prop_pics/${propId}`;
+  const ext  = entry.ext;
+  return [
+    `${base}/${entry.hero}.${ext}`,
+    ...entry.thumbs.map(name => `${base}/${name}.${ext}`)
+  ];
 }
 
-const nameVariants = (i) => [`pic_${i}`, `pic_${String(i).padStart(2,'0')}`];
-
-async function learnExt(base) {
-  for (const n of nameVariants(1)) for (const ext of IMAGE_EXTS) {
-    if (await headExists(`${base}/${n}.${ext}`)) return ext;
-  }
-  return null;
-}
-
-async function getPropertyImages(p, maxPics = 12) {
+/**
+ * Return ordered image URLs for a property.
+ * Priority:
+ * 1) p.images if provided
+ * 2) manifest.json entry
+ * 3) placeholder
+ *
+ * Signature kept as (p, maxPics) for compatibility; maxPics is ignored.
+ */
+async function getPropertyImages(p, _maxPics = 12) {
   if (imageCache.has(p.id)) return imageCache.get(p.id);
-  let urls = Array.isArray(p.images) && p.images.length ? p.images : [];
-  if (!urls.length) {
-    const base = `/prop_pics/${p.id}`;
-    const ext = await learnExt(base);
-    if (ext) {
-      let misses = 0;
-      for (let i = 1; i <= maxPics; i++) {
-        let found = false;
-        for (const n of nameVariants(i)) {
-          const u = `${base}/${n}.${ext}`;
-          if (await headExists(u)) { urls.push(u); found = true; misses = 0; break; }
-        }
-        if (!found && ++misses >= GAP_STOP_AFTER) break;
-      }
+
+  let urls = [];
+  if (Array.isArray(p.images) && p.images.length) {
+    urls = p.images;
+  } else {
+    const manifest = await loadManifest();
+    const entry = manifest[p.id];
+    if (entry && entry.ext && entry.hero) {
+      urls = urlsFromManifestEntry(p.id, entry);
     }
   }
+
   if (!urls.length) urls = ['/gen_pic/placeholder.jpg'];
+
   imageCache.set(p.id, urls);
   return urls;
 }
 
-// Clear cache function for debugging
-window.clearImageCache = function() {
-  imageCache.clear();
-  console.log('🗑️ Image cache cleared - properties will be re-scanned');
-}
-
-// Fast image existence check without loading full image
-function checkImageExists(src) {
-  return new Promise((resolve) => {
+// Optional: warm a few images (for the NEXT card) without stealing bandwidth
+function warmImages(urls, limit = 4) {
+  const take = urls.slice(0, limit);
+  for (const u of take) {
     const img = new Image();
-    const timer = setTimeout(() => resolve(false), 100); // Quick 100ms timeout
-    img.onload = () => {
-      clearTimeout(timer);
-      resolve(true);
-    };
-    img.onerror = () => {
-      clearTimeout(timer);
-      resolve(false);
-    };
-    img.src = src;
-  });
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    if ('fetchPriority' in img) img.fetchPriority = 'low';
+    img.src = u;
+  }
 }
 
-// Smart image resizing based on aspect ratio
+// Clear cache (kept for your debugging)
+window.clearImageCache = function () {
+  imageCache.clear();
+  console.log('🗑️ Image cache cleared - next calls will re-read manifest/arrays');
+};
+
+// Smart image resizing based on aspect ratio (your original, kept)
 function smartImageResize(img) {
   if (!img || !img.naturalWidth || !img.naturalHeight) return;
-  
+
   const aspectRatio = img.naturalWidth / img.naturalHeight;
   const isVertical = aspectRatio < 0.75; // Portrait orientation
-  
+
   if (isVertical) {
     img.classList.add('vertical-image');
     console.log(`📱 Detected vertical image: ${img.src} (${img.naturalWidth}x${img.naturalHeight})`);
