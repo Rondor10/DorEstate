@@ -288,60 +288,416 @@ const modalContents = {
           `,
   },
   services: {
-    title: "שירותי הפירמה",
+    title: "Innovation Hub | רכזת החדשנות",
     content: `
-      <section class="services-timeline" dir="rtl" aria-label="שירותי דור נכסים">
-        <header class="services-tl-header">
-          <h2>התחומים שלנו</h2>
-        </header>
-
-        <div class="services-tl-rail">
-          <button class="services-tl-nav prev" aria-label="אחורה" title="אחורה">‹</button>
-
-          <ol class="services-tl-list" id="servicesTlList">
-
-            <li class="svc-item" tabindex="0">
-              <div class="svc-cover">
-                <img src="gen_pic/bg_blurred.png" alt="יזמות">
-              </div>
-              <div class="svc-meta">
-                <h3 class="svc-title">יזמות</h3>
-                <p class="svc-desc">איתור קרקעות מדויק, באמצעות מודלים מבוססי למידת מכונה, פרדיקציות ובינה מלאכותית. ניתוח תב"ע ותכנון מותאם, לצד ניהול רישוי וביצוע מוקפד. יצירת ערך אמיתי כבר מהרעיון ועד המפתח.</p>
-              </div>
-            </li>
-
-            <li class="svc-item" tabindex="0">
-              <div class="svc-cover">
-                <img src="gen_pic/bg_blurred.png" alt="שיווק">
-              </div>
-              <div class="svc-meta">
-                <h3 class="svc-title">שיווק</h3>
-                <p class="svc-desc">אסטרטגיה מונחית דאטה, בהשראה משיווק קוואנטי. חווית לקוח מותאמת אישית לצורך פילוח שוק מבוסס בינה מלאכותית. מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה.</p>
-              </div>
-            </li>
-
-            <li class="svc-item" tabindex="0">
-              <div class="svc-cover">
-                <img src="gen_pic/bg_blurred.png" alt="המחלקה הפיננסית">
-              </div>
-              <div class="svc-meta">
-                <h3 class="svc-title">המחלקה הפיננסית</h3>
-                <p class="svc-desc">מודלי תשואה מתקדמים, פתרונות מימון מותאמים ועסקאות מיזוגים ורכישות מנוהלות בקפדנות. בקרת סיכונים רציפה להבטחת יציבות וצמיחה בכל שלב.</p>
-              </div>
-            </li>
-
-          </ol>
-
-          <button class="services-tl-nav next" aria-label="קדימה" title="קדימה">›</button>
+      <style>
+        .quantum-services {
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a2e1a 50%, #163e21 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 85vh;
+        }
+        
+        .services-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        
+        .service-particle {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          background: #00ff88;
+          border-radius: 50%;
+          opacity: 0.8;
+          animation: serviceFloat 6s infinite linear;
+        }
+        
+        .service-particle:nth-child(2n) { background: #88ff00; animation-delay: -1.5s; }
+        .service-particle:nth-child(3n) { background: #00ffaa; animation-delay: -3s; }
+        .service-particle:nth-child(4n) { background: #44ff44; animation-delay: -4.5s; }
+        
+        @keyframes serviceFloat {
+          0% { transform: translateY(100vh) translateX(0px) scale(0); opacity: 0; }
+          15% { opacity: 0.8; transform: scale(1); }
+          85% { opacity: 0.8; }
+          100% { transform: translateY(-100px) translateX(30px) scale(0); opacity: 0; }
+        }
+        
+        .services-content {
+          position: relative;
+          z-index: 10;
+          padding: 3rem 2rem;
+          backdrop-filter: blur(3px);
+        }
+        
+        .services-hero {
+          text-align: center;
+          margin-bottom: 4rem;
+        }
+        
+        .services-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #00ff88, #88ff00, #00ffaa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: servicesPulse 3s infinite alternate;
+        }
+        
+        @keyframes servicesPulse {
+          0% { transform: scale(1) rotateZ(0deg); filter: brightness(1); }
+          100% { transform: scale(1.03) rotateZ(1deg); filter: brightness(1.3); }
+        }
+        
+        .services-subtitle {
+          font-size: 1.3rem;
+          color: #b8d8b8;
+          max-width: 700px;
+          margin: 0 auto 3rem;
+          line-height: 1.6;
+        }
+        
+        .services-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          margin: 3rem 0;
+        }
+        
+        .service-hexagon {
+          position: relative;
+          background: rgba(255, 255, 255, 0.03);
+          border: 2px solid rgba(0, 255, 136, 0.2);
+          border-radius: 20px;
+          padding: 3rem;
+          transition: all 0.4s ease;
+          overflow: hidden;
+        }
+        
+        .service-hexagon:hover {
+          transform: translateY(-10px) scale(1.02);
+          border-color: #00ff88;
+          box-shadow: 
+            0 20px 40px rgba(0, 255, 136, 0.2),
+            0 0 50px rgba(0, 255, 136, 0.1);
+        }
+        
+        .service-hexagon::before {
+          content: '';
+          position: absolute;
+          top: -3px;
+          left: -3px;
+          right: -3px;
+          bottom: -3px;
+          background: linear-gradient(45deg, #00ff88, #88ff00, #00ffaa, #44ff44);
+          z-index: -1;
+          border-radius: 20px;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+        
+        .service-hexagon:hover::before {
+          opacity: 1;
+        }
+        
+        .service-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2rem;
+        }
+        
+        .service-icon {
+          font-size: 3rem;
+          margin-left: 1.5rem;
+          color: #00ff88;
+          text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .service-title {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #ffffff;
+          margin: 0;
+        }
+        
+        .service-title-en {
+          font-size: 1rem;
+          color: #00ff88;
+          font-weight: 400;
+          display: block;
+          margin-top: 0.2rem;
+        }
+        
+        .service-description {
+          color: #b8d8b8;
+          line-height: 1.7;
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          margin-top: 1.5rem;
+        }
+        
+        .feature-tag {
+          background: rgba(0, 255, 136, 0.1);
+          border: 1px solid rgba(0, 255, 136, 0.3);
+          padding: 0.6rem 1rem;
+          border-radius: 20px;
+          text-align: center;
+          color: #ffffff;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        }
+        
+        .feature-tag:hover {
+          background: rgba(0, 255, 136, 0.2);
+          transform: scale(1.05);
+          box-shadow: 0 3px 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        .tech-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 1rem;
+          margin: 2rem 0;
+          text-align: center;
+        }
+        
+        .tech-stat {
+          background: rgba(255, 255, 255, 0.02);
+          padding: 1rem;
+          border-radius: 15px;
+          border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        
+        .tech-number {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: #00ff88;
+          display: block;
+        }
+        
+        .tech-label {
+          color: #b8d8b8;
+          font-size: 0.8rem;
+          margin-top: 0.3rem;
+        }
+        
+        .cta-section {
+          text-align: center;
+          margin-top: 4rem;
+          padding: 2.5rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 25px;
+          border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+        
+        .quantum-cta-services {
+          background: linear-gradient(45deg, #00ff88, #88ff00);
+          border: none;
+          padding: 1rem 2.5rem;
+          border-radius: 25px;
+          color: #000;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin: 0.5rem;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .quantum-cta-services:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+        
+        .quantum-cta-services::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .quantum-cta-services:hover::before {
+          left: 100%;
+        }
+        
+        @media (min-width: 768px) {
+          .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+          }
+        }
+      </style>
+      
+      <div class="quantum-services">
+        <!-- Service Particles Background -->
+        <div class="services-particles">
+          <div class="service-particle" style="left: 15%; animation-duration: 5s;"></div>
+          <div class="service-particle" style="left: 25%; animation-duration: 6s;"></div>
+          <div class="service-particle" style="left: 35%; animation-duration: 4.5s;"></div>
+          <div class="service-particle" style="left: 45%; animation-duration: 5.5s;"></div>
+          <div class="service-particle" style="left: 55%; animation-duration: 4s;"></div>
+          <div class="service-particle" style="left: 65%; animation-duration: 6.5s;"></div>
+          <div class="service-particle" style="left: 75%; animation-duration: 5.2s;"></div>
+          <div class="service-particle" style="left: 85%; animation-duration: 4.8s;"></div>
         </div>
-
-        <footer class="services-tl-foot">
-              <button class="cta-button" data-modal="team" type="button">
-                חבר הבכירים
-              </button>
-            </footer>
-      </section>
-      `,
+        
+        <div class="services-content">
+          <!-- Hero Section -->
+          <div class="services-hero">
+            <h1 class="services-title">פתרונות מתקדמים</h1>
+            <p class="services-subtitle">
+              אנחנו משלבים טכנולוגיות עתידניות עם מומחיות נדל"נית עמוקה כדי ליצור פתרונות שמעצבים את השוק המחר.
+              כל שירות שלנו בנוי על בסיס של חדשנות, דאטה ותוצאות מוכחות.
+            </p>
+            
+            <div class="tech-stats">
+              <div class="tech-stat">
+                <span class="tech-number">AI</span>
+                <span class="tech-label">Powered Analytics</span>
+              </div>
+              <div class="tech-stat">
+                <span class="tech-number">24/7</span>
+                <span class="tech-label">Real-time Data</span>
+              </div>
+              <div class="tech-stat">
+                <span class="tech-number">95%</span>
+                <span class="tech-label">Accuracy Rate</span>
+              </div>
+              <div class="tech-stat">
+                <span class="tech-number">∞</span>
+                <span class="tech-label">Possibilities</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Services Grid -->
+          <div class="services-grid">
+            <div class="service-hexagon">
+              <div class="service-header">
+                <div class="service-icon">🚀</div>
+                <div>
+                  <h3 class="service-title">
+                    יזמות דיגיטלית
+                    <span class="service-title-en">Digital Entrepreneurship</span>
+                  </h3>
+                </div>
+              </div>
+              <p class="service-description">
+                איתור קרקעות חכם באמצעות בינה מלאכותית ולמידת מכונה. אלגוריתמים מתקדמים מנתחים מאות פרמטרים 
+                כדי לזהות הזדמנויות חבויות בשוק. מהרעיון ועד המפתח - עם דיוק של 95%.
+              </p>
+              <div class="service-features">
+                <div class="feature-tag">AI Land Detection</div>
+                <div class="feature-tag">Predictive Analytics</div>
+                <div class="feature-tag">Smart Zoning</div>
+                <div class="feature-tag">Risk Assessment</div>
+              </div>
+            </div>
+            
+            <div class="service-hexagon">
+              <div class="service-header">
+                <div class="service-icon">🧠</div>
+                <div>
+                  <h3 class="service-title">
+                    שיווק קוואנטי
+                    <span class="service-title-en">Quantum Marketing</span>
+                  </h3>
+                </div>
+              </div>
+              <p class="service-description">
+                אסטרטגיה מונחית דאטה עם פילוח שוק מבוסס AI. חווית לקוח היפר-מותאמת אישית שמנבאת התנהגות צרכנים 
+                ומייצרת מיתוג עוצמתי בפרויקטים ובשוק היד השנייה.
+              </p>
+              <div class="service-features">
+                <div class="feature-tag">Behavioral Prediction</div>
+                <div class="feature-tag">Hyper-Personalization</div>
+                <div class="feature-tag">Dynamic Pricing</div>
+                <div class="feature-tag">Brand Intelligence</div>
+              </div>
+            </div>
+            
+            <div class="service-hexagon">
+              <div class="service-header">
+                <div class="service-icon">📊</div>
+                <div>
+                  <h3 class="service-title">
+                    פיננסים חכמים
+                    <span class="service-title-en">Smart Finance</span>
+                  </h3>
+                </div>
+              </div>
+              <p class="service-description">
+                מודלי תשואה אוטונומיים עם ניהול סיכונים בזמן אמת. פתרונות מימון דינמיים המתבססים על ביג דאטה 
+                ועסקאות M&A מנוהלות בדיוק כירורגי עם בקרה רציפה.
+              </p>
+              <div class="service-features">
+                <div class="feature-tag">Autonomous ROI Models</div>
+                <div class="feature-tag">Real-time Risk Control</div>
+                <div class="feature-tag">Dynamic Financing</div>
+                <div class="feature-tag">M&A Intelligence</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">Experience The Future</h2>
+            <p style="color: #b8d8b8; margin-bottom: 2rem;">
+              מוכנים לחוות את הדור הבא של שירותי הנדל"ן? בואו נראה איך הטכנולוגיה שלנו יכולה לשנות את הכללים עבורכם.
+            </p>
+            <button class="quantum-cta-services" data-modal="team" type="button">
+              <i class="fas fa-users" style="margin-left: 0.5rem;"></i>
+              Meet The Team | פגשו את הצוות
+            </button>
+            <button class="quantum-cta-services" data-modal="contact" type="button">
+              <i class="fas fa-rocket" style="margin-left: 0.5rem;"></i>
+              Start Your Journey | התחילו את המסע
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Initialize service effects
+        setTimeout(() => {
+          const particles = document.querySelectorAll('.service-particle');
+          particles.forEach((particle, i) => {
+            particle.style.animationDelay = (i * 0.4) + 's';
+            particle.style.left = (10 + Math.random() * 80) + '%';
+          });
+          
+          // Add enhanced hover effects
+          const hexagons = document.querySelectorAll('.service-hexagon');
+          hexagons.forEach(hex => {
+            hex.addEventListener('mouseenter', () => {
+              hex.style.transform = 'translateY(-12px) scale(1.03) rotateX(2deg)';
+            });
+            hex.addEventListener('mouseleave', () => {
+              hex.style.transform = 'translateY(0) scale(1) rotateX(0)';
+            });
+          });
+        }, 100);
+      </script>
+    `,
   },
   contact: {
     title: "צור קשר",
@@ -386,78 +742,478 @@ const modalContents = {
         `,
   },
   team: {
-    title: "הצוות שלנו",
+    title: "Neural Network | הרשת הנוירונית",
     content: `
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <div id="executive-counter" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 2rem;">1/8</div>
-                <div style="width: 60%; height: 8px; background: #e0e0e0; margin: 0 auto; border-radius: 5px; overflow: hidden; margin-bottom: 3rem;">
-                    <div id="progress-bar" style="width: 14.2%; height: 100%; background: var(--primary-color); transition: width 0.3s;"></div>
-                </div>
+      <style>
+        .quantum-team {
+          background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2e1a3e 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 90vh;
+        }
+        
+        .team-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        
+        .team-particle {
+          position: absolute;
+          width: 1.5px;
+          height: 1.5px;
+          background: #8a2be2;
+          border-radius: 50%;
+          opacity: 0.6;
+          animation: teamFloat 7s infinite linear;
+        }
+        
+        .team-particle:nth-child(2n) { background: #da70d6; animation-delay: -2s; }
+        .team-particle:nth-child(3n) { background: #9370db; animation-delay: -4s; }
+        .team-particle:nth-child(4n) { background: #6a5acd; animation-delay: -6s; }
+        
+        @keyframes teamFloat {
+          0% { transform: translateY(100vh) translateX(-20px) scale(0); opacity: 0; }
+          20% { opacity: 0.6; transform: scale(1); }
+          80% { opacity: 0.6; }
+          100% { transform: translateY(-100px) translateX(20px) scale(0); opacity: 0; }
+        }
+        
+        .team-content {
+          position: relative;
+          z-index: 10;
+          padding: 2rem;
+          backdrop-filter: blur(2px);
+        }
+        
+        .team-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .team-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #8a2be2, #da70d6, #9370db);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: teamPulse 4s infinite alternate;
+        }
+        
+        @keyframes teamPulse {
+          0% { transform: scale(1); filter: brightness(1); }
+          100% { transform: scale(1.02); filter: brightness(1.4); }
+        }
+        
+        .team-subtitle {
+          font-size: 1.1rem;
+          color: #d8b8d8;
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+        }
+        
+        .executive-progress {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 2rem 0;
+          gap: 1rem;
+        }
+        
+        .exec-counter {
+          background: rgba(138, 43, 226, 0.1);
+          border: 1px solid rgba(138, 43, 226, 0.3);
+          padding: 0.5rem 1rem;
+          border-radius: 25px;
+          color: #da70d6;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        
+        .progress-track {
+          width: 200px;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 3px;
+          overflow: hidden;
+        }
+        
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #8a2be2, #da70d6);
+          border-radius: 3px;
+          transition: width 0.5s ease;
+          box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        .executive-showcase {
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(138, 43, 226, 0.2);
+          border-radius: 25px;
+          padding: 3rem;
+          margin: 2rem 0;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+        }
+        
+        .executive-showcase:hover {
+          border-color: #8a2be2;
+          box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+        }
+        
+        .exec-profile {
+          display: flex;
+          align-items: flex-start;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+        
+        .exec-photo-container {
+          position: relative;
+          flex-shrink: 0;
+        }
+        
+        .exec-photo {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #8a2be2;
+          box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+          transition: all 0.3s ease;
+        }
+        
+        .exec-photo:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+        }
+        
+        .exec-info {
+          flex: 1;
+        }
+        
+        .exec-name {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 0.5rem;
+        }
+        
+        .exec-title {
+          font-size: 1rem;
+          color: #da70d6;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        
+        .exec-description {
+          color: #d8b8d8;
+          line-height: 1.7;
+          font-size: 0.95rem;
+          text-align: justify;
+        }
+        
+        .exec-skills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: 1.5rem;
+        }
+        
+        .skill-chip {
+          background: rgba(138, 43, 226, 0.15);
+          border: 1px solid rgba(138, 43, 226, 0.3);
+          padding: 0.3rem 0.8rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          color: #da70d6;
+          transition: all 0.3s ease;
+        }
+        
+        .skill-chip:hover {
+          background: rgba(138, 43, 226, 0.25);
+          transform: scale(1.05);
+        }
+        
+        .navigation-controls {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          margin: 3rem 0;
+        }
+        
+        .nav-btn {
+          background: linear-gradient(45deg, #8a2be2, #da70d6);
+          border: none;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          color: #ffffff;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .nav-btn:hover {
+          transform: scale(1.1);
+          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+        
+        .nav-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .nav-btn:hover::before {
+          left: 100%;
+        }
+        
+        .team-dots {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 1rem;
+        }
+        
+        .team-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: rgba(138, 43, 226, 0.3);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .team-dot.active {
+          background: #8a2be2;
+          transform: scale(1.3);
+          box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+          .exec-profile {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          .exec-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+          }
+          
+          .team-content {
+            padding: 1rem;
+          }
+          
+          .executive-showcase {
+            padding: 2rem 1rem;
+          }
+        }
+      </style>
+      
+      <div class="quantum-team">
+        <!-- Team Particles Background -->
+        <div class="team-particles">
+          <div class="team-particle" style="left: 12%; animation-duration: 6s;"></div>
+          <div class="team-particle" style="left: 22%; animation-duration: 7s;"></div>
+          <div class="team-particle" style="left: 32%; animation-duration: 5.5s;"></div>
+          <div class="team-particle" style="left: 42%; animation-duration: 6.5s;"></div>
+          <div class="team-particle" style="left: 52%; animation-duration: 5s;"></div>
+          <div class="team-particle" style="left: 62%; animation-duration: 7.5s;"></div>
+          <div class="team-particle" style="left: 72%; animation-duration: 6.2s;"></div>
+          <div class="team-particle" style="left: 82%; animation-duration: 5.8s;"></div>
+        </div>
+        
+        <div class="team-content">
+          <!-- Hero Section -->
+          <div class="team-hero">
+            <h1 class="team-title">The Brain Trust</h1>
+            <p class="team-subtitle">
+              צוות מובילים שמשלב חדשנות טכנולוגית עם מומחיות עמוקה. כל אחד מחברי הצוות מביא פרספקטיבה ייחודית 
+              שמעצבת יחד את עתיד הנדל"ן בישראל.
+            </p>
+          </div>
+          
+          <!-- Progress Indicator -->
+          <div class="executive-progress">
+            <div class="exec-counter" id="executive-counter">1/8</div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-bar" style="width: 12.5%;"></div>
             </div>
-
-            <div class="executive-carousel">
-                <div class="executive-slide active">
-                    <img src="board_pics/David.jpg" alt="דוד דור, מנכ\"ל" class="executive-photo" />
-                    <div class="executive-name">דוד דור, מנכ"ל</div>
-                    <p class="executive-description">
-                        דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף. ניסיונו האישי, עם הקשרים ארוכי השנים ועם ההבנה העמוקה של השוק, לצד יכולות יזמיות מובהקות, מהווים נכס אסטרטגי שמאפשר לפירמה לפעול בעוצמה בשווקים תנודתיים. בראות עיניו, כל עסקה היא לא רק פעולה פיננסית, אלא מהווה אף הצהרה על איכות, על מוניטין ועל עמידה בהבטחות. המוטו שלו, מאז ומתמיד, היה ועודנו: "להיות ראשון, זה מחייב."
-                    </p>
+          </div>
+          
+          <!-- Executive Showcase -->
+          <div class="executive-showcase" id="executive-showcase">
+            <div class="exec-profile">
+              <div class="exec-photo-container">
+                <img src="board_pics/David.jpg" alt="דוד דור" class="exec-photo" id="exec-photo" />
+              </div>
+              <div class="exec-info">
+                <h2 class="exec-name" id="exec-name">דוד דור</h2>
+                <div class="exec-title" id="exec-title">Chief Executive Officer | מנכ"ל</div>
+                <p class="exec-description" id="exec-description">
+                  דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.
+                </p>
+                <div class="exec-skills" id="exec-skills">
+                  <div class="skill-chip">Strategic Leadership</div>
+                  <div class="skill-chip">Market Intelligence</div>
+                  <div class="skill-chip">Deal Negotiation</div>
+                  <div class="skill-chip">28 Years Experience</div>
                 </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Revital.png" alt="רויטל דור, סמנכ\"לית תפעול" class="executive-photo" />
-                    <div class="executive-name">רויטל דור, סמנכ"לית תפעול</div>
-                    <p class="executive-description">
-                        רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה. ניסיונה הרב מאפשר לה לחזות אתגרי תפעול לפני שהם מתרחשים, ולפיכך, היא מבטיחה שהלקוח יחווה מסע חלק, עם אמינות ועם דיוק. שילוב היציבות, עם החזון ועם ההתמדה שלה, הופך את התפעול למנוע שקט אך עוצמתי.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Talya.jpg" alt="טליה קמינסקי, סמנכ\"לית מכירות" class="executive-photo" />
-                    <div class="executive-name">טליה קמינסקי, סמנכ"לית מכירות</div>
-                    <p class="executive-description">
-                        טליה קמינסקי היא הלב הפועם של הפירמה. בפרט, ברובד המכירות. זאת, נוכח הבנה עמוקה של שווקים, ומעל הכל, של אנשים. בעברה, היוות יזמית בתחומים אשר עסקו בנשמה, כך למשל במוזיקה וביצירה. בדרכה הייחודית, הצליחה לבצע אינטרגציה של מי שהיא לתוך עולם הנדל"ן. כחלק מאותו עולם, היא משלבת רבדים אנושיים יחד עם מומחיות נדל"נית, בצורה יוצאת דופן, אשר מבשילה לכדי תוצר מבריק, הבא לידי ביטוי בוריאציה של חוויה אופטימלית לקהל הלקוחות, המשקיעים והיזמים.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Din.jpeg" alt="דין דור, סמנכ\"ל כספים" class="executive-photo" />
-                    <div class="executive-name">דין דור, סמנכ"ל כספים</div>
-                    <p class="executive-description">
-                        דין דור גדל בתוך הפירמה, והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת ועם הבנה מעמיקה בשוק. הוא משלב חוש טבעי למנהיגות, עם שליטה במספרים ועם בקיאות במיסוי ובניהול סיכונים. בזכות היכרותו עם ה־DNA של הפירמה, הוא יודע לחבר בין מטרות ארוכות טווח, עם ביצוע מדויק ועם שמירה על יציבות פיננסית. הוא מבסס מערכות שקופות, עם חוכמה ועם יכולת תגובה מהירה, המאפשרות תמחור חכם ועם קבלת החלטות מושכלת גם בתנאי לחץ.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Ron.jpg" alt="רון דור, סמנכ\"ל פיתוח עסקי" class="executive-photo" />
-                    <div class="executive-name">רון דור, סמנכ"ל פיתוח עסקי</div>
-                    <p class="executive-description">
-רון דור, בדומה לאחיו דין, גדל בפירמה. לימים יצא למסע חוצה גבולות בעולם הסקאוטינג בכדורגל, ועד מהרה צבר השפעה בינלאומית. מילדות נמשך לתוכנה, ובהמשך למדעי הנתונים ולבינה המלאכותית. בכדורגל שילב תחומים אלה בהקמת חברה גלובלית, אשר חוותה צמיחה מהירה וייעלה תהליכי קבלת החלטות ברכש בקרב מועדונים. לעולם הנדל"ן מביא תפיסה אינטגרטיבית, המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות בקבלת החלטות. סט כישוריו הופך אותו לכוח מניע בחדשנות הפירמה.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Niv.jpeg" alt="ניב שירזי, ראש המחלקה הפיננסית" class="executive-photo" />
-                    <div class="executive-name">ניב שירזי, ראש המחלקה הפיננסית</div>
-                    <p class="executive-description">
-                        ניב שירזי, המבסס ידע רב בעולמות הפיננסיים, משמש יד ימינו של הדרג הבכיר. זאת, עם מומחיות גבוהה במימון עסקאות, עם בדיקות נאותות, עם עיצוב האסטרטגיה הפיננסית ועם מתן פתרונות אופרטיביים מדויקים. הודות לשליטתו במספרים, להבנת השוק ולראייתו האסטרטגית, הוא ממזג בין ניתוח קר ובין גמישות מחשבתית, ולמעשה מבטיח ניהול פיננסי שמגן על האינטרסים של הפירמה.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Ari.jpg" alt="ארי גבאי, ראש קהילות המשקיעים" class="executive-photo" />
-                    <div class="executive-name">ארי גבאי, ראש קהילות המשקיעים</div>
-                    <p class="executive-description">
-ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית ועם יכולת לזהות הזדמנויות חבויות בשוק. הוא מתרגם דאטה לאינפורמציה פרקטית, עם הנגשה לקהלים שונים ועם דיוק במסרים. הוא מחבר בין אנשים, הזדמנויות וכן פתרונות השקעה מותאמים, באופן שמייצר ערך הדדי. באמצעות טיפוח קשרים בין אישיים, שיתופי פעולה אסטרטגיים ואף ניהול רשת מקצועית, הוא בונה בסיס איתן המעצים את הכוח הקולקטיבי של הפירמה.
-                    </p>
-                </div>
-                <div class="executive-slide">
-                    <img src="board_pics/Ron.jpg" alt="שחר צור, סמנכ\"לית שיווק" class="executive-photo" />
-                    <div class="executive-name">שחר צור, סמנכ"לית שיווק</div>
-                    <p class="executive-description">
-שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל, עם ידע נרחב בשיווק, עם סושיאל מדיה ועם ניהול קמפיינים. היא מייצרת ביקוש אורגני, עם בניית נוכחות תקשורתית ועם יוזמות שיווקיות חדשניות. יכולתה להנגיש את ערכי המותג בשפה שמדברת ללב, עם השכל ועם החושים, יוצרת חיבור רגשי עמוק עם קהלים מגוונים. כל פרויקט שהיא נוגעת בו מקבל זהות חדה, עם נוכחות בולטת ועם ערך מוסף ברור.                    </p>
-                </div>
+              </div>
             </div>
-
-            <div class="exec-nav">
-              <button class="exec-nav__btn" onclick="switchExecutive(-1)">‹</button>
-              <button class="exec-nav__btn" onclick="switchExecutive(1)">›</button>
+          </div>
+          
+          <!-- Navigation -->
+          <div class="navigation-controls">
+            <button class="nav-btn" onclick="switchExecutive(-1)" aria-label="Previous">‹</button>
+            <div class="team-dots">
+              <div class="team-dot active" onclick="goToExecutive(0)"></div>
+              <div class="team-dot" onclick="goToExecutive(1)"></div>
+              <div class="team-dot" onclick="goToExecutive(2)"></div>
+              <div class="team-dot" onclick="goToExecutive(3)"></div>
+              <div class="team-dot" onclick="goToExecutive(4)"></div>
+              <div class="team-dot" onclick="goToExecutive(5)"></div>
+              <div class="team-dot" onclick="goToExecutive(6)"></div>
+              <div class="team-dot" onclick="goToExecutive(7)"></div>
             </div>
-        `,
+            <button class="nav-btn" onclick="switchExecutive(1)" aria-label="Next">›</button>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Executive data with modern presentation
+        const executiveData = [
+          {
+            name: "דוד דור",
+            title: "Chief Executive Officer | מנכ\"ל",
+            image: "board_pics/David.jpg",
+            description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+            skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"]
+          },
+          {
+            name: "רויטל דור",
+            title: "Chief Operations Officer | סמנכ\"לית תפעול",
+            image: "board_pics/Revital.png",
+            description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+            skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"]
+          },
+          {
+            name: "טליה קמינסקי",
+            title: "Chief Sales Officer | סמנכ\"לית מכירות",
+            image: "board_pics/Talya.jpg",
+            description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+            skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"]
+          },
+          {
+            name: "דין דור",
+            title: "Chief Financial Officer | סמנכ\"ל כספים",
+            image: "board_pics/Din.jpeg",
+            description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
+            skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"]
+          },
+          {
+            name: "רון דור",
+            title: "Chief Business Development | סמנכ\"ל פיתוח עסקי",
+            image: "board_pics/Ron.jpg",
+            description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
+            skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"]
+          },
+          {
+            name: "ניב שירזי",
+            title: "Head of Finance | ראש המחלקה הפיננסית",
+            image: "board_pics/Niv.jpeg",
+            description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
+            skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"]
+          },
+          {
+            name: "ארי גבאי",
+            title: "Head of Investor Relations | ראש קהילות המשקיעים",
+            image: "board_pics/Ari.jpg",
+            description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+            skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"]
+          },
+          {
+            name: "שחר צור",
+            title: "Chief Marketing Officer | סמנכ\"לית שיווק",
+            image: "board_pics/Ron.jpg",
+            description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+            skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"]
+          }
+        ];
+        
+        let currentExecutive = 0;
+        
+        function updateExecutiveDisplay() {
+          const exec = executiveData[currentExecutive];
+          
+          // Update content
+          document.getElementById('exec-photo').src = exec.image;
+          document.getElementById('exec-photo').alt = exec.name;
+          document.getElementById('exec-name').textContent = exec.name;
+          document.getElementById('exec-title').textContent = exec.title;
+          document.getElementById('exec-description').textContent = exec.description;
+          
+          // Update skills
+          const skillsContainer = document.getElementById('exec-skills');
+          skillsContainer.innerHTML = exec.skills.map(skill => 
+            \`<div class="skill-chip">\${skill}</div>\`
+          ).join('');
+          
+          // Update counter and progress
+          document.getElementById('executive-counter').textContent = \`\${currentExecutive + 1}/8\`;
+          document.getElementById('progress-bar').style.width = \`\${((currentExecutive + 1) / 8) * 100}%\`;
+          
+          // Update dots
+          document.querySelectorAll('.team-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentExecutive);
+          });
+        }
+        
+        // Navigation functions for global access
+        window.switchExecutive = function(direction) {
+          currentExecutive = (currentExecutive + direction + 8) % 8;
+          updateExecutiveDisplay();
+        };
+        
+        window.goToExecutive = function(index) {
+          currentExecutive = index;
+          updateExecutiveDisplay();
+        };
+        
+        // Initialize
+        setTimeout(() => {
+          updateExecutiveDisplay();
+          
+          // Add particle randomization
+          const particles = document.querySelectorAll('.team-particle');
+          particles.forEach((particle, i) => {
+            particle.style.animationDelay = (i * 0.8) + 's';
+            particle.style.left = (8 + Math.random() * 84) + '%';
+          });
+        }, 100);
+      </script>
+    `,
   },
   join: {
     title: "Shape The Future | עצב את העתיד",
