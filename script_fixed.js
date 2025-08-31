@@ -1994,7 +1994,6 @@ let likedProperties = [];
 
 // ---- Image Cache System ----
 const imageCache = new Map(); // propertyId -> images array
-const preloadingQueue = new Set(); // Track what's being preloaded
 
 // Format helpers
 const fmtNIS = (n) => {
@@ -2268,19 +2267,11 @@ async function loadProperty() {
 
   // Load ALL images and build carousel (but prioritize first image)
   loadPropertyCarouselAsync(p);
-  
-  // Preload next properties while user views current
-  preloadNextProperties();
 }
 
-// Load full property carousel asynchronously - show first image instantly, load rest progressively
+// INSTANT carousel loading - hero first, rest progressively
 async function loadPropertyCarouselAsync(property) {
-  console.log(`🎠 Loading carousel for property:`, property.id);
-  
-  // Use the existing getPropertyImages function to find all images
-  const imgs = await getPropertyImages(property, 12, 3000); // 12 max images, 3s timeout
-  
-  console.log(`📸 Found ${imgs.length} images:`, imgs);
+  console.log(`⚡ INSTANT carousel for property:`, property.id);
   
   const carouselTrack = document.getElementById("carousel-track");
   const carouselDots = document.getElementById("carousel-dots");
@@ -2288,112 +2279,122 @@ async function loadPropertyCarouselAsync(property) {
   const nextBtn = document.querySelector(".carousel-next");
   
   if (!carouselTrack || !carouselDots) return;
-  
-  if (imgs.length > 0) {
-    // Build carousel with all images and smart sizing
-    const slides = imgs.map((src, index) => `
-      <div class="carousel-slide">
-        <img src="${src}" alt="${property.title || "property"}" 
-             loading="${index === 0 ? 'eager' : 'lazy'}"
-             onload="smartImageResize(this)"/>
-      </div>
-    `).join("");
-    
-    const dots = imgs.map((_, index) => 
-      `<button class="carousel-dot${index === 0 ? ' active' : ''}" aria-label="slide ${index + 1}"></button>`
-    ).join("");
-    
-    // Update carousel
-    carouselTrack.innerHTML = slides;
-    carouselDots.innerHTML = dots;
-    
-    // Enable navigation if multiple images
-    if (imgs.length > 1) {
-      prevBtn.style.opacity = "1";
-      nextBtn.style.opacity = "1";
-      
-      // Wire up carousel functionality
-      const cardEl = document.getElementById("currentCard");
-      wireCarousel(cardEl);
-    }
-    
-    console.log(`✅ Carousel built with ${imgs.length} images`);
+
+  // STEP 1: INSTANT hero display (from cache or quick manifest lookup)
+  let heroUrl = null;
+  if (imageCache.has(property.id)) {
+    const cachedUrls = imageCache.get(property.id);
+    heroUrl = cachedUrls[0];
+    console.log(`💨 Using cached hero: ${heroUrl}`);
   } else {
-    // Fallback: no images found
+    // Fast manifest lookup for hero only
+    try {
+      const manifest = await loadManifest();
+      const entry = manifest[property.id];
+      if (entry && entry.ext && entry.hero) {
+        heroUrl = `/prop_pics/${property.id}/${entry.hero}.${entry.ext}`;
+        console.log(`📋 Hero from manifest: ${heroUrl}`);
+      }
+    } catch (e) {
+      console.log('⚠️ Manifest lookup failed, using placeholder');
+    }
+  }
+
+  // Show hero IMMEDIATELY
+  if (heroUrl) {
+    carouselTrack.innerHTML = `
+      <div class="carousel-slide">
+        <img src="${heroUrl}" alt="${property.title || "property"}" 
+             loading="eager"
+             fetchpriority="high"
+             style="aspect-ratio:4/3;width:100%;height:auto;"
+             onload="smartImageResize(this)"/>
+      </div>`;
+    carouselDots.innerHTML = `<button class="carousel-dot active" aria-label="slide 1"></button>`;
+    console.log(`✨ Hero displayed instantly`);
+  } else {
+    // Fallback placeholder
     carouselTrack.innerHTML = `
       <div class="carousel-slide">
         <div class="property-image placeholder">
-          <i class="${property.image || "fas fa-building"}" style="font-size: 4rem; color: #ccc;"></i>
+          <i class="${property.image || "fas fa-building"}" style="font-size:4rem;color:#ccc;"></i>
         </div>
-      </div>
-    `;
-    
-    console.log(`🏠 No images found for ${property.id}, using icon fallback`);
+      </div>`;
+    carouselDots.innerHTML = `<button class="carousel-dot active" aria-label="slide 1"></button>`;
+    console.log(`🏠 No hero available, showing placeholder`);
   }
-}
 
-// Helper: Load image with timeout
-function loadImageWithTimeout(src, timeout = 2000) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    let loaded = false;
-    
-    const timer = setTimeout(() => {
-      if (!loaded) {
-        loaded = true;
-        resolve(false);
+  // STEP 2: Load remaining images progressively (non-blocking)
+  requestAnimationFrame(async () => {
+    try {
+      const imgs = await getPropertyImages(property);
+      console.log(`📸 Progressive: got ${imgs.length} total images`);
+      
+      if (imgs.length > 1) {
+        // Build remaining slides
+        const remainingSlides = imgs.slice(1).map(src => `
+          <div class="carousel-slide">
+            <img src="${src}" alt="${property.title || "property"}" 
+                 loading="lazy"
+                 fetchpriority="low"
+                 style="aspect-ratio:4/3;width:100%;height:auto;"
+                 onload="smartImageResize(this)"/>
+          </div>
+        `).join("");
+        
+        // Append to existing track (hero stays first)
+        carouselTrack.innerHTML += remainingSlides;
+        
+        // Update dots for all images
+        const allDots = imgs.map((_, index) => 
+          `<button class="carousel-dot${index === 0 ? ' active' : ''}" aria-label="slide ${index + 1}"></button>`
+        ).join("");
+        carouselDots.innerHTML = allDots;
+        
+        // Enable navigation
+        if (prevBtn && nextBtn) {
+          prevBtn.style.opacity = "1";
+          nextBtn.style.opacity = "1";
+        }
+        
+        // Wire up carousel functionality
+        const currentCard = document.getElementById("currentCard");
+        if (currentCard) wireCarousel(currentCard);
+        
+        console.log(`🎠 Progressive carousel complete: ${imgs.length} slides`);
+      } else {
+        // Single image - disable navigation
+        if (prevBtn && nextBtn) {
+          prevBtn.style.opacity = "0.3";
+          nextBtn.style.opacity = "0.3";
+        }
+        console.log(`🖼️ Single image property`);
       }
-    }, timeout);
-    
-    img.onload = () => {
-      if (!loaded) {
-        loaded = true;
-        clearTimeout(timer);
-        resolve(true);
-      }
-    };
-    
-    img.onerror = () => {
-      if (!loaded) {
-        loaded = true;
-        clearTimeout(timer);  
-        resolve(false);
-      }
-    };
-    
-    img.src = src;
+    } catch (error) {
+      console.log('❌ Progressive loading failed:', error);
+      // Hero already displayed, so this is graceful degradation
+    }
   });
 }
 
-// Smart preloading system - load next property completely in background
-async function preloadNextProperties() {
+
+// Lightweight preloading - just warm next property's hero images
+function warmNextProperty() {
   const nextIndex = currentPropertyIndex + 1;
   if (nextIndex >= activeSwipePool.length) return;
   
   const nextProp = activeSwipePool[nextIndex];
+  if (imageCache.has(nextProp.id)) return; // Already cached
   
-  // Skip if already cached or currently being preloaded
-  if (imageCache.has(nextProp.id) || preloadingQueue.has(nextProp.id)) {
-    return;
-  }
-  
-  // Add to preloading queue
-  preloadingQueue.add(nextProp.id);
-  console.log(`🔄 Background preloading: ${nextProp.id}`);
-  
-  // Non-blocking background preload
-  setTimeout(async () => {
-    try {
-      // This will cache the images for instant future access
-      await getPropertyImages(nextProp, 12);
-      console.log(`✅ Background preload complete: ${nextProp.id}`);
-    } catch (error) {
-      console.log(`❌ Preload failed for ${nextProp.id}:`, error);
-    } finally {
-      // Remove from preloading queue
-      preloadingQueue.delete(nextProp.id);
+  // Warm just the next property's first few images
+  getPropertyImages(nextProp).then(urls => {
+    if (urls && urls.length > 0) {
+      warmImages(urls, 3); // Only first 3 images
+      console.log(`🔥 Warmed next property: ${nextProp.id} (${Math.min(3, urls.length)} images)`);
     }
-  }, 300); // Small delay to not interfere with current property display
+  }).catch(e => {
+    console.log(`⚠️ Warm failed for ${nextProp.id}:`, e);
+  });
 }
 
 ////// SWIPE ENDS HERE
@@ -2414,6 +2415,8 @@ function swipeProperty(action) {
   setTimeout(() => {
     currentPropertyIndex++;
     loadProperty();
+    // Warm next property after advancing (post-click preloading)
+    warmNextProperty();
   }, 300);
 }
 
