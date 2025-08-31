@@ -1788,6 +1788,7 @@ const modalContents = {
   team: {
   title: "Neural Network | הרשת הנוירונית",
   content: `
+<meta charset="UTF-8">
 <style>
   .quantum-team {
     background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2e1a3e 100%);
@@ -1798,7 +1799,6 @@ const modalContents = {
     margin: -2rem;
     min-height: 90vh;
   }
-
   .team-particles {
     position: absolute;
     top: 0;
@@ -1807,7 +1807,6 @@ const modalContents = {
     height: 100%;
     z-index: 1;
   }
-
   .team-particle {
     position: absolute;
     width: 1.5px;
@@ -1817,30 +1816,25 @@ const modalContents = {
     opacity: 0.6;
     animation: teamFloat 7s infinite linear;
   }
-
   .team-particle:nth-child(2n) { background: #da70d6; animation-delay: -2s; }
   .team-particle:nth-child(3n) { background: #9370db; animation-delay: -4s; }
   .team-particle:nth-child(4n) { background: #6a5acd; animation-delay: -6s; }
-
   @keyframes teamFloat {
     0% { transform: translateY(100vh) translateX(-20px) scale(0); opacity: 0; }
     20% { opacity: 0.6; transform: scale(1); }
     80% { opacity: 0.6; }
     100% { transform: translateY(-100px) translateX(20px) scale(0); opacity: 0; }
   }
-
   .team-content {
     position: relative;
     z-index: 10;
     padding: 2rem;
     backdrop-filter: blur(2px);
   }
-
   .team-hero {
     text-align: center;
     margin-bottom: 3rem;
   }
-
   .team-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -1850,12 +1844,10 @@ const modalContents = {
     margin-bottom: 1rem;
     animation: teamPulse 4s infinite alternate;
   }
-
   @keyframes teamPulse {
     0% { transform: scale(1); filter: brightness(1); }
     100% { transform: scale(1.02); filter: brightness(1.4); }
   }
-
   .team-subtitle {
     font-size: 1.1rem;
     color: #d8b8d8;
@@ -1863,7 +1855,6 @@ const modalContents = {
     margin: 0 auto 2rem;
     line-height: 1.6;
   }
-
   .executive-progress {
     display: flex;
     align-items: center;
@@ -1871,7 +1862,6 @@ const modalContents = {
     margin: 2rem 0;
     gap: 1rem;
   }
-
   .exec-counter {
     background: rgba(138, 43, 226, 0.1);
     border: 1px solid rgba(138, 43, 226, 0.3);
@@ -1881,7 +1871,6 @@ const modalContents = {
     font-weight: 600;
     font-size: 1rem;
   }
-
   .progress-track {
     width: 200px;
     height: 6px;
@@ -1889,7 +1878,6 @@ const modalContents = {
     border-radius: 3px;
     overflow: hidden;
   }
-
   .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #8a2be2, #da70d6);
@@ -1897,7 +1885,6 @@ const modalContents = {
     transition: width 0.5s ease;
     box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
   }
-
   .executive-showcase {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(138, 43, 226, 0.2);
@@ -1907,24 +1894,20 @@ const modalContents = {
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
   }
-
   .executive-showcase:hover {
     border-color: #8a2be2;
     box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
   }
-
   .exec-profile {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
     margin-bottom: 2rem;
   }
-
   .exec-photo-container {
     position: relative;
     flex-shrink: 0;
   }
-
   .exec-photo {
     width: 140px;
     height: 140px;
@@ -1934,21 +1917,17 @@ const modalContents = {
     box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
     transition: all 0.3s ease;
   }
-
   .exec-photo:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
   }
-
   .exec-info { flex: 1; }
-
   .exec-name {
     font-size: 1.8rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 0.5rem;
   }
-
   .exec-title {
     font-size: 1rem;
     color: #da70d6;
@@ -1956,21 +1935,18 @@ const modalContents = {
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-
   .exec-description {
     color: #d8b8d8;
     line-height: 1.7;
     font-size: 0.95rem;
     text-align: justify;
   }
-
   .exec-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1.5rem;
   }
-
   .skill-chip {
     background: rgba(138, 43, 226, 0.15);
     border: 1px solid rgba(138, 43, 226, 0.3);
@@ -1980,12 +1956,10 @@ const modalContents = {
     color: #da70d6;
     transition: all 0.3s ease;
   }
-
   .skill-chip:hover {
     background: rgba(138, 43, 226, 0.25);
     transform: scale(1.05);
   }
-
   .navigation-controls {
     display: flex;
     justify-content: center;
@@ -1993,7 +1967,6 @@ const modalContents = {
     gap: 2rem;
     margin: 3rem 0;
   }
-
   .nav-btn {
     background: linear-gradient(45deg, #8a2be2, #da70d6);
     border: none;
@@ -2007,14 +1980,12 @@ const modalContents = {
     position: relative;
     overflow: hidden;
   }
-
   .nav-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
   }
-
   .nav-btn::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: -100%;
@@ -2023,16 +1994,13 @@ const modalContents = {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.5s ease;
   }
-
   .nav-btn:hover::before { left: 100%; }
-
   .team-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 1rem;
   }
-
   .team-dot {
     width: 8px;
     height: 8px;
@@ -2041,13 +2009,11 @@ const modalContents = {
     transition: all 0.3s ease;
     cursor: pointer;
   }
-
   .team-dot.active {
     background: #8a2be2;
     transform: scale(1.3);
     box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
   }
-
   @media (max-width: 768px) {
     .exec-profile { flex-direction: column; text-align: center; }
     .exec-photo { width: 120px; height: 120px; margin: 0 auto; }
@@ -2055,7 +2021,6 @@ const modalContents = {
     .executive-showcase { padding: 2rem 1rem; }
   }
 </style>
-
 <div class="quantum-team">
   <div class="team-particles">
     <div class="team-particle" style="left: 12%; animation-duration: 6s;"></div>
@@ -2067,7 +2032,6 @@ const modalContents = {
     <div class="team-particle" style="left: 72%; animation-duration: 6.2s;"></div>
     <div class="team-particle" style="left: 82%; animation-duration: 5.8s;"></div>
   </div>
-
   <div class="team-content">
     <div class="team-hero">
       <h1 class="team-title">The Brain Trust</h1>
@@ -2076,14 +2040,12 @@ const modalContents = {
         שמעצבת יחד את עתיד הנדל"ן בישראל.
       </p>
     </div>
-
     <div class="executive-progress">
       <div class="exec-counter" id="executive-counter">1/8</div>
       <div class="progress-track">
         <div class="progress-fill" id="progress-bar" style="width: 12.5%;"></div>
       </div>
     </div>
-
     <div class="executive-showcase" id="executive-showcase">
       <div class="exec-profile">
         <div class="exec-photo-container">
@@ -2104,7 +2066,6 @@ const modalContents = {
         </div>
       </div>
     </div>
-
     <div class="navigation-controls">
       <button class="nav-btn" onclick="switchExecutive(-1)" aria-label="Previous">‹</button>
       <div class="team-dots" id="team-dots"></div>
@@ -2112,148 +2073,147 @@ const modalContents = {
     </div>
   </div>
 </div>
-
 <script>
-  const executiveData = [
-    {
-      name: "דוד דור",
-      title: "Chief Executive Officer | מנכ\"ל",
-      image: "board_pics/David.jpg",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
-      skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"]
-    },
-    {
-      name: "רויטל דור",
-      title: "Chief Operations Officer | סמנכ\"לית תפעול",
-      image: "board_pics/Revital.png",
-      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
-      skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"]
-    },
-    {
-      name: "טליה קמינסקי",
-      title: "Chief Sales Officer | סמנכ\"לית מכירות",
-      image: "board_pics/Talya.jpg",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
-      skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"]
-    },
-    {
-      name: "דין דור",
-      title: "Chief Financial Officer | סמנכ\"ל כספים",
-      image: "board_pics/Din.jpeg",
-      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
-      skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"]
-    },
-    {
-      name: "רון דור",
-      title: "Chief Business Development | סמנכ\"ל פיתוח עסקי",
-      image: "board_pics/Ron.jpg",
-      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-      skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"]
-    },
-    {
-      name: "ניב שירזי",
-      title: "Head of Finance | ראש המחלקה הפיננסית",
-      image: "board_pics/Niv.jpeg",
-      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
-      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"]
-    },
-    {
-      name: "ארי גבאי",
-      title: "Head of Investor Relations | ראש קהילות המשקיעים",
-      image: "board_pics/Ari.jpg",
-      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
-      skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"]
-    },
-    {
-      name: "שחר צור",
-      title: "Chief Marketing Officer | סמנכ\"לית שיווק",
-      image: "board_pics/Shachar.jpg",
-      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
-      skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"]
-    }
-  ];
-
-  let currentExecutive = 0;
-
-  function updateExecutiveDisplay() {
-    const totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
-    if (totalExecs === 0) return;
-
-    currentExecutive = Math.max(0, Math.min(currentExecutive, totalExecs - 1));
-    const exec = executiveData[currentExecutive];
-
-    const photo = document.getElementById('exec-photo');
-    const name = document.getElementById('exec-name');
-    const title = document.getElementById('exec-title');
-    const description = document.getElementById('exec-description');
-    const skillsContainer = document.getElementById('exec-skills');
-    const counter = document.getElementById('executive-counter');
-    const progressBar = document.getElementById('progress-bar');
-
-    if (photo) photo.src = exec.image;
-    if (photo) photo.alt = exec.name;
-    if (name) name.textContent = exec.name;
-    if (title) title.textContent = exec.title;
-    if (description) description.textContent = exec.description;
-
-    if (skillsContainer) {
-      skillsContainer.innerHTML = exec.skills.map(function(s) {
-        return '<div class="skill-chip">' + s + '</div>';
-      }).join('');
-    }
-
-    if (counter) counter.textContent = (currentExecutive + 1) + '/' + totalExecs;
-    if (progressBar) {
-      var pct = ((currentExecutive + 1) / totalExecs) * 100;
-      progressBar.style.width = pct + '%';
-    }
-
-    var dots = document.querySelectorAll('.team-dot');
-    dots.forEach(function(dot, i) {
-      dot.classList.toggle('active', i === currentExecutive);
-    });
+// If using a static site generator (e.g., Jekyll), wrap this script in {% raw %}...{% endraw %}
+const executiveData = [
+  {
+    name: "דוד דור",
+    title: "Chief Executive Officer | מנכ\\\"ל",
+    image: "board_pics/David.jpg",
+    description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+    skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"]
+  },
+  {
+    name: "רויטל דור",
+    title: "Chief Operations Officer | סמנכ\\\"לית תפעול",
+    image: "board_pics/Revital.png",
+    description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+    skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"]
+  },
+  {
+    name: "טליה קמינסקי",
+    title: "Chief Sales Officer | סמנכ\\\"לית מכירות",
+    image: "board_pics/Talya.jpg",
+    description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\\\"נית באופן יוצא דופן.",
+    skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"]
+  },
+  {
+    name: "דין דור",
+    title: "Chief Financial Officer | סמנכ\\\"ל כספים",
+    image: "board_pics/Din.jpeg",
+    description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
+    skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"]
+  },
+  {
+    name: "רון דור",
+    title: "Chief Business Development | סמנכ\\\"ל פיתוח עסקי",
+    image: "board_pics/Ron.jpg",
+    description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
+    skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"]
+  },
+  {
+    name: "ניב שירזי",
+    title: "Head of Finance | ראש המחלקה הפיננסית",
+    image: "board_pics/Niv.jpeg",
+    description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
+    skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"]
+  },
+  {
+    name: "ארי גבאי",
+    title: "Head of Investor Relations | ראש קהילות המשקיעים",
+    image: "board_pics/Ari.jpg",
+    description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+    skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"]
+  },
+  {
+    name: "שחר צור",
+    title: "Chief Marketing Officer | סמנכ\\\"לית שיווק",
+    image: "board_pics/Shachar.jpg",
+    description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+    skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"]
   }
-
-  function mod(n, m) { return ((n % m) + m) % m; }
-
-  window.switchExecutive = function(direction) {
-    const totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
-    if (totalExecs === 0) return;
-
-    var step = Number.isFinite(direction) ? (direction < 0 ? -1 : 1) : 1;
-    currentExecutive = mod(Number(currentExecutive) + step, totalExecs);
-    updateExecutiveDisplay();
-  };
-
-  window.goToExecutive = function(index) {
-    const totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
-    var idx = Number(index);
-    if (totalExecs === 0 || !Number.isFinite(idx)) return;
-    currentExecutive = Math.max(0, Math.min(idx, totalExecs - 1));
-    updateExecutiveDisplay();
-  };
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
-    if (totalExecs === 0) return;
-
-    var dotsContainer = document.getElementById('team-dots');
-    if (dotsContainer) {
-      var dotsHTML = '';
-      for (var i = 0; i < executiveData.length; i++) {
-        dotsHTML += '<div class="team-dot' + (i === 0 ? ' active' : '') + '" onclick="goToExecutive(' + i + ')"></div>';
-      }
-      dotsContainer.innerHTML = dotsHTML;
-    }
-
-    updateExecutiveDisplay();
-
-    var particles = document.querySelectorAll('.team-particle');
-    particles.forEach(function(p, i) {
-      p.style.animationDelay = (i * 0.8) + 's';
-      p.style.left = (8 + Math.random() * 84) + '%';
-    });
+];
+let currentExecutive = 0;
+function updateExecutiveDisplay() {
+  var totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
+  if (totalExecs === 0) {
+    console.error("executiveData is not defined or empty");
+    return;
+  }
+  currentExecutive = Math.max(0, Math.min(currentExecutive, totalExecs - 1));
+  var exec = executiveData[currentExecutive];
+  var photo = document.getElementById("exec-photo");
+  var name = document.getElementById("exec-name");
+  var title = document.getElementById("exec-title");
+  var description = document.getElementById("exec-description");
+  var skillsContainer = document.getElementById("exec-skills");
+  var counter = document.getElementById("executive-counter");
+  var progressBar = document.getElementById("progress-bar");
+  if (photo) photo.src = exec.image;
+  if (photo) photo.alt = exec.name;
+  if (name) name.textContent = exec.name;
+  if (title) title.textContent = exec.title;
+  if (description) description.textContent = exec.description;
+  if (skillsContainer) {
+    skillsContainer.innerHTML = exec.skills.map(function(s) {
+      return "<div class=\\\"skill-chip\\\">" + s + "</div>";
+    }).join("");
+  }
+  if (counter) counter.textContent = (currentExecutive + 1) + "/" + totalExecs;
+  if (progressBar) {
+    var pct = ((currentExecutive + 1) / totalExecs) * 100;
+    progressBar.style.width = pct + "%";
+  }
+  var dots = document.querySelectorAll(".team-dot");
+  dots.forEach(function(dot, i) {
+    dot.classList.toggle("active", i === currentExecutive);
   });
+}
+function mod(n, m) {
+  return ((n % m) + m) % m;
+}
+window.switchExecutive = function(direction) {
+  var totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
+  if (totalExecs === 0) {
+    console.error("executiveData is not defined or empty");
+    return;
+  }
+  var step = Number.isFinite(direction) ? (direction < 0 ? -1 : 1) : 1;
+  currentExecutive = mod(Number(currentExecutive) + step, totalExecs);
+  updateExecutiveDisplay();
+};
+window.goToExecutive = function(index) {
+  var totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
+  var idx = Number(index);
+  if (totalExecs === 0 || !Number.isFinite(idx)) {
+    console.error("Invalid index or empty executiveData");
+    return;
+  }
+  currentExecutive = Math.max(0, Math.min(idx, totalExecs - 1));
+  updateExecutiveDisplay();
+};
+document.addEventListener("DOMContentLoaded", function() {
+  var totalExecs = Array.isArray(executiveData) ? executiveData.length : 0;
+  if (totalExecs === 0) {
+    console.error("executiveData is not defined or empty");
+    return;
+  }
+  var dotsContainer = document.getElementById("team-dots");
+  if (dotsContainer) {
+    var dotsHTML = "";
+    for (var i = 0; i < executiveData.length; i++) {
+      dotsHTML += "<div class=\\\"team-dot" + (i === 0 ? " active" : "") + "\\\" onclick=\\\"goToExecutive(" + i + ")\\\"></div>";
+    }
+    dotsContainer.innerHTML = dotsHTML;
+  }
+  updateExecutiveDisplay();
+  var particles = document.querySelectorAll(".team-particle");
+  particles.forEach(function(p, i) {
+    p.style.animationDelay = (i * 0.8) + "s";
+    p.style.left = (8 + Math.random() * 84) + "%";
+  });
+});
+// If using Jekyll, close with: {% endraw %}
 </script>
   `
   },
