@@ -1892,15 +1892,16 @@ const modalContents = {
     </div>
 
     <div class="navigation-controls">
-      <button class="nav-btn" onclick="switchExecutive(-1)" aria-label="Previous">‹</button>
+        <button class="nav-btn" onclick="DorTeam.prev()" aria-label="Previous">‹</button>
       <div class="team-dots" id="team-dots"></div>
-      <button class="nav-btn" onclick="switchExecutive(1)" aria-label="Next">›</button>
+        <button class="nav-btn" onclick="DorTeam.next()" aria-label="Next">›</button>
     </div>
   </div>
 </div>
 
 <script>
 (function () {
+  // Private data
   const executiveData = [
     { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
       description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
@@ -1928,82 +1929,76 @@ const modalContents = {
       skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"] }
   ];
 
-  let currentExecutive = 0;
+  let idx = 0;
 
-  function safeTotal() { return Array.isArray(executiveData) ? executiveData.length : 0; }
+  function total() { return Array.isArray(executiveData) ? executiveData.length : 0; }
   function mod(n, m) { return m ? ((n % m) + m) % m : 0; }
 
-  function updateExecutiveDisplay() {
-    const totalExecs = safeTotal();
+  function render() {
+    const t = total();
     const counter = document.getElementById('executive-counter');
-    const progressBar = document.getElementById('progress-bar');
+    const bar = document.getElementById('progress-bar');
 
-    if (!totalExecs) { if (counter) counter.textContent = '0/0'; if (progressBar) progressBar.style.width = '0%'; return; }
-    if (!Number.isFinite(currentExecutive)) currentExecutive = 0;
+    if (!t) { if (counter) counter.textContent = '0/0'; if (bar) bar.style.width = '0%'; return; }
+    if (!Number.isFinite(idx)) idx = 0;
+    idx = Math.max(0, Math.min(idx, t - 1));
 
-    currentExecutive = Math.max(0, Math.min(currentExecutive, totalExecs - 1));
-    const exec = executiveData[currentExecutive];
+    const e = executiveData[idx];
 
     const photo = document.getElementById('exec-photo');
     const name = document.getElementById('exec-name');
     const title = document.getElementById('exec-title');
-    const description = document.getElementById('exec-description');
-    const skillsContainer = document.getElementById('exec-skills');
+    const desc  = document.getElementById('exec-description');
+    const skills= document.getElementById('exec-skills');
 
-    if (photo) { photo.src = exec.image; photo.alt = exec.name; }
-    if (name) name.textContent = exec.name;
-    if (title) title.textContent = exec.title;
-    if (description) description.textContent = exec.description;
+    if (photo) { photo.src = e.image; photo.alt = e.name; }
+    if (name) name.textContent = e.name;
+    if (title) title.textContent = e.title;
+    if (desc)  desc.textContent  = e.description;
+    if (skills) skills.innerHTML = e.skills.map(s => '<div class="skill-chip">' + s + '</div>').join('');
 
-    if (skillsContainer) {
-      skillsContainer.innerHTML = exec.skills.map(function (s) {
-        return '<div class="skill-chip">' + s + '</div>';
-      }).join('');
-    }
+    if (counter) counter.textContent = (idx + 1) + '/' + t;
+    if (bar) bar.style.width = (((idx + 1) / t) * 100) + '%';
 
-    if (counter) counter.textContent = (currentExecutive + 1) + '/' + totalExecs;
-    if (progressBar) progressBar.style.width = (((currentExecutive + 1) / totalExecs) * 100) + '%';
-
-    var dots = document.querySelectorAll('.team-dot');
-    dots.forEach(function (dot, i) { dot.classList.toggle('active', i === currentExecutive); });
+    document.querySelectorAll('.team-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === idx);
+    });
   }
 
-  window.switchExecutive = function (direction) {
-    const totalExecs = safeTotal();
-    if (!totalExecs) { updateExecutiveDisplay(); return; }
-    var step = (direction === -1 || direction === 1) ? direction
-            : (Number.isFinite(direction) ? (direction < 0 ? -1 : 1) : 1);
-    currentExecutive = mod(Number(currentExecutive) + step, totalExecs);
-    updateExecutiveDisplay();
-  };
-
-  window.goToExecutive = function (index) {
-    const totalExecs = safeTotal();
-    if (!totalExecs) { updateExecutiveDisplay(); return; }
-    var idx = Number(index);
-    if (!Number.isFinite(idx)) idx = 0;
-    currentExecutive = Math.max(0, Math.min(idx, totalExecs - 1));
-    updateExecutiveDisplay();
-  };
-
-  function initTeam() {
-    const totalExecs = safeTotal();
-    var dotsContainer = document.getElementById('team-dots');
-    if (dotsContainer) {
-      var html = '';
-      for (var i = 0; i < totalExecs; i++) {
-        html += '<div class="team-dot' + (i === 0 ? ' active' : '') +
-                '" onclick="goToExecutive(' + i + ')"></div>';
-      }
-      dotsContainer.innerHTML = html;
+  function buildDots() {
+    const t = total();
+    const wrap = document.getElementById('team-dots');
+    if (!wrap) return;
+    let html = '';
+    for (let i = 0; i < t; i++) {
+      html += '<div class="team-dot' + (i === 0 ? ' active' : '') + '" data-dot="' + i + '"></div>';
     }
-    updateExecutiveDisplay();
+    wrap.innerHTML = html;
+    wrap.addEventListener('click', (ev) => {
+      const el = ev.target.closest('[data-dot]');
+      if (!el) return;
+      idx = Number(el.getAttribute('data-dot')) || 0;
+      render();
+    });
   }
 
+  function init() {
+    buildDots();
+    render();
+  }
+
+  // Public, namespaced
+  window.DorTeam = {
+    init,
+    next() { idx = mod(idx + 1, total()); render(); },
+    prev() { idx = mod(idx - 1, total()); render(); }
+  };
+
+  // Run immediately (works even if this HTML is injected after DOM loaded)
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTeam, { once: true });
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    initTeam();
+    init();
   }
 })();
 </script>
