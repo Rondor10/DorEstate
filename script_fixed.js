@@ -2174,20 +2174,20 @@ const modalContents = {
             
             <div class="stats-grid">
               <div class="stat-item">
-                <span class="stat-number">50M+</span>
+                <span class="stat-number">5B+</span>
                 <span class="stat-label">₪ בעסקאות</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">200+</span>
+                <span class="stat-number">5,000+</span>
                 <span class="stat-label">לקוחות מרוצים</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">15+</span>
+                <span class="stat-number">20+</span>
                 <span class="stat-label">פרויקטים פעילים</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">95%</span>
-                <span class="stat-label">שביעות רצון</span>
+                <span class="stat-number">250+</span>
+                <span class="stat-label">נכסים בשיווק</span>
               </div>
             </div>
           </div>
