@@ -2045,49 +2045,71 @@ function startPropertySwiping() {
   if (dislikeBtn) dislikeBtn.onclick = () => swipeProperty("dislike");
 }
 // --- Helpers: load images for a property ---
-const IMAGE_EXTS = ["jpg", "jpeg", "png", "webp"];
 /**
  * Attempts to discover images for a property.
  * Priority:
  * 1) p.images if provided (absolute or relative paths)
  * 2) Fallback probe: prop_pics/<id>/pic_1..12.(jpg|jpeg|png|webp)
  */
-async function getPropertyImages(p, maxPics = 12) {
-  // Check cache first for instant retrieval
-  if (imageCache.has(p.id)) {
-    console.log(`🚀 Cache hit for ${p.id} - instant load!`);
-    return imageCache.get(p.id);
+const IMAGE_EXTS = ['webp','jpg','jpeg','png'];
+const IMAGE_TIMEOUT_MS = 1200;
+const GAP_STOP_AFTER = 3;
+
+async function headExists(url, timeoutMs = IMAGE_TIMEOUT_MS) {
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { method: 'HEAD', cache: 'no-store', signal: ctl.signal });
+    clearTimeout(t);
+    if (res.ok) return true;
+    if (res.status === 405) return await imgExists(url, timeoutMs); // fallback
+    return false;
+  } catch {
+    clearTimeout(t);
+    return await imgExists(url, timeoutMs); // fallback
   }
-  
-  let urls = [];
-  if (Array.isArray(p.images) && p.images.length > 0) {
-    urls = p.images;
-  } else {
+}
+
+function imgExists(src, timeoutMs = IMAGE_TIMEOUT_MS) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    let done = false;
+    const timer = setTimeout(() => { if (!done) { done = true; resolve(false); } }, timeoutMs);
+    img.onload  = () => { if (!done) { done = true; clearTimeout(timer); resolve(true); } };
+    img.onerror = () => { if (!done) { done = true; clearTimeout(timer); resolve(false); } };
+    img.src = src + (src.includes('?') ? '&' : '?') + 'v=' + (window.APP_BUILD_VERSION || '1');
+  });
+}
+
+const nameVariants = (i) => [`pic_${i}`, `pic_${String(i).padStart(2,'0')}`];
+
+async function learnExt(base) {
+  for (const n of nameVariants(1)) for (const ext of IMAGE_EXTS) {
+    if (await headExists(`${base}/${n}.${ext}`)) return ext;
+  }
+  return null;
+}
+
+async function getPropertyImages(p, maxPics = 12) {
+  if (imageCache.has(p.id)) return imageCache.get(p.id);
+  let urls = Array.isArray(p.images) && p.images.length ? p.images : [];
+  if (!urls.length) {
     const base = `/prop_pics/${p.id}`;
-    // Smart detection: check one extension per picture index sequentially
-    // Check ALL indices - don't stop at gaps
-    for (let i = 1; i <= maxPics; i++) {
-      for (const ext of IMAGE_EXTS) {
-        const src = `${base}/pic_${i}.${ext}`;
-        try {
-          const exists = await checkImageExists(src);
-          if (exists) {
-            urls.push(src);
-            break; // Found this pic index, move to next
-          }
-        } catch (e) {
-          continue; // Try next extension
+    const ext = await learnExt(base);
+    if (ext) {
+      let misses = 0;
+      for (let i = 1; i <= maxPics; i++) {
+        let found = false;
+        for (const n of nameVariants(i)) {
+          const u = `${base}/${n}.${ext}`;
+          if (await headExists(u)) { urls.push(u); found = true; misses = 0; break; }
         }
+        if (!found && ++misses >= GAP_STOP_AFTER) break;
       }
     }
   }
-  if (urls.length === 0) {
-    urls.push("/gen_pic/placeholder.jpg"); // Better fallback
-  }
-  
-  // Cache the result for future instant access
+  if (!urls.length) urls = ['/gen_pic/placeholder.jpg'];
   imageCache.set(p.id, urls);
-  console.log(`✅ Found ${urls.length} images for ${p.id} - cached for instant future access`);
   return urls;
 }
 
