@@ -2360,272 +2360,123 @@ const modalContents = {
         `,
   },
   assets: {
-    title: "פורטל ליזמים | Developer Portal",
+    title: "פורטל יזמים",
     content: `
       <style>
-        .quantum-developers {
-          background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #133e7c 100%);
+        .developer-portal {
+          background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
           color: #ffffff;
           position: relative;
           overflow: hidden;
           padding: 0;
           margin: -2rem;
-          min-height: 90vh;
+          min-height: 100vh;
           direction: rtl;
+          font-family: 'Heebo', Arial, sans-serif;
         }
         
-        .dev-particles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 1;
-        }
-        
-        .dev-particle {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: #00d4ff;
-          border-radius: 50%;
-          opacity: 0.7;
-          animation: devFloat 10s infinite linear;
-        }
-        
-        .dev-particle:nth-child(2n) { 
-          background: #0099cc; 
-          animation-delay: -3s; 
-          animation-duration: 15s;
-        }
-        .dev-particle:nth-child(3n) { 
-          background: #66ccff; 
-          animation-delay: -6s; 
-          animation-duration: 12s;
-        }
-        .dev-particle:nth-child(4n) { 
-          background: #4dd0e1; 
-          animation-delay: -9s; 
-          animation-duration: 18s;
-        }
-        
-        @keyframes devFloat {
-          0% { 
-            transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0); 
-            opacity: 0; 
-          }
-          10% { 
-            opacity: 0.7; 
-            transform: scale(1); 
-          }
-          90% { 
-            opacity: 0.7; 
-          }
-          100% { 
-            transform: translateY(-100px) translateX(50px) rotate(360deg) scale(0); 
-            opacity: 0; 
-          }
-        }
-        
-        .dev-content {
-          position: relative;
-          z-index: 10;
-          padding: 3rem 2rem;
-          backdrop-filter: blur(3px);
-        }
-        
-        .dev-hero {
+        .background-section {
+          background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
+          padding: 4rem 2rem;
           text-align: center;
-          margin-bottom: 4rem;
+          position: relative;
         }
         
-        .dev-title {
-          font-size: 3.5rem;
+        .background-section::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 20px;
+          background: linear-gradient(to bottom, transparent, #2c2c2c);
+        }
+        
+        .background-title {
+          font-size: 3.2rem;
           font-weight: 900;
-          background: linear-gradient(45deg, #00d4ff, #4dd0e1, #0099cc, #66ccff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: white;
           margin-bottom: 1.5rem;
-          animation: devTitlePulse 3s infinite alternate;
-          text-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        @keyframes devTitlePulse {
-          0% { 
-            transform: scale(1) rotateZ(0deg); 
-            filter: brightness(1) drop-shadow(0 0 15px rgba(0, 212, 255, 0.4)); 
-          }
-          100% { 
-            transform: scale(1.03) rotateZ(0.5deg); 
-            filter: brightness(1.3) drop-shadow(0 0 25px rgba(0, 212, 255, 0.7)); 
-          }
-        }
-        
-        .dev-subtitle {
-          font-size: 1.6rem;
-          color: #b3e5fc;
+        .background-text {
+          font-size: 1.4rem;
+          color: rgba(255,255,255,0.95);
           max-width: 900px;
-          margin: 0 auto 2rem auto;
-          line-height: 1.5;
-          text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-          font-weight: 600;
+          margin: 0 auto;
+          line-height: 1.6;
+          font-weight: 500;
+        }
+        
+        .main-content {
+          padding: 3rem 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
         }
         
         .vision-mission {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin: 3rem 0;
+          gap: 3rem;
+          margin: 4rem 0;
         }
         
         @media (max-width: 768px) {
           .vision-mission { grid-template-columns: 1fr; }
         }
         
-        .vision-card, .mission-card {
-          background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(77, 208, 225, 0.1));
-          border: 2px solid rgba(0, 212, 255, 0.3);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(10px);
+        .bracket-block {
           position: relative;
-          overflow: hidden;
+          padding: 2.5rem;
+          background: rgba(255, 122, 0, 0.05);
+          border-radius: 8px;
         }
         
-        .vision-card::before, .mission-card::before {
-          content: '';
+        .bracket-block::before {
+          content: '[';
           position: absolute;
-          top: -2px;
-          left: -2px;
-          right: -2px;
-          bottom: -2px;
-          background: linear-gradient(45deg, #00d4ff, #4dd0e1, #0099cc, #66ccff, #00d4ff);
-          background-size: 400% 400%;
-          z-index: -1;
-          border-radius: 22px;
-          animation: devBorderGlow 4s ease-in-out infinite;
+          top: 0;
+          right: 0;
+          font-size: 4rem;
+          color: #FF7A00;
+          font-weight: 900;
+          line-height: 1;
         }
         
-        @keyframes devBorderGlow {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+        .bracket-block::after {
+          content: ']';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          font-size: 4rem;
+          color: #FF7A00;
+          font-weight: 900;
+          line-height: 1;
         }
         
-        .card-title {
+        .bracket-title {
           font-size: 1.8rem;
           font-weight: 800;
-          color: #00d4ff;
+          color: #FF7A00;
           margin-bottom: 1rem;
-          text-align: center;
         }
         
-        .card-content {
-          font-size: 1.05rem;
+        .bracket-content {
+          font-size: 1.1rem;
           line-height: 1.6;
-          color: #e1f5fe;
-          text-align: justify;
+          color: #e0e0e0;
         }
         
-        .service-sections {
+        .stats-section {
           margin: 4rem 0;
-        }
-        
-        .section-header {
-          text-align: center;
-          margin-bottom: 3rem;
-        }
-        
-        .section-title {
-          font-size: 2.8rem;
-          font-weight: 800;
-          background: linear-gradient(45deg, #00d4ff, #66ccff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1rem;
-        }
-        
-        .service-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin: 3rem 0;
-        }
-        
-        .service-card {
-          background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(77, 208, 225, 0.08));
-          border: 1px solid rgba(0, 212, 255, 0.2);
-          border-radius: 18px;
-          padding: 2rem;
-          backdrop-filter: blur(5px);
-          transition: all 0.3s ease;
-          position: relative;
-        }
-        
-        .service-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-          border-color: rgba(0, 212, 255, 0.4);
-        }
-        
-        .service-icon {
-          font-size: 2.5rem;
-          color: #00d4ff;
-          margin-bottom: 1rem;
-          text-align: center;
-          display: block;
-        }
-        
-        .service-name {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #00d4ff;
-          margin-bottom: 1rem;
-          text-align: center;
-        }
-        
-        .service-description {
-          font-size: 0.95rem;
-          line-height: 1.5;
-          color: #b3e5fc;
-          text-align: justify;
-        }
-        
-        .cta-section {
-          text-align: center;
-          margin: 4rem 0 2rem 0;
-          padding: 3rem 2rem;
-          background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(77, 208, 225, 0.1));
-          border-radius: 25px;
-          border: 2px solid rgba(0, 212, 255, 0.3);
-        }
-        
-        .cta-button {
-          background: linear-gradient(45deg, #00d4ff, #0099cc);
-          color: white;
-          border: none;
-          padding: 1.2rem 3rem;
-          border-radius: 50px;
-          font-size: 1.2rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
-        }
-        
-        .cta-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
-          background: linear-gradient(45deg, #0099cc, #00d4ff);
         }
         
         .stats-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 2rem;
-          margin: 3rem 0;
-          text-align: center;
+          margin: 2rem 0;
         }
         
         @media (max-width: 768px) {
@@ -2633,172 +2484,479 @@ const modalContents = {
         }
         
         .stat-item {
-          padding: 1.5rem;
-          background: rgba(0, 212, 255, 0.1);
-          border-radius: 15px;
-          border: 1px solid rgba(0, 212, 255, 0.2);
+          background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
+          padding: 2rem;
+          border-radius: 12px;
+          text-align: center;
+          border: 1px solid rgba(255, 122, 0, 0.2);
         }
         
         .stat-number {
-          font-size: 2rem;
+          font-size: 2.5rem;
           font-weight: 900;
-          color: #00d4ff;
+          color: #FF7A00;
           display: block;
           margin-bottom: 0.5rem;
         }
         
         .stat-label {
-          font-size: 0.9rem;
-          color: #b3e5fc;
+          font-size: 1rem;
+          color: #b0b0b0;
+          font-weight: 600;
+        }
+        
+        .projects-section {
+          margin: 4rem 0;
+        }
+        
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #FF7A00;
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+        
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        .project-card {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
+        }
+        
+        .project-image {
+          width: 100%;
+          height: 200px;
+          background: #333;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #888;
+          font-size: 1.1rem;
+        }
+        
+        .project-caption {
+          padding: 1.5rem;
+          font-size: 1.1rem;
+          color: #e0e0e0;
+          text-align: center;
+          font-weight: 600;
+        }
+        
+        .service-model {
+          margin: 4rem 0;
+        }
+        
+        .pillars-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+          .pillars-grid { grid-template-columns: 1fr; }
+        }
+        
+        .pillar-bracket {
+          position: relative;
+          padding: 2rem;
+          background: rgba(255, 122, 0, 0.05);
+          border-radius: 8px;
+        }
+        
+        .pillar-bracket::before {
+          content: '{';
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 3rem;
+          color: #FF7A00;
+          font-weight: 900;
+          line-height: 1;
+        }
+        
+        .pillar-bracket::after {
+          content: '}';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          font-size: 3rem;
+          color: #FF7A00;
+          font-weight: 900;
+          line-height: 1;
+        }
+        
+        .pillar-title {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: #FF7A00;
+          margin-bottom: 1rem;
+        }
+        
+        .pillar-content {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #d0d0d0;
+        }
+        
+        .marketing-system {
+          margin: 4rem 0;
+        }
+        
+        .steps-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .step-item {
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 8px;
+          border: 1px solid rgba(255, 122, 0, 0.2);
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+        
+        .step-header {
+          display: flex;
+          align-items: center;
+          padding: 1.5rem;
+          cursor: pointer;
+          background: rgba(255, 122, 0, 0.05);
+        }
+        
+        .step-header:hover {
+          background: rgba(255, 122, 0, 0.1);
+        }
+        
+        .step-number {
+          background: linear-gradient(135deg, #FF7A00, #FF4D00);
+          color: white;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          font-size: 1.2rem;
+          margin-left: 1rem;
+        }
+        
+        .step-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: #ffffff;
+          flex-grow: 1;
+        }
+        
+        .step-toggle {
+          color: #FF7A00;
+          font-size: 1.5rem;
+          transition: transform 0.3s ease;
+        }
+        
+        .step-content {
+          padding: 0 1.5rem;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .step-content.expanded {
+          max-height: 300px;
+          padding: 1.5rem;
+        }
+        
+        .step-description {
+          color: #c0c0c0;
+          line-height: 1.6;
+        }
+        
+        .cta-section {
+          background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
+          padding: 4rem 2rem;
+          text-align: center;
+          margin: 4rem -2rem -2rem -2rem;
+          position: relative;
+        }
+        
+        .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 20px;
+          background: linear-gradient(to top, transparent, #2c2c2c);
+          transform: translateY(-20px);
+        }
+        
+        .cta-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: white;
+          margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+          background: rgba(255, 255, 255, 0.15);
+          color: white;
+          border: 2px solid white;
+          padding: 1.2rem 3rem;
+          border-radius: 8px;
+          font-size: 1.2rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+          background: white;
+          color: #FF4D00;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
       </style>
       
-      <div class="quantum-developers">
-        <!-- Floating Particles -->
-        <div class="dev-particles">
-          <div class="dev-particle" style="left: 8%; animation-duration: 12s;"></div>
-          <div class="dev-particle" style="left: 18%; animation-duration: 15s;"></div>
-          <div class="dev-particle" style="left: 28%; animation-duration: 10s;"></div>
-          <div class="dev-particle" style="left: 38%; animation-duration: 18s;"></div>
-          <div class="dev-particle" style="left: 48%; animation-duration: 8s;"></div>
-          <div class="dev-particle" style="left: 58%; animation-duration: 14s;"></div>
-          <div class="dev-particle" style="left: 68%; animation-duration: 11s;"></div>
-          <div class="dev-particle" style="left: 78%; animation-duration: 16s;"></div>
-          <div class="dev-particle" style="left: 88%; animation-duration: 9s;"></div>
+      <div class="developer-portal">
+        <!-- Background Section -->
+        <div class="background-section">
+          <h1 class="background-title">קבוצת דור נכסים</h1>
+          <p class="background-text">
+            במשך 28 שנה אנחנו מובילים את שוק הנדל"ן בגוש דן עם מעטפת שיווקית מושלמת. המותג שהפך לסינונים למצוינות בשיווק נדל"ן ברמה הגבוהה ביותר.
+          </p>
         </div>
         
-        <div class="dev-content">
-          <!-- Hero Section -->
-          <div class="dev-hero">
-            <h1 class="dev-title">Quantum Marketing Hub</h1>
-            <p class="dev-subtitle">
-              המערכת השיווקית המתקדמת ביותר בנדל"ן. הבחירה הטבעית של יזמים מובילים
-            </p>
-          </div>
-          
+        <div class="main-content">
           <!-- Vision & Mission -->
           <div class="vision-mission">
-            <div class="vision-card">
-              <h3 class="card-title">🎯 החזון שלנו</h3>
-              <p class="card-content">
-                עשרות יזמים חוו את האימפקט הייחודי של מעטפת השיווק 360°. מהיעוץ הראשוני ועד סגירת העסקה - אנחנו מקפים את הפרויקט שלך ברשת שיווקית רב-ממדית.
+            <div class="bracket-block">
+              <h3 class="bracket-title">חזון</h3>
+              <p class="bracket-content">
+                להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל"ניים שמגדירים מחדש את הסטנדרט בתחום.
               </p>
             </div>
             
-            <div class="mission-card">
-              <h3 class="card-title">🚀 המשימה שלנו</h3>
-              <p class="card-content">
-                לרתום את המנוע השיווקי הייחודי שלנו ליצירת סיפור ההצלחה הנדל"ני הבא עבורכם. כל פרויקט הוא משימה קוונטית חדשה.
+            <div class="bracket-block">
+              <h3 class="bracket-title">משימה</h3>
+              <p class="bracket-content">
+                לרתום את המערכת השיווקית הייחודית שלנו ליצירת הפרויקט המצליח הבא שלכם. כל עסקה היא התחייבות אישית למצוינות.
               </p>
             </div>
           </div>
           
           <!-- Stats Section -->
-          <div class="stats-grid">
-            <div class="stat-item">
-              <span class="stat-number">360°</span>
-              <span class="stat-label">מעטפת שיווקית</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">28</span>
-              <span class="stat-label">שנות ניסיון</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">∞</span>
-              <span class="stat-label">פוטנציאל גידול</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">100%</span>
-              <span class="stat-label">התמקדות בתוצאות</span>
-            </div>
-          </div>
-          
-          <!-- Service Sections -->
-          <div class="service-sections">
-            <div class="section-header">
-              <h2 class="section-title">מערכת השיווק המושלמת</h2>
-            </div>
-            
-            <div class="service-grid">
-              <div class="service-card">
-                <span class="service-icon">🧠</span>
-                <h3 class="service-name">אינטליגנציה שיווקית</h3>
-                <p class="service-description">
-                  מחקר שוק מעמיק, מיפוי מתחרים וזיהוי מאפייני הצלחה ייחודיים. אנחנו מטשטשים גבולות ביקוש ומאתגרים מחירי שוק.
-                </p>
+          <div class="stats-section">
+            <h2 class="section-title">במספרים</h2>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">₪5B+</span>
+                <span class="stat-label">סך עסקאות</span>
               </div>
-              
-              <div class="service-card">
-                <span class="service-icon">⚡</span>
-                <h3 class="service-name">כוח מכירות עליון</h3>
-                <p class="service-description">
-                  בסיס נתונים של אלפי לקוחות פוטנציאליים, משרד מכירות יוקרתי בגוש דן וצוות מומחי נדל"ן עם רקע אקדמי.
-                </p>
+              <div class="stat-item">
+                <span class="stat-number">5,000+</span>
+                <span class="stat-label">לקוחות מרוצים</span>
               </div>
-              
-              <div class="service-card">
-                <span class="service-icon">👥</span>
-                <h3 class="service-name">הון אנושי מובחר</h3>
-                <p class="service-description">
-                  יחידה מובחרת העובדת סביב השעון על הפרויקט. אנשים עם שאיפה למצוינות ותשוקה בלתי-נדלית למקצוע.
-                </p>
+              <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">פרויקטים פעילים</span>
               </div>
-              
-              <div class="service-card">
-                <span class="service-icon">📊</span>
-                <h3 class="service-name">ניהול דאטה מתקדם</h3>
-                <p class="service-description">
-                  מערכת ייחודית למעקב וניהול לקוחות, דוחות שקופים, ניתוח מדיה מדויק וליווי עד סגירת העסקה.
-                </p>
-              </div>
-              
-              <div class="service-card">
-                <span class="service-icon">🔬</span>
-                <h3 class="service-name">מחקר מתקדם</h3>
-                <p class="service-description">
-                  בדיקה מעמיקה של רמות מחירים, מיפוי מתחרים, פילוח קהלי יעד וזיהוי הערך המוסף הייחודי לפרויקט.
-                </p>
-              </div>
-              
-              <div class="service-card">
-                <span class="service-icon">🎨</span>
-                <h3 class="service-name">מיתוג קוונטי</h3>
-                <p class="service-description">
-                  עבודה עם חברות המיתוג המובילות בנדל"ן, תכנון מפרט אופטימלי ויצירת חוויית רכישה מותאמת אישית.
-                </p>
+              <div class="stat-item">
+                <span class="stat-number">250+</span>
+                <span class="stat-label">נכסים משווקים</span>
               </div>
             </div>
           </div>
           
-          <!-- CTA Section -->
-          <div class="cta-section">
-            <h2 style="color: #00d4ff; font-size: 2.2rem; margin-bottom: 1rem;">מוכנים לשינוי קוונטי?</h2>
-            <p style="color: #b3e5fc; font-size: 1.1rem; margin-bottom: 2rem;">
-              הצטרפו לעשרות היזמים שכבר חוו את כוח המערכת השיווקית שלנו
-            </p>
-            <button class="cta-button" data-modal="contact">
-              🚀 בואו נתחיל את המהפכה
-            </button>
+          <!-- Flagship Projects -->
+          <div class="projects-section">
+            <h2 class="section-title">פרויקטי דגל</h2>
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-image">יצחק שדה 3</div>
+                <div class="project-caption">יצחק שדה 3, גבעתיים - מכר תוך 6 חודשים</div>
+              </div>
+              <div class="project-card">
+                <div class="project-image">יצחק שדה 5</div>
+                <div class="project-caption">יצחק שדה 5, גבעתיים - רמת תשואה יוצאת דופן</div>
+              </div>
+              <div class="project-card">
+                <div class="project-image">יצחק שדה 7</div>
+                <div class="project-caption">יצחק שדה 7, גבעתיים - שיא מכירות באזור</div>
+              </div>
+            </div>
           </div>
+          
+          <!-- 360° Service Model -->
+          <div class="service-model">
+            <h2 class="section-title">מודל השירות 360°</h2>
+            <div class="pillars-grid">
+              <div class="pillar-bracket">
+                <h3 class="pillar-title">רובד שיווקי</h3>
+                <p class="pillar-content">
+                  מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.<br>
+                  אסטרטגיה שיווקית מדויקת המותאמת לפרויקט.
+                </p>
+              </div>
+              
+              <div class="pillar-bracket">
+                <h3 class="pillar-title">רובד מכירתי</h3>
+                <p class="pillar-content">
+                  צוות מכירות מומחה ומשרד מכירות יוקרתי.<br>
+                  בסיס נתונים של אלפי לקוחות פוטנציאליים.
+                </p>
+              </div>
+              
+              <div class="pillar-bracket">
+                <h3 class="pillar-title">רובד אנושי</h3>
+                <p class="pillar-content">
+                  הון אנושי יוצא דופן עם שאיפה למצוינות.<br>
+                  יחידה מובחרת העובדת סביב השעון על הפרויקט.
+                </p>
+              </div>
+              
+              <div class="pillar-bracket">
+                <h3 class="pillar-title">רובד ניהולי</h3>
+                <p class="pillar-content">
+                  מערכת ניהול ומעקב מתקדמת אחר כל לקוח.<br>
+                  דוחות שקופים וליווי עד סגירת העסקה.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Marketing System -->
+          <div class="marketing-system">
+            <h2 class="section-title">מערכת השיווק</h2>
+            <div class="steps-container">
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">01</div>
+                  <div class="step-title">מחקר שוק</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    בדיקה מעמיקה של רמות המחירים באזור, מיפוי המתחרים בהווה ובעתיד, פילוח ואיפיון קהלי היעד. זיהוי הערך המוסף הייחודי של הפרויקט והתנגדויות פוטנציאליות.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">02</div>
+                  <div class="step-title">אסטרטגיה שיווקית</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    בניית תוכנית שיווקית מותאמת הכוללת עלויות שיווק ופרסום, צוות מכירות מתאים, יעדי מכירה ולוחות זמנים. הגדרת אופי וסוג הפרסום האופטימלי.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">03</div>
+                  <div class="step-title">תכנון מוצר</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    תכנון המפרט, מאפייני הבניין ותמהיל הדירות הנכונים ביותר להצלחת הפרויקט בשיתוף היזם והאדריכל.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">04</div>
+                  <div class="step-title">מיתוג ופרסום</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    עבודה עם חברות המיתוג המובילות בנדל"ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">05</div>
+                  <div class="step-title">ניהול מכירות</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    העברת הפרויקט לצוות מכירות מוכשר לאחר תהליך חפיפה מעמיק וכלים מתקדמים לטיפול בהתנגדויות.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-header" onclick="toggleStep(this)">
+                  <div class="step-number">06</div>
+                  <div class="step-title">ניהול שוטף ובקרה</div>
+                  <div class="step-toggle">+</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-description">
+                    מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <h2 class="cta-title">בואו נבנה את סיפור ההצלחה הבא</h2>
+          <button class="cta-button" data-modal="contact">
+            הצטרפו ליזמים שכבר איתנו
+          </button>
         </div>
       </div>
       
       <script>
-        // Create floating particles animation on load
-        document.addEventListener('DOMContentLoaded', function() {
-          const particleContainer = document.querySelector('.dev-particles');
-          if (particleContainer) {
-            // Add extra particles for enhanced effect
-            for (let i = 0; i < 15; i++) {
-              const particle = document.createElement('div');
-              particle.className = 'dev-particle';
-              particle.style.left = Math.random() * 100 + '%';
-              particle.style.animationDuration = (8 + Math.random() * 12) + 's';
-              particle.style.animationDelay = '-' + Math.random() * 10 + 's';
-              particleContainer.appendChild(particle);
+        function toggleStep(header) {
+          const content = header.nextElementSibling;
+          const toggle = header.querySelector('.step-toggle');
+          const isExpanded = content.classList.contains('expanded');
+          
+          // Close all other steps
+          document.querySelectorAll('.step-content.expanded').forEach(item => {
+            if (item !== content) {
+              item.classList.remove('expanded');
+              item.previousElementSibling.querySelector('.step-toggle').textContent = '+';
             }
+          });
+          
+          // Toggle current step
+          if (isExpanded) {
+            content.classList.remove('expanded');
+            toggle.textContent = '+';
+          } else {
+            content.classList.add('expanded');
+            toggle.textContent = '−';
           }
-        });
+        }
       </script>
     `,
   },
