@@ -639,6 +639,7 @@ const modalContents = {
               id="timelineToggleBtn"
               aria-controls="timelineContainer"
               aria-expanded="false"
+              onclick="toggleTimeline(this)"
             >
               🕐 חקור את מסלול הזמן שלנו
             </button>
@@ -729,25 +730,18 @@ const modalContents = {
           }
         })();
 
-        // Timeline toggle – single handler, ARIA-friendly
-        document.addEventListener('DOMContentLoaded', function () {
-          const timeline = document.getElementById('timelineContainer');
-          const button = document.getElementById('timelineToggleBtn');
-          if (!timeline || !button) return;
+        // Robust, scoped toggle — works even when content is injected later
+        window.toggleTimeline = function (btn) {
+          if (!btn) return;
+          // scope to the nearest about-content so multiple modals/instances don't clash
+          const scope = btn.closest('.about-content') || document;
+          const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
+          if (!timeline) return;
 
-          function updateUI() {
-            const isVisible = timeline.classList.contains('visible');
-            button.setAttribute('aria-expanded', String(isVisible));
-            button.innerHTML = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
-          }
-
-          button.addEventListener('click', function () {
-            timeline.classList.toggle('visible');
-            updateUI();
-          });
-
-          updateUI();
-        });
+          const isVisible = timeline.classList.toggle('visible');
+          btn.setAttribute('aria-expanded', String(isVisible));
+          btn.innerHTML = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
+        };
       </script>
     `,
   },
