@@ -2133,6 +2133,7 @@ const modalContents = {
                   בניית תוכנית שיווקית מותאמת-דאטה, הכוללת תקציבי פרסום מדויקים, הקצאת צוותי מכירה ייעודיים, KPI’s ברורים ולוחות זמנים דינמיים. הגדרת אופי וסוג הפרסום מבוססי אנליטיקה.
               </div>
             </div>
+            </div>
             
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
