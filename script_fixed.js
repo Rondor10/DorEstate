@@ -951,7 +951,8 @@ const modalContents = {
           <div class="cta-section">
             <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">Experience The Future</h2>
             <p style="color: #b8d8b8; margin-bottom: 2rem;">
-              מוכנים לחוות את הדור הבא של שירותי הנדל"ן? בואו נראה איך הטכנולוגיה שלנו יכולה לשנות את הכללים עבורכם.
+              מוכנים לחוות את הדור הבא של שירותי הנדל"ן? <br>
+               בואו נראה איך הטכנולוגיה שלנו יכולה לשנות את הכללים עבורכם.
             </p>
             <button class="quantum-cta-services" data-modal="team" type="button">
               <i class="fas fa-users" style="margin-left: 0.5rem;"></i>
@@ -1943,7 +1944,8 @@ const modalContents = {
       <div class="background-section">
         <h1 class="background-title">קבוצת דור נכסים</h1>
         <p class="background-text">
-מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה. מותג שהפך לשם נרדף לאיכות ולתוצאות.        </p>
+        מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה ומגוונת.
+        </p>
       </div>
       
       <div class="main-content">
@@ -2070,15 +2072,15 @@ const modalContents = {
           <h2 class="section-title">מודל השירות 360°</h2>
           <div class="pillars-grid">
             <div class="pillar-bracket">
-              <h3 class="pillar-title">רובד שיווקי</h3>
+              <h3 class="pillar-title">שיווק קוונטי</h3>
               <p class="pillar-content">
-                מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.
-                אסטרטגיה שיווקית מדויקת המותאמת לפרויקט.
+              מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.
+              אסטרטגיה שיווקית מדויקת המותאמת לפרויקט, לעידן ה-AI ולעולם ה-Big Data.
               </p>
             </div>
             
             <div class="pillar-bracket">
-              <h3 class="pillar-title">רובד מכירתי</h3>
+              <h3 class="pillar-title">תשתית טרנזקציות</h3>
               <p class="pillar-content">
                 צוות מכירות מומחה ומשרד מכירות יוקרתי.
                 בסיס נתונים של אלפי לקוחות פוטנציאליים.
@@ -2086,15 +2088,15 @@ const modalContents = {
             </div>
             
             <div class="pillar-bracket">
-              <h3 class="pillar-title">רובד אנושי</h3>
+              <h3 class="pillar-title">קפיטל אנושי</h3>
               <p class="pillar-content">
-                הון אנושי יוצא דופן עם שאיפה למצוינות.
+                מעטפת אינטלקטואלית יוצאת דופן עם שאיפה למצוינות.
                 יחידה מובחרת העובדת סביב השעון על הפרויקט.
               </p>
             </div>
             
             <div class="pillar-bracket">
-              <h3 class="pillar-title">רובד ניהולי</h3>
+              <h3 class="pillar-title">אופטימיזציית תהליכים</h3>
               <p class="pillar-content">
                 מערכת ניהול ומעקב מתקדמת אחר כל לקוח.
                 דוחות שקופים וליווי עד סגירת העסקה.
@@ -2110,7 +2112,7 @@ const modalContents = {
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">01</div>
-                <div class="step-title">מחקר שוק</div>
+                <div class="step-title">איתור הזדמנויות</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
@@ -2123,20 +2125,19 @@ const modalContents = {
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">02</div>
-                <div class="step-title">אסטרטגיה שיווקית</div>
+                <div class="step-title">בניית אסטרטגיה</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
-                <div class="step-description">
-                  בניית תוכנית שיווקית מותאמת הכוללת עלויות שיווק ופרסום, צוות מכירות מתאים, יעדי מכירה ולוחות זמנים. הגדרת אופי וסוג הפרסום האופטימלי.
-                </div>
+                <div class="step-description">  
+                  בניית תוכנית שיווקית מותאמת-דאטה, הכוללת תקציבי פרסום מדויקים, הקצאת צוותי מכירה ייעודיים, KPI’s ברורים ולוחות זמנים דינמיים. הגדרת אופי וסוג הפרסום מבוססי אנליטיקה.
               </div>
             </div>
             
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">03</div>
-                <div class="step-title">תכנון מוצר</div>
+                <div class="step-title">אפיון מעמיק</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
@@ -2149,7 +2150,7 @@ const modalContents = {
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">04</div>
-                <div class="step-title">מיתוג ופרסום</div>
+                <div class="step-title">עיצוב זהות חזותית</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
@@ -2162,7 +2163,7 @@ const modalContents = {
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">05</div>
-                <div class="step-title">ניהול מכירות</div>
+                <div class="step-title">אקסלרציית מכירות</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
@@ -2175,12 +2176,12 @@ const modalContents = {
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
                 <div class="step-number">06</div>
-                <div class="step-title">ניהול שוטף ובקרה</div>
+                <div class="step-title">ניהול ביצועים</div>
                 <div class="step-toggle">+</div>
               </div>
               <div class="step-content">
                 <div class="step-description">
-                  מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה.
+                  מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה. ניתוח בזמן אמת של כל נתוני המכירה.
                 </div>
               </div>
             </div>
