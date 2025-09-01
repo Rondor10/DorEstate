@@ -2471,16 +2471,18 @@ const modalContents = {
       
       .stats-section {
         margin: 2rem 0;
+        width: 100%;
       }
       
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr); /* still 4 columns */
         gap: 1.5rem;
-        margin: 2rem auto;
-        max-width: 1000px;
-        width: 100%;
-        padding: 0;
+        margin: 2rem 0;              /* remove auto-centering */
+        width: 100%;                 /* take full container width */
+        max-width: none;             /* remove the 1000px cap */
+        padding: 0 2rem;             /* optional: add side padding */
+        direction: rtl;              /* align grid cells rightwards */
       }
       
       @media (max-width: 768px) {
