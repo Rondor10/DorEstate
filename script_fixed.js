@@ -181,15 +181,15 @@ const modalContents = {
   about: {
     title: "Legacy Protocol | פרוטוקול המורשת",
     content: `
-      <style>
+          <style>
         .quantum-about {
           background: linear-gradient(135deg, #0f1419 0%, #1a1e2e 25%, #252b3d 50%, #1a1e2e 75%, #0f1419 100%);
           color: #ffffff;
           position: relative;
           overflow: hidden;
           padding: 0;
-          margin: -2rem;
-          min-height: 90vh;
+          margin: 0;
+          min-height: 100vh;
           direction: rtl;
           font-family: 'Heebo', Arial, sans-serif;
         }
@@ -606,7 +606,6 @@ const modalContents = {
             transition: none !important;
           }
         }
-
       </style>
       
       <div class="quantum-about">
@@ -639,7 +638,6 @@ const modalContents = {
               id="timelineToggleBtn"
               aria-controls="timelineContainer"
               aria-expanded="false"
-              onclick="toggleTimeline(this)"
             >
               🕐 חקור את מסלול הזמן שלנו
             </button>
@@ -715,33 +713,75 @@ const modalContents = {
         </div>
       </div>
       
-        <script>
-        // Create floating particles (unchanged)
-        (function() {
+      <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+          // Create floating particles
           const particlesContainer = document.querySelector('.about-particles');
-          if (!particlesContainer) return;
-          for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'about-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 12 + 's';
-            particle.style.animationDuration = (12 + Math.random() * 8) + 's';
-            particlesContainer.appendChild(particle);
+          if (particlesContainer) {
+            for (let i = 0; i < 30; i++) {
+              const particle = document.createElement('div');
+              particle.className = 'about-particle';
+              particle.style.left = Math.random() * 100 + '%';
+              particle.style.animationDelay = Math.random() * 12 + 's';
+              particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+              particlesContainer.appendChild(particle);
+            }
           }
-        })();
 
-        // Robust, scoped toggle — works even when content is injected later
-        window.toggleTimeline = function (btn) {
-          if (!btn) return;
-          // scope to the nearest about-content so multiple modals/instances don't clash
-          const scope = btn.closest('.about-content') || document;
-          const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
-          if (!timeline) return;
+          // Enhanced timeline toggle function
+          function toggleTimeline(btn) {
+            if (!btn) return;
+            
+            console.log('Toggle button clicked'); // Debug log
+            
+            // Find the timeline container
+            const scope = btn.closest('.about-content') || document;
+            const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
+            
+            if (!timeline) {
+              console.error('Timeline container not found'); // Debug log
+              return;
+            }
 
-          const isVisible = timeline.classList.toggle('visible');
-          btn.setAttribute('aria-expanded', String(isVisible));
-          btn.innerHTML = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
-        };
+            console.log('Timeline found, toggling visibility'); // Debug log
+            
+            const isVisible = timeline.classList.toggle('visible');
+            btn.setAttribute('aria-expanded', String(isVisible));
+            btn.textContent = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
+            
+            console.log('Timeline visibility:', isVisible); // Debug log
+          }
+
+          // Attach event listener to timeline button
+          const timelineButton = document.querySelector('#timelineToggleBtn');
+          if (timelineButton) {
+            console.log('Timeline button found, attaching event listener');
+            timelineButton.addEventListener('click', function() {
+              toggleTimeline(this);
+            });
+          } else {
+            console.error('Timeline button not found');
+          }
+
+          // Make function globally available for inline onclick (backup)
+          window.toggleTimeline = toggleTimeline;
+        });
+
+        // Alternative approach - use event delegation for dynamically loaded content
+        document.addEventListener('click', function(event) {
+          if (event.target && event.target.id === 'timelineToggleBtn') {
+            const btn = event.target;
+            const scope = btn.closest('.about-content') || document;
+            const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
+            
+            if (timeline) {
+              const isVisible = timeline.classList.toggle('visible');
+              btn.setAttribute('aria-expanded', String(isVisible));
+              btn.textContent = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
+            }
+          }
+        });
       </script>
     `,
   },
@@ -3587,8 +3627,9 @@ const modalContents = {
               `,
   },
 
-  // UNUSED CATEGORIES (for future use)
+  //////////// UNUSED CATEGORIES (for future use)
 
+  // מאגר ידע  
   knowledge: {
     title: 'רגע של נדל"ן',
     content: `
@@ -3628,6 +3669,7 @@ const modalContents = {
             </div>
         `,
   },
+  // הנבחרים שלנו
   picks: {
     title: "הנבחרים שלנו",
     content: `
@@ -3856,6 +3898,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Event Listeners
 
+// Initialize all event listeners
 function initializeEventListeners() {
   // Modal triggers
   document.querySelectorAll("[data-modal]").forEach((trigger) => {
@@ -3905,6 +3948,7 @@ function initializeEventListeners() {
   });
 }
 
+// Contact Form Handling
 function initContactForm(scope = document) {
   const form = scope.querySelector("#contactForm");
   if (!form) return;
@@ -3999,6 +4043,7 @@ function openModal(type) {
   }
 }
 
+// Close modal
 function closeModal() {
   modalOverlay.classList.remove("active");
   document.body.style.overflow = ""; // instead of "hidden"
@@ -4020,6 +4065,7 @@ function startOnboarding() {
 
 let lastStepType = null;
 
+// Firebase Recaptcha and Phone Auth Setup
 function teardownRecaptcha() {
   if (window.recaptchaVerifier?.clear) {
     try {
@@ -4030,6 +4076,7 @@ function teardownRecaptcha() {
   recaptchaWidgetId = null;
 }
 
+// Initialize Firebase Phone Auth
 function closeOnboarding() {
   teardownRecaptcha();
   onboardingOverlay.classList.remove("active");
@@ -4038,6 +4085,7 @@ function closeOnboarding() {
   }, 300);
 }
 
+// Load a specific step by index
 function loadStep(stepIndex) {
   const step = onboardingSteps[stepIndex];
   if (!step) return;
@@ -4102,6 +4150,7 @@ function loadStep(stepIndex) {
   }, 50);
 }
 
+// Add listeners to option cards for selection
 function addOptionListeners() {
   const optionCards = document.querySelectorAll(".option-card");
 
@@ -4137,6 +4186,7 @@ function addOptionListeners() {
     });
 }
 
+// Navigation between steps
 function previousStep() {
   if (currentStep > 0) {
     currentStep--;
@@ -4144,6 +4194,7 @@ function previousStep() {
   }
 }
 
+// Next step with validation
 function nextStep() {
   saveStepData();
   const next = currentStep + 1;
@@ -4161,6 +4212,7 @@ function nextStep() {
   }
 }
 
+// Save data from the current step
 function saveStepData() {
   const stepType = onboardingSteps[currentStep].type;
 
@@ -4205,6 +4257,7 @@ function saveUserData() {
   localStorage.setItem("dorRealEstate_userData", JSON.stringify(userData));
 }
 
+// Load user data from localStorage
 function loadUserData() {
   const saved = localStorage.getItem("dorRealEstate_userData");
   if (saved) {
@@ -4227,6 +4280,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupSubmenus(); // הפונקציה החדשה לתפריטים
 });
 
+// === Navigation Submenus ===
 function setupSubmenus() {
   const toggles = document.querySelectorAll(".main-nav .has-submenu > a");
 
@@ -4416,6 +4470,7 @@ function initAccessibilityToolbar() {
   if (panel.hidden) links().forEach((b) => b.setAttribute("tabindex", "-1"));
 }
 
+//  === About Timeline ===
 function initAboutTimeline() {
   const list = document.getElementById("aboutTlList");
   if (!list) return;
@@ -4442,6 +4497,7 @@ function initAboutTimeline() {
   });
 }
 
+//  === Services Timeline ===
 function initServicesTimeline() {
   const rail = document.getElementById("servicesTlList");
   if (!rail) return;
@@ -4569,6 +4625,7 @@ function hebTypeToSlug(t) {
   return map[t] || "";
 }
 
+// Map Hebrew UI -> DB slugs
 function hebAreaToSlug(a) {
   const map = {
     "תל אביב": "tel-aviv",
@@ -4578,6 +4635,7 @@ function hebAreaToSlug(a) {
   return map[a] || "";
 }
 
+// Initialize the Assets Modal with search functionality
 function initAssetsModal(scope) {
   const typeSel = scope.querySelector("#assetTypeSelect");
   const areaSel = scope.querySelector("#assetAreaSelect");
@@ -4733,6 +4791,7 @@ const MANIFEST_URL = '/manifest.json';
 
 let IMG_MANIFEST = null;
 
+// Load and cache the manifest.json file
 async function loadManifest() {
   if (IMG_MANIFEST) return IMG_MANIFEST;
   try {
@@ -4746,6 +4805,7 @@ async function loadManifest() {
   return IMG_MANIFEST;
 }
 
+// Build URLs from a manifest entry
 function urlsFromManifestEntry(propId, entry) {
   const base = `/prop_pics/${propId}`;
   const ext  = entry.ext;
@@ -5139,6 +5199,7 @@ function ensureUIRoot() {
   return toast;
 }
 
+// kind: "info" | "error" | "success"
 function showToast(message, kind = "info") {
   ensureUIRoot();
   const container = document.getElementById("toastContainer");
@@ -5165,6 +5226,7 @@ function showToast(message, kind = "info") {
   }, 3500);
 }
 
+// Inline error under form (singleton)
 function ensureInlineError(hostSelector = "#onboardingContent") {
   // Attach a single shared inline error under your onboarding content
   const host = document.querySelector(hostSelector) || document.body;
@@ -5178,12 +5240,14 @@ function ensureInlineError(hostSelector = "#onboardingContent") {
   return err;
 }
 
+// Show or hide inline error message
 function showInlineError(msg, hostSelector) {
   const el = ensureInlineError(hostSelector);
   el.textContent = msg || "";
   el.style.display = msg ? "block" : "none";
 }
 
+// Set button loading state (disable + spinner)
 function setLoading(btn, isLoading) {
   if (!btn) return;
   btn.disabled = !!isLoading;
