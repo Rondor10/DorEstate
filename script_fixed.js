@@ -2069,7 +2069,7 @@ const modalContents = {
         
         <!-- 360° Service Model -->
         <div class="service-model">
-          <h2 class="section-title">מודל השירות 360°</h2>
+          <h2 class="section-title">מודל 360°</h2>
           <div class="pillars-grid">
             <div class="pillar-bracket">
               <h3 class="pillar-title">שיווק קוונטי</h3>
@@ -2107,7 +2107,7 @@ const modalContents = {
         
         <!-- Marketing System -->
         <div class="marketing-system">
-          <h2 class="section-title">מערכת השיווק</h2>
+          <h2 class="section-title">מתודולוגיית השיווק</h2>
           <div class="steps-container">
             <div class="step-item">
               <div class="step-header" onclick="toggleStep(this)">
