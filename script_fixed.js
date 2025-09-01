@@ -2360,7 +2360,7 @@ const modalContents = {
         `,
   },
   assets: {
-    title: "פורטל יזמים",
+    title: "ליזמים",
     content: `
       <style>
         .developer-portal {
@@ -2410,7 +2410,7 @@ const modalContents = {
         }
         
         .main-content {
-          padding: 3rem 2rem;
+          padding: 0rem 2rem;
           max-width: 1200px;
           margin: 0 auto;
         }
@@ -2738,8 +2738,7 @@ const modalContents = {
         <div class="background-section">
           <h1 class="background-title">קבוצת דור נכסים</h1>
           <p class="background-text">
-            במשך 28 שנה אנחנו מובילים את שוק הנדל"ן בגוש דן עם מעטפת שיווקית מושלמת. המותג שהפך לסינונים למצוינות בשיווק נדל"ן ברמה הגבוהה ביותר.
-          </p>
+מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה. מותג שהפך לשם נרדף לאיכות ולתוצאות.          </p>
         </div>
         
         <div class="main-content">
