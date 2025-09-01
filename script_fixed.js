@@ -2782,7 +2782,7 @@ const modalContents = {
         font-weight: 800;
         color: white;
         margin-bottom: 1rem;
-        margin-top: -1rem;
+        margin-top: -2rem;
       }
       
       .cta-button {
