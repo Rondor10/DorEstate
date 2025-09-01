@@ -3192,59 +3192,6 @@ const modalContents = {
           }, 3000);
         }
         
-        function copyToClipboard(text) {
-          navigator.clipboard.writeText(text).then(() => {
-            showCopySuccess("כתובת הועתקה ללוח");
-          }).catch(() => {
-            showCopySuccess("כתובת: " + text);
-          });
-        }
-        
-        function callPhone(phone) {
-          window.open('tel:' + phone, '_self');
-        }
-        
-        function sendEmail(email) {
-          window.open('mailto:' + email + '?subject=פנייה מאתר DorEstate', '_blank');
-        }
-        
-        function openWhatsApp(phone) {
-          const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
-          window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
-        }
-        
-        function showCopySuccess(message) {
-          const copyMsg = document.createElement("div");
-          copyMsg.style.cssText = 
-            "position: fixed;" +
-            "top: 20px;" +
-            "right: 20px;" +
-            "background: linear-gradient(45deg, #00bcd4, #4fc3f7);" +
-            "color: white;" +
-            "padding: 0.8rem 1.5rem;" +
-            "border-radius: 10px;" +
-            "box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);" +
-            "z-index: 1002;" +
-            "font-weight: 500;" +
-            "opacity: 0;" +
-            "transform: translateX(100px);" +
-            "transition: all 0.3s ease;";
-          copyMsg.textContent = message;
-          document.body.appendChild(copyMsg);
-          
-          // Show message
-          setTimeout(() => {
-            copyMsg.style.opacity = "1";
-            copyMsg.style.transform = "translateX(0)";
-          }, 100);
-          
-          // Hide and remove message
-          setTimeout(() => {
-            copyMsg.style.opacity = "0";
-            copyMsg.style.transform = "translateX(100px)";
-            setTimeout(() => document.body.removeChild(copyMsg), 300);
-          }, 2500);
-        }
         
         // Add real-time validation styling
         document.addEventListener('DOMContentLoaded', function() {
@@ -3594,6 +3541,59 @@ const modalContents = {
         `,
   }
 };
+
+// Global contact functions
+window.callPhone = function(phone) {
+  window.open('tel:' + phone, '_self');
+};
+
+window.sendEmail = function(email) {
+  window.open('mailto:' + email + '?subject=פנייה מאתר DorEstate', '_blank');
+};
+
+window.openWhatsApp = function(phone) {
+  const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
+  window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
+};
+
+window.copyToClipboard = function(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showCopySuccess("כתובת הועתקה ללוח");
+  }).catch(() => {
+    showCopySuccess("כתובת: " + text);
+  });
+};
+
+function showCopySuccess(message) {
+  const copyMsg = document.createElement("div");
+  copyMsg.style.cssText = 
+    "position: fixed;" +
+    "top: 20px;" +
+    "right: 20px;" +
+    "background: linear-gradient(45deg, #00bcd4, #4fc3f7);" +
+    "color: white;" +
+    "padding: 0.8rem 1.5rem;" +
+    "border-radius: 10px;" +
+    "box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);" +
+    "z-index: 1002;" +
+    "font-weight: 500;" +
+    "opacity: 0;" +
+    "transform: translateX(100px);" +
+    "transition: all 0.3s ease;";
+  copyMsg.textContent = message;
+  document.body.appendChild(copyMsg);
+  
+  setTimeout(() => {
+    copyMsg.style.opacity = "1";
+    copyMsg.style.transform = "translateX(0)";
+  }, 100);
+  
+  setTimeout(() => {
+    copyMsg.style.opacity = "0";
+    copyMsg.style.transform = "translateX(100px)";
+    setTimeout(() => document.body.removeChild(copyMsg), 300);
+  }, 2500);
+}
 
 function initializeOnboardingSteps() {
   onboardingSteps = [
