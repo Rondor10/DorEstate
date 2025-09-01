@@ -2473,17 +2473,20 @@ const modalContents = {
         margin: 2rem 0;
         width: 100%;
       }
-      
+
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* still 4 columns */
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
-        margin: 2rem 0;              /* remove auto-centering */
-        width: 100%;                 /* take full container width */
-        max-width: none;             /* remove the 1000px cap */
-        padding: 0 2rem;             /* optional: add side padding */
-        direction: rtl;              /* align grid cells rightwards */
+        margin: 0;                 /* no auto-centering */
+        width: 100vw;              /* take the full viewport width */
+        max-width: 100%;           /* remove fixed cap */
+        padding: 0 2rem;           /* padding so boxes don’t touch edges */
+        box-sizing: border-box;    /* include padding in total width */
+        direction: rtl;            /* grid starts from the right */
+        justify-items: stretch;    /* each stat card fills its column */
       }
+
       
       @media (max-width: 768px) {
         .stats-grid { grid-template-columns: repeat(2, 1fr); }
