@@ -179,611 +179,492 @@ const modalContents = {
 
   // מורשת בכתב
   about: {
-    title: "Legacy Protocol | פרוטוקול המורשת",
-    content: `
-          <style>
-        .quantum-about {
-          background: linear-gradient(135deg, #0f1419 0%, #1a1e2e 25%, #252b3d 50%, #1a1e2e 75%, #0f1419 100%);
-          color: #ffffff;
-          position: relative;
-          overflow: hidden;
-          padding: 0;
-          margin: 0;
-          min-height: 100vh;
-          direction: rtl;
-          font-family: 'Heebo', Arial, sans-serif;
+  title: "Legacy Protocol | פרוטוקול המורשת",
+  content: `
+    <style>
+      .quantum-about {
+        background: linear-gradient(135deg, #0f1419 0%, #1a1e2e 25%, #252b3d 50%, #1a1e2e 75%, #0f1419 100%);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        margin: -2rem;
+        min-height: 90vh;
+        direction: rtl;
+        font-family: 'Heebo', Arial, sans-serif;
+      }
+      
+      .about-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      
+      .about-particle {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: #ff8c42;
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: aboutFloat 12s infinite linear;
+      }
+      
+      .about-particle:nth-child(2n) { 
+        background: #ff6b35; 
+        animation-delay: -3s; 
+        animation-duration: 15s;
+      }
+      .about-particle:nth-child(3n) { 
+        background: #ff9a56; 
+        animation-delay: -6s; 
+        animation-duration: 18s;
+      }
+      .about-particle:nth-child(4n) { 
+        background: #ffb377; 
+        animation-delay: -9s; 
+        animation-duration: 20s;
+      }
+      .about-particle:nth-child(5n) { 
+        background: #ff7a00; 
+        animation-delay: -2s; 
+        animation-duration: 14s;
+      }
+      
+      @keyframes aboutFloat {
+        0% { 
+          transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0); 
+          opacity: 0; 
         }
-        
-        .about-particles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 1;
+        15% { 
+          opacity: 0.4; 
+          transform: scale(1); 
         }
-        
-        .about-particle {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          background: #ff8c42;
-          border-radius: 50%;
-          opacity: 0.4;
-          animation: aboutFloat 12s infinite linear;
+        85% { 
+          opacity: 0.4; 
         }
-        
-        .about-particle:nth-child(2n) { 
-          background: #ff6b35; 
-          animation-delay: -3s; 
-          animation-duration: 15s;
+        100% { 
+          transform: translateY(-100px) translateX(15px) rotate(180deg) scale(0); 
+          opacity: 0; 
         }
-        .about-particle:nth-child(3n) { 
-          background: #ff9a56; 
-          animation-delay: -6s; 
-          animation-duration: 18s;
+      }
+      
+      .about-content {
+        position: relative;
+        z-index: 10;
+        padding: 3rem 2rem;
+        backdrop-filter: blur(3px);
+      }
+      
+      .about-hero {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .about-title {
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff7a00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        animation: aboutTitleGlow 6s infinite alternate;
+      }
+      
+      @keyframes aboutTitleGlow {
+        0% { 
+          transform: scale(1); 
+          filter: brightness(1) drop-shadow(0 0 5px rgba(255, 140, 66, 0.3)); 
         }
-        .about-particle:nth-child(4n) { 
-          background: #ffb377; 
-          animation-delay: -9s; 
-          animation-duration: 20s;
+        100% { 
+          transform: scale(1.02); 
+          filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 140, 66, 0.5)); 
         }
-        .about-particle:nth-child(5n) { 
-          background: #ff7a00; 
-          animation-delay: -2s; 
-          animation-duration: 14s;
-        }
-        
-        @keyframes aboutFloat {
-          0% { 
-            transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0); 
-            opacity: 0; 
-          }
-          15% { 
-            opacity: 0.4; 
-            transform: scale(1); 
-          }
-          85% { 
-            opacity: 0.4; 
-          }
-          100% { 
-            transform: translateY(-100px) translateX(15px) rotate(180deg) scale(0); 
-            opacity: 0; 
-          }
-        }
-        
-        .about-content {
-          position: relative;
-          z-index: 10;
-          padding: 3rem 2rem;
-          backdrop-filter: blur(3px);
-        }
-        
-        .about-hero {
-          text-align: center;
-          margin-bottom: 3rem;
-        }
-        
-        .about-title {
-          font-size: 3rem;
-          font-weight: 700;
-          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff7a00);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1.5rem;
-          animation: aboutTitleGlow 6s infinite alternate;
-        }
-        
-        @keyframes aboutTitleGlow {
-          0% { 
-            transform: scale(1); 
-            filter: brightness(1) drop-shadow(0 0 5px rgba(255, 140, 66, 0.3)); 
-          }
-          100% { 
-            transform: scale(1.02); 
-            filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 140, 66, 0.5)); 
-          }
-        }
-        
-        .about-subtitle {
-          font-size: 1.4rem;
-          color: #cbd5e1;
-          max-width: 800px;
-          margin: 0 auto 1rem auto;
-          line-height: 1.6;
-        }
-        
-        .legacy-story {
-          background: linear-gradient(135deg, rgba(255, 140, 66, 0.08), rgba(255, 107, 53, 0.05));
-          border: 2px solid rgba(255, 140, 66, 0.2);
-          border-radius: 20px;
-          padding: 2.5rem;
-          margin: 2rem 0 3rem 0;
-          backdrop-filter: blur(8px);
-          position: relative;
-          overflow: hidden;
-          transition: all 0.4s ease;
-        }
-        
-        .legacy-story:hover {
-          border-color: rgba(255, 140, 66, 0.4);
-          box-shadow: 0 10px 30px rgba(255, 140, 66, 0.15);
-        }
-        
-        .legacy-story::before {
-          content: '';
-          position: absolute;
-          top: -1px;
-          left: -1px;
-          right: -1px;
-          bottom: -1px;
-          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ff9a56, #ff8c42);
-          background-size: 300% 300%;
-          z-index: -1;
-          border-radius: 20px;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-          animation: aboutBorderGlow 8s ease-in-out infinite;
-        }
-        
-        .legacy-story:hover::before {
-          opacity: 0.3;
-        }
-        
-        @keyframes aboutBorderGlow {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
-        .story-text {
-          font-size: 1.1rem;
-          line-height: 1.8;
-          color: #e2e8f0;
-          margin-bottom: 1.2rem;
-          text-align: justify;
-        }
-        
-        .timeline-toggle {
-          text-align: center;
-          margin: 3rem 0;
-        }
-        
-        .timeline-button {
-          background: linear-gradient(45deg, #ff8c42, #ff6b35);
-          color: #ffffff;
-          border: none;
-          padding: 1.2rem 3rem;
-          font-size: 1.3rem;
-          font-weight: 600;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
-          position: relative;
-          overflow: hidden;
-        }
-        
-        .timeline-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.6s;
-        }
-        
-        .timeline-button:hover::before {
-          left: 100%;
-        }
-        
-        .timeline-button:hover {
-          transform: translateY(-3px) scale(1.05);
-          box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
-          background: linear-gradient(45deg, #ff6b35, #ff8c42);
-        }
-        
-        .quantum-timeline {
-          position: relative;
-          max-width: 1200px;
-          margin: 0 auto;
-          opacity: 0;
-          max-height: 0;
-          overflow: hidden;
-          transition: all 0.6s ease;
-        }
-        
-        .quantum-timeline.visible {
-          opacity: 1;
-          max-height: 3000px;
-          margin: 2rem auto;
-        }
-        
-        .timeline-header {
-          text-align: center;
-          margin-bottom: 3rem;
+      }
+      
+      .about-subtitle {
+        font-size: 1.4rem;
+        color: #cbd5e1;
+        max-width: 800px;
+        margin: 0 auto 1rem auto;
+        line-height: 1.6;
+      }
+      
+      .legacy-story {
+        background: linear-gradient(135deg, rgba(255, 140, 66, 0.08), rgba(255, 107, 53, 0.05));
+        border: 2px solid rgba(255, 140, 66, 0.2);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin: 2rem 0 3rem 0;
+        backdrop-filter: blur(8px);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+      
+      .legacy-story:hover {
+        border-color: rgba(255, 140, 66, 0.4);
+        box-shadow: 0 10px 30px rgba(255, 140, 66, 0.15);
+      }
+      
+      .legacy-story::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: linear-gradient(45deg, #ff8c42, #ff6b35, #ff9a56, #ff8c42);
+        background-size: 300% 300%;
+        z-index: -1;
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        animation: aboutBorderGlow 8s ease-in-out infinite;
+      }
+      
+      .legacy-story:hover::before {
+        opacity: 0.3;
+      }
+      
+      @keyframes aboutBorderGlow {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      
+      .story-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #e2e8f0;
+        margin-bottom: 1.2rem;
+        text-align: justify;
+      }
+      
+      .quantum-timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 2rem auto;
+        opacity: 1;
+      }
+      
+      .timeline-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .timeline-title {
+        font-size: 2.3rem;
+        font-weight: 600;
+        background: linear-gradient(45deg, #ff8c42, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+      
+      .timeline-container {
+        position: relative;
+      }
+      
+      .timeline-line {
+        position: absolute;
+        right: 50%;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #ff8c42, #ff6b35, #ff9a56);
+        transform: translateX(50%);
+        border-radius: 2px;
+        box-shadow: 0 0 15px rgba(255, 140, 66, 0.4);
+        opacity: 1;
+      }
+      
+      .timeline-item {
+        display: flex;
+        margin-bottom: 3rem;
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        animation: timelineSlideIn 0.8s ease-out forwards;
+      }
+      
+      .timeline-item:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      
+      .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+      .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+      .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+      .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+      .timeline-item:nth-child(5) { animation-delay: 1.0s; }
+      .timeline-item:nth-child(6) { animation-delay: 1.2s; }
+      
+      @keyframes timelineSlideIn {
+        from {
           opacity: 0;
           transform: translateY(30px);
-          transition: all 0.6s ease 0.2s;
         }
-        
-        .quantum-timeline.visible .timeline-header {
+        to {
           opacity: 1;
           transform: translateY(0);
         }
-        
-        .timeline-title {
-          font-size: 2.3rem;
-          font-weight: 600;
-          background: linear-gradient(45deg, #ff8c42, #ff6b35);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1rem;
-        }
-        
-        .timeline-container {
-          position: relative;
-        }
-        
-        .timeline-line {
-          position: absolute;
-          right: 50%;
-          top: 0;
-          bottom: 0;
-          width: 3px;
-          background: linear-gradient(to bottom, #ff8c42, #ff6b35, #ff9a56);
-          transform: translateX(50%);
-          border-radius: 2px;
-          box-shadow: 0 0 15px rgba(255, 140, 66, 0.4);
-          opacity: 0;
-          animation: lineAppear 0.8s ease-out 0.4s forwards;
-        }
-        
-        @keyframes lineAppear {
-          from {
-            opacity: 0;
-            transform: translateX(50%) scaleY(0);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(50%) scaleY(1);
-          }
-        }
-        
-        .timeline-item {
-          display: flex;
-          margin-bottom: 3rem;
-          position: relative;
-          opacity: 0;
-          transform: translateY(50px);
-          transition: all 0.6s ease;
-        }
-        
-        .timeline-item:nth-child(even) {
-          flex-direction: row-reverse;
-        }
-        
-        .quantum-timeline.visible .timeline-item:nth-child(1) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
-        .quantum-timeline.visible .timeline-item:nth-child(2) { transition-delay: 0.8s; opacity: 1; transform: translateY(0); }
-        .quantum-timeline.visible .timeline-item:nth-child(3) { transition-delay: 1.0s; opacity: 1; transform: translateY(0); }
-        .quantum-timeline.visible .timeline-item:nth-child(4) { transition-delay: 1.2s; opacity: 1; transform: translateY(0); }
-        .quantum-timeline.visible .timeline-item:nth-child(5) { transition-delay: 1.4s; opacity: 1; transform: translateY(0); }
-        .quantum-timeline.visible .timeline-item:nth-child(6) { transition-delay: 1.6s; opacity: 1; transform: translateY(0); }
-        
-        .timeline-content {
-          background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
-          border: 2px solid rgba(255, 140, 66, 0.2);
-          border-radius: 15px;
-          padding: 2rem;
-          width: 45%;
-          position: relative;
-          backdrop-filter: blur(8px);
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-        
-        .timeline-content:hover {
-          transform: scale(1.03) translateY(-8px);
-          border-color: rgba(255, 140, 66, 0.5);
-          box-shadow: 0 15px 35px rgba(255, 140, 66, 0.2);
-          background: linear-gradient(135deg, rgba(255, 140, 66, 0.15), rgba(255, 107, 53, 0.1));
-        }
-        
-        .timeline-dot {
-          position: absolute;
-          right: 50%;
-          top: 50%;
-          width: 16px;
-          height: 16px;
-          background: linear-gradient(45deg, #ff8c42, #ff6b35);
-          border-radius: 50%;
-          transform: translate(50%, -50%);
-          border: 3px solid rgba(255, 140, 66, 0.3);
-          box-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
-          z-index: 10;
-          transition: all 0.3s ease;
-        }
-        
-        .timeline-content:hover ~ .timeline-dot {
-          transform: translate(50%, -50%) scale(1.3);
-          box-shadow: 0 0 30px rgba(255, 140, 66, 0.8);
-        }
-        
-        .timeline-year {
-          font-size: 1.8rem;
-          font-weight: 700;
-          background: linear-gradient(45deg, #ff8c42, #ff6b35);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 0.5rem;
-          text-align: center;
-        }
-        
-        .timeline-milestone {
-          font-size: 1.4rem;
-          font-weight: 600;
-          color: #ff9a56;
-          margin-bottom: 1rem;
-          text-align: center;
-        }
-        
-        .timeline-description {
-          font-size: 1rem;
-          line-height: 1.6;
-          color: #cbd5e1;
-          text-align: center;
-        }
-        
-        .timeline-item.current .timeline-content {
-          background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(255, 107, 53, 0.15));
-          border-color: rgba(255, 140, 66, 0.6);
-          box-shadow: 0 0 40px rgba(255, 140, 66, 0.3);
-        }
-        
-        .timeline-item.current .timeline-dot {
-          background: linear-gradient(45deg, #ff8c42, #ffffff, #ff6b35);
-          animation: currentDotPulse 2s infinite;
-        }
-        
-        @keyframes currentDotPulse {
-          0%, 100% {
-            transform: translate(50%, -50%) scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 140, 66, 0.8);
-          }
-          50% {
-            transform: translate(50%, -50%) scale(1.4);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
-          }
-        }
-        
-        .legacy-footer {
-          text-align: center;
-          margin-top: 4rem;
-          padding: 2rem;
-        }
-        
-        .legacy-cta {
-          background: linear-gradient(45deg, #ff8c42, #ff6b35);
-          color: #ffffff;
-          border: none;
-          padding: 1rem 2.5rem;
-          font-size: 1.2rem;
-          font-weight: 600;
-          border-radius: 50px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-shadow: none;
-          box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
-        }
-        
-        .legacy-cta:hover {
-          transform: scale(1.08) translateY(-3px);
-          box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
-          background: linear-gradient(45deg, #ff6b35, #ff8c42);
-        }
-        
-        @media (max-width: 768px) {
-          .about-title { font-size: 2.2rem; }
-          .about-subtitle { font-size: 1.1rem; padding: 0 1rem; }
-          .timeline-line { display: none; }
-          .timeline-item { flex-direction: column !important; margin-bottom: 2rem; }
-          .timeline-content { width: 100%; margin: 0 auto; }
-          .timeline-dot { position: relative; right: auto; top: auto; margin: 1rem auto; transform: none; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .about-particle,
-          .timeline-button::before,
-          .timeline-line {
-            animation: none !important;
-            transition: none !important;
-          }
-          .quantum-timeline {
-            transition: none !important;
-          }
-        }
-      </style>
+      }
       
-      <div class="quantum-about">
-        <div class="about-particles"></div>
+      .timeline-content {
+        background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+        border: 2px solid rgba(255, 140, 66, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        width: 45%;
+        position: relative;
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .timeline-content:hover {
+        transform: scale(1.03) translateY(-8px);
+        border-color: rgba(255, 140, 66, 0.5);
+        box-shadow: 0 15px 35px rgba(255, 140, 66, 0.2);
+        background: linear-gradient(135deg, rgba(255, 140, 66, 0.15), rgba(255, 107, 53, 0.1));
+      }
+      
+      .timeline-dot {
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(45deg, #ff8c42, #ff6b35);
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+        border: 3px solid rgba(255, 140, 66, 0.3);
+        box-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+      
+      .timeline-content:hover ~ .timeline-dot {
+        transform: translate(50%, -50%) scale(1.3);
+        box-shadow: 0 0 30px rgba(255, 140, 66, 0.8);
+      }
+      
+      .timeline-year {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #ff8c42, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      
+      .timeline-milestone {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #ff9a56;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      .timeline-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+        text-align: center;
+      }
+      
+      .timeline-item.current .timeline-content {
+        background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(255, 107, 53, 0.15));
+        border-color: rgba(255, 140, 66, 0.6);
+        box-shadow: 0 0 40px rgba(255, 140, 66, 0.3);
+      }
+      
+      .timeline-item.current .timeline-dot {
+        background: linear-gradient(45deg, #ff8c42, #ffffff, #ff6b35);
+        animation: currentDotPulse 2s infinite;
+      }
+      
+      @keyframes currentDotPulse {
+        0%, 100% {
+          transform: translate(50%, -50%) scale(1.1);
+          box-shadow: 0 0 25px rgba(255, 140, 66, 0.8);
+        }
+        50% {
+          transform: translate(50%, -50%) scale(1.4);
+          box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+        }
+      }
+      
+      .legacy-footer {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 2rem;
+      }
+      
+      .legacy-cta {
+        background: linear-gradient(45deg, #ff8c42, #ff6b35);
+        color: #ffffff;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-shadow: none;
+        box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+      }
+      
+      .legacy-cta:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
+        background: linear-gradient(45deg, #ff6b35, #ff8c42);
+      }
+      
+      @media (max-width: 768px) {
+        .about-title { font-size: 2.2rem; }
+        .about-subtitle { font-size: 1.1rem; padding: 0 1rem; }
+        .timeline-line { display: none; }
+        .timeline-item { flex-direction: column !important; margin-bottom: 2rem; }
+        .timeline-content { width: 100%; margin: 0 auto; }
+        .timeline-dot { position: relative; right: auto; top: auto; margin: 1rem auto; transform: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .about-particle,
+        .timeline-line {
+          animation: none !important;
+          transition: none !important;
+        }
+        .quantum-timeline {
+          transition: none !important;
+        }
+      }
+    </style>
+    
+    <div class="quantum-about">
+      <div class="about-particles"></div>
+      
+      <div class="about-content">
+        <div class="about-hero">
+          <h1 class="about-title">הסיפור שלנו</h1>
+        </div>
         
-        <div class="about-content">
-          <div class="about-hero">
-            <h1 class="about-title">Legacy Protocol</h1>
-            <p class="about-subtitle">28 שנים של מצוינות בנדל"ן | הישגים מדויקים, חזון עתידני</p>
+        <div class="legacy-story">
+          <p class="story-text">
+            בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים.
+          </p>
+          <p class="story-text">
+            בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים. כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
+          </p>
+          <p class="story-text">
+            עבורנו, נדל"ן מהווה שליחות. המסע שלנו התחיל ברצון לגעת בכל אדם דרך האנרגיה הקיומית המרתקת של הנדל"ן, בתצורה של חיבור למרחב ההגשמה המדויק עבורו.
+          </p>
+          <p class="story-text">
+            בהמשך, אף להגשים את חזון בניין ארץ ישראל ולבנות בתים חדשים.
+          </p>
+          <p class="story-text">
+            למעשה, זו זכות להגיד כי אנו כאן.
+          </p>
+          <p class="story-text">
+            ענפים יותר, חדשניים יותר, חזקים יותר, והזרוע עוד נטויה.
+          </p>
+        </div>
+        
+        <div class="quantum-timeline">
+          <div class="timeline-header">
+            <h2 class="timeline-title">מסלול הזמן הקוונטי</h2>
           </div>
           
-          <div class="legacy-story">
-            <p class="story-text">
-              בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים. כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
-            </p>
-            <p class="story-text">
-              עבורנו, נדל"ן מהווה שליחות. המסע שלנו התחיל ברצון לגעת בכל אדם דרך האנרגיה הקיומית המרתקת של הנדל"ן, בתצורה של חיבור למרחב ההגשמה המדויק עבורו.
-            </p>
-            <p class="story-text">
-              בהמשך, אף להגשים את חזון בניין ארץ ישראל ולבנות בתים חדשים.
-            </p>
-            <p class="story-text">
-              למעשה, זו זכות להגיד כי אנו כאן. ענפים יותר, חדשניים יותר, חזקים יותר, והזרוע עוד נטויה.
-            </p>
-          </div>
-          
-          <div class="timeline-toggle">
-            <button
-              class="timeline-button"
-              id="timelineToggleBtn"
-              aria-controls="timelineContainer"
-              aria-expanded="false"
-            >
-              🕐 חקור את מסלול הזמן שלנו
-            </button>
-          </div>
-          
-          <div class="quantum-timeline" id="timelineContainer">
-            <div class="timeline-header">
-              <h2 class="timeline-title">מסלול הזמן הקוונטי</h2>
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">1997</div>
+                <h3 class="timeline-milestone">בית מסחר נכסים</h3>
+                <p class="timeline-description">כניסה לעולם העסקאות, מיקוד בתמחור מדויק ובמצוינות משא ומתן. הונחו היסודות לאמון ארוך טווח.</p>
+              </div>
+              <div class="timeline-dot"></div>
             </div>
             
-            <div class="timeline-container">
-              <div class="timeline-line"></div>
-              
-              <div class="timeline-item">
-                <div class="timeline-content">
-                  <div class="timeline-year">1997</div>
-                  <h3 class="timeline-milestone">בית מסחר נכסים</h3>
-                  <p class="timeline-description">כניסה לעולם העסקאות, מיקוד בתמחור מדויק ובמצוינות משא ומתן. הונחו היסודות לאמון ארוך טווח.</p>
-                </div>
-                <div class="timeline-dot"></div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2006</div>
+                <h3 class="timeline-milestone">יזמות</h3>
+                <p class="timeline-description">הרחבת הפעילות לפיתוח פרויקטים: מימון, תכנון ורישוי, ניהול קצה לקצה.</p>
               </div>
-              
-              <div class="timeline-item">
-                <div class="timeline-content">
-                  <div class="timeline-year">2006</div>
-                  <h3 class="timeline-milestone">יזמות</h3>
-                  <p class="timeline-description">הרחבת הפעילות לפיתוח פרויקטים: מימון, תכנון ורישוי, ניהול קצה לקצה.</p>
-                </div>
-                <div class="timeline-dot"></div>
-              </div>
-              
-              <div class="timeline-item">
-                <div class="timeline-content">
-                  <div class="timeline-year">2008</div>
-                  <h3 class="timeline-milestone">שיווק פרויקטים</h3>
-                  <p class="timeline-description">בניית מנוע שיווקי עם דאטת שוק, קהלים וחוויית לקוח, על מנת להאיץ קליטה ומכירות.</p>
-                </div>
-                <div class="timeline-dot"></div>
-              </div>
-              
-              <div class="timeline-item">
-                <div class="timeline-content">
-                  <div class="timeline-year">2012</div>
-                  <h3 class="timeline-milestone">חיזוק תשתיות</h3>
-                  <p class="timeline-description">בניית יכולות פנימיות, שיפור תהליכים, והרחבת הידע והמומחיות המקצועית.</p>
-                </div>
-                <div class="timeline-dot"></div>
-              </div>
-              
-              <div class="timeline-item">
-                <div class="timeline-content">
-                  <div class="timeline-year">2020</div>
-                  <h3 class="timeline-milestone">דיגיטליזציה</h3>
-                  <p class="timeline-description">מתודות מבוססות דאטה, אוטומציה וניתוח קבלת החלטות, מכפילי ביצוע ותשואה.</p>
-                </div>
-                <div class="timeline-dot"></div>
-              </div>
-              
-              <div class="timeline-item current">
-                <div class="timeline-content">
-                  <div class="timeline-year">2025</div>
-                  <h3 class="timeline-milestone">עתיד חכם</h3>
-                  <p class="timeline-description">יוזמת השקעות ממוקדת. מסגרות קפיטליות, תהליכי סינון ושותפויות. בשלבי פריסה והרחבה.</p>
-                </div>
-                <div class="timeline-dot"></div>
-              </div>
+              <div class="timeline-dot"></div>
             </div>
-          </div>
-          
-          <div class="legacy-footer">
-            <button class="legacy-cta" data-start-journey>על מה אתם חולמים?</button>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2008</div>
+                <h3 class="timeline-milestone">שיווק פרויקטים</h3>
+                <p class="timeline-description">בניית מנוע שיווקי עם דאטת שוק, קהלים וחוויית לקוח, על מנת להאיץ קליטה ומכירות.</p>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2012</div>
+                <h3 class="timeline-milestone">חיזוק תשתיות</h3>
+                <p class="timeline-description">בניית יכולות פנימיות, שיפור תהליכים, והרחבת הידע והמומחיות המקצועית.</p>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2020</div>
+                <h3 class="timeline-milestone">דיגיטליזציה</h3>
+                <p class="timeline-description">מתודות מבוססות דאטה, אוטומציה וניתוח קבלת החלטות, מכפילי ביצוע ותשואה.</p>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item current">
+              <div class="timeline-content">
+                <div class="timeline-year">2025</div>
+                <h3 class="timeline-milestone">עתיד חכם</h3>
+                <p class="timeline-description">יוזמת השקעות ממוקדת. מסגרות קפיטליות, תהליכי סינון ושותפויות. בשלבי פריסה והרחבה.</p>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
           </div>
         </div>
+        
+        <div class="legacy-footer">
+          <button class="legacy-cta" data-start-journey>על מה אתם חולמים?</button>
+        </div>
       </div>
-      
-      <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-          // Create floating particles
-          const particlesContainer = document.querySelector('.about-particles');
-          if (particlesContainer) {
-            for (let i = 0; i < 30; i++) {
-              const particle = document.createElement('div');
-              particle.className = 'about-particle';
-              particle.style.left = Math.random() * 100 + '%';
-              particle.style.animationDelay = Math.random() * 12 + 's';
-              particle.style.animationDuration = (12 + Math.random() * 8) + 's';
-              particlesContainer.appendChild(particle);
-            }
-          }
-
-          // Enhanced timeline toggle function
-          function toggleTimeline(btn) {
-            if (!btn) return;
-            
-            console.log('Toggle button clicked'); // Debug log
-            
-            // Find the timeline container
-            const scope = btn.closest('.about-content') || document;
-            const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
-            
-            if (!timeline) {
-              console.error('Timeline container not found'); // Debug log
-              return;
-            }
-
-            console.log('Timeline found, toggling visibility'); // Debug log
-            
-            const isVisible = timeline.classList.toggle('visible');
-            btn.setAttribute('aria-expanded', String(isVisible));
-            btn.textContent = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
-            
-            console.log('Timeline visibility:', isVisible); // Debug log
-          }
-
-          // Attach event listener to timeline button
-          const timelineButton = document.querySelector('#timelineToggleBtn');
-          if (timelineButton) {
-            console.log('Timeline button found, attaching event listener');
-            timelineButton.addEventListener('click', function() {
-              toggleTimeline(this);
-            });
-          } else {
-            console.error('Timeline button not found');
-          }
-
-          // Make function globally available for inline onclick (backup)
-          window.toggleTimeline = toggleTimeline;
-        });
-
-        // Alternative approach - use event delegation for dynamically loaded content
-        document.addEventListener('click', function(event) {
-          if (event.target && event.target.id === 'timelineToggleBtn') {
-            const btn = event.target;
-            const scope = btn.closest('.about-content') || document;
-            const timeline = scope.querySelector('#timelineContainer') || scope.querySelector('.quantum-timeline');
-            
-            if (timeline) {
-              const isVisible = timeline.classList.toggle('visible');
-              btn.setAttribute('aria-expanded', String(isVisible));
-              btn.textContent = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
-            }
-          }
-        });
-      </script>
-    `,
+    </div>
+    
+    <script>
+      // Create floating particles
+      (function() {
+        const particlesContainer = document.querySelector('.about-particles');
+        if (!particlesContainer) return;
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'about-particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 12 + 's';
+          particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+          particlesContainer.appendChild(particle);
+        }
+      })();
+    </script>
+  `,
   },
   // שירותי הפירמה
   services: {
