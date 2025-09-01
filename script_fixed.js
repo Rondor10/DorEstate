@@ -2469,25 +2469,22 @@ const modalContents = {
         color: #e0e0e0;
       }
       
+
       .stats-section {
         margin: 2rem 0;
-        width: 100%;
       }
 
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1.5rem;
-        margin: 0;                 /* no auto-centering */
-        width: 100vw;              /* take the full viewport width */
-        max-width: 100%;           /* remove fixed cap */
-        padding: 0 2rem;           /* padding so boxes don’t touch edges */
-        box-sizing: border-box;    /* include padding in total width */
-        direction: rtl;            /* grid starts from the right */
-        justify-items: stretch;    /* each stat card fills its column */
+        width: 100%;          /* use the full .main-content width */
+        max-width: none;      /* remove the 1000px cap */
+        margin: 2rem 0;       /* no auto-centering */
+        text-align: center;
+        direction: rtl;       /* first card starts at the right edge */
       }
-
-      
+ 
       @media (max-width: 768px) {
         .stats-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -2839,8 +2836,8 @@ const modalContents = {
           <h2 class="section-title">במספרים</h2>
           <div class="stats-grid">
             <div class="stat-item">
-              <span class="stat-number">₪5B+</span>
-              <span class="stat-label">סך עסקאות</span>
+              <span class="stat-number">5B+</span>
+              <span class="stat-label">₪ בעסקאות</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">5,000+</span>
