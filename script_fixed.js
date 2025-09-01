@@ -2476,10 +2476,11 @@ const modalContents = {
         .stats-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
-          margin: 2rem 0;
-          max-width: 100%;
-          padding: 0 1rem;
+          gap: 1.5rem;
+          margin: 2rem auto;
+          max-width: 1000px;
+          width: 100%;
+          padding: 0;
         }
         
         @media (max-width: 768px) {
@@ -2750,7 +2751,7 @@ const modalContents = {
         
         .cta-section {
           background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
-          padding: 4rem 2rem;
+          padding: 2rem;
           text-align: center;
           margin: 2rem -2rem -2rem -2rem;
           position: relative;
@@ -2758,7 +2759,7 @@ const modalContents = {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          min-height: 200px;
+          min-height: 300px;
         }
         
         .cta-section::before {
@@ -3060,19 +3061,23 @@ const modalContents = {
       </div>
       
       <script>
-        // Marketing system toggle functionality
+        // Global function for marketing system toggle
         window.toggleStep = function(header) {
           const content = header.nextElementSibling;
           const toggle = header.querySelector('.step-toggle');
           const isExpanded = content.classList.contains('expanded');
           
           // Close all other steps
-          document.querySelectorAll('.developer-portal .step-content.expanded').forEach(item => {
-            if (item !== content) {
-              item.classList.remove('expanded');
-              item.previousElementSibling.querySelector('.step-toggle').textContent = '+';
-            }
-          });
+          const portal = document.querySelector('.developer-portal');
+          if (portal) {
+            portal.querySelectorAll('.step-content.expanded').forEach(item => {
+              if (item !== content) {
+                item.classList.remove('expanded');
+                const prevToggle = item.previousElementSibling.querySelector('.step-toggle');
+                if (prevToggle) prevToggle.textContent = '+';
+              }
+            });
+          }
           
           // Toggle current step
           if (isExpanded) {
@@ -3084,58 +3089,70 @@ const modalContents = {
           }
         };
         
-        // Projects slider functionality
-        document.addEventListener('DOMContentLoaded', function() {
-          const track = document.getElementById('projectsTrack');
-          const prevBtn = document.getElementById('prevBtn');
-          const nextBtn = document.getElementById('nextBtn');
-          
-          if (!track || !prevBtn || !nextBtn) return;
-          
-          let currentIndex = 0;
-          const slides = track.children;
-          const totalSlides = slides.length;
-          const slidesPerView = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
-          const maxIndex = Math.max(0, totalSlides - slidesPerView);
-          
-          function updateSlider() {
-            const slideWidth = 300; // Fixed slide width
-            const gap = 16; // 1rem gap
-            const offset = -(currentIndex * (slideWidth + gap));
-            track.style.transform = 'translateX(' + offset + 'px)';
+        // Initialize developer portal functionality when modal opens
+        setTimeout(() => {
+          const initDeveloperPortal = () => {
+            const portal = document.querySelector('.developer-portal');
+            if (!portal) return;
             
-            // Update button states
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= maxIndex;
-          }
-          
-          prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-              currentIndex--;
+            // Projects slider functionality
+            const track = document.getElementById('projectsTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (track && prevBtn && nextBtn) {
+              let currentIndex = 0;
+              const slides = Array.from(track.children);
+              const totalSlides = slides.length;
+              
+              function updateSlider() {
+                const containerWidth = track.parentElement.offsetWidth;
+                const slideWidth = 300;
+                const gap = 16;
+                const slidesPerView = Math.floor(containerWidth / (slideWidth + gap)) || 1;
+                const maxIndex = Math.max(0, totalSlides - slidesPerView);
+                
+                currentIndex = Math.min(currentIndex, maxIndex);
+                
+                const offset = -(currentIndex * (slideWidth + gap));
+                track.style.transform = 'translateX(' + offset + 'px)';
+                
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= maxIndex;
+              }
+              
+              prevBtn.onclick = () => {
+                if (currentIndex > 0) {
+                  currentIndex--;
+                  updateSlider();
+                }
+              };
+              
+              nextBtn.onclick = () => {
+                const containerWidth = track.parentElement.offsetWidth;
+                const slideWidth = 300;
+                const gap = 16;
+                const slidesPerView = Math.floor(containerWidth / (slideWidth + gap)) || 1;
+                const maxIndex = Math.max(0, totalSlides - slidesPerView);
+                
+                if (currentIndex < maxIndex) {
+                  currentIndex++;
+                  updateSlider();
+                }
+              };
+              
+              // Initialize
               updateSlider();
+              
+              // Handle window resize
+              window.addEventListener('resize', updateSlider);
             }
-          });
+          };
           
-          nextBtn.addEventListener('click', () => {
-            if (currentIndex < maxIndex) {
-              currentIndex++;
-              updateSlider();
-            }
-          });
-          
-          // Initialize
-          updateSlider();
-          
-          // Handle window resize
-          window.addEventListener('resize', () => {
-            const newSlidesPerView = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
-            const newMaxIndex = Math.max(0, totalSlides - newSlidesPerView);
-            if (currentIndex > newMaxIndex) {
-              currentIndex = newMaxIndex;
-            }
-            updateSlider();
-          });
-        });
+          // Try to initialize immediately and also after a short delay
+          initDeveloperPortal();
+          setTimeout(initDeveloperPortal, 100);
+        }, 50);
       </script>
     `,
   },
@@ -3832,7 +3849,13 @@ function openModal(type) {
   }
 
   if (type === "assets") {
-    try { initAssetsModal(modalContent); } catch (e) { console.warn(e); }
+    try { 
+      initAssetsModal(modalContent); 
+      // Initialize developer portal functionality
+      setTimeout(() => {
+        initDeveloperPortal();
+      }, 100);
+    } catch (e) { console.warn(e); }
   }
 
   if (
@@ -5124,3 +5147,115 @@ window.DorTeam = (function () {
     prev() { if (total()) { idx = mod(idx - 1, total()); render(); } }
   };
 })();
+
+// Developer Portal Functionality
+function initDeveloperPortal() {
+  // Marketing system toggle functionality
+  window.toggleStep = function(header) {
+    const content = header.nextElementSibling;
+    const toggle = header.querySelector('.step-toggle');
+    if (!content || !toggle) return;
+    
+    const isExpanded = content.classList.contains('expanded');
+    
+    // Close all other steps
+    const portal = document.querySelector('.developer-portal');
+    if (portal) {
+      portal.querySelectorAll('.step-content.expanded').forEach(item => {
+        if (item !== content) {
+          item.classList.remove('expanded');
+          const prevToggle = item.previousElementSibling.querySelector('.step-toggle');
+          if (prevToggle) prevToggle.textContent = '+';
+        }
+      });
+    }
+    
+    // Toggle current step
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      toggle.textContent = '+';
+    } else {
+      content.classList.add('expanded');
+      toggle.textContent = '−';
+    }
+  };
+  
+  // Projects slider functionality
+  const track = document.getElementById('projectsTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  if (track && prevBtn && nextBtn) {
+    let currentIndex = 0;
+    const slides = Array.from(track.children);
+    const totalSlides = slides.length;
+    
+    function updateSlider() {
+      const containerWidth = track.parentElement.offsetWidth || 800;
+      const slideWidth = 300;
+      const gap = 16;
+      const slidesPerView = Math.max(1, Math.floor(containerWidth / (slideWidth + gap)));
+      const maxIndex = Math.max(0, totalSlides - slidesPerView);
+      
+      currentIndex = Math.min(currentIndex, maxIndex);
+      
+      const offset = -(currentIndex * (slideWidth + gap));
+      track.style.transform = 'translateX(' + offset + 'px)';
+      
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+      
+      // Update button styles
+      if (prevBtn.disabled) {
+        prevBtn.style.opacity = '0.5';
+        prevBtn.style.cursor = 'not-allowed';
+      } else {
+        prevBtn.style.opacity = '1';
+        prevBtn.style.cursor = 'pointer';
+      }
+      
+      if (nextBtn.disabled) {
+        nextBtn.style.opacity = '0.5';
+        nextBtn.style.cursor = 'not-allowed';
+      } else {
+        nextBtn.style.opacity = '1';
+        nextBtn.style.cursor = 'pointer';
+      }
+    }
+    
+    // Remove existing event listeners
+    prevBtn.onclick = null;
+    nextBtn.onclick = null;
+    
+    prevBtn.onclick = function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    };
+    
+    nextBtn.onclick = function() {
+      const containerWidth = track.parentElement.offsetWidth || 800;
+      const slideWidth = 300;
+      const gap = 16;
+      const slidesPerView = Math.max(1, Math.floor(containerWidth / (slideWidth + gap)));
+      const maxIndex = Math.max(0, totalSlides - slidesPerView);
+      
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+      }
+    };
+    
+    // Initialize
+    updateSlider();
+    
+    // Handle window resize
+    const handleResize = function() {
+      updateSlider();
+    };
+    
+    window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
+  }
+}
