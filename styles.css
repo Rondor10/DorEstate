@@ -793,18 +793,19 @@ body {
 }
 
 .question-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .question-title {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .question-subtitle {
@@ -816,9 +817,9 @@ body {
 
 .options-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* ⬅ עיקר השינוי כאן */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.2rem;
 }
 
 @media (max-width: 768px) {
@@ -848,10 +849,9 @@ body {
 }
 
 .option-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
 }
 
 .option-description {
