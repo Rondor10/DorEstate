@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PropertyDatabase } from "./propertyDatabase.js";
 
 // --- Firebase (module) ---
@@ -2410,7 +2411,7 @@ const modalContents = {
         }
         
         .main-content {
-          padding: 0rem 2rem;
+          padding: 2rem 2rem;
           max-width: 1200px;
           margin: 0 auto;
         }
@@ -2419,7 +2420,7 @@ const modalContents = {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 3rem;
-          margin: 4rem 0;
+          margin: 2rem 0;
         }
         
         @media (max-width: 768px) {
@@ -2469,7 +2470,7 @@ const modalContents = {
         }
         
         .stats-section {
-          margin: 4rem 0;
+          margin: 2rem 0;
         }
         
         .stats-grid {
@@ -2477,6 +2478,8 @@ const modalContents = {
           grid-template-columns: repeat(4, 1fr);
           gap: 2rem;
           margin: 2rem 0;
+          max-width: 100%;
+          padding: 0 1rem;
         }
         
         @media (max-width: 768px) {
@@ -2506,7 +2509,7 @@ const modalContents = {
         }
         
         .projects-section {
-          margin: 4rem 0;
+          margin: 2rem 0;
         }
         
         .section-title {
@@ -2517,46 +2520,105 @@ const modalContents = {
           text-align: center;
         }
         
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin: 2rem 0;
+        .projects-slider {
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
         }
         
-        .project-card {
-          background: rgba(255, 255, 255, 0.05);
+        .projects-track {
+          display: flex;
+          transition: transform 0.3s ease;
+          gap: 1rem;
+          padding: 0 1rem;
+        }
+        
+        .project-slide {
+          flex: 0 0 300px;
+          position: relative;
           border-radius: 12px;
           overflow: hidden;
+          background: rgba(255, 255, 255, 0.05);
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .project-card:hover {
+        .project-slide:hover {
           transform: translateY(-5px);
           box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
         }
         
-        .project-image {
+        .project-slide img {
           width: 100%;
           height: 200px;
-          background: #333;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #888;
-          font-size: 1.1rem;
+          object-fit: cover;
+          transition: transform 0.3s ease;
         }
         
-        .project-caption {
+        .project-slide:hover img {
+          transform: scale(1.05);
+        }
+        
+        .project-info {
           padding: 1.5rem;
-          font-size: 1.1rem;
-          color: #e0e0e0;
           text-align: center;
+        }
+        
+        .project-name {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #e0e0e0;
+          margin-bottom: 0.5rem;
+        }
+        
+        .project-status {
+          display: inline-block;
+          padding: 0.3rem 0.8rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
           font-weight: 600;
         }
         
+        .project-status.sold {
+          background: rgba(255, 255, 255, 0.9);
+          color: #333;
+        }
+        
+        .project-status.active {
+          background: rgba(255, 122, 0, 0.2);
+          color: #FF7A00;
+          border: 1px solid rgba(255, 122, 0, 0.4);
+        }
+        
+        .slider-controls {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+        
+        .slider-btn {
+          background: rgba(255, 122, 0, 0.1);
+          border: 1px solid rgba(255, 122, 0, 0.3);
+          color: #FF7A00;
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-weight: 600;
+        }
+        
+        .slider-btn:hover {
+          background: rgba(255, 122, 0, 0.2);
+          transform: translateY(-2px);
+        }
+        
+        .slider-btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        
         .service-model {
-          margin: 4rem 0;
+          margin: 2rem 0;
         }
         
         .pillars-grid {
@@ -2613,7 +2675,7 @@ const modalContents = {
         }
         
         .marketing-system {
-          margin: 4rem 0;
+          margin: 2rem 0;
         }
         
         .steps-container {
@@ -2690,8 +2752,13 @@ const modalContents = {
           background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
           padding: 4rem 2rem;
           text-align: center;
-          margin: 4rem -2rem -2rem -2rem;
+          margin: 2rem -2rem -2rem -2rem;
           position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 200px;
         }
         
         .cta-section::before {
@@ -2785,19 +2852,78 @@ const modalContents = {
           <!-- Flagship Projects -->
           <div class="projects-section">
             <h2 class="section-title">פרויקטי דגל</h2>
-            <div class="projects-grid">
-              <div class="project-card">
-                <div class="project-image">יצחק שדה 3</div>
-                <div class="project-caption">יצחק שדה 3, גבעתיים - מכר תוך 6 חודשים</div>
+            <div class="projects-slider" id="projectsSlider">
+              <div class="projects-track" id="projectsTrack">
+                <!-- Sold Projects -->
+                <div class="project-slide">
+                  <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">המעיין 7, גבעתיים</div>
+                    <div class="project-status sold">נמכר</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">יצחק שדה 3, גבעתיים</div>
+                    <div class="project-status sold">נמכר</div>
+                  </div>
+                </div>
+                
+                <!-- Active Projects -->
+                <div class="project-slide">
+                  <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">גולומב 54, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">יצחק שדה 5, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">ריינס 23, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">יצחק שדה 7, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
+                
+                <div class="project-slide">
+                  <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
+                  <div class="project-info">
+                    <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
+                    <div class="project-status active">פעיל</div>
+                  </div>
+                </div>
               </div>
-              <div class="project-card">
-                <div class="project-image">יצחק שדה 5</div>
-                <div class="project-caption">יצחק שדה 5, גבעתיים - רמת תשואה יוצאת דופן</div>
-              </div>
-              <div class="project-card">
-                <div class="project-image">יצחק שדה 7</div>
-                <div class="project-caption">יצחק שדה 7, גבעתיים - שיא מכירות באזור</div>
-              </div>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-btn" id="prevBtn">← הקודם</button>
+              <button class="slider-btn" id="nextBtn">הבא →</button>
             </div>
           </div>
           
@@ -2934,13 +3060,14 @@ const modalContents = {
       </div>
       
       <script>
-        function toggleStep(header) {
+        // Marketing system toggle functionality
+        window.toggleStep = function(header) {
           const content = header.nextElementSibling;
           const toggle = header.querySelector('.step-toggle');
           const isExpanded = content.classList.contains('expanded');
           
           // Close all other steps
-          document.querySelectorAll('.step-content.expanded').forEach(item => {
+          document.querySelectorAll('.developer-portal .step-content.expanded').forEach(item => {
             if (item !== content) {
               item.classList.remove('expanded');
               item.previousElementSibling.querySelector('.step-toggle').textContent = '+';
@@ -2955,7 +3082,60 @@ const modalContents = {
             content.classList.add('expanded');
             toggle.textContent = '−';
           }
-        }
+        };
+        
+        // Projects slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+          const track = document.getElementById('projectsTrack');
+          const prevBtn = document.getElementById('prevBtn');
+          const nextBtn = document.getElementById('nextBtn');
+          
+          if (!track || !prevBtn || !nextBtn) return;
+          
+          let currentIndex = 0;
+          const slides = track.children;
+          const totalSlides = slides.length;
+          const slidesPerView = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+          const maxIndex = Math.max(0, totalSlides - slidesPerView);
+          
+          function updateSlider() {
+            const slideWidth = 300; // Fixed slide width
+            const gap = 16; // 1rem gap
+            const offset = -(currentIndex * (slideWidth + gap));
+            track.style.transform = 'translateX(' + offset + 'px)';
+            
+            // Update button states
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+          }
+          
+          prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+              currentIndex--;
+              updateSlider();
+            }
+          });
+          
+          nextBtn.addEventListener('click', () => {
+            if (currentIndex < maxIndex) {
+              currentIndex++;
+              updateSlider();
+            }
+          });
+          
+          // Initialize
+          updateSlider();
+          
+          // Handle window resize
+          window.addEventListener('resize', () => {
+            const newSlidesPerView = window.innerWidth > 768 ? 3 : window.innerWidth > 480 ? 2 : 1;
+            const newMaxIndex = Math.max(0, totalSlides - newSlidesPerView);
+            if (currentIndex > newMaxIndex) {
+              currentIndex = newMaxIndex;
+            }
+            updateSlider();
+          });
+        });
       </script>
     `,
   },
