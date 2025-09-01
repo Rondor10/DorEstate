@@ -207,29 +207,29 @@ const modalContents = {
           position: absolute;
           width: 1px;
           height: 1px;
-          background: #7dd3fc;
+          background: #ff8c42;
           border-radius: 50%;
           opacity: 0.4;
           animation: aboutFloat 12s infinite linear;
         }
         
         .about-particle:nth-child(2n) { 
-          background: #38bdf8; 
+          background: #ff6b35; 
           animation-delay: -3s; 
           animation-duration: 15s;
         }
         .about-particle:nth-child(3n) { 
-          background: #0ea5e9; 
+          background: #ff9a56; 
           animation-delay: -6s; 
           animation-duration: 18s;
         }
         .about-particle:nth-child(4n) { 
-          background: #c0c0c0; 
+          background: #ffb377; 
           animation-delay: -9s; 
           animation-duration: 20s;
         }
         .about-particle:nth-child(5n) { 
-          background: #e5e7eb; 
+          background: #ff7a00; 
           animation-delay: -2s; 
           animation-duration: 14s;
         }
@@ -267,7 +267,7 @@ const modalContents = {
         .about-title {
           font-size: 3rem;
           font-weight: 700;
-          background: linear-gradient(45deg, #38bdf8, #7dd3fc, #c0c0c0, #e5e7eb);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff7a00);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -278,11 +278,11 @@ const modalContents = {
         @keyframes aboutTitleGlow {
           0% { 
             transform: scale(1); 
-            filter: brightness(1) drop-shadow(0 0 5px rgba(56, 189, 248, 0.3)); 
+            filter: brightness(1) drop-shadow(0 0 5px rgba(255, 140, 66, 0.3)); 
           }
           100% { 
             transform: scale(1.02); 
-            filter: brightness(1.2) drop-shadow(0 0 15px rgba(56, 189, 248, 0.5)); 
+            filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 140, 66, 0.5)); 
           }
         }
         
@@ -295,8 +295,8 @@ const modalContents = {
         }
         
         .legacy-story {
-          background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(125, 211, 252, 0.05));
-          border: 2px solid rgba(56, 189, 248, 0.2);
+          background: linear-gradient(135deg, rgba(255, 140, 66, 0.08), rgba(255, 107, 53, 0.05));
+          border: 2px solid rgba(255, 140, 66, 0.2);
           border-radius: 20px;
           padding: 2.5rem;
           margin: 2rem 0 3rem 0;
@@ -307,8 +307,8 @@ const modalContents = {
         }
         
         .legacy-story:hover {
-          border-color: rgba(56, 189, 248, 0.4);
-          box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+          border-color: rgba(255, 140, 66, 0.4);
+          box-shadow: 0 10px 30px rgba(255, 140, 66, 0.15);
         }
         
         .legacy-story::before {
@@ -318,7 +318,7 @@ const modalContents = {
           left: -1px;
           right: -1px;
           bottom: -1px;
-          background: linear-gradient(45deg, #38bdf8, #7dd3fc, #0ea5e9, #38bdf8);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35, #ff9a56, #ff8c42);
           background-size: 300% 300%;
           z-index: -1;
           border-radius: 20px;
@@ -350,7 +350,7 @@ const modalContents = {
         }
         
         .timeline-button {
-          background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           color: #ffffff;
           border: none;
           padding: 1.2rem 3rem;
@@ -359,7 +359,7 @@ const modalContents = {
           border-radius: 50px;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+          box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
           position: relative;
           overflow: hidden;
         }
@@ -381,8 +381,8 @@ const modalContents = {
         
         .timeline-button:hover {
           transform: translateY(-3px) scale(1.05);
-          box-shadow: 0 15px 40px rgba(56, 189, 248, 0.4);
-          background: linear-gradient(45deg, #0ea5e9, #38bdf8);
+          box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
+          background: linear-gradient(45deg, #ff6b35, #ff8c42);
         }
         
         .quantum-timeline {
@@ -417,7 +417,7 @@ const modalContents = {
         .timeline-title {
           font-size: 2.3rem;
           font-weight: 600;
-          background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -434,10 +434,10 @@ const modalContents = {
           top: 0;
           bottom: 0;
           width: 3px;
-          background: linear-gradient(to bottom, #38bdf8, #0ea5e9, #7dd3fc);
+          background: linear-gradient(to bottom, #ff8c42, #ff6b35, #ff9a56);
           transform: translateX(50%);
           border-radius: 2px;
-          box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+          box-shadow: 0 0 15px rgba(255, 140, 66, 0.4);
           opacity: 0;
           animation: lineAppear 0.8s ease-out 0.4s forwards;
         }
@@ -474,8 +474,8 @@ const modalContents = {
         .quantum-timeline.visible .timeline-item:nth-child(6) { transition-delay: 1.6s; opacity: 1; transform: translateY(0); }
         
         .timeline-content {
-          background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(125, 211, 252, 0.05));
-          border: 2px solid rgba(56, 189, 248, 0.2);
+          background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 107, 53, 0.05));
+          border: 2px solid rgba(255, 140, 66, 0.2);
           border-radius: 15px;
           padding: 2rem;
           width: 45%;
@@ -487,9 +487,9 @@ const modalContents = {
         
         .timeline-content:hover {
           transform: scale(1.03) translateY(-8px);
-          border-color: rgba(56, 189, 248, 0.5);
-          box-shadow: 0 15px 35px rgba(56, 189, 248, 0.2);
-          background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(125, 211, 252, 0.1));
+          border-color: rgba(255, 140, 66, 0.5);
+          box-shadow: 0 15px 35px rgba(255, 140, 66, 0.2);
+          background: linear-gradient(135deg, rgba(255, 140, 66, 0.15), rgba(255, 107, 53, 0.1));
         }
         
         .timeline-dot {
@@ -498,24 +498,24 @@ const modalContents = {
           top: 50%;
           width: 16px;
           height: 16px;
-          background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           border-radius: 50%;
           transform: translate(50%, -50%);
-          border: 3px solid rgba(56, 189, 248, 0.3);
-          box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+          border: 3px solid rgba(255, 140, 66, 0.3);
+          box-shadow: 0 0 20px rgba(255, 140, 66, 0.6);
           z-index: 10;
           transition: all 0.3s ease;
         }
         
         .timeline-content:hover ~ .timeline-dot {
           transform: translate(50%, -50%) scale(1.3);
-          box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
+          box-shadow: 0 0 30px rgba(255, 140, 66, 0.8);
         }
         
         .timeline-year {
           font-size: 1.8rem;
           font-weight: 700;
-          background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -526,7 +526,7 @@ const modalContents = {
         .timeline-milestone {
           font-size: 1.4rem;
           font-weight: 600;
-          color: #7dd3fc;
+          color: #ff9a56;
           margin-bottom: 1rem;
           text-align: center;
         }
@@ -539,20 +539,20 @@ const modalContents = {
         }
         
         .timeline-item.current .timeline-content {
-          background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(125, 211, 252, 0.15));
-          border-color: rgba(56, 189, 248, 0.6);
-          box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+          background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(255, 107, 53, 0.15));
+          border-color: rgba(255, 140, 66, 0.6);
+          box-shadow: 0 0 40px rgba(255, 140, 66, 0.3);
         }
         
         .timeline-item.current .timeline-dot {
-          background: linear-gradient(45deg, #38bdf8, #ffffff, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ffffff, #ff6b35);
           animation: currentDotPulse 2s infinite;
         }
         
         @keyframes currentDotPulse {
           0%, 100% {
             transform: translate(50%, -50%) scale(1.1);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 25px rgba(255, 140, 66, 0.8);
           }
           50% {
             transform: translate(50%, -50%) scale(1.4);
@@ -567,7 +567,7 @@ const modalContents = {
         }
         
         .legacy-cta {
-          background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+          background: linear-gradient(45deg, #ff8c42, #ff6b35);
           color: #ffffff;
           border: none;
           padding: 1rem 2.5rem;
@@ -577,13 +577,13 @@ const modalContents = {
           cursor: pointer;
           transition: all 0.3s ease;
           text-shadow: none;
-          box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+          box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
         }
         
         .legacy-cta:hover {
           transform: scale(1.08) translateY(-3px);
-          box-shadow: 0 15px 40px rgba(56, 189, 248, 0.4);
-          background: linear-gradient(45deg, #0ea5e9, #38bdf8);
+          box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
+          background: linear-gradient(45deg, #ff6b35, #ff8c42);
         }
         
         @media (max-width: 768px) {
@@ -713,9 +713,14 @@ const modalContents = {
         })();
         
         // Timeline toggle functionality
-        function toggleTimeline() {
+        window.toggleTimeline = function() {
           const timeline = document.getElementById('timelineContainer');
           const button = document.querySelector('.timeline-button');
+          
+          if (!timeline || !button) {
+            console.error('Timeline elements not found');
+            return;
+          }
           
           if (timeline.classList.contains('visible')) {
             timeline.classList.remove('visible');
@@ -724,7 +729,17 @@ const modalContents = {
             timeline.classList.add('visible');
             button.innerHTML = '⏰ הסתר מסלול זמן';
           }
-        }
+        };
+        
+        // Also add click event listener as backup
+        document.addEventListener('DOMContentLoaded', function() {
+          const button = document.querySelector('.timeline-button');
+          if (button) {
+            button.addEventListener('click', function() {
+              window.toggleTimeline();
+            });
+          }
+        });
       </script>
     `,
   },
