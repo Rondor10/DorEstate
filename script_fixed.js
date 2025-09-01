@@ -2361,800 +2361,807 @@ const modalContents = {
         `,
   },
   assets: {
-    title: "ליזמים",
-    content: `
-      <style>
-        .developer-portal {
-          background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
-          color: #ffffff;
-          position: relative;
-          overflow: hidden;
-          padding: 0;
-          margin: -2rem;
-          min-height: 100vh;
-          direction: rtl;
-          font-family: 'Heebo', Arial, sans-serif;
-        }
-        
-        .background-section {
-          background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
-          padding: 4rem 2rem;
-          text-align: center;
-          position: relative;
-        }
-        
-        .background-section::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 20px;
-          background: linear-gradient(to bottom, transparent, #2c2c2c);
-        }
-        
-        .background-title {
-          font-size: 3.2rem;
-          font-weight: 900;
-          color: white;
-          margin-bottom: 1.5rem;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .background-text {
-          font-size: 1.4rem;
-          color: rgba(255,255,255,0.95);
-          max-width: 900px;
-          margin: 0 auto;
-          line-height: 1.6;
-          font-weight: 500;
-        }
-        
-        .main-content {
-          padding: 2rem 2rem;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-        
-        .vision-mission {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          margin: 2rem 0;
-        }
-        
-        @media (max-width: 768px) {
-          .vision-mission { grid-template-columns: 1fr; }
-        }
-        
-        .bracket-block {
-          position: relative;
-          padding: 2.5rem;
-          background: rgba(255, 122, 0, 0.05);
-          border-radius: 8px;
-        }
-        
-        .bracket-block::before {
-          content: '[';
-          position: absolute;
-          top: 0;
-          right: 0;
-          font-size: 4rem;
-          color: #FF7A00;
-          font-weight: 900;
-          line-height: 1;
-        }
-        
-        .bracket-block::after {
-          content: ']';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          font-size: 4rem;
-          color: #FF7A00;
-          font-weight: 900;
-          line-height: 1;
-        }
-        
-        .bracket-title {
-          font-size: 1.8rem;
-          font-weight: 800;
-          color: #FF7A00;
-          margin-bottom: 1rem;
-        }
-        
-        .bracket-content {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          color: #e0e0e0;
-        }
-        
-        .stats-section {
-          margin: 2rem 0;
-        }
-        
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          margin: 2rem auto;
-          max-width: 1000px;
-          width: 100%;
-          padding: 0;
-        }
-        
-        @media (max-width: 768px) {
-          .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        .stat-item {
-          background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
-          padding: 2rem;
-          border-radius: 12px;
-          text-align: center;
-          border: 1px solid rgba(255, 122, 0, 0.2);
-        }
-        
-        .stat-number {
-          font-size: 2.5rem;
-          font-weight: 900;
-          color: #FF7A00;
-          display: block;
-          margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-          font-size: 1rem;
-          color: #b0b0b0;
-          font-weight: 600;
-        }
-        
-        .projects-section {
-          margin: 2rem 0;
-        }
-        
-        .section-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: #FF7A00;
-          margin-bottom: 2rem;
-          text-align: center;
-        }
-        
-        .projects-slider {
-          position: relative;
-          overflow: hidden;
-          border-radius: 12px;
-        }
-        
-        .projects-track {
-          display: flex;
-          transition: transform 0.3s ease;
-          gap: 1rem;
-          padding: 0 1rem;
-        }
-        
-        .project-slide {
-          flex: 0 0 300px;
-          position: relative;
-          border-radius: 12px;
-          overflow: hidden;
-          background: rgba(255, 255, 255, 0.05);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-slide:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
-        }
-        
-        .project-slide img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-        
-        .project-slide:hover img {
-          transform: scale(1.05);
-        }
-        
-        .project-info {
-          padding: 1.5rem;
-          text-align: center;
-        }
-        
-        .project-name {
-          font-size: 1.1rem;
-          font-weight: 600;
-          color: #e0e0e0;
-          margin-bottom: 0.5rem;
-        }
-        
-        .project-status {
-          display: inline-block;
-          padding: 0.3rem 0.8rem;
-          border-radius: 15px;
-          font-size: 0.8rem;
-          font-weight: 600;
-        }
-        
-        .project-status.sold {
-          background: rgba(255, 255, 255, 0.9);
-          color: #333;
-        }
-        
-        .project-status.active {
-          background: rgba(255, 122, 0, 0.2);
-          color: #FF7A00;
-          border: 1px solid rgba(255, 122, 0, 0.4);
-        }
-        
-        .slider-controls {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          margin-top: 2rem;
-        }
-        
-        .slider-btn {
-          background: rgba(255, 122, 0, 0.1);
-          border: 1px solid rgba(255, 122, 0, 0.3);
-          color: #FF7A00;
-          padding: 0.8rem 1.5rem;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 600;
-        }
-        
-        .slider-btn:hover {
-          background: rgba(255, 122, 0, 0.2);
-          transform: translateY(-2px);
-        }
-        
-        .slider-btn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        
-        .service-model {
-          margin: 2rem 0;
-        }
-        
-        .pillars-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          margin: 2rem 0;
-        }
-        
-        @media (max-width: 768px) {
-          .pillars-grid { grid-template-columns: 1fr; }
-        }
-        
-        .pillar-bracket {
-          position: relative;
-          padding: 2rem;
-          background: rgba(255, 122, 0, 0.05);
-          border-radius: 8px;
-        }
-        
-        .pillar-bracket::before {
-          content: '{';
-          position: absolute;
-          top: 0;
-          right: 0;
-          font-size: 3rem;
-          color: #FF7A00;
-          font-weight: 900;
-          line-height: 1;
-        }
-        
-        .pillar-bracket::after {
-          content: '}';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          font-size: 3rem;
-          color: #FF7A00;
-          font-weight: 900;
-          line-height: 1;
-        }
-        
-        .pillar-title {
-          font-size: 1.6rem;
-          font-weight: 800;
-          color: #FF7A00;
-          margin-bottom: 1rem;
-        }
-        
-        .pillar-content {
-          font-size: 1rem;
-          line-height: 1.5;
-          color: #d0d0d0;
-        }
-        
-        .marketing-system {
-          margin: 2rem 0;
-        }
-        
-        .steps-container {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        
-        .step-item {
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 8px;
-          border: 1px solid rgba(255, 122, 0, 0.2);
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-        
-        .step-header {
-          display: flex;
-          align-items: center;
-          padding: 1.5rem;
-          cursor: pointer;
-          background: rgba(255, 122, 0, 0.05);
-        }
-        
-        .step-header:hover {
-          background: rgba(255, 122, 0, 0.1);
-        }
-        
-        .step-number {
-          background: linear-gradient(135deg, #FF7A00, #FF4D00);
-          color: white;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 900;
-          font-size: 1.2rem;
-          margin-left: 1rem;
-        }
-        
-        .step-title {
-          font-size: 1.3rem;
-          font-weight: 700;
-          color: #ffffff;
-          flex-grow: 1;
-        }
-        
-        .step-toggle {
-          color: #FF7A00;
-          font-size: 1.5rem;
-          transition: transform 0.3s ease;
-        }
-        
-        .step-content {
-          padding: 0 1.5rem;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        
-        .step-content.expanded {
-          max-height: 300px;
-          padding: 1.5rem;
-        }
-        
-        .step-description {
-          color: #c0c0c0;
-          line-height: 1.6;
-        }
-        
-        .cta-section {
-          background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
-          padding: 2rem;
-          text-align: center;
-          margin: 2rem -2rem -2rem -2rem;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          min-height: 300px;
-        }
-        
-        .cta-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 20px;
-          background: linear-gradient(to top, transparent, #2c2c2c);
-          transform: translateY(-20px);
-        }
-        
-        .cta-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: white;
-          margin-bottom: 1rem;
-        }
-        
-        .cta-button {
-          background: rgba(255, 255, 255, 0.15);
-          color: white;
-          border: 2px solid white;
-          padding: 1.2rem 3rem;
-          border-radius: 8px;
-          font-size: 1.2rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
-        }
-        
-        .cta-button:hover {
-          background: white;
-          color: #FF4D00;
-          transform: translateY(-2px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-      </style>
+  title: "ליזמים",
+  content: `
+    <style>
+      .developer-portal {
+        background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        margin: -2rem;
+        min-height: 100vh;
+        direction: rtl;
+        font-family: 'Heebo', Arial, sans-serif;
+      }
       
-      <div class="developer-portal">
-        <!-- Background Section -->
-        <div class="background-section">
-          <h1 class="background-title">קבוצת דור נכסים</h1>
-          <p class="background-text">
-מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה. מותג שהפך לשם נרדף לאיכות ולתוצאות.          </p>
+      .background-section {
+        background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+      }
+      
+      .background-section::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(to bottom, transparent, #2c2c2c);
+      }
+      
+      .background-title {
+        font-size: 3.2rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      .background-text {
+        font-size: 1.4rem;
+        color: rgba(255,255,255,0.95);
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+      
+      .main-content {
+        padding: 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .vision-mission {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin: 2rem 0;
+      }
+      
+      @media (max-width: 768px) {
+        .vision-mission { grid-template-columns: 1fr; }
+      }
+      
+      .bracket-block {
+        position: relative;
+        padding: 2.5rem;
+        background: rgba(255, 122, 0, 0.05);
+        border-radius: 8px;
+      }
+      
+      .bracket-block::before {
+        content: '[';
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 4rem;
+        color: #FF7A00;
+        font-weight: 900;
+        line-height: 1;
+      }
+      
+      .bracket-block::after {
+        content: ']';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 4rem;
+        color: #FF7A00;
+        font-weight: 900;
+        line-height: 1;
+      }
+      
+      .bracket-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #FF7A00;
+        margin-bottom: 1rem;
+      }
+      
+      .bracket-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #e0e0e0;
+      }
+      
+      .stats-section {
+        margin: 2rem 0;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin: 2rem auto;
+        max-width: 1000px;
+        width: 100%;
+        padding: 0;
+      }
+      
+      @media (max-width: 768px) {
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      
+      .stat-item {
+        background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 122, 0, 0.2);
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #FF7A00;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        font-size: 1rem;
+        color: #b0b0b0;
+        font-weight: 600;
+      }
+      
+      .projects-section {
+        margin: 2rem 0;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #FF7A00;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      
+      .projects-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      
+      .projects-track {
+        display: flex;
+        transition: transform 0.3s ease;
+        gap: 1rem;
+        padding: 0 1rem;
+        /* FIX: make slider physics LTR so translateX(-N) always moves left */
+        direction: ltr;
+      }
+      
+      .project-slide {
+        flex: 0 0 300px;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .project-slide:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
+      }
+      
+      .project-slide img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      
+      .project-slide:hover img {
+        transform: scale(1.05);
+      }
+      
+      .project-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+      
+      .project-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #e0e0e0;
+        margin-bottom: 0.5rem;
+      }
+      
+      .project-status {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      
+      .project-status.sold {
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+      }
+      
+      .project-status.active {
+        background: rgba(255, 122, 0, 0.2);
+        color: #FF7A00;
+        border: 1px solid rgba(255, 122, 0, 0.4);
+      }
+      
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .slider-btn {
+        background: rgba(255, 122, 0, 0.1);
+        border: 1px solid rgba(255, 122, 0, 0.3);
+        color: #FF7A00;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+      
+      .slider-btn:hover {
+        background: rgba(255, 122, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      
+      .slider-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      .service-model {
+        margin: 2rem 0;
+      }
+      
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      
+      @media (max-width: 768px) {
+        .pillars-grid { grid-template-columns: 1fr; }
+      }
+      
+      .pillar-bracket {
+        position: relative;
+        padding: 2rem;
+        background: rgba(255, 122, 0, 0.05);
+        border-radius: 8px;
+      }
+      
+      .pillar-bracket::before {
+        content: '{';
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 3rem;
+        color: #FF7A00;
+        font-weight: 900;
+        line-height: 1;
+      }
+      
+      .pillar-bracket::after {
+        content: '}';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 3rem;
+        color: #FF7A00;
+        font-weight: 900;
+        line-height: 1;
+      }
+      
+      .pillar-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #FF7A00;
+        margin-bottom: 1rem;
+      }
+      
+      .pillar-content {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #d0d0d0;
+      }
+      
+      .marketing-system {
+        margin: 2rem 0;
+      }
+      
+      .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .step-item {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 122, 0, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .step-header {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        cursor: pointer;
+        background: rgba(255, 122, 0, 0.05);
+      }
+      
+      .step-header:hover {
+        background: rgba(255, 122, 0, 0.1);
+      }
+      
+      .step-number {
+        background: linear-gradient(135deg, #FF7A00, #FF4D00);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+      }
+      
+      .step-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ffffff;
+        flex-grow: 1;
+      }
+      
+      .step-toggle {
+        color: #FF7A00;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+      
+      .step-content {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+      }
+      
+      .step-content.expanded {
+        max-height: 300px;
+        padding: 1.5rem;
+      }
+      
+      .step-description {
+        color: #ffffff;
+        line-height: 1.6;
+      }
+      
+      .cta-section {
+        background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
+        padding: 2rem;
+        text-align: center;
+        margin: 2rem -2rem -2rem -2rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+      }
+      
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(to top, transparent, #2c2c2c);
+        transform: translateY(-20px);
+      }
+      
+      .cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1rem;
+      }
+      
+      .cta-button {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 2px solid white;
+        padding: 1.2rem 3rem;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+      
+      .cta-button:hover {
+        background: white;
+        color: #FF4D00;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+    </style>
+    
+    <div class="developer-portal">
+      <!-- Background Section -->
+      <div class="background-section">
+        <h1 class="background-title">קבוצת דור נכסים</h1>
+        <p class="background-text">
+מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה. מותג שהפך לשם נרדף לאיכות ולתוצאות.        </p>
+      </div>
+      
+      <div class="main-content">
+        <!-- Vision & Mission -->
+        <div class="vision-mission">
+          <div class="bracket-block">
+            <h3 class="bracket-title">חזון</h3>
+            <p class="bracket-content">
+              להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל"ניים שמגדירים מחדש את הסטנדרט בתחום.
+            </p>
+          </div>
+          
+          <div class="bracket-block">
+            <h3 class="bracket-title">משימה</h3>
+            <p class="bracket-content">
+              לרתום את המערכת השיווקית הייחודית שלנו ליצירת הפרויקט המצליח הבא שלכם. כל עסקה היא התחייבות אישית למצוינות.
+            </p>
+          </div>
         </div>
         
-        <div class="main-content">
-          <!-- Vision & Mission -->
-          <div class="vision-mission">
-            <div class="bracket-block">
-              <h3 class="bracket-title">חזון</h3>
-              <p class="bracket-content">
-                להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל"ניים שמגדירים מחדש את הסטנדרט בתחום.
+        <!-- Stats Section -->
+        <div class="stats-section">
+          <h2 class="section-title">במספרים</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">₪5B+</span>
+              <span class="stat-label">סך עסקאות</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5,000+</span>
+              <span class="stat-label">לקוחות מרוצים</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">25+</span>
+              <span class="stat-label">פרויקטים פעילים</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">250+</span>
+              <span class="stat-label">נכסים משווקים</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Flagship Projects -->
+        <div class="projects-section">
+          <h2 class="section-title">פרויקטי דגל</h2>
+          <div class="projects-slider" id="projectsSlider">
+            <div class="projects-track" id="projectsTrack">
+              <!-- Sold Projects -->
+              <div class="project-slide">
+                <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">המעיין 7, גבעתיים</div>
+                  <div class="project-status sold">נמכר</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">יצחק שדה 3, גבעתיים</div>
+                  <div class="project-status sold">נמכר</div>
+                </div>
+              </div>
+              
+              <!-- Active Projects -->
+              <div class="project-slide">
+                <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">גולומב 54, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">יצחק שדה 5, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ריינס 23, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">יצחק שדה 7, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+              
+              <div class="project-slide">
+                <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
+                  <div class="project-status active">פעיל</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn" id="prevBtn">← הקודם</button>
+            <button class="slider-btn" id="nextBtn">הבא →</button>
+          </div>
+        </div>
+        
+        <!-- 360° Service Model -->
+        <div class="service-model">
+          <h2 class="section-title">מודל השירות 360°</h2>
+          <div class="pillars-grid">
+            <div class="pillar-bracket">
+              <h3 class="pillar-title">רובד שיווקי</h3>
+              <p class="pillar-content">
+                מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.
+                אסטרטגיה שיווקית מדויקת המותאמת לפרויקט.
               </p>
             </div>
             
-            <div class="bracket-block">
-              <h3 class="bracket-title">משימה</h3>
-              <p class="bracket-content">
-                לרתום את המערכת השיווקית הייחודית שלנו ליצירת הפרויקט המצליח הבא שלכם. כל עסקה היא התחייבות אישית למצוינות.
+            <div class="pillar-bracket">
+              <h3 class="pillar-title">רובד מכירתי</h3>
+              <p class="pillar-content">
+                צוות מכירות מומחה ומשרד מכירות יוקרתי.
+                בסיס נתונים של אלפי לקוחות פוטנציאליים.
               </p>
             </div>
-          </div>
-          
-          <!-- Stats Section -->
-          <div class="stats-section">
-            <h2 class="section-title">במספרים</h2>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <span class="stat-number">₪5B+</span>
-                <span class="stat-label">סך עסקאות</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">5,000+</span>
-                <span class="stat-label">לקוחות מרוצים</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">25+</span>
-                <span class="stat-label">פרויקטים פעילים</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">250+</span>
-                <span class="stat-label">נכסים משווקים</span>
-              </div>
+            
+            <div class="pillar-bracket">
+              <h3 class="pillar-title">רובד אנושי</h3>
+              <p class="pillar-content">
+                הון אנושי יוצא דופן עם שאיפה למצוינות.
+                יחידה מובחרת העובדת סביב השעון על הפרויקט.
+              </p>
             </div>
-          </div>
-          
-          <!-- Flagship Projects -->
-          <div class="projects-section">
-            <h2 class="section-title">פרויקטי דגל</h2>
-            <div class="projects-slider" id="projectsSlider">
-              <div class="projects-track" id="projectsTrack">
-                <!-- Sold Projects -->
-                <div class="project-slide">
-                  <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">המעיין 7, גבעתיים</div>
-                    <div class="project-status sold">נמכר</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">יצחק שדה 3, גבעתיים</div>
-                    <div class="project-status sold">נמכר</div>
-                  </div>
-                </div>
-                
-                <!-- Active Projects -->
-                <div class="project-slide">
-                  <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">גולומב 54, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">יצחק שדה 5, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">ריינס 23, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">יצחק שדה 7, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-                
-                <div class="project-slide">
-                  <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
-                  <div class="project-info">
-                    <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
-                    <div class="project-status active">פעיל</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-controls">
-              <button class="slider-btn" id="prevBtn">← הקודם</button>
-              <button class="slider-btn" id="nextBtn">הבא →</button>
-            </div>
-          </div>
-          
-          <!-- 360° Service Model -->
-          <div class="service-model">
-            <h2 class="section-title">מודל השירות 360°</h2>
-            <div class="pillars-grid">
-              <div class="pillar-bracket">
-                <h3 class="pillar-title">רובד שיווקי</h3>
-                <p class="pillar-content">
-                  מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.<br>
-                  אסטרטגיה שיווקית מדויקת המותאמת לפרויקט.
-                </p>
-              </div>
-              
-              <div class="pillar-bracket">
-                <h3 class="pillar-title">רובד מכירתי</h3>
-                <p class="pillar-content">
-                  צוות מכירות מומחה ומשרד מכירות יוקרתי.<br>
-                  בסיס נתונים של אלפי לקוחות פוטנציאליים.
-                </p>
-              </div>
-              
-              <div class="pillar-bracket">
-                <h3 class="pillar-title">רובד אנושי</h3>
-                <p class="pillar-content">
-                  הון אנושי יוצא דופן עם שאיפה למצוינות.<br>
-                  יחידה מובחרת העובדת סביב השעון על הפרויקט.
-                </p>
-              </div>
-              
-              <div class="pillar-bracket">
-                <h3 class="pillar-title">רובד ניהולי</h3>
-                <p class="pillar-content">
-                  מערכת ניהול ומעקב מתקדמת אחר כל לקוח.<br>
-                  דוחות שקופים וליווי עד סגירת העסקה.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Marketing System -->
-          <div class="marketing-system">
-            <h2 class="section-title">מערכת השיווק</h2>
-            <div class="steps-container">
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">01</div>
-                  <div class="step-title">מחקר שוק</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    בדיקה מעמיקה של רמות המחירים באזור, מיפוי המתחרים בהווה ובעתיד, פילוח ואיפיון קהלי היעד. זיהוי הערך המוסף הייחודי של הפרויקט והתנגדויות פוטנציאליות.
-                  </div>
-                </div>
-              </div>
-              
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">02</div>
-                  <div class="step-title">אסטרטגיה שיווקית</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    בניית תוכנית שיווקית מותאמת הכוללת עלויות שיווק ופרסום, צוות מכירות מתאים, יעדי מכירה ולוחות זמנים. הגדרת אופי וסוג הפרסום האופטימלי.
-                  </div>
-                </div>
-              </div>
-              
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">03</div>
-                  <div class="step-title">תכנון מוצר</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    תכנון המפרט, מאפייני הבניין ותמהיל הדירות הנכונים ביותר להצלחת הפרויקט בשיתוף היזם והאדריכל.
-                  </div>
-                </div>
-              </div>
-              
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">04</div>
-                  <div class="step-title">מיתוג ופרסום</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    עבודה עם חברות המיתוג המובילות בנדל"ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.
-                  </div>
-                </div>
-              </div>
-              
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">05</div>
-                  <div class="step-title">ניהול מכירות</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    העברת הפרויקט לצוות מכירות מוכשר לאחר תהליך חפיפה מעמיק וכלים מתקדמים לטיפול בהתנגדויות.
-                  </div>
-                </div>
-              </div>
-              
-              <div class="step-item">
-                <div class="step-header" onclick="toggleStep(this)">
-                  <div class="step-number">06</div>
-                  <div class="step-title">ניהול שוטף ובקרה</div>
-                  <div class="step-toggle">+</div>
-                </div>
-                <div class="step-content">
-                  <div class="step-description">
-                    מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה.
-                  </div>
-                </div>
-              </div>
+            
+            <div class="pillar-bracket">
+              <h3 class="pillar-title">רובד ניהולי</h3>
+              <p class="pillar-content">
+                מערכת ניהול ומעקב מתקדמת אחר כל לקוח.
+                דוחות שקופים וליווי עד סגירת העסקה.
+              </p>
             </div>
           </div>
         </div>
         
-        <!-- CTA Section -->
-        <div class="cta-section">
-          <h2 class="cta-title">בואו נבנה את סיפור ההצלחה הבא</h2>
-          <button class="cta-button" data-modal="contact">
-            הצטרפו ליזמים שכבר איתנו
-          </button>
+        <!-- Marketing System -->
+        <div class="marketing-system">
+          <h2 class="section-title">מערכת השיווק</h2>
+          <div class="steps-container">
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">01</div>
+                <div class="step-title">מחקר שוק</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  בדיקה מעמיקה של רמות המחירים באזור, מיפוי המתחרים בהווה ובעתיד, פילוח ואיפיון קהלי היעד. זיהוי הערך המוסף הייחודי של הפרויקט והתנגדויות פוטנציאליות.
+                </div>
+              </div>
+            </div>
+            
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">02</div>
+                <div class="step-title">אסטרטגיה שיווקית</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  בניית תוכנית שיווקית מותאמת הכוללת עלויות שיווק ופרסום, צוות מכירות מתאים, יעדי מכירה ולוחות זמנים. הגדרת אופי וסוג הפרסום האופטימלי.
+                </div>
+              </div>
+            </div>
+            
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">03</div>
+                <div class="step-title">תכנון מוצר</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  תכנון המפרט, מאפייני הבניין ותמהיל הדירות הנכונים ביותר להצלחת הפרויקט בשיתוף היזם והאדריכל.
+                </div>
+              </div>
+            </div>
+            
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">04</div>
+                <div class="step-title">מיתוג ופרסום</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  עבודה עם חברות המיתוג המובילות בנדל"ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.
+                </div>
+              </div>
+            </div>
+            
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">05</div>
+                <div class="step-title">ניהול מכירות</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  העברת הפרויקט לצוות מכירות מוכשר לאחר תהליך חפיפה מעמיק וכלים מתקדמים לטיפול בהתנגדויות.
+                </div>
+              </div>
+            </div>
+            
+            <div class="step-item">
+              <div class="step-header" onclick="toggleStep(this)">
+                <div class="step-number">06</div>
+                <div class="step-title">ניהול שוטף ובקרה</div>
+                <div class="step-toggle">+</div>
+              </div>
+              <div class="step-content">
+                <div class="step-description">
+                  מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
-      <script>
-        // Global function for marketing system toggle
-        window.toggleStep = function(header) {
-          const content = header.nextElementSibling;
-          const toggle = header.querySelector('.step-toggle');
-          const isExpanded = content.classList.contains('expanded');
-          
-          // Close all other steps
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-title">בואו נבנה את סיפור ההצלחה הבא</h2>
+        <button class="cta-button" data-modal="contact">
+          הצטרפו ליזמים שכבר איתנו
+        </button>
+      </div>
+    </div>
+    
+    <script>
+      // Global function for marketing system toggle
+      window.toggleStep = function(header) {
+        const content = header.nextElementSibling;
+        const toggle = header.querySelector('.step-toggle');
+        const isExpanded = content.classList.contains('expanded');
+        
+        // Close all other steps
+        const portal = document.querySelector('.developer-portal');
+        if (portal) {
+          portal.querySelectorAll('.step-content.expanded').forEach(item => {
+            if (item !== content) {
+              item.classList.remove('expanded');
+              const prevToggle = item.previousElementSibling.querySelector('.step-toggle');
+              if (prevToggle) prevToggle.textContent = '+';
+            }
+          });
+        }
+        
+        // Toggle current step
+        if (isExpanded) {
+          content.classList.remove('expanded');
+          toggle.textContent = '+';
+        } else {
+          content.classList.add('expanded');
+          toggle.textContent = '−';
+        }
+      };
+      
+      // Initialize developer portal functionality when modal opens
+      setTimeout(() => {
+        const initDeveloperPortal = () => {
           const portal = document.querySelector('.developer-portal');
-          if (portal) {
-            portal.querySelectorAll('.step-content.expanded').forEach(item => {
-              if (item !== content) {
-                item.classList.remove('expanded');
-                const prevToggle = item.previousElementSibling.querySelector('.step-toggle');
-                if (prevToggle) prevToggle.textContent = '+';
-              }
-            });
-          }
+          if (!portal) return;
           
-          // Toggle current step
-          if (isExpanded) {
-            content.classList.remove('expanded');
-            toggle.textContent = '+';
-          } else {
-            content.classList.add('expanded');
-            toggle.textContent = '−';
+          // Projects slider functionality (FIXED)
+          const track = document.getElementById('projectsTrack');
+          const prevBtn = document.getElementById('prevBtn');
+          const nextBtn = document.getElementById('nextBtn');
+          
+          if (track && prevBtn && nextBtn) {
+            let currentIndex = 0;
+            const slides = Array.from(track.children).filter(el => el.classList.contains('project-slide'));
+            const totalSlides = slides.length;
+
+            function parseGap(cs) {
+              const raw = cs.gap || cs.columnGap || '16px';
+              const n = parseFloat(raw);
+              return Number.isFinite(n) ? n : 16;
+            }
+
+            function getSizes() {
+              const first = slides[0];
+              const slideWidth = first ? first.getBoundingClientRect().width : 300;
+              const gap = parseGap(getComputedStyle(track));
+              const containerWidth = track.parentElement.getBoundingClientRect().width;
+
+              // how many full slides fit
+              const slidesPerView = Math.max(1, Math.floor((containerWidth + gap) / (slideWidth + gap)));
+              const maxIndex = Math.max(0, totalSlides - slidesPerView);
+
+              return { slideWidth, gap, slidesPerView, maxIndex };
+            }
+
+            function updateSlider() {
+              const { slideWidth, gap, maxIndex } = getSizes();
+
+              if (currentIndex < 0) currentIndex = 0;
+              if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+              // track is forced LTR in CSS, so negative X moves left to reveal next slides
+              const offset = currentIndex * (slideWidth + gap);
+              track.style.transform = 'translateX(' + (-offset) + 'px)';
+
+              prevBtn.disabled = currentIndex === 0;
+              nextBtn.disabled = currentIndex >= maxIndex;
+            }
+            
+            prevBtn.onclick = () => { currentIndex--; updateSlider(); };
+            nextBtn.onclick = () => { currentIndex++; updateSlider(); };
+
+            // Keep indices correct on resize
+            if (window.ResizeObserver) {
+              const ro = new ResizeObserver(updateSlider);
+              ro.observe(track.parentElement);
+            } else {
+              window.addEventListener('resize', updateSlider);
+            }
+
+            // Initialize after paint
+            requestAnimationFrame(updateSlider);
           }
         };
         
-        // Initialize developer portal functionality when modal opens
-        setTimeout(() => {
-          const initDeveloperPortal = () => {
-            const portal = document.querySelector('.developer-portal');
-            if (!portal) return;
-            
-            // Projects slider functionality
-            const track = document.getElementById('projectsTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            if (track && prevBtn && nextBtn) {
-              let currentIndex = 0;
-              const slides = Array.from(track.children);
-              const totalSlides = slides.length;
-              
-              function updateSlider() {
-                const containerWidth = track.parentElement.offsetWidth;
-                const slideWidth = 300;
-                const gap = 16;
-                const slidesPerView = Math.floor(containerWidth / (slideWidth + gap)) || 1;
-                const maxIndex = Math.max(0, totalSlides - slidesPerView);
-                
-                currentIndex = Math.min(currentIndex, maxIndex);
-                
-                const offset = -(currentIndex * (slideWidth + gap));
-                track.style.transform = 'translateX(' + offset + 'px)';
-                
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex >= maxIndex;
-              }
-              
-              prevBtn.onclick = () => {
-                if (currentIndex > 0) {
-                  currentIndex--;
-                  updateSlider();
-                }
-              };
-              
-              nextBtn.onclick = () => {
-                const containerWidth = track.parentElement.offsetWidth;
-                const slideWidth = 300;
-                const gap = 16;
-                const slidesPerView = Math.floor(containerWidth / (slideWidth + gap)) || 1;
-                const maxIndex = Math.max(0, totalSlides - slidesPerView);
-                
-                if (currentIndex < maxIndex) {
-                  currentIndex++;
-                  updateSlider();
-                }
-              };
-              
-              // Initialize
-              updateSlider();
-              
-              // Handle window resize
-              window.addEventListener('resize', updateSlider);
-            }
-          };
-          
-          // Try to initialize immediately and also after a short delay
-          initDeveloperPortal();
-          setTimeout(initDeveloperPortal, 100);
-        }, 50);
-      </script>
-    `,
+        // Try to initialize immediately and also after a short delay
+        initDeveloperPortal();
+        setTimeout(initDeveloperPortal, 100);
+      }, 50);
+    </script>
+  `,
   },
   projects: {
     title: "פרויקטים",
@@ -3536,7 +3543,7 @@ const modalContents = {
                   עודכן לאחרונה: <span id="ethics-updated">__ / __ / ____</span>
                 </p>
               `,
-  },
+  }
 };
 
 function initializeOnboardingSteps() {
