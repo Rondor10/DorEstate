@@ -594,6 +594,19 @@ const modalContents = {
           .timeline-content { width: 100%; margin: 0 auto; }
           .timeline-dot { position: relative; right: auto; top: auto; margin: 1rem auto; transform: none; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+          .about-particle,
+          .timeline-button::before,
+          .timeline-line {
+            animation: none !important;
+            transition: none !important;
+          }
+          .quantum-timeline {
+            transition: none !important;
+          }
+        }
+
       </style>
       
       <div class="quantum-about">
@@ -621,7 +634,12 @@ const modalContents = {
           </div>
           
           <div class="timeline-toggle">
-            <button class="timeline-button" onclick="toggleTimeline()">
+            <button
+              class="timeline-button"
+              id="timelineToggleBtn"
+              aria-controls="timelineContainer"
+              aria-expanded="false"
+            >
               🕐 חקור את מסלול הזמן שלנו
             </button>
           </div>
@@ -696,12 +714,11 @@ const modalContents = {
         </div>
       </div>
       
-      <script>
-        // Create floating particles
+        <script>
+        // Create floating particles (unchanged)
         (function() {
           const particlesContainer = document.querySelector('.about-particles');
           if (!particlesContainer) return;
-          
           for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'about-particle';
@@ -711,34 +728,25 @@ const modalContents = {
             particlesContainer.appendChild(particle);
           }
         })();
-        
-        // Timeline toggle functionality
-        window.toggleTimeline = function() {
+
+        // Timeline toggle – single handler, ARIA-friendly
+        document.addEventListener('DOMContentLoaded', function () {
           const timeline = document.getElementById('timelineContainer');
-          const button = document.querySelector('.timeline-button');
-          
-          if (!timeline || !button) {
-            console.error('Timeline elements not found');
-            return;
+          const button = document.getElementById('timelineToggleBtn');
+          if (!timeline || !button) return;
+
+          function updateUI() {
+            const isVisible = timeline.classList.contains('visible');
+            button.setAttribute('aria-expanded', String(isVisible));
+            button.innerHTML = isVisible ? '⏰ הסתר מסלול זמן' : '🕐 חקור את מסלול הזמן שלנו';
           }
-          
-          if (timeline.classList.contains('visible')) {
-            timeline.classList.remove('visible');
-            button.innerHTML = '🕐 חקור את מסלול הזמן שלנו';
-          } else {
-            timeline.classList.add('visible');
-            button.innerHTML = '⏰ הסתר מסלול זמן';
-          }
-        };
-        
-        // Also add click event listener as backup
-        document.addEventListener('DOMContentLoaded', function() {
-          const button = document.querySelector('.timeline-button');
-          if (button) {
-            button.addEventListener('click', function() {
-              window.toggleTimeline();
-            });
-          }
+
+          button.addEventListener('click', function () {
+            timeline.classList.toggle('visible');
+            updateUI();
+          });
+
+          updateUI();
         });
       </script>
     `,
