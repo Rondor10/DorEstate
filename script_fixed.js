@@ -171,6 +171,13 @@ let onboardingSteps = [];
 
 // Modal Content Database
 const modalContents = {
+  //////////////////////////////// USED CATEGORIES
+
+  /////////////// TOP-BAR
+
+  /// RIGHT OF LOGO
+
+  // מורשת בכתב
   about: {
   title: "Legacy Protocol | פרוטוקול המורשת",
   content: `
@@ -568,6 +575,7 @@ const modalContents = {
     </script>
   `,
   },
+  // שירותי הפירמה
   services: {
     title: "Innovation Hub | רכזת החדשנות",
     content: `
@@ -980,733 +988,7 @@ const modalContents = {
       </script>
     `,
   },
-  contact: {
-    title: "Communication Hub | מרכז תקשורת",
-    content: `
-      <style>
-        .quantum-contact {
-          background: linear-gradient(135deg, #0a0a1a 0%, #001a33 50%, #003d66 100%);
-          color: #ffffff;
-          position: relative;
-          overflow: hidden;
-          padding: 0;
-          margin: -2rem;
-          min-height: 85vh;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .contact-particles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 1;
-          pointer-events: none;
-        }
-        
-        .contact-particle {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: #00bcd4;
-          border-radius: 50%;
-          opacity: 0.7;
-          animation: contactFloat 8s infinite linear;
-        }
-        
-        .contact-particle:nth-child(2n) { 
-          background: #4fc3f7; 
-          animation-delay: -1s; 
-          animation-duration: 6s;
-        }
-        .contact-particle:nth-child(3n) { 
-          background: #ff8a65; 
-          animation-delay: -3s; 
-          animation-duration: 7s;
-        }
-        .contact-particle:nth-child(4n) { 
-          background: #ff7043; 
-          animation-delay: -2s; 
-          animation-duration: 9s;
-        }
-        .contact-particle:nth-child(5n) { 
-          background: #ff5722; 
-          animation-delay: -4s; 
-          animation-duration: 5s;
-        }
-        
-        @keyframes contactFloat {
-          0% { 
-            transform: translateY(100vh) translateX(-30px) scale(0) rotate(0deg); 
-            opacity: 0; 
-          }
-          10% { 
-            opacity: 0.7; 
-            transform: scale(1); 
-          }
-          90% { 
-            opacity: 0.7; 
-          }
-          100% { 
-            transform: translateY(-100px) translateX(30px) scale(0) rotate(360deg); 
-            opacity: 0; 
-          }
-        }
-        
-        .contact-content {
-          position: relative;
-          z-index: 10;
-          padding: 2rem;
-          backdrop-filter: blur(3px);
-        }
-        
-        .contact-hero {
-          text-align: center;
-          margin-bottom: 3rem;
-        }
-        
-        .contact-title {
-          font-size: 2.8rem;
-          font-weight: 700;
-          background: linear-gradient(45deg, #00bcd4, #4fc3f7, #ff8a65);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          margin-bottom: 1rem;
-          animation: contactPulse 3s infinite alternate;
-          text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
-        }
-        
-        @keyframes contactPulse {
-          0% { 
-            transform: scale(1) rotateY(0deg); 
-            filter: brightness(1); 
-          }
-          100% { 
-            transform: scale(1.03) rotateY(2deg); 
-            filter: brightness(1.2); 
-          }
-        }
-        
-        .contact-subtitle {
-          font-size: 1.2rem;
-          color: #b3e5fc;
-          max-width: 600px;
-          margin: 0 auto 2rem;
-          line-height: 1.6;
-          opacity: 0.9;
-        }
-        
-        .communication-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-        
-        .contact-methods {
-          background: rgba(0, 188, 212, 0.03);
-          border: 1px solid rgba(0, 188, 212, 0.2);
-          border-radius: 20px;
-          padding: 2rem;
-          backdrop-filter: blur(5px);
-          transition: all 0.3s ease;
-        }
-        
-        .contact-methods:hover {
-          border-color: #00bcd4;
-          box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
-          transform: translateY(-5px);
-        }
-        
-        .methods-title {
-          font-size: 1.5rem;
-          color: #00bcd4;
-          margin-bottom: 1.5rem;
-          text-align: center;
-          font-weight: 600;
-        }
-        
-        .method-item {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1rem;
-          margin-bottom: 1rem;
-          background: rgba(255, 255, 255, 0.02);
-          border-radius: 15px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-        
-        .method-item:hover {
-          background: rgba(0, 188, 212, 0.1);
-          transform: translateX(10px);
-          box-shadow: 0 5px 15px rgba(0, 188, 212, 0.15);
-        }
-        
-        .method-icon {
-          font-size: 1.8rem;
-          color: #ff8a65;
-          min-width: 40px;
-          text-align: center;
-          text-shadow: 0 0 10px rgba(255, 138, 101, 0.5);
-        }
-        
-        .method-details {
-          flex: 1;
-        }
-        
-        .method-label {
-          font-weight: 600;
-          color: #ffffff;
-          margin-bottom: 0.3rem;
-        }
-        
-        .method-value {
-          color: #4fc3f7;
-          font-size: 0.95rem;
-          direction: ltr;
-          text-align: left;
-        }
-        
-        .contact-form-section {
-          background: rgba(255, 138, 101, 0.03);
-          border: 1px solid rgba(255, 138, 101, 0.2);
-          border-radius: 20px;
-          padding: 2rem;
-          backdrop-filter: blur(5px);
-          transition: all 0.3s ease;
-        }
-        
-        .contact-form-section:hover {
-          border-color: #ff8a65;
-          box-shadow: 0 10px 30px rgba(255, 138, 101, 0.2);
-          transform: translateY(-5px);
-        }
-        
-        .form-title {
-          font-size: 1.5rem;
-          color: #ff8a65;
-          margin-bottom: 1.5rem;
-          text-align: center;
-          font-weight: 600;
-        }
-        
-        .quantum-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-        
-        .input-group {
-          position: relative;
-        }
-        
-        .quantum-input, .quantum-textarea {
-          width: 100%;
-          padding: 1rem 1.5rem;
-          background: rgba(255, 255, 255, 0.05);
-          border: 2px solid rgba(0, 188, 212, 0.3);
-          border-radius: 15px;
-          color: #ffffff;
-          font-size: 1rem;
-          transition: all 0.3s ease;
-          box-sizing: border-box;
-          backdrop-filter: blur(10px);
-        }
-        
-        .quantum-input::placeholder, .quantum-textarea::placeholder {
-          color: #4fc3f7;
-          opacity: 0.7;
-        }
-        
-        .quantum-input:focus, .quantum-textarea:focus {
-          outline: none;
-          border-color: #00bcd4;
-          box-shadow: 
-            0 0 20px rgba(0, 188, 212, 0.3),
-            inset 0 0 20px rgba(0, 188, 212, 0.1);
-          transform: scale(1.02);
-          background: rgba(255, 255, 255, 0.08);
-        }
-        
-        .quantum-input:valid, .quantum-textarea:valid {
-          border-color: #ff8a65;
-          box-shadow: 0 0 15px rgba(255, 138, 101, 0.2);
-        }
-        
-        .quantum-input:invalid:not(:placeholder-shown), 
-        .quantum-textarea:invalid:not(:placeholder-shown) {
-          border-color: #ff5722;
-          box-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
-        }
-        
-        .submit-btn {
-          background: linear-gradient(45deg, #00bcd4, #ff8a65);
-          border: none;
-          padding: 1rem 3rem;
-          border-radius: 25px;
-          color: #ffffff;
-          font-size: 1.1rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          align-self: center;
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-        
-        .submit-btn:hover {
-          transform: translateY(-3px) scale(1.05);
-          box-shadow: 
-            0 10px 25px rgba(0, 188, 212, 0.3),
-            0 0 30px rgba(255, 138, 101, 0.2);
-          background: linear-gradient(45deg, #4fc3f7, #ff7043);
-        }
-        
-        .submit-btn::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          transition: left 0.5s ease;
-        }
-        
-        .submit-btn:hover::before {
-          left: 100%;
-        }
-        
-        .contact-methods-quick {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-          margin-top: 2rem;
-        }
-        
-        .quick-contact-btn {
-          background: rgba(0, 188, 212, 0.1);
-          border: 1px solid rgba(0, 188, 212, 0.3);
-          border-radius: 15px;
-          padding: 1rem;
-          color: #ffffff;
-          text-decoration: none;
-          text-align: center;
-          transition: all 0.3s ease;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-        }
-        
-        .quick-contact-btn:hover {
-          background: rgba(0, 188, 212, 0.2);
-          border-color: #00bcd4;
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(0, 188, 212, 0.25);
-        }
-        
-        .quick-contact-icon {
-          font-size: 1.5rem;
-          color: #ff8a65;
-        }
-        
-        .quick-contact-text {
-          font-size: 0.9rem;
-          color: #4fc3f7;
-          font-weight: 500;
-        }
-        
-        .success-message {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: linear-gradient(45deg, #00bcd4, #4fc3f7);
-          color: #ffffff;
-          padding: 2rem 3rem;
-          border-radius: 20px;
-          box-shadow: 0 20px 40px rgba(0, 188, 212, 0.3);
-          z-index: 1000;
-          font-size: 1.2rem;
-          font-weight: 600;
-          text-align: center;
-          opacity: 0;
-          transform: translate(-50%, -50%) scale(0.8);
-          transition: all 0.4s ease;
-        }
-        
-        .success-message.show {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-        
-        .quantum-glow {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          animation: quantumGlow 6s infinite ease-in-out;
-          z-index: 2;
-        }
-        
-        @keyframes quantumGlow {
-          0%, 100% { 
-            transform: translate(-50%, -50%) scale(1); 
-            opacity: 0.3; 
-          }
-          50% { 
-            transform: translate(-50%, -50%) scale(1.5); 
-            opacity: 0.1; 
-          }
-        }
-        
-        @media (max-width: 768px) {
-          .contact-title {
-            font-size: 2.2rem;
-          }
-          
-          .communication-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-          
-          .contact-content {
-            padding: 1.5rem;
-          }
-          
-          .contact-methods,
-          .contact-form-section {
-            padding: 1.5rem;
-          }
-          
-          .method-item {
-            padding: 0.8rem;
-          }
-          
-          .contact-methods-quick {
-            grid-template-columns: 1fr 1fr;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .contact-title {
-            font-size: 1.8rem;
-          }
-          
-          .contact-methods-quick {
-            grid-template-columns: 1fr;
-          }
-          
-          .method-item {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.5rem;
-          }
-        }
-      </style>
-      
-      <div class="quantum-contact">
-        <!-- Background Elements -->
-        <div class="quantum-glow"></div>
-        
-        <!-- Floating Particles -->
-        <div class="contact-particles">
-          <div class="contact-particle" style="left: 10%; animation-duration: 7s;"></div>
-          <div class="contact-particle" style="left: 20%; animation-duration: 8s;"></div>
-          <div class="contact-particle" style="left: 30%; animation-duration: 6s;"></div>
-          <div class="contact-particle" style="left: 40%; animation-duration: 9s;"></div>
-          <div class="contact-particle" style="left: 50%; animation-duration: 5s;"></div>
-          <div class="contact-particle" style="left: 60%; animation-duration: 7.5s;"></div>
-          <div class="contact-particle" style="left: 70%; animation-duration: 6.5s;"></div>
-          <div class="contact-particle" style="left: 80%; animation-duration: 8.5s;"></div>
-          <div class="contact-particle" style="left: 90%; animation-duration: 5.5s;"></div>
-        </div>
-        
-        <div class="contact-content">
-          <!-- Hero Section -->
-          <div class="contact-hero">
-            <h1 class="contact-title">Communication Hub</h1>
-            <p class="contact-subtitle">
-              מרכז תקשורת מתקדם למענה מיידי ויעיל. צרו קשר בדרך הנוחה לכם ביותר
-            </p>
-          </div>
-          
-          <!-- Main Communication Grid -->
-          <div class="communication-grid">
-            <!-- Contact Information -->
-            <div class="contact-methods">
-              <h3 class="methods-title">📡 Contact Information</h3>
-              
-              <div class="method-item" onclick="copyToClipboard('ויצמן 37, גבעתיים')">
-                <div class="method-icon">📍</div>
-                <div class="method-details">
-                  <div class="method-label">כתובת</div>
-                  <div class="method-value">ויצמן 37, גבעתיים</div>
-                </div>
-              </div>
-              
-              <div class="method-item" onclick="callPhone('050-5534488')">
-                <div class="method-icon">📞</div>
-                <div class="method-details">
-                  <div class="method-label">טלפון</div>
-                  <div class="method-value">050-5534488</div>
-                </div>
-              </div>
-              
-              <div class="method-item" onclick="sendEmail('inquiries@dorealestate.com')">
-                <div class="method-icon">📧</div>
-                <div class="method-details">
-                  <div class="method-label">אימייל</div>
-                  <div class="method-value">inquiries@dorealestate.com</div>
-                </div>
-              </div>
-              
-              <!-- Quick Contact Methods -->
-              <div class="contact-methods-quick">
-                <div class="quick-contact-btn" onclick="callPhone('050-5534488')">
-                  <div class="quick-contact-icon">📱</div>
-                  <div class="quick-contact-text">התקשר עכשיו</div>
-                </div>
-                
-                <div class="quick-contact-btn" onclick="openWhatsApp('972505534488')">
-                  <div class="quick-contact-icon">💬</div>
-                  <div class="quick-contact-text">WhatsApp</div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Contact Form -->
-            <div class="contact-form-section">
-              <h3 class="form-title">🚀 Send Message</h3>
-              
-              <form id="contactForm" class="quantum-form">
-                <div class="input-group">
-                  <input 
-                    id="contactName" 
-                    type="text" 
-                    placeholder="שם מלא *"
-                    class="quantum-input"
-                    required>
-                </div>
-                
-                <div class="input-group">
-                  <input 
-                    id="contactEmail" 
-                    type="email" 
-                    placeholder="כתובת אימייל *"
-                    class="quantum-input"
-                    required>
-                </div>
-                
-                <div class="input-group">
-                  <input 
-                    id="contactPhone" 
-                    type="tel" 
-                    placeholder="מספר טלפון"
-                    class="quantum-input">
-                </div>
-                
-                <div class="input-group">
-                  <textarea 
-                    id="contactMsg" 
-                    placeholder="הודעה *" 
-                    rows="4"
-                    class="quantum-textarea"
-                    required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                  🚀 שלח הודעה
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Success Message Template -->
-        <div id="successMessage" class="success-message">
-          ✅ ההודעה נשלחה בהצלחה!<br>
-          <small style="opacity: 0.8;">נחזור אליך בהקדם</small>
-        </div>
-      </div>
-      
-      <script>
-        // Enhanced form submission with validation and success feedback
-        document.getElementById("contactForm").addEventListener("submit", function(e) {
-          e.preventDefault();
-          
-          // Get form values
-          const name = document.getElementById("contactName").value.trim();
-          const email = document.getElementById("contactEmail").value.trim();
-          const phone = document.getElementById("contactPhone").value.trim();
-          const message = document.getElementById("contactMsg").value.trim();
-          
-          // Basic validation
-          if (!name || !email || !message) {
-            showValidationError("אנא מלא את כל השדות הנדרשים");
-            return;
-          }
-          
-          // Email validation
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            showValidationError("כתובת האימייל אינה תקינה");
-            return;
-          }
-          
-          // Show success message
-          showSuccessMessage();
-          
-          // Reset form
-          document.getElementById("contactForm").reset();
-          
-          // Redirect after success message
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2500);
-        });
-        
-        function showSuccessMessage() {
-          const successMsg = document.getElementById("successMessage");
-          successMsg.classList.add("show");
-          
-          setTimeout(() => {
-            successMsg.classList.remove("show");
-          }, 2000);
-        }
-        
-        function showValidationError(message) {
-          // Create temporary error message
-          const errorDiv = document.createElement("div");
-          errorDiv.style.cssText = \`
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #ff5722, #ff7043);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
-            z-index: 1001;
-            font-weight: 600;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          \`;
-          errorDiv.textContent = message;
-          document.body.appendChild(errorDiv);
-          
-          // Show error
-          setTimeout(() => errorDiv.style.opacity = "1", 100);
-          
-          // Hide and remove error
-          setTimeout(() => {
-            errorDiv.style.opacity = "0";
-            setTimeout(() => document.body.removeChild(errorDiv), 300);
-          }, 3000);
-        }
-        
-        function copyToClipboard(text) {
-          navigator.clipboard.writeText(text).then(() => {
-            showCopySuccess("כתובת הועתקה ללוח");
-          }).catch(() => {
-            showCopySuccess("כתובת: " + text);
-          });
-        }
-        
-        function callPhone(phone) {
-          window.open(\`tel:\${phone}\`, '_self');
-        }
-        
-        function sendEmail(email) {
-          window.open(\`mailto:\${email}?subject=פנייה מאתר DorEstate\`, '_blank');
-        }
-        
-        function openWhatsApp(phone) {
-          const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
-          window.open(\`https://wa.me/\${phone}?text=\${message}\`, '_blank');
-        }
-        
-        function showCopySuccess(message) {
-          const copyMsg = document.createElement("div");
-          copyMsg.style.cssText = \`
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, #00bcd4, #4fc3f7);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
-            z-index: 1002;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateX(100px);
-            transition: all 0.3s ease;
-          \`;
-          copyMsg.textContent = message;
-          document.body.appendChild(copyMsg);
-          
-          // Show message
-          setTimeout(() => {
-            copyMsg.style.opacity = "1";
-            copyMsg.style.transform = "translateX(0)";
-          }, 100);
-          
-          // Hide and remove message
-          setTimeout(() => {
-            copyMsg.style.opacity = "0";
-            copyMsg.style.transform = "translateX(100px)";
-            setTimeout(() => document.body.removeChild(copyMsg), 300);
-          }, 2500);
-        }
-        
-        // Add real-time validation styling
-        document.addEventListener('DOMContentLoaded', function() {
-          const inputs = document.querySelectorAll('.quantum-input, .quantum-textarea');
-          
-          inputs.forEach(input => {
-            input.addEventListener('input', function() {
-              if (this.checkValidity() && this.value.trim()) {
-                this.style.borderColor = '#ff8a65';
-                this.style.boxShadow = '0 0 15px rgba(255, 138, 101, 0.2)';
-              } else if (this.value.trim() && !this.checkValidity()) {
-                this.style.borderColor = '#ff5722';
-                this.style.boxShadow = '0 0 15px rgba(255, 87, 34, 0.3)';
-              } else {
-                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
-                this.style.boxShadow = 'none';
-              }
-            });
-            
-            input.addEventListener('focus', function() {
-              this.style.borderColor = '#00bcd4';
-              this.style.boxShadow = '0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1)';
-            });
-            
-            input.addEventListener('blur', function() {
-              if (!this.value.trim()) {
-                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
-                this.style.boxShadow = 'none';
-              }
-            });
-          });
-        });
-      </script>
-        `,
-  },
+  // הצוות שלנו
   team: {
   title: "Neural Network | הרשת הנוירונית",
   content: `
@@ -1823,6 +1105,7 @@ const modalContents = {
 
   `
   },
+  // קריירה ב-Dor Israel
   join: {
     title: "Shape The Future | עצב את העתיד",
     content: `
@@ -2205,82 +1488,10 @@ const modalContents = {
       </script>
     `,
   },
-  knowledge: {
-    title: 'רגע של נדל"ן',
-    content: `
-            <h2>מאגר הידע והמדריכים שלנו</h2>
-            <p style="margin-bottom: 2rem;">כל מה שרציתם לדעת על נדל"ן במקום אחד.</p>
 
-            <div style="display: grid; gap: 1rem; margin-top: 2rem;">
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-calculator" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מיסוי נדל"ן</h3>
-                    <p>הכל על מיסוי בעולם הנדל"ן</p>
-                </div>
+  /// LEFT OF LOGO
 
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-map" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מקרקעין ותכנון</h3>
-                    <p>מדריך למקרקעין ותכנון עירוני</p>
-                </div>
-
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-hammer" style="margin-left: 0.5rem; color: var(--primary-color);"></i>פינוי בינוי ותמ"א</h3>
-                    <p>תקנות פינוי בינוי ותמ"א</p>
-                </div>
-
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-handshake" style="margin-left: 0.5rem; color: var(--primary-color);"></i>עסקאות קומבינציה</h3>
-                    <p>מה זה עסקאות קומבינציה וכיצד הן פועלות</p>
-                </div>
-
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-chart-line" style="margin-left: 0.5rem; color: var(--primary-color);"></i>ניתוחי שווקים</h3>
-                    <p>ניתוחים מקצועיים של שוק הנדל"ן</p>
-                </div>
-
-                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-lightbulb" style="margin-left: 0.5rem; color: var(--primary-color);"></i>קבלת החלטות בנדל"ן</h3>
-                    <p>כלים לקבלת החלטות חכמות בנדל"ן</p>
-                </div>
-            </div>
-        `,
-  },
-  picks: {
-    title: "הנבחרים שלנו",
-    content: `
-            <h2>פרויקטים ונכסי יוקרה נבחרים</h2>
-            <p style="margin-bottom: 2rem;">הזדמנויות מיוחדות שאנחנו ממליצים עליהן במיוחד.</p>
-
-            <div style="display: grid; gap: 2rem; margin-top: 2rem;">
-                <div style="border: 1px solid #eee; border-radius: 15px; overflow: hidden;">
-                    <div style="background: linear-gradient(45deg, #d4af37, #f39c12); height: 150px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-building" style="font-size: 3rem; color: white;"></i>
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3>פרויקט יוקרה מיוחד</h3>
-                        <p style="color: var(--text-secondary); margin: 0.5rem 0;">תל אביב צפון</p>
-                        <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">החל מ-3,500,000 ₪</p>
-                        <button style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer; margin-top: 1rem;">פרטים נוספ, ם</button>
-                    </div>
-                </div>
-
-                <div style="border: 1px solid #eee; border-radius: 15px; overflow: hidden;">
-                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); height: 150px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-home" style="font-size: 3rem; color: white;"></i>
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3>דירת גן מעוצבת</h3>
-                        <p style="color: var(--text-secondary); margin: 0.5rem 0;">רמת אביב</p>
-                        <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">2,800,000 ₪</p>
-                        <button style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer; margin-top: 1rem;">פרטים נוספים</button>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-style: italic;">
-                הנכסים מתעדכנים יום-יומיים
-            </p>
-        `,
-  },
+  // ליזמים
   assets: {
   title: "ליזמים",
   content: `
@@ -3087,6 +2298,7 @@ const modalContents = {
     </script>
   `,
   },
+  // פרויקטים
   projects: {
     title: "פרויקטים",
     content: `
@@ -3242,6 +2454,738 @@ const modalContents = {
 
       `,
   },
+    // צור קשר
+  contact: {
+    title: "Communication Hub | מרכז תקשורת",
+    content: `
+      <style>
+        .quantum-contact {
+          background: linear-gradient(135deg, #0a0a1a 0%, #001a33 50%, #003d66 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 85vh;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .contact-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        .contact-particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #00bcd4;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: contactFloat 8s infinite linear;
+        }
+        
+        .contact-particle:nth-child(2n) { 
+          background: #4fc3f7; 
+          animation-delay: -1s; 
+          animation-duration: 6s;
+        }
+        .contact-particle:nth-child(3n) { 
+          background: #ff8a65; 
+          animation-delay: -3s; 
+          animation-duration: 7s;
+        }
+        .contact-particle:nth-child(4n) { 
+          background: #ff7043; 
+          animation-delay: -2s; 
+          animation-duration: 9s;
+        }
+        .contact-particle:nth-child(5n) { 
+          background: #ff5722; 
+          animation-delay: -4s; 
+          animation-duration: 5s;
+        }
+        
+        @keyframes contactFloat {
+          0% { 
+            transform: translateY(100vh) translateX(-30px) scale(0) rotate(0deg); 
+            opacity: 0; 
+          }
+          10% { 
+            opacity: 0.7; 
+            transform: scale(1); 
+          }
+          90% { 
+            opacity: 0.7; 
+          }
+          100% { 
+            transform: translateY(-100px) translateX(30px) scale(0) rotate(360deg); 
+            opacity: 0; 
+          }
+        }
+        
+        .contact-content {
+          position: relative;
+          z-index: 10;
+          padding: 2rem;
+          backdrop-filter: blur(3px);
+        }
+        
+        .contact-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        
+        .contact-title {
+          font-size: 2.8rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #00bcd4, #4fc3f7, #ff8a65);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: contactPulse 3s infinite alternate;
+          text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+        }
+        
+        @keyframes contactPulse {
+          0% { 
+            transform: scale(1) rotateY(0deg); 
+            filter: brightness(1); 
+          }
+          100% { 
+            transform: scale(1.03) rotateY(2deg); 
+            filter: brightness(1.2); 
+          }
+        }
+        
+        .contact-subtitle {
+          font-size: 1.2rem;
+          color: #b3e5fc;
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+          opacity: 0.9;
+        }
+        
+        .communication-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .contact-methods {
+          background: rgba(0, 188, 212, 0.03);
+          border: 1px solid rgba(0, 188, 212, 0.2);
+          border-radius: 20px;
+          padding: 2rem;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+        }
+        
+        .contact-methods:hover {
+          border-color: #00bcd4;
+          box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+          transform: translateY(-5px);
+        }
+        
+        .methods-title {
+          font-size: 1.5rem;
+          color: #00bcd4;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-weight: 600;
+        }
+        
+        .method-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 15px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .method-item:hover {
+          background: rgba(0, 188, 212, 0.1);
+          transform: translateX(10px);
+          box-shadow: 0 5px 15px rgba(0, 188, 212, 0.15);
+        }
+        
+        .method-icon {
+          font-size: 1.8rem;
+          color: #ff8a65;
+          min-width: 40px;
+          text-align: center;
+          text-shadow: 0 0 10px rgba(255, 138, 101, 0.5);
+        }
+        
+        .method-details {
+          flex: 1;
+        }
+        
+        .method-label {
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 0.3rem;
+        }
+        
+        .method-value {
+          color: #4fc3f7;
+          font-size: 0.95rem;
+          direction: ltr;
+          text-align: left;
+        }
+        
+        .contact-form-section {
+          background: rgba(255, 138, 101, 0.03);
+          border: 1px solid rgba(255, 138, 101, 0.2);
+          border-radius: 20px;
+          padding: 2rem;
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+        }
+        
+        .contact-form-section:hover {
+          border-color: #ff8a65;
+          box-shadow: 0 10px 30px rgba(255, 138, 101, 0.2);
+          transform: translateY(-5px);
+        }
+        
+        .form-title {
+          font-size: 1.5rem;
+          color: #ff8a65;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          font-weight: 600;
+        }
+        
+        .quantum-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        
+        .input-group {
+          position: relative;
+        }
+        
+        .quantum-input, .quantum-textarea {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(0, 188, 212, 0.3);
+          border-radius: 15px;
+          color: #ffffff;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-sizing: border-box;
+          backdrop-filter: blur(10px);
+        }
+        
+        .quantum-input::placeholder, .quantum-textarea::placeholder {
+          color: #4fc3f7;
+          opacity: 0.7;
+        }
+        
+        .quantum-input:focus, .quantum-textarea:focus {
+          outline: none;
+          border-color: #00bcd4;
+          box-shadow: 
+            0 0 20px rgba(0, 188, 212, 0.3),
+            inset 0 0 20px rgba(0, 188, 212, 0.1);
+          transform: scale(1.02);
+          background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .quantum-input:valid, .quantum-textarea:valid {
+          border-color: #ff8a65;
+          box-shadow: 0 0 15px rgba(255, 138, 101, 0.2);
+        }
+        
+        .quantum-input:invalid:not(:placeholder-shown), 
+        .quantum-textarea:invalid:not(:placeholder-shown) {
+          border-color: #ff5722;
+          box-shadow: 0 0 15px rgba(255, 87, 34, 0.3);
+        }
+        
+        .submit-btn {
+          background: linear-gradient(45deg, #00bcd4, #ff8a65);
+          border: none;
+          padding: 1rem 3rem;
+          border-radius: 25px;
+          color: #ffffff;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          align-self: center;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .submit-btn:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 
+            0 10px 25px rgba(0, 188, 212, 0.3),
+            0 0 30px rgba(255, 138, 101, 0.2);
+          background: linear-gradient(45deg, #4fc3f7, #ff7043);
+        }
+        
+        .submit-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .submit-btn:hover::before {
+          left: 100%;
+        }
+        
+        .contact-methods-quick {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+        
+        .quick-contact-btn {
+          background: rgba(0, 188, 212, 0.1);
+          border: 1px solid rgba(0, 188, 212, 0.3);
+          border-radius: 15px;
+          padding: 1rem;
+          color: #ffffff;
+          text-decoration: none;
+          text-align: center;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .quick-contact-btn:hover {
+          background: rgba(0, 188, 212, 0.2);
+          border-color: #00bcd4;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0, 188, 212, 0.25);
+        }
+        
+        .quick-contact-icon {
+          font-size: 1.5rem;
+          color: #ff8a65;
+        }
+        
+        .quick-contact-text {
+          font-size: 0.9rem;
+          color: #4fc3f7;
+          font-weight: 500;
+        }
+        
+        .success-message {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+          color: #ffffff;
+          padding: 2rem 3rem;
+          border-radius: 20px;
+          box-shadow: 0 20px 40px rgba(0, 188, 212, 0.3);
+          z-index: 1000;
+          font-size: 1.2rem;
+          font-weight: 600;
+          text-align: center;
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+          transition: all 0.4s ease;
+        }
+        
+        .success-message.show {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .quantum-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: quantumGlow 6s infinite ease-in-out;
+          z-index: 2;
+        }
+        
+        @keyframes quantumGlow {
+          0%, 100% { 
+            transform: translate(-50%, -50%) scale(1); 
+            opacity: 0.3; 
+          }
+          50% { 
+            transform: translate(-50%, -50%) scale(1.5); 
+            opacity: 0.1; 
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .contact-title {
+            font-size: 2.2rem;
+          }
+          
+          .communication-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          
+          .contact-content {
+            padding: 1.5rem;
+          }
+          
+          .contact-methods,
+          .contact-form-section {
+            padding: 1.5rem;
+          }
+          
+          .method-item {
+            padding: 0.8rem;
+          }
+          
+          .contact-methods-quick {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .contact-title {
+            font-size: 1.8rem;
+          }
+          
+          .contact-methods-quick {
+            grid-template-columns: 1fr;
+          }
+          
+          .method-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+          }
+        }
+      </style>
+      
+      <div class="quantum-contact">
+        <!-- Background Elements -->
+        <div class="quantum-glow"></div>
+        
+        <!-- Floating Particles -->
+        <div class="contact-particles">
+          <div class="contact-particle" style="left: 10%; animation-duration: 7s;"></div>
+          <div class="contact-particle" style="left: 20%; animation-duration: 8s;"></div>
+          <div class="contact-particle" style="left: 30%; animation-duration: 6s;"></div>
+          <div class="contact-particle" style="left: 40%; animation-duration: 9s;"></div>
+          <div class="contact-particle" style="left: 50%; animation-duration: 5s;"></div>
+          <div class="contact-particle" style="left: 60%; animation-duration: 7.5s;"></div>
+          <div class="contact-particle" style="left: 70%; animation-duration: 6.5s;"></div>
+          <div class="contact-particle" style="left: 80%; animation-duration: 8.5s;"></div>
+          <div class="contact-particle" style="left: 90%; animation-duration: 5.5s;"></div>
+        </div>
+        
+        <div class="contact-content">
+          <!-- Hero Section -->
+          <div class="contact-hero">
+            <h1 class="contact-title">Communication Hub</h1>
+            <p class="contact-subtitle">
+              המסלול שלך מתחיל כאן.
+            </p>
+          </div>
+          
+          <!-- Main Communication Grid -->
+          <div class="communication-grid">
+            <!-- Contact Information -->
+            <div class="contact-methods">
+              <h3 class="methods-title">📡 Contact Information</h3>
+              
+              <div class="method-item" onclick="copyToClipboard('ויצמן 37, גבעתיים')">
+                <div class="method-icon">📍</div>
+                <div class="method-details">
+                  <div class="method-label">כתובת</div>
+                  <div class="method-value">ויצמן 37, גבעתיים</div>
+                </div>
+              </div>
+              
+              <div class="method-item" onclick="callPhone('050-5534488')">
+                <div class="method-icon">📞</div>
+                <div class="method-details">
+                  <div class="method-label">טלפון</div>
+                  <div class="method-value">050-5534488</div>
+                </div>
+              </div>
+              
+              <div class="method-item" onclick="sendEmail('inquiries@dorealestate.com')">
+                <div class="method-icon">📧</div>
+                <div class="method-details">
+                  <div class="method-label">אימייל</div>
+                  <div class="method-value">inquiries@dorealestate.com</div>
+                </div>
+              </div>
+              
+              <!-- Quick Contact Methods -->
+              <div class="contact-methods-quick">
+                <div class="quick-contact-btn" onclick="callPhone('050-5534488')">
+                  <div class="quick-contact-icon">📱</div>
+                  <div class="quick-contact-text">התקשר עכשיו</div>
+                </div>
+                
+                <div class="quick-contact-btn" onclick="openWhatsApp('972505534488')">
+                  <div class="quick-contact-icon">💬</div>
+                  <div class="quick-contact-text">WhatsApp</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+              <h3 class="form-title">🚀 Send Message</h3>
+              
+              <form id="contactForm" class="quantum-form">
+                <div class="input-group">
+                  <input 
+                    id="contactName" 
+                    type="text" 
+                    placeholder="שם מלא *"
+                    class="quantum-input"
+                    required>
+                </div>
+                
+                <div class="input-group">
+                  <input 
+                    id="contactEmail" 
+                    type="email" 
+                    placeholder="כתובת אימייל *"
+                    class="quantum-input"
+                    required>
+                </div>
+                
+                <div class="input-group">
+                  <input 
+                    id="contactPhone" 
+                    type="tel" 
+                    placeholder="מספר טלפון"
+                    class="quantum-input">
+                </div>
+                
+                <div class="input-group">
+                  <textarea 
+                    id="contactMsg" 
+                    placeholder="הודעה *" 
+                    rows="4"
+                    class="quantum-textarea"
+                    required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                  🚀 שלח הודעה
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Success Message Template -->
+        <div id="successMessage" class="success-message">
+          ✅ ההודעה נשלחה בהצלחה!<br>
+          <small style="opacity: 0.8;">נחזור אליך בהקדם</small>
+        </div>
+      </div>
+      
+      <script>
+        // Enhanced form submission with validation and success feedback
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+          e.preventDefault();
+          
+          // Get form values
+          const name = document.getElementById("contactName").value.trim();
+          const email = document.getElementById("contactEmail").value.trim();
+          const phone = document.getElementById("contactPhone").value.trim();
+          const message = document.getElementById("contactMsg").value.trim();
+          
+          // Basic validation
+          if (!name || !email || !message) {
+            showValidationError("אנא מלא את כל השדות הנדרשים");
+            return;
+          }
+          
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showValidationError("כתובת האימייל אינה תקינה");
+            return;
+          }
+          
+          // Show success message
+          showSuccessMessage();
+          
+          // Reset form
+          document.getElementById("contactForm").reset();
+          
+          // Redirect after success message
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2500);
+        });
+        
+        function showSuccessMessage() {
+          const successMsg = document.getElementById("successMessage");
+          successMsg.classList.add("show");
+          
+          setTimeout(() => {
+            successMsg.classList.remove("show");
+          }, 2000);
+        }
+        
+        function showValidationError(message) {
+          // Create temporary error message
+          const errorDiv = document.createElement("div");
+          errorDiv.style.cssText = \`
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #ff5722, #ff7043);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+            z-index: 1001;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          \`;
+          errorDiv.textContent = message;
+          document.body.appendChild(errorDiv);
+          
+          // Show error
+          setTimeout(() => errorDiv.style.opacity = "1", 100);
+          
+          // Hide and remove error
+          setTimeout(() => {
+            errorDiv.style.opacity = "0";
+            setTimeout(() => document.body.removeChild(errorDiv), 300);
+          }, 3000);
+        }
+        
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text).then(() => {
+            showCopySuccess("כתובת הועתקה ללוח");
+          }).catch(() => {
+            showCopySuccess("כתובת: " + text);
+          });
+        }
+        
+        function callPhone(phone) {
+          window.open(\`tel:\${phone}\`, '_self');
+        }
+        
+        function sendEmail(email) {
+          window.open(\`mailto:\${email}?subject=פנייה מאתר DorEstate\`, '_blank');
+        }
+        
+        function openWhatsApp(phone) {
+          const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
+          window.open(\`https://wa.me/\${phone}?text=\${message}\`, '_blank');
+        }
+        
+        function showCopySuccess(message) {
+          const copyMsg = document.createElement("div");
+          copyMsg.style.cssText = \`
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+            z-index: 1002;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.3s ease;
+          \`;
+          copyMsg.textContent = message;
+          document.body.appendChild(copyMsg);
+          
+          // Show message
+          setTimeout(() => {
+            copyMsg.style.opacity = "1";
+            copyMsg.style.transform = "translateX(0)";
+          }, 100);
+          
+          // Hide and remove message
+          setTimeout(() => {
+            copyMsg.style.opacity = "0";
+            copyMsg.style.transform = "translateX(100px)";
+            setTimeout(() => document.body.removeChild(copyMsg), 300);
+          }, 2500);
+        }
+        
+        // Add real-time validation styling
+        document.addEventListener('DOMContentLoaded', function() {
+          const inputs = document.querySelectorAll('.quantum-input, .quantum-textarea');
+          
+          inputs.forEach(input => {
+            input.addEventListener('input', function() {
+              if (this.checkValidity() && this.value.trim()) {
+                this.style.borderColor = '#ff8a65';
+                this.style.boxShadow = '0 0 15px rgba(255, 138, 101, 0.2)';
+              } else if (this.value.trim() && !this.checkValidity()) {
+                this.style.borderColor = '#ff5722';
+                this.style.boxShadow = '0 0 15px rgba(255, 87, 34, 0.3)';
+              } else {
+                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+            
+            input.addEventListener('focus', function() {
+              this.style.borderColor = '#00bcd4';
+              this.style.boxShadow = '0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1)';
+            });
+            
+            input.addEventListener('blur', function() {
+              if (!this.value.trim()) {
+                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+          });
+        });
+      </script>
+        `,
+  },
+
+  /////////////// BOTTOM-BAR
+
+  // תנאי שימוש
   terms: {
     title: "תנאי שימוש",
     content: `
@@ -3311,10 +3255,11 @@ const modalContents = {
                </div>
 
                <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                 עודכן לאחרונה: <span id="terms-updated">__ / __ / ____</span>
+                 עודכן לאחרונה: <span id="terms-updated">01/09/2025</span>
                </p>
              `,
   },
+  // מדיניות פרטיות
   privacy: {
     title: "מדיניות פרטיות",
     content: `
@@ -3383,10 +3328,11 @@ const modalContents = {
                      </div>
 
                      <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                       עודכן לאחרונה: <span id="privacy-updated">__ / __ / ____</span>
+                       עודכן לאחרונה: <span id="privacy-updated">01/09/2025</span>
                      </p>
                    `,
   },
+  // נגישות
   accessibility: {
     title: "הסדרי נגישות",
     content: `
@@ -3417,7 +3363,6 @@ const modalContents = {
                          <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">פנייה בנושא נגישות</h3>
                          <p>נשמח לקבל משוב והצעות לשיפור.</p>
                          <div style="background:#f8f9fa; border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
-                           <p style="margin: .25rem 0;"><strong>ממונה נגישות:</strong> ________</p>
                            <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
                            <p style="margin: .25rem 0;"><strong>דוא"ל:</strong> accessibility@dorealestate.com</p>
                            <p style="margin: .25rem 0;"><strong>ימי מענה:</strong> א'–ה', 9:00–17:00</p>
@@ -3425,10 +3370,11 @@ const modalContents = {
                        </div>
 
                        <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                         עודכן לאחרונה: <span id="accessibility-updated">__ / __ / ____</span>
+                         עודכן לאחרונה: <span id="accessibility-updated">01/09/2025</span>
                        </p>
                      `,
   },
+  // כללי אתיקה
   ethics: {
     title: "כללי אתיקה",
     content: `
@@ -3464,9 +3410,88 @@ const modalContents = {
                 </div>
 
                 <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                  עודכן לאחרונה: <span id="ethics-updated">__ / __ / ____</span>
+                  עודכן לאחרונה: <span id="ethics-updated">01/09/2025</span>
                 </p>
               `,
+  },
+
+  // UNUSED CATEGORIES (for future use)
+
+  knowledge: {
+    title: 'רגע של נדל"ן',
+    content: `
+            <h2>מאגר הידע והמדריכים שלנו</h2>
+            <p style="margin-bottom: 2rem;">כל מה שרציתם לדעת על נדל"ן במקום אחד.</p>
+
+            <div style="display: grid; gap: 1rem; margin-top: 2rem;">
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-calculator" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מיסוי נדל"ן</h3>
+                    <p>הכל על מיסוי בעולם הנדל"ן</p>
+                </div>
+
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-map" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מקרקעין ותכנון</h3>
+                    <p>מדריך למקרקעין ותכנון עירוני</p>
+                </div>
+
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-hammer" style="margin-left: 0.5rem; color: var(--primary-color);"></i>פינוי בינוי ותמ"א</h3>
+                    <p>תקנות פינוי בינוי ותמ"א</p>
+                </div>
+
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-handshake" style="margin-left: 0.5rem; color: var(--primary-color);"></i>עסקאות קומבינציה</h3>
+                    <p>מה זה עסקאות קומבינציה וכיצד הן פועלות</p>
+                </div>
+
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-chart-line" style="margin-left: 0.5rem; color: var(--primary-color);"></i>ניתוחי שווקים</h3>
+                    <p>ניתוחים מקצועיים של שוק הנדל"ן</p>
+                </div>
+
+                <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
+                    <h3><i class="fas fa-lightbulb" style="margin-left: 0.5rem; color: var(--primary-color);"></i>קבלת החלטות בנדל"ן</h3>
+                    <p>כלים לקבלת החלטות חכמות בנדל"ן</p>
+                </div>
+            </div>
+        `,
+  },
+  picks: {
+    title: "הנבחרים שלנו",
+    content: `
+            <h2>פרויקטים ונכסי יוקרה נבחרים</h2>
+            <p style="margin-bottom: 2rem;">הזדמנויות מיוחדות שאנחנו ממליצים עליהן במיוחד.</p>
+
+            <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                <div style="border: 1px solid #eee; border-radius: 15px; overflow: hidden;">
+                    <div style="background: linear-gradient(45deg, #d4af37, #f39c12); height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-building" style="font-size: 3rem; color: white;"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3>פרויקט יוקרה מיוחד</h3>
+                        <p style="color: var(--text-secondary); margin: 0.5rem 0;">תל אביב צפון</p>
+                        <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">החל מ-3,500,000 ₪</p>
+                        <button style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer; margin-top: 1rem;">פרטים נוספ, ם</button>
+                    </div>
+                </div>
+
+                <div style="border: 1px solid #eee; border-radius: 15px; overflow: hidden;">
+                    <div style="background: linear-gradient(45deg, #667eea, #764ba2); height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-home" style="font-size: 3rem; color: white;"></i>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3>דירת גן מעוצבת</h3>
+                        <p style="color: var(--text-secondary); margin: 0.5rem 0;">רמת אביב</p>
+                        <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">2,800,000 ₪</p>
+                        <button style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: 15px; cursor: pointer; margin-top: 1rem;">פרטים נוספים</button>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-style: italic;">
+                הנכסים מתעדכנים יום-יומיים
+            </p>
+        `,
   }
 };
 
