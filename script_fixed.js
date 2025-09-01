@@ -3133,16 +3133,23 @@ const modalContents = {
             return;
           }
           
+          // Create email body with form data
+          const emailBody = 'שם: ' + name + '\n' +
+                           'אימייל: ' + email + '\n' +
+                           'טלפון: ' + (phone || 'לא צוין') + '\n\n' +
+                           'הודעה:\n' + message + '\n\n' +
+                           '---\nהודעה זו נשלחה מאתר DorEstate';
+          
+          // Open email client with form data
+          const emailSubject = encodeURIComponent('פנייה חדשה מאתר DorEstate');
+          const encodedBody = encodeURIComponent(emailBody);
+          window.open('mailto:inquiries@dorealestate.com?subject=' + emailSubject + '&body=' + encodedBody, '_blank');
+          
           // Show success message
           showSuccessMessage();
           
           // Reset form
           document.getElementById("contactForm").reset();
-          
-          // Redirect after success message
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2500);
         });
         
         function showSuccessMessage() {
@@ -3157,22 +3164,21 @@ const modalContents = {
         function showValidationError(message) {
           // Create temporary error message
           const errorDiv = document.createElement("div");
-          errorDiv.style.cssText = \`
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #ff5722, #ff7043);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
-            z-index: 1001;
-            font-weight: 600;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          \`;
+          errorDiv.style.cssText = 
+            "position: fixed;" +
+            "top: 50%;" +
+            "left: 50%;" +
+            "transform: translate(-50%, -50%);" +
+            "background: linear-gradient(45deg, #ff5722, #ff7043);" +
+            "color: white;" +
+            "padding: 1rem 2rem;" +
+            "border-radius: 15px;" +
+            "box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);" +
+            "z-index: 1001;" +
+            "font-weight: 600;" +
+            "text-align: center;" +
+            "opacity: 0;" +
+            "transition: opacity 0.3s ease;";
           errorDiv.textContent = message;
           document.body.appendChild(errorDiv);
           
@@ -3195,35 +3201,34 @@ const modalContents = {
         }
         
         function callPhone(phone) {
-          window.open(\`tel:\${phone}\`, '_self');
+          window.open('tel:' + phone, '_self');
         }
         
         function sendEmail(email) {
-          window.open(\`mailto:\${email}?subject=פנייה מאתר DorEstate\`, '_blank');
+          window.open('mailto:' + email + '?subject=פנייה מאתר DorEstate', '_blank');
         }
         
         function openWhatsApp(phone) {
           const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
-          window.open(\`https://wa.me/\${phone}?text=\${message}\`, '_blank');
+          window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
         }
         
         function showCopySuccess(message) {
           const copyMsg = document.createElement("div");
-          copyMsg.style.cssText = \`
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, #00bcd4, #4fc3f7);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
-            z-index: 1002;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateX(100px);
-            transition: all 0.3s ease;
-          \`;
+          copyMsg.style.cssText = 
+            "position: fixed;" +
+            "top: 20px;" +
+            "right: 20px;" +
+            "background: linear-gradient(45deg, #00bcd4, #4fc3f7);" +
+            "color: white;" +
+            "padding: 0.8rem 1.5rem;" +
+            "border-radius: 10px;" +
+            "box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);" +
+            "z-index: 1002;" +
+            "font-weight: 500;" +
+            "opacity: 0;" +
+            "transform: translateX(100px);" +
+            "transition: all 0.3s ease;";
           copyMsg.textContent = message;
           document.body.appendChild(copyMsg);
           
