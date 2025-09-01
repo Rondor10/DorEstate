@@ -3547,15 +3547,18 @@ window.callPhone = function(phone) {
   window.open('tel:' + phone, '_self');
 };
 
+// Email with pre-filled subject
 window.sendEmail = function(email) {
   window.open('mailto:' + email + '?subject=פנייה מאתר DorEstate', '_blank');
 };
 
+// WhatsApp with pre-filled message
 window.openWhatsApp = function(phone) {
   const message = encodeURIComponent("שלום, אני מעוניין לקבל מידע נוסף על השירותים שלכם");
   window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
 };
 
+// Copy to clipboard with feedback
 window.copyToClipboard = function(text) {
   navigator.clipboard.writeText(text).then(() => {
     showCopySuccess("כתובת הועתקה ללוח");
@@ -3564,6 +3567,7 @@ window.copyToClipboard = function(text) {
   });
 };
 
+// Show copy success message
 function showCopySuccess(message) {
   const copyMsg = document.createElement("div");
   copyMsg.style.cssText = 
@@ -3595,6 +3599,7 @@ function showCopySuccess(message) {
   }, 2500);
 }
 
+// Onboarding Steps Configuration
 function initializeOnboardingSteps() {
   onboardingSteps = [
     // 1) Intro Screen
@@ -3735,6 +3740,7 @@ function initializeOnboardingSteps() {
   ];
 }
 
+// Load a specific step by index
 function goToStepType(type) {
   const i = onboardingSteps.findIndex((s) => s.type === type);
   if (i === -1) return;
@@ -3742,6 +3748,7 @@ function goToStepType(type) {
   loadStep(currentStep);
 }
 
+// Check if user is authenticated
 function hasAuth() {
   return !!(userData && userData.auth && userData.auth.uid);
 }
