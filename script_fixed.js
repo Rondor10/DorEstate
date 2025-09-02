@@ -5059,7 +5059,22 @@ function showSwipeResults() {
   const propertyCards = document.getElementById("propertyCards");
   if (!likedProperties.length) {
     propertyCards.innerHTML = `
-      <div style="text-align:center; color:white; padding:2rem;">
+      <div style="
+  text-align:center;
+  color:white;
+  'padding': '2rem',
+  'display': 'block';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  ">
+        <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
+        <h3>מצוין! מצאתם 8 נכסים שאהבתם</h3>
+        <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
+        <button data-open-contact="" class="cta-button">קבעו פגישה</button>
+      </div>
         <i class="fas fa-heart-broken" style="font-size:4rem; margin-bottom:1rem; opacity:.7;"></i>
         <h3>לא מצאתם משהו שמתאים?</h3>
         <p style="margin:1rem 0;">אין בעיה! בואו נדבר עם היועצים שלנו</p>
@@ -5067,8 +5082,22 @@ function showSwipeResults() {
       </div>`;
   } else {
     propertyCards.innerHTML = `
-      <div style="text-align:center; color:white; padding:2rem;">
+<div style="
+  text-align:center;
+  color:white;
+  'padding': '2rem',
+  'display': 'block';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  ">
         <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
+        <h3>מצוין! מצאתם 8 נכסים שאהבתם</h3>
+        <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
+        <button data-open-contact="" class="cta-button">קבעו פגישה</button>
+      </div>        <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
         <h3>מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
         <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
         <button data-open-contact class="cta-button">קבעו פגישה</button>
