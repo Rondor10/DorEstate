@@ -43,7 +43,640 @@ body {
     flex-direction: column;
 }
 
-/* Touch optimization for mobile */
+/* ALL MEDIA ADJUSTMENTS - FROM HERE */
+
+@media (max-width: 900px) {
+  .main-nav > ul.nav-grid { 
+    --nav-gap: 1.5rem; 
+    row-gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .logo { height: 3rem; }
+  
+  /* Hero adjustments */
+  .hero-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .options-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .about-timeline { --card-w: 240px; }
+  .about-tl-rail { padding-inline: 2.25rem; }
+  .about-tl-rail::before { right: 2.25rem; left: 2.25rem; }
+}
+
+@media (max-width: 768px) {
+    /* Keep navigation visible, don't hide it */
+    .main-nav {
+        display: block;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .category-card {
+        padding: 1rem;
+    }
+
+    .card-icon i {
+        font-size: 2rem;
+    }
+
+    /* Social links mobile optimization */
+    .social-fixed {
+        right: 0.5rem;
+        gap: 0.3rem;
+    }
+    
+    .social-fixed .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    /* Contact bar mobile optimization */
+    .contact-fixed {
+        left: 0.5rem;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
+    }
+    
+    .contact-fixed .contact-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 15px;
+    }
+    
+    /* Modal mobile optimization */
+    .modal-container {
+        width: 95%;
+        max-height: 85vh;
+        margin: 2.5vh auto;
+        border-radius: 15px;
+    }
+    
+    .modal-content {
+        padding: 2rem 1.5rem;
+        font-size: 0.9rem;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    
+    .modal-close {
+        top: 0.5rem;
+        left: 0.5rem;
+        width: 35px;
+        height: 35px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .tech-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: none;
+    margin: 2rem 0;
+    text-align: center;
+    direction: rtl;
+    }
+
+    .onboarding-content{
+      justify-content:unset;
+    }
+
+    #a11y-toolbar { top: 10%; }
+    .property-cards { width: 95vw; height: min(90vh, 820px);}
+    .property-info { padding: 1.1rem; }
+    .desc-text { font-size: .95rem; }
+    .container { padding: 0 1.5rem; }
+    .options-grid { grid-template-columns: 1fr; }
+
+    .register-screen {
+      position: relative;         /* back in flow */
+    }
+}
+
+.register-screen {
+  padding: 1rem;
+}
+
+@media (max-width: 560px) {
+  .options-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .about-timeline { --card-w: 82vw; }
+  .about-tl-rail { padding-inline: 1.75rem; }
+  .about-tl-rail::before { right: 1.75rem; left: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 680px) {
+  .main-nav { width: 100%; }
+  .main-nav > ul.nav-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    column-gap: 0.5rem;
+    row-gap: 0.3rem;
+    width: 100%;
+    font-size: 0.8rem;
+  }
+  
+  .logo-cell { grid-column: 2 / span 1; grid-row: 1; }
+  .nav-grid > li:nth-child(1),
+  .nav-grid > li:nth-child(2),
+  .nav-grid > li:nth-child(3) { grid-row: 1; }
+  .nav-grid > li:nth-child(5),
+  .nav-grid > li:nth-child(6),
+  .nav-grid > li:nth-child(7) { grid-row: 2; }
+  
+  .logo { height: 2.5rem; }
+  
+  /* Hero mobile optimization */
+  .hero-section {
+    padding: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.2rem;
+  }
+  
+  .cta-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    gap: 0.5rem;
+  }
+  
+  .button-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 480px) {
+    /* Top bar adjustments for other small phones */
+    .top-bar {
+        height: 12vh;
+    }
+    
+    .main-nav > ul.nav-grid {
+        font-size: 0.7rem;
+        column-gap: 0.3rem;
+    }
+    
+    .logo { height: 2rem; }
+    
+    /* Hero section adjustments */
+    .hero-section {
+        padding: 0.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.3rem !important;
+        line-height: 1.1;
+        margin-bottom: 0.6rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.8rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+        border-radius: 25px;
+        min-width: 220px;
+    }
+    
+    /* Grid adjustments */
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .category-card {
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+    
+    .category-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .category-card p {
+        font-size: 0.8rem;
+    }
+    
+    .card-icon i {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Property cards mobile */
+    .property-cards {
+        width: 280px;
+        height: 400px;
+    }
+    
+    /* Social links very small screens */
+    .social-fixed .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    /* Contact bar very small screens */
+    .contact-fixed {
+        padding: 0.4rem;
+        font-size: 0.7rem;
+    }
+    
+    .contact-fixed .contact-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Modal very small screens */
+    .modal-container {
+        width: 98%;
+        max-height: 90vh;
+        margin: 1vh auto;
+        border-radius: 10px;
+    }
+    
+    .modal-content {
+        padding: 1.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Onboarding mobile optimization */
+    .onboarding-container {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .onboarding-header {
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .onboarding-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .onboarding-navigation {
+        padding: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    /* Question container mobile */
+    .question-container {
+        max-width: 100%;
+    }
+    
+    .question-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .question-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .options-grid {
+        gap: 0.75rem;
+    }
+    
+    .option-card {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .option-title {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .option-description {
+        font-size: 0.85rem;
+    }
+    
+    /* Navigation buttons mobile */
+    .nav-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 390px) {
+    /* CRITICAL: Prevent horizontal overflow */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      position: relative;
+    }
+    
+    * {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    
+    /* Remove the problematic transform completely */
+    .top-bar .container {
+      transform: none !important;
+      padding-inline: 0.8rem;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    
+    /* Simplify navigation to a single row with smaller logo */
+    .main-nav { 
+      width: 100%; 
+      overflow: hidden;
+    }
+    
+    .main-nav > ul.nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      padding: 0.2rem 0;
+    }
+    
+    /* Logo in center, smaller */
+    .logo-cell { 
+      order: 4;
+      flex: 0 0 auto;
+    }
+    
+    .logo { 
+      height: 1.8rem; 
+      width: auto;
+    }
+    
+    /* Menu items arranged around logo */
+    .nav-grid > li:nth-child(1) { order: 1; flex: 1; text-align: left; }
+    .nav-grid > li:nth-child(2) { order: 2; flex: 1; text-align: left; }
+    .nav-grid > li:nth-child(3) { order: 3; flex: 1; text-align: center; }
+    .nav-grid > li:nth-child(5) { order: 5; flex: 1; text-align: center; }
+    .nav-grid > li:nth-child(6) { order: 6; flex: 1; text-align: right; }
+    .nav-grid > li:nth-child(7) { order: 7; flex: 1; text-align: right; }
+    
+    /* Better text styling */
+    .main-nav > ul.nav-grid > li > a {
+      white-space: nowrap;
+      font-size: 0.7rem;
+      line-height: 1.1;
+      padding: 0.4rem 0.2rem;
+      display: block;
+    }
+
+    /* Top bar adjustments - reduced height since we fixed navigation */
+    .top-bar {
+        height: 8vh;
+        min-height: 60px;
+    }
+    
+    /* Hero section adjustments - more space since nav is smaller */
+    .hero-section {
+        height: 55vh;
+        padding: 1rem 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem !important;
+        line-height: 1.2;
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 30px;
+        min-width: 240px;
+        max-width: 85vw;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* Category grid optimized for iPhone 13 Pro */
+    .category-grid {
+        min-height: 35vh;
+        padding: 1rem 0.5rem;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .category-card {
+        padding: 1rem;
+        border-radius: 12px;
+        min-height: 120px;
+    }
+    
+    .category-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .category-card p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .card-icon i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Fix property cards */
+    .property-cards {
+        width: 100vw;
+        height: min(75vh, 600px);
+        margin: 0;
+    }
+    
+    /* Fix modal positioning - full screen on iPhone 13 Pro */
+    .modal-overlay {
+        padding: 0;
+    }
+    
+    .modal-container {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        flex: 1;
+        padding: 1.5rem 1rem;
+        font-size: 0.9rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: unset;
+        max-height: unset;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        left: auto;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        z-index: 20;
+    }
+    
+    /* Fix social links positioning - move higher to avoid bottom bar */
+    .social-fixed {
+        bottom: 12vh;
+        left: 8px;
+        gap: 6px;
+    }
+    
+    .social-fixed .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        padding: 8px;
+    }
+    
+    /* Fix contact bar positioning - move higher and make more compact */
+    .contact-fixed {
+        bottom: 12vh;
+        right: 8px;
+        font-size: 0.7rem;
+        padding: 8px 10px;
+        line-height: 1.2;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+    }
+    
+    /* Fix bottom bar - make it more compact */
+    .bottom-bar {
+        height: 10vh;
+        min-height: 60px;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    
+    .footer-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-nav a {
+        font-size: 0.75rem;
+        padding: 0.3rem;
+    }
+    
+    /* Fix onboarding for iPhone 13 Pro */
+    .onboarding-container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .question-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    .question-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .question-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    
+    .option-card {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
 @media (pointer: coarse) {
     button, a, .category-card, .option-card {
         min-height: 44px;
@@ -74,26 +707,19 @@ body {
     }
 }
 
-/* TOP BAR STARTS HERE — FINAL */
+@media (hover:hover) and (pointer:fine) {
+  .has-submenu:hover > ul.submenu { display: none !important; }
+}
+
+/* ALL MEDIA ADJUSTMENTS - ENDS HERE */
+
+/* TOP BAR STARTS HERE */
 
 .container {
   max-width: 100%;
   margin: 0;
   padding: 0 2rem;
   width: 100%;
-}
-
-/* Mobile container adjustments */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
 }
 
 .top-bar {
@@ -181,9 +807,6 @@ body {
 /* Disable any dropdowns for MVP */
 .main-nav ul.submenu,
 .has-submenu.open > ul.submenu { display: none !important; }
-@media (hover:hover) and (pointer:fine) {
-  .has-submenu:hover > ul.submenu { display: none !important; }
-}
 
 /* Keep generic link rule simple/safe */
 .main-nav a { text-decoration: none; }
@@ -191,149 +814,6 @@ body {
 /* Remove login area in MVP */
 .user-actions, .login-btn { display: none !important; }
 
-/* Mobile Navigation Optimization */
-@media (max-width: 900px) {
-  .main-nav > ul.nav-grid { 
-    --nav-gap: 1.5rem; 
-    row-gap: 0.5rem;
-    font-size: 0.9rem;
-  }
-  .logo { height: 3rem; }
-  
-  /* Hero adjustments */
-  .hero-title {
-    font-size: 1.8rem !important;
-    line-height: 1.3;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem !important;
-    margin-bottom: 1.5rem;
-  }
-  
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-  }
-}
-
-/* iPhone 13 Pro specific fix (390px) */
-@media (max-width: 390px) {
-  /* CRITICAL: Prevent horizontal overflow */
-  html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    position: relative;
-  }
-  
-  * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  
-  /* Remove the problematic transform completely */
-  .top-bar .container {
-    transform: none !important;
-    padding-inline: 0.8rem;
-    max-width: 100%;
-    overflow: hidden;
-  }
-  
-  /* Simplify navigation to a single row with smaller logo */
-  .main-nav { 
-    width: 100%; 
-    overflow: hidden;
-  }
-  
-  .main-nav > ul.nav-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 0.3rem;
-    font-size: 0.75rem;
-    padding: 0.2rem 0;
-  }
-  
-  /* Logo in center, smaller */
-  .logo-cell { 
-    order: 4;
-    flex: 0 0 auto;
-  }
-  
-  .logo { 
-    height: 1.8rem; 
-    width: auto;
-  }
-  
-  /* Menu items arranged around logo */
-  .nav-grid > li:nth-child(1) { order: 1; flex: 1; text-align: left; }
-  .nav-grid > li:nth-child(2) { order: 2; flex: 1; text-align: left; }
-  .nav-grid > li:nth-child(3) { order: 3; flex: 1; text-align: center; }
-  .nav-grid > li:nth-child(5) { order: 5; flex: 1; text-align: center; }
-  .nav-grid > li:nth-child(6) { order: 6; flex: 1; text-align: right; }
-  .nav-grid > li:nth-child(7) { order: 7; flex: 1; text-align: right; }
-  
-  /* Better text styling */
-  .main-nav > ul.nav-grid > li > a {
-    white-space: nowrap;
-    font-size: 0.7rem;
-    line-height: 1.1;
-    padding: 0.4rem 0.2rem;
-    display: block;
-  }
-}
-
-/* Tablets and larger phones (391px-680px) */
-@media (min-width: 391px) and (max-width: 680px) {
-  .main-nav { width: 100%; }
-  .main-nav > ul.nav-grid {
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    column-gap: 0.5rem;
-    row-gap: 0.3rem;
-    width: 100%;
-    font-size: 0.8rem;
-  }
-  
-  .logo-cell { grid-column: 2 / span 1; grid-row: 1; }
-  .nav-grid > li:nth-child(1),
-  .nav-grid > li:nth-child(2),
-  .nav-grid > li:nth-child(3) { grid-row: 1; }
-  .nav-grid > li:nth-child(5),
-  .nav-grid > li:nth-child(6),
-  .nav-grid > li:nth-child(7) { grid-row: 2; }
-  
-  .logo { height: 2.5rem; }
-  
-  /* Hero mobile optimization */
-  .hero-section {
-    padding: 1rem;
-  }
-  
-  .hero-title {
-    font-size: 1.5rem !important;
-    line-height: 1.2;
-    margin-bottom: 0.8rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem !important;
-    margin-bottom: 1.2rem;
-  }
-  
-  .cta-button {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
-    gap: 0.5rem;
-  }
-  
-  .button-text {
-    font-size: 0.9rem;
-  }
-}
 
 /* RTL text direction; layout remains symmetric */
 .top-bar, .main-nav { direction: rtl; }
@@ -816,36 +1296,33 @@ body {
 }
 
 .options-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 0.2rem;
-}
-
-@media (max-width: 768px) {
-    .options-grid {
-        grid-template-columns: 1fr;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* minmax(0,1fr) avoids overflow */
+  gap: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .option-card {
-  background: white;
+  background: #fff;
   border: 2px solid rgba(212, 175, 55, 0.3);
-  border-radius: 15px;
-  padding: 1.5rem;
-  text-align: right;
+  border-radius: 18px;            /* pick 15px or 18px, not both */
+  padding: 1.25rem;               /* pick one padding */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: .2s ease;           /* or .3s, choose one */
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+  text-align: right;              /* if you need RTL alignment */
 }
 
 .option-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
   border-color: var(--primary-color);
   background: rgba(212, 175, 55, 0.05);
 }
 
 .option-card.selected {
-    border-color: var(--primary-color);
-    background: rgba(212, 175, 55, 0.1);
+  border-color: var(--primary-color);
+  background: rgba(212, 175, 55, 0.1);
 }
 
 .option-title {
@@ -956,452 +1433,6 @@ body {
     }
     to {
         transform: translateX(-100%);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    /* Keep navigation visible, don't hide it */
-    .main-nav {
-        display: block;
-    }
-
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .category-card {
-        padding: 1rem;
-    }
-
-    .card-icon i {
-        font-size: 2rem;
-    }
-
-    /* Social links mobile optimization */
-    .social-fixed {
-        right: 0.5rem;
-        gap: 0.3rem;
-    }
-    
-    .social-fixed .social-link {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-    
-    /* Contact bar mobile optimization */
-    .contact-fixed {
-        left: 0.5rem;
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        border-radius: 20px;
-    }
-    
-    .contact-fixed .contact-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-        border-radius: 15px;
-    }
-    
-    /* Modal mobile optimization */
-    .modal-container {
-        width: 95%;
-        max-height: 85vh;
-        margin: 2.5vh auto;
-        border-radius: 15px;
-    }
-    
-    .modal-content {
-        padding: 2rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .modal-close {
-        top: 0.5rem;
-        left: 0.5rem;
-        width: 35px;
-        height: 35px;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .container {
-        padding: 0 1rem;
-    }
-    .tech-stats{
-      
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    }
-    .onboarding-content{
-      justify-content:unset;
-    }
-}
-
-/* iPhone 13 Pro button and layout fixes */
-@media (max-width: 390px) {
-    /* Top bar adjustments - reduced height since we fixed navigation */
-    .top-bar {
-        height: 8vh;
-        min-height: 60px;
-    }
-    
-    /* Hero section adjustments - more space since nav is smaller */
-    .hero-section {
-        height: 55vh;
-        padding: 1rem 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .hero-content {
-        max-width: 100%;
-        padding: 0 1rem;
-    }
-    
-    .hero-title {
-        font-size: 1.5rem !important;
-        line-height: 1.2;
-        margin-bottom: 0.8rem;
-        text-align: center;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.9rem !important;
-        margin-bottom: 1.2rem;
-        text-align: center;
-        line-height: 1.4;
-    }
-    
-    .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-        border-radius: 30px;
-        min-width: 240px;
-        max-width: 85vw;
-        margin: 0 auto;
-        display: block;
-    }
-    
-    /* Category grid optimized for iPhone 13 Pro */
-    .category-grid {
-        min-height: 35vh;
-        padding: 1rem 0.5rem;
-    }
-    
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1rem;
-        max-width: 100%;
-    }
-    
-    .category-card {
-        padding: 1rem;
-        border-radius: 12px;
-        min-height: 120px;
-    }
-    
-    .category-card h3 {
-        font-size: 1rem;
-        margin-bottom: 0.4rem;
-    }
-    
-    .category-card p {
-        font-size: 0.85rem;
-        line-height: 1.3;
-    }
-    
-    .card-icon i {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Fix property cards */
-    .property-cards {
-        width: 100vw;
-        height: min(75vh, 600px);
-        margin: 0;
-    }
-    
-    /* Fix modal positioning - full screen on iPhone 13 Pro */
-    .modal-overlay {
-        padding: 0;
-    }
-    
-    .modal-container {
-        width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
-        margin: 0;
-        border-radius: 0;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .modal-content {
-        flex: 1;
-        padding: 1.5rem 1rem;
-        font-size: 0.9rem;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        max-width: unset;
-        max-height: unset;
-    }
-    
-    .modal-close {
-        top: 1rem;
-        right: 1rem;
-        left: auto;
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        z-index: 20;
-    }
-    
-    /* Fix social links positioning - move higher to avoid bottom bar */
-    .social-fixed {
-        bottom: 12vh;
-        left: 8px;
-        gap: 6px;
-    }
-    
-    .social-fixed .social-link {
-        width: 38px;
-        height: 38px;
-        font-size: 1.1rem;
-        padding: 8px;
-    }
-    
-    /* Fix contact bar positioning - move higher and make more compact */
-    .contact-fixed {
-        bottom: 12vh;
-        right: 8px;
-        font-size: 0.7rem;
-        padding: 8px 10px;
-        line-height: 1.2;
-        background-color: rgba(0, 0, 0, 0.7);
-        border-radius: 8px;
-        backdrop-filter: blur(5px);
-    }
-    
-    /* Fix bottom bar - make it more compact */
-    .bottom-bar {
-        height: 10vh;
-        min-height: 60px;
-        background-color: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(10px);
-    }
-    
-    .footer-nav ul {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .footer-nav a {
-        font-size: 0.75rem;
-        padding: 0.3rem;
-    }
-    
-    /* Fix onboarding for iPhone 13 Pro */
-    .onboarding-container {
-        max-width: 100vw;
-        margin: 0;
-        border-radius: 0;
-    }
-    
-    .question-container {
-        max-width: 100%;
-        padding: 1rem;
-    }
-    
-    .question-title {
-        font-size: 1.1rem;
-        margin-bottom: 0.7rem;
-    }
-    
-    .question-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .options-grid {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-    }
-    
-    .option-card {
-        padding: 0.8rem;
-        font-size: 0.85rem;
-    }
-}
-
-@media (min-width: 391px) and (max-width: 480px) {
-    /* Top bar adjustments for other small phones */
-    .top-bar {
-        height: 12vh;
-    }
-    
-    .main-nav > ul.nav-grid {
-        font-size: 0.7rem;
-        column-gap: 0.3rem;
-    }
-    
-    .logo { height: 2rem; }
-    
-    /* Hero section adjustments */
-    .hero-section {
-        padding: 0.5rem;
-    }
-    
-    .hero-title {
-        font-size: 1.3rem !important;
-        line-height: 1.1;
-        margin-bottom: 0.6rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.8rem !important;
-        margin-bottom: 1rem;
-    }
-    
-    .cta-button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.8rem;
-        border-radius: 25px;
-        min-width: 220px;
-    }
-    
-    /* Grid adjustments */
-    .grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
-        gap: 0.5rem;
-        padding: 0.5rem 0;
-    }
-
-    .category-card {
-        padding: 0.75rem;
-        border-radius: 10px;
-    }
-    
-    .category-card h3 {
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
-    }
-    
-    .category-card p {
-        font-size: 0.8rem;
-    }
-    
-    .card-icon i {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-    }
-
-    /* Property cards mobile */
-    .property-cards {
-        width: 280px;
-        height: 400px;
-    }
-    
-    /* Social links very small screens */
-    .social-fixed .social-link {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
-    }
-    
-    /* Contact bar very small screens */
-    .contact-fixed {
-        padding: 0.4rem;
-        font-size: 0.7rem;
-    }
-    
-    .contact-fixed .contact-btn {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.7rem;
-    }
-    
-    /* Modal very small screens */
-    .modal-container {
-        width: 98%;
-        max-height: 90vh;
-        margin: 1vh auto;
-        border-radius: 10px;
-    }
-    
-    .modal-content {
-        padding: 1.5rem 1rem;
-        font-size: 0.85rem;
-    }
-    
-    /* Onboarding mobile optimization */
-    .onboarding-container {
-        max-width: 100%;
-        margin: 0;
-    }
-    
-    .onboarding-header {
-        padding: 1rem;
-        flex-wrap: wrap;
-    }
-    
-    .onboarding-content {
-        padding: 1.5rem 1rem;
-    }
-    
-    .onboarding-navigation {
-        padding: 1rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    /* Question container mobile */
-    .question-container {
-        max-width: 100%;
-    }
-    
-    .question-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .question-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .options-grid {
-        gap: 0.75rem;
-    }
-    
-    .option-card {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-    
-    .option-title {
-        font-size: 1rem;
-        margin-bottom: 0.4rem;
-    }
-    
-    .option-description {
-        font-size: 0.85rem;
-    }
-    
-    /* Navigation buttons mobile */
-    .nav-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-        min-height: 44px;
     }
 }
 
@@ -1527,10 +1558,6 @@ html.a11y-font-200 { font-size: 200%; }
   position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip: rect(0,0,0,0); border:0;
 }
 
-@media (max-width: 768px) {
-  #a11y-toolbar { top: 10%; }
-}
-
 /* ===== About Timeline ===== */
 .about-timeline { --gap: 1.25rem; --card-w: 280px; --track: rgba(0,0,0,.08); }
 .about-tl-header { text-align: center; margin-bottom: 1.25rem; }
@@ -1620,17 +1647,6 @@ html.a11y-font-200 { font-size: 200%; }
 
 .about-tl-foot { margin-top: 1rem; text-align: center; }
 
-/* מובייל/טאבלט */
-@media (max-width: 860px) {
-  .about-timeline { --card-w: 240px; }
-  .about-tl-rail { padding-inline: 2.25rem; }
-  .about-tl-rail::before { right: 2.25rem; left: 2.25rem; }
-}
-@media (max-width: 520px) {
-  .about-timeline { --card-w: 82vw; }
-  .about-tl-rail { padding-inline: 1.75rem; }
-  .about-tl-rail::before { right: 1.75rem; left: 1.75rem; }
-}
 
 /* ===== Services Timeline ===== */
 .services-timeline { --gap: 1.25rem; --card-w: 280px; --track: rgba(0,0,0,.08); }
@@ -1996,16 +2012,6 @@ html.a11y-font-200 { font-size: 200%; }
   padding: .25rem 0;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .property-cards {
-    width: 95vw;
-    height: min(90vh, 820px);
-  }
-  .property-info { padding: 1.1rem; }
-  .desc-text { font-size: .95rem; }
-}
-
 /* === Executives Scroll (team modal only, isolated) === */
 
 .executive-carousel {
@@ -2086,5 +2092,3 @@ html.a11y-font-200 { font-size: 200%; }
 text-align: center;
   }
 }
-
-

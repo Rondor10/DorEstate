@@ -82,6 +82,7 @@ async function setupPhoneAuth() {
 
     const phone = formatILPhoneE164(phoneRaw);
     setLoading(sendBtn, true);
+
     try {
       confirmationResult = await signInWithPhoneNumber(
         auth,
@@ -850,10 +851,13 @@ const modalContents = {
         
         .tech-stats {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 1rem;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 1.5rem;
+          width: 100%;
+          max-width: none;
           margin: 2rem 0;
           text-align: center;
+          direction: rtl;
         }
         
         .tech-stat {
@@ -3625,7 +3629,7 @@ function initializeOnboardingSteps() {
       title: "הרשמה קצרה",
       subtitle: "פחות מדקה ואתם בפנים",
       content: `
-            <div class="register-screen" style="padding:1rem;">
+            <div class="register-screen">
               <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
               <input id="phoneNumber" type="tel" placeholder="מספר טלפון" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
 
@@ -3651,39 +3655,6 @@ function initializeOnboardingSteps() {
       title: "שאלון קצר",
       subtitle: "כדי שנוכל להתאים לכם נכסים מדויקים",
       content: `
-                <style>
-                  /* layout: crisp 3-column on desktop, 1–2 on mobile */
-                  .options-grid {
-                    display: grid;
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    gap: 1rem;
-                  }
-                  @media (max-width: 900px) {
-                    .options-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-                  }
-                  @media (max-width: 560px) {
-                    .options-grid { grid-template-columns: 1fr; }
-                  }
-
-                  .option-card {
-                    border: 2px solid #ead18f;
-                    border-radius: 18px;
-                    padding: 1rem 1.25rem;
-                    background: #fff;
-                    cursor: pointer;
-                    transition: .2s ease;
-                    box-shadow: 0 1px 0 rgba(0,0,0,.02);
-                  }
-                  .option-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.06); }
-                  .option-card.selected {
-                    border-color: var(--primary-color);
-                    background: #fff9e8;
-                  }
-                  .option-title { font-weight: 800; margin-bottom: .25rem; }
-                  .option-description { color:#666; font-size:.95rem; }
-                  .hint { color:#777; font-size:.9rem; margin:.25rem 0 1rem; }
-                </style>
-
                 <div class="question-container" dir="rtl">
                   <!-- Q1: Area -->
                   <h2 class="question-title">איפה תרצו לגור?</h2>
@@ -3705,17 +3676,23 @@ function initializeOnboardingSteps() {
                   <h2 class="question-title" style="margin-top:2rem;">כמה חדרים יתאים לכם?</h2>
                   <div class="options-grid" data-group="rooms">
                     <!-- We store the minimum rooms as a number in data-value -->
+                    <div class="option-card" data-value="2">
+                      <div class="option-title">2 חדרים</div>
+                    </div>
                     <div class="option-card" data-value="3">
-                      <div class="option-title">2–3 חדרים</div>
-                      <div class="option-description">קומפקטי ונוח</div>
+                      <div class="option-title">3 חדרים</div>
                     </div>
                     <div class="option-card" data-value="4">
                       <div class="option-title">4 חדרים</div>
-                      <div class="option-description">משפחתי קלאסי</div>
                     </div>
                     <div class="option-card" data-value="5">
-                      <div class="option-title">5+ חדרים</div>
-                      <div class="option-description">מרווח במיוחד</div>
+                      <div class="option-title">5 חדרים</div>
+                    </div>
+                    <div class="option-card" data-value="6">
+                      <div class="option-title">6 חדרים</div>
+                    </div>
+                    <div class="option-card" data-value="7">
+                      <div class="option-title">7+ חדרים</div>
                     </div>
                   </div>
 
@@ -3723,10 +3700,12 @@ function initializeOnboardingSteps() {
                   <h2 class="question-title" style="margin-top:2rem;">איזה סוג נכס מדבר אליכם?</h2>
                   <div class="options-grid" data-group="type">
                     <!-- Store slugs that match the DB directly -->
-                    <div class="option-card" data-value="apartment"><div class="option-title">דירה בבניין</div></div>
+                    <div class="option-card" data-value="apartment"><div class="option-title">דירה</div></div>
                     <div class="option-card" data-value="garden_apartment"><div class="option-title">דירת גן</div></div>
                     <div class="option-card" data-value="penthouse"><div class="option-title">פנטהאוז</div></div>
                     <div class="option-card" data-value="townhouse"><div class="option-title">בית פרטי</div></div>
+                    <div class="option-card" data-value="rooftop"><div class="option-title">דירת גג</div></div>
+                    <div class="option-card" data-value="cottage"><div class="option-title">קוטג</div></div>
                   </div>
                 </div>
 
@@ -4480,18 +4459,29 @@ function deriveSwipeFilters() {
   // Q3: rooms  → default behavior: "at least N"
   // If you kept data-value as "3" | "4" | "5", this means >= N rooms.
   if (q.rooms) {
-    if (q.rooms === "3") {
+    if (q.rooms === "2") {
       f.minRooms = 2;
+      f.maxRooms = 2;
+    } else if (q.rooms === "3") {
+      f.minRooms = 3;
       f.maxRooms = 3;
     } else if (q.rooms === "4") {
       f.minRooms = 4;
       f.maxRooms = 4;
-    } else if (q.rooms === "5+") {
-      f.minRooms = 5; /* no max */
+    } else if (q.rooms === "5") {
+      f.minRooms = 5;
+      f.maxRooms = 5;
+    }
+    else if (q.rooms === "6") {
+      f.minRooms = 6; 
+      f.maxRooms = 6;
+    }
+    else if (q.rooms === "7+") {
+      f.minRooms = 7; /* no max */
     }
   }
 
-  // Q4: type (slug: 'apartment' | 'garden_apartment' | 'penthouse' | 'villa')
+  // Q4: type (slug: 'apartment' | 'garden_apartment' | 'penthouse' | 'townhouse' | 'rooftop' | 'cottage')
   if (typeof q.type === "string" && q.type.trim()) f.type = q.type.trim();
 
   // Guard: if min>max for any reason, swap
@@ -4513,10 +4503,12 @@ window.contactAdvisor = () => openModal("contact");
 // Map Hebrew UI -> DB slugs
 function hebTypeToSlug(t) {
   const map = {
-    דירה: "apartment",
+    "דירה": "apartment",
     "דירת גן": "garden_apartment",
-    פנטהאוז: "penthouse",
+    "פנטהאוז": "penthouse",
     "בית פרטי": "townhouse",
+    "דירת גג": "rooftop",
+    "קוטג": "cottage"
   };
   return map[t] || "";
 }
