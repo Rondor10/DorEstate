@@ -569,16 +569,16 @@ body {
 .cta-button {
   display: inline-block;
   margin-top: 1.5rem;
-  padding: 1rem 2.5rem;
-  background: var(--primary-color);
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
+  padding: 1rem 2.5rem !important;
+  background: var(--primary-color) !important;
+  color: white !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 40px !important;
+  cursor: pointer !important;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease !important;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   min-width: 260px;
   position: relative;
@@ -1033,6 +1033,13 @@ body {
     .container {
         padding: 0 1rem;
     }
+    .tech-stats{
+      
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+    .onboarding-content{
+      justify-content:unset;
+    }
 }
 
 /* iPhone 13 Pro button and layout fixes */
@@ -1143,6 +1150,8 @@ body {
         font-size: 0.9rem;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        max-width: unset;
+        max-height: unset;
     }
     
     .modal-close {
@@ -2066,3 +2075,16 @@ html.a11y-font-200 { font-size: 200%; }
   margin: 0 .5rem;
 }
 .exec-nav__btn:hover { background: #d4af37; }
+.btn-hero-content-container{
+  display: inline-block;
+  font-size: 1rem;
+  span{
+    text-align: center;
+  }
+  i{
+    font-size: 1rem;
+text-align: center;
+  }
+}
+
+
