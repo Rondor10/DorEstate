@@ -3892,9 +3892,8 @@ function openModal(type) {
     modalOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
     
-    // Reset scroll position to top when opening modal
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    // Reset scroll position of modal content to top when opening modal
+    modalContent.scrollTop = 0;
 
     // 🔹 Init the Team widget when that modal is opened
     if (type === "team" && window.DorTeam && typeof window.DorTeam.init === "function") {
