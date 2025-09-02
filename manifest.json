@@ -710,5 +710,20 @@
     "count": 1,
     "hero": "pic_1",
     "thumbs": []
+  },
+  "prop_068": {
+    "ext": "jpg",
+    "count": 9,
+    "hero": "pic_1",
+    "thumbs": [
+      "pic_2",
+      "pic_3",
+      "pic_4",
+      "pic_5",
+      "pic_6",
+      "pic_7",
+      "pic_8",
+      "pic_9"
+    ]
   }
 }

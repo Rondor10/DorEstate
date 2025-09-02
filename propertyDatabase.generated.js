@@ -2088,5 +2088,37 @@ export const PROPERTIES = [
     "image": "fas fa-building",
     "images": [],
     "virtual_tour_available": false
+  },
+  {
+    "id": "prop_068",
+    "title": "שדה בוקר 12, גבעתיים",
+    "price": 8800000,
+    "area": "givatayim",
+    "neighborhood": "ארלוזורוב",
+    "street": "שדה בוקר",
+    "type": "penthouse",
+    "rooms": 5,
+    "sqm": 225,
+    "floor": 7,
+    "total_floors": 7,
+    "features": [
+      "parking",
+      "elevator",
+      "balcony",
+      "safe-room",
+      "ac",
+      "bars",
+      "accessible"
+    ],
+    "amenities": [],
+    "nearby_amenities": [],
+    "status": "active",
+    "days_on_market": 0,
+    "condition": "חדש (נכס בן עד 10 שנים)",
+    "deal_type": "מכירה",
+    "description": "בלעדית אצל דור נכסים. בלב הפועם של גבעתיים, ברחוב שקט ומבוקש, עטוף בירוק, מרחק פסיעה מהפארק, מהקניון, מהקאנטרי וממוסדות החינוך, מסתתר יהלום של ממש.\nהפנטהאוז, אשר מהווה חלל יוצא דופן, וקשה שלא להבחין כי תוכנן בקפידה יתרה, מונה חמישה חדרים ומשתרע על פני כ-140 מ\"ר בנוי + כ-85 מ\"ר מרפסת שמש, עם נוף מרהיב לקו הרקיע של תל אביב.\nבנוסף, מחסן של כ-10 מ\"ר וכן שתי חניות תת-קרקעיות נפרדות ורגילות בטאבו.",
+    "image": "fas fa-building",
+    "images": [],
+    "virtual_tour_available": false
   }
 ];
