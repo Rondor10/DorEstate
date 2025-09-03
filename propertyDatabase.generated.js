@@ -1590,7 +1590,7 @@ export const PROPERTIES = [
   {
     "id": "prop_052",
     "title": "דירות 5 חדרים – המעיין, ארלוזורוב, גבעתיים",
-    "price": 5550000,
+    "price": 5450000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "המעיין",
