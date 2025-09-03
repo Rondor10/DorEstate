@@ -18,7 +18,7 @@
         <!-- Top Bar -->
         <header class="top-bar">
             <div class="container">
-                <!-- Menu -->
+                <!-- Desktop Navigation -->
                 <nav class="main-nav">
                   <ul class="nav-grid">
                     <li><a href="#legacy" data-modal="about" type="about">מורשת בכתב</a></li>
@@ -38,8 +38,42 @@
                   </ul>
                 </nav>
 
+                <!-- Mobile Navigation -->
+                <div class="mobile-header">
+                    <a href="index.html" class="mobile-logo-link">
+                        <img src="gen_pic/new_logo.png" class="mobile-logo" alt="דור נכסים">
+                    </a>
+                    <button class="hamburger-btn" aria-label="פתח תפריט">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
             </div>
         </header>
+
+        <!-- Mobile Menu Backdrop -->
+        <div class="mobile-menu-backdrop"></div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+            <nav class="mobile-menu">
+                <ul>
+                    <li><a href="#legacy" data-modal="about" type="about">מורשת בכתב</a></li>
+                    <li><a href="#" data-modal="services" type="services">שירותי הפירמה</a></li>
+                    <li><a href="#" data-modal="join" type="contact">קריירה ב-Dor Israel</a></li>
+                    <li><a href="#" data-modal="assets" type="assets">ליזמים</a></li>
+                    <li><a href="#" data-modal="projects" type="projects">פרויקטים</a></li>
+                    <li><a href="#" data-modal="contact" type="contact">צור קשר</a></li>
+                    <li><a href="#" data-modal="terms" type="terms">תנאי שימוש</a></li>
+                    <li><a href="#" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
+                    <li><a href="#" data-modal="accessibility" type="accessibility">נגישות</a></li>
+                    <li><a href="#" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
+
+                </ul>
+            </nav>
+        </div>
 
         <!-- Hero Section -->
         <section class="hero-section">
@@ -62,7 +96,6 @@
                     <div class="btn-hero-content-container">
                         <span class="button-text">הדור הבא שלך מתחיל כאן</span>
                         <i class="fas fa-arrow-left"></i>
-
                     </div>
                 </button>
             </div>

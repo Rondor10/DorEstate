@@ -2041,7 +2041,6 @@ const modalContents = {
   },
 
   /////////////// BOTTOM-BAR
-
   // תנאי שימוש
   terms: {
     title: "תנאי שימוש",
@@ -4167,3 +4166,56 @@ function initDeveloperPortal() {
     window.addEventListener('resize', handleResize);
   }
 }
+
+// Mobile Hamburger Menu Functionality
+function initMobileMenu() {
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+  const mobileMenuBackdrop = document.querySelector('.mobile-menu-backdrop');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+  
+  if (!hamburgerBtn || !mobileMenuOverlay || !mobileMenuBackdrop) return;
+  
+  function openMenu() {
+    hamburgerBtn.classList.add('active');
+    mobileMenuOverlay.classList.add('active');
+    mobileMenuBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeMenu() {
+    hamburgerBtn.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    mobileMenuBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // Toggle menu on hamburger click
+  hamburgerBtn.addEventListener('click', function() {
+    if (hamburgerBtn.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+  
+  // Close menu when clicking on backdrop
+  mobileMenuBackdrop.addEventListener('click', closeMenu);
+  
+  // Close menu when clicking on a menu item
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && hamburgerBtn.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+}
+
+// Initialize mobile menu when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  initMobileMenu();
+});
