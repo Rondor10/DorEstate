@@ -3292,12 +3292,10 @@ function deriveSwipeFilters() {
     } else if (q.rooms === "5") {
       f.minRooms = 5;
       f.maxRooms = 5;
-    }
-    else if (q.rooms === "6") {
+    } else if (q.rooms === "6") {
       f.minRooms = 6; 
       f.maxRooms = 6;
-    }
-    else if (q.rooms === "7+") {
+    } else if (q.rooms === "7+") {
       f.minRooms = 7; /* no max */
     }
   }
