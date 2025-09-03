@@ -3871,7 +3871,7 @@ function showSwipeResults() {
         <i class="fas fa-heart-broken" style="font-size:4rem; margin-bottom:1rem; opacity:.7;"></i>
         <h3>לא מצאתם משהו שמתאים?</h3>
         <p style="margin:1rem 0;">אין בעיה! בואו נדבר עם היועצים שלנו</p>
-        <button data-open-contact class="cta-button">דברו עם יועץ</button>
+        <button data-open-contact class="cta-endswipe-button">דברו עם יועץ</button>
       </div>`; // Corrected closing div
   } else {
     propertyCards.innerHTML = `
@@ -3889,7 +3889,7 @@ function showSwipeResults() {
         <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
         <h3>מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
         <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
-        <button data-open-contact class="cta-button">קבעו פגישה</button>
+        <button data-open-contact class="cta-endswipe-button">קבעו פגישה</button>
       </div>`; // Corrected closing div
   }
   const actions = document.querySelector(".swipe-actions");
