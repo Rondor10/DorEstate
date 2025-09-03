@@ -214,8 +214,8 @@ body {
     .about-title { font-size: 2.2rem; }
     .about-subtitle { font-size: 1.1rem; padding: 0 1rem; }
     .timeline-line { display: none; }
-    .timeline-item { flex-direction: column !important; margin-bottom: 2rem; }
-    .timeline-content { width: 100%; margin: 0 auto; }
+    .timeline-item { flex-direction: column !important; margin-bottom: 2rem; width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important;}
+    .timeline-content { width: 100% !important; margin: 0 auto; }
     .timeline-dot { display: none; }
 
     .exec-profile { flex-direction: column; text-align: center; }
@@ -557,7 +557,6 @@ body {
     }
     
     * {
-      max-width: 100% !important;
       box-sizing: border-box !important;
     }
     
