@@ -408,8 +408,7 @@ const modalContents = {
           <div class="cta-section">
             <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">Experience The Future</h2>
             <p style="color: #b8d8b8; margin-bottom: 2rem;">
-              מוכנים לחוות את הדור הבא של שירותי הנדל"ן? <br>
-               בואו נראה איך הטכנולוגיה שלנו יכולה לשנות את הכללים עבורכם.
+            בוא נשנה יחד את כללי המשחק שלך.
             </p>
             <button class="quantum-cta-services" data-modal="team" type="button">
               <i class="fas fa-users" style="margin-left: 0.5rem;"></i>
