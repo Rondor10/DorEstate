@@ -176,7 +176,7 @@ body {
 
     .tech-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 1.5rem;
     width: 100%;
     max-width: none;
@@ -1384,7 +1384,6 @@ body {
 }
 
 .modal-content {
-    padding: 3rem;
     overflow-y: auto;
     max-height: 80vh;
 }
