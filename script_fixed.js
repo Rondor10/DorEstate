@@ -3483,6 +3483,11 @@ function startPropertySwiping() {
   currentPropertyIndex = 0;
   likedProperties = [];
   swipeInterface.style.display = "block";
+  
+  // Restore swipe actions visibility
+  const actions = document.querySelector(".swipe-actions");
+  if (actions) actions.style.display = "flex";
+  
   loadProperty();
   const likeBtn = document.getElementById("likeBtn");
   const dislikeBtn = document.getElementById("dislikeBtn");
