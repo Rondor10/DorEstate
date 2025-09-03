@@ -2018,19 +2018,19 @@ const modalContents = {
                 this.style.borderColor = '#ff5722';
                 this.style.boxShadow = '0 0 15px rgba(255, 87, 34, 0.3)';
               } else {
-                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.borderColor = 'rgba(255, 122, 0, 0.3)';
                 this.style.boxShadow = 'none';
               }
             });
             
             input.addEventListener('focus', function() {
-              this.style.borderColor = '#00bcd4';
-              this.style.boxShadow = '0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1)';
+              this.style.borderColor = '#FF7A00';
+              this.style.boxShadow = '0 0 20px rgba(255, 122, 0, 0.3), inset 0 0 20px rgba(255, 122, 0, 0.1)';
             });
             
             input.addEventListener('blur', function() {
               if (!this.value.trim()) {
-                this.style.borderColor = 'rgba(0, 188, 212, 0.3)';
+                this.style.borderColor = 'rgba(255, 122, 0, 0.3)';
                 this.style.boxShadow = 'none';
               }
             });
@@ -2386,11 +2386,11 @@ function showCopySuccess(message) {
     "position: fixed;" +
     "top: 20px;" +
     "right: 20px;" +
-    "background: linear-gradient(45deg, #00bcd4, #4fc3f7);" +
+    "background: linear-gradient(45deg, #FF7A00, #FF4D00);" +
     "color: white;" +
     "padding: 0.8rem 1.5rem;" +
     "border-radius: 10px;" +
-    "box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);" +
+    "box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);" +
     "z-index: 1002;" +
     "font-weight: 500;" +
     "opacity: 0;" +

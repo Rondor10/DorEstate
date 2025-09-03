@@ -3004,7 +3004,7 @@ text-align: center;
 
 .contact-subtitle {
   font-size: 1.2rem;
-  color: #b3e5fc;
+  color: #ffffff;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.6;
@@ -3020,8 +3020,8 @@ text-align: center;
 }
 
 .contact-methods {
-  background: rgba(0, 188, 212, 0.03);
-  border: 1px solid rgba(0, 188, 212, 0.2);
+  background: rgba(255, 122, 0, 0.03);
+  border: 1px solid rgba(255, 122, 0, 0.2);
   border-radius: 20px;
   padding: 2rem;
   backdrop-filter: blur(5px);
@@ -3029,14 +3029,14 @@ text-align: center;
 }
 
 .contact-methods:hover {
-  border-color: #00bcd4;
-  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+  border-color: #FF7A00;
+  box-shadow: 0 10px 30px rgba(255, 122, 0, 0.2);
   transform: translateY(-5px);
 }
 
 .methods-title {
   font-size: 1.5rem;
-  color: #00bcd4;
+  color: #FF7A00;
   margin-bottom: 1.5rem;
   text-align: center;
   font-weight: 600;
@@ -3122,7 +3122,7 @@ text-align: center;
   width: 100%;
   padding: 1rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(0, 188, 212, 0.3);
+  border: 2px solid rgba(255, 122, 0, 0.3);
   border-radius: 15px;
   color: #ffffff;
   font-size: 1rem;
@@ -3233,7 +3233,7 @@ text-align: center;
 
 .quick-contact-text {
   font-size: 0.9rem;
-  color: #4fc3f7;
+  color: #FF7A00;
   font-weight: 500;
 }
 
@@ -3242,11 +3242,11 @@ text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+  background: linear-gradient(45deg, #FF7A00, #FF4D00);
   color: #ffffff;
   padding: 2rem 3rem;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 20px 40px rgba(255, 122, 0, 0.3);
   z-index: 1000;
   font-size: 1.2rem;
   font-weight: 600;
@@ -3267,7 +3267,7 @@ text-align: center;
   left: 50%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 122, 0, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: quantumGlow 6s infinite ease-in-out;
