@@ -4180,6 +4180,7 @@ function initMobileMenu() {
     hamburgerBtn.classList.add('active');
     mobileMenuOverlay.classList.add('active');
     mobileMenuBackdrop.classList.add('active');
+    document.body.classList.add('mobile-menu-open');
     document.body.style.overflow = 'hidden';
   }
   
@@ -4187,6 +4188,7 @@ function initMobileMenu() {
     hamburgerBtn.classList.remove('active');
     mobileMenuOverlay.classList.remove('active');
     mobileMenuBackdrop.classList.remove('active');
+    document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
   }
   

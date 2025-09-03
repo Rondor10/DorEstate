@@ -283,6 +283,27 @@ body {
     text-align: center;
     gap: 0.5rem;
   }
+  
+  /* Hide footer and contact info on mobile */
+  .bottom-bar {
+    display: none !important;
+  }
+  
+  .contact-fixed {
+    display: none !important;
+  }
+  
+  /* Reposition social icons for mobile */
+  .social-fixed {
+    position: fixed;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(50% + 8rem); /* Position 4rem below the CTA button area */
+    flex-direction: row;
+    gap: 1rem;
+    z-index: 1000;
+  }
 }
 
 @media (min-width: 391px) and (max-width: 768px) {
@@ -330,6 +351,27 @@ body {
     margin: 2rem 0;
     text-align: center;
     direction: rtl;
+  }
+  
+  /* Hide footer and contact info on mobile */
+  .bottom-bar {
+    display: none !important;
+  }
+  
+  .contact-fixed {
+    display: none !important;
+  }
+  
+  /* Reposition social icons for mobile */
+  .social-fixed {
+    position: fixed;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(50% + 8rem); /* Position 4rem below the CTA button area */
+    flex-direction: row;
+    gap: 1rem;
+    z-index: 1000;
   }
 }
 
@@ -3373,5 +3415,48 @@ text-align: center;
   50% { 
     transform: translate(-50%, -50%) scale(1.5); 
     opacity: 0.1; 
+  }
+}
+
+/* MOBILE OVERRIDES - Final priority for mobile viewport changes */
+@media (max-width: 768px) {
+  /* Hide footer and contact info on mobile - Override any previous rules */
+  .bottom-bar {
+    display: none !important;
+  }
+  
+  .contact-fixed {
+    display: none !important;
+  }
+  
+  /* Reposition social icons for mobile - Override any previous rules */
+  .social-fixed {
+    position: fixed !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: calc(50% + 8rem) !important; /* Position 4rem below the CTA button area */
+    flex-direction: row !important;
+    gap: 1rem !important;
+    z-index: 1000 !important;
+    right: auto !important; /* Override any right positioning */
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+  }
+  
+  /* Enhanced mobile menu experience */
+  .mobile-menu-backdrop.active {
+    background: rgba(0, 0, 0, 0.8) !important; /* Stronger dimming effect */
+    backdrop-filter: blur(2px) !important; /* Add blur for better focus */
+  }
+  
+  /* Hide social icons when mobile menu is active */
+  body.mobile-menu-open .social-fixed {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  /* Ensure accessibility bar remains visible above menu backdrop */
+  #a11y-toolbar {
+    z-index: 10000 !important; /* Higher than menu backdrop (999) and menu (1000) */
   }
 }
