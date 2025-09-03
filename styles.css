@@ -74,6 +74,14 @@ body {
   .about-timeline { --card-w: 240px; }
   .about-tl-rail { padding-inline: 2.25rem; }
   .about-tl-rail::before { right: 2.25rem; left: 2.25rem; }
+    /* Hero adjustments */
+  .hero-title {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  
+  .hero-subtitle {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
 }
 
 @media (min-width: 769px) {
@@ -88,6 +96,14 @@ body {
   
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+  /* Hero adjustments */
+  .hero-title {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  
+  .hero-subtitle {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 }
 
@@ -243,6 +259,15 @@ body {
     .contact-methods-quick {
       grid-template-columns: 1fr 1fr;
     }
+
+    /* Hero adjustments */
+    .hero-title {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+  
+    .hero-subtitle {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
 }
 
 .register-screen {
@@ -297,6 +322,15 @@ body {
     gap: 1rem;
     z-index: 1000;
   }
+
+  /* Hero adjustments */
+  .hero-title {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  
+  .hero-subtitle {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
 }
 
 @media (min-width: 391px) and (max-width: 768px) {
@@ -312,6 +346,15 @@ body {
   /* Hero mobile optimization */
   .hero-section {
     padding: 1rem;
+  }
+
+  /* Hero adjustments */
+  .hero-title {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  
+  .hero-subtitle {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   
   .cta-button {
@@ -373,6 +416,15 @@ body {
     /* Hero section adjustments */
     .hero-section {
         padding: 0.5rem;
+    }
+
+    /* Hero adjustments */
+    .hero-title {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    } 
+  
+    .hero-subtitle {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
         
     .cta-button {
@@ -570,6 +622,15 @@ body {
     .hero-content {
         max-width: 100%;
         padding: 0 1rem;
+    }
+
+    /* Hero adjustments */
+    .hero-title {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+  
+    .hero-subtitle {
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
         
     .cta-button {
