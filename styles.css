@@ -1105,7 +1105,7 @@ body {
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 400;
-    opacity: 0.9;
+    opacity: 0;
     margin-bottom: 2rem;
     animation: fadeInUp 3s ease-out 0.8s forwards;
 }
@@ -1298,6 +1298,7 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   min-width: 260px;
   position: relative;
+  opacity: 0;
   overflow: hidden;
 }
 
