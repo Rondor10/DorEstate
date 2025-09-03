@@ -192,7 +192,7 @@ const modalContents = {
         
         <div class="legacy-story">
           <p class="story-text">
-            בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה 28 שנים.
+          בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים.
           </p>
           <p class="story-text">
             כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
@@ -318,19 +318,19 @@ const modalContents = {
             <div class="tech-stats">
               <div class="tech-stat">
                 <span class="tech-number">AI</span>
-                <span class="tech-label">Powered Analytics</span>
+                <span class="tech-label">אנליטיקה מבוססת</span>
               </div>
               <div class="tech-stat">
                 <span class="tech-number">24/7</span>
-                <span class="tech-label">Real-time Data</span>
+                <span class="tech-label">דאטה בזמן אמת</span>
               </div>
               <div class="tech-stat">
                 <span class="tech-number">95%</span>
-                <span class="tech-label">Accuracy Rate</span>
+                <span class="tech-label">אחוזי דיוק</span>
               </div>
               <div class="tech-stat">
                 <span class="tech-number">∞</span>
-                <span class="tech-label">Possibilities</span>
+                <span class="tech-label">אפשרויות</span>
               </div>
             </div>
           </div>
@@ -480,19 +480,14 @@ const modalContents = {
     <div class="executive-showcase" id="executive-showcase">
       <div class="exec-profile">
         <div class="exec-photo-container">
-          <img src="board_pics/David.jpg" alt="דוד דור" class="exec-photo" id="exec-photo" />
+        <img src="" class="exec-photo" id="exec-photo">
         </div>
         <div class="exec-info">
-          <h2 class="exec-name" id="exec-name">דוד דור</h2>
-          <div class="exec-title" id="exec-title">Chief Executive Officer | מנכ"ל</div>
+          <h2 class="exec-name" id="exec-name"></h2>
+          <div class="exec-title" id="exec-title"></div>
           <p class="exec-description" id="exec-description">
-            דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.
           </p>
           <div class="exec-skills" id="exec-skills">
-            <div class="skill-chip">Strategic Leadership</div>
-            <div class="skill-chip">Market Intelligence</div>
-            <div class="skill-chip">Deal Negotiation</div>
-            <div class="skill-chip">28 Years Experience</div>
           </div>
         </div>
       </div>
@@ -618,7 +613,6 @@ const modalContents = {
           left: -2px;
           right: -2px;
           bottom: -2px;
-          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
           z-index: -1;
           border-radius: 15px;
           opacity: 0;
@@ -1287,14 +1281,14 @@ const modalContents = {
         <!-- Vision & Mission -->
         <div class="vision-mission">
           <div class="bracket-block">
-            <h3 class="bracket-title">חזון</h3>
+            <h3 class="bracket-title">חזון | Vision</h3>
             <p class="bracket-content">
               להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל"ניים שמגדירים מחדש את הסטנדרט בתחום.
             </p>
           </div>
           
           <div class="bracket-block">
-            <h3 class="bracket-title">משימה</h3>
+            <h3 class="bracket-title">משימה | Mission</h3>
             <p class="bracket-content">
               לרתום את המערכת השיווקית הייחודית שלנו ליצירת הפרויקט המצליח הבא שלכם. כל עסקה היא התחייבות אישית למצוינות.
             </p>
@@ -1639,8 +1633,7 @@ const modalContents = {
   projects: {
     title: "פרויקטים",
     content: `
-        <h2>פרויקטי פיתוח והשקעה</h2>
-        <p style="margin-bottom: 2rem;">הפרויקטים המובילים שלנו בגבעתיים והסביבה</p>
+        <h2>פרויקטי דגל</h2>
 
         <style>
           .projects-grid {
@@ -3990,7 +3983,7 @@ function setLoading(btn, isLoading) {
 window.DorTeam = (function () {
   const executiveData = [
     { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך 28 שנים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
       skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"] },
     { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
       description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",

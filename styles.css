@@ -869,7 +869,6 @@ body {
   height: 10vh;
   min-height: 64px;
   backdrop-filter: none;
-  background-color: rgba(255, 180, 51, 0.05);
   border-bottom: none;
   position: relative;
   z-index: 100;
@@ -2472,12 +2471,11 @@ text-align: center;
 .about-title {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff7a00);
+  background: linear-gradient(45deg, #ff8c42, #ff6b35);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1.5rem;
-  animation: aboutTitleGlow 6s infinite alternate;
 }
 
 @keyframes aboutTitleGlow {
@@ -2791,12 +2789,11 @@ text-align: center;
 .services-title {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377);
+  background: linear-gradient(45deg, #ff8c42, #ff6b35);
   -webkit-background-clip: text;
   background-clip: text;           /* standard */
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
-  animation: servicesPulse 3s infinite alternate;
 }
 
 @keyframes servicesPulse {
@@ -2844,7 +2841,6 @@ text-align: center;
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: linear-gradient(45deg, #ff8c42, #ff6b35, #ffb377, #ff9a56);
   z-index: -1;
   border-radius: 20px;
   opacity: 0;
