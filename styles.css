@@ -58,10 +58,6 @@ body {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   
-  .hero-subtitle {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  
   .cta-button {
     padding: 0.8rem 2rem;
     font-size: 1rem;
@@ -76,10 +72,6 @@ body {
   .about-tl-rail::before { right: 2.25rem; left: 2.25rem; }
     /* Hero adjustments */
   .hero-title {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  
-  .hero-subtitle {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 }
@@ -99,10 +91,6 @@ body {
   }
   /* Hero adjustments */
   .hero-title {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  
-  .hero-subtitle {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 }
@@ -130,31 +118,11 @@ body {
     .card-icon i {
         font-size: 2rem;
     }
-
-    /* Social links mobile optimization */
-    .social-fixed {
-        right: 0.5rem;
-        gap: 0.3rem;
-    }
     
     .social-fixed .social-link {
         width: 45px;
         height: 45px;
         font-size: 1.2rem;
-    }
-    
-    /* Contact bar mobile optimization */
-    .contact-fixed {
-        left: 0.5rem;
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        border-radius: 20px;
-    }
-    
-    .contact-fixed .contact-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-        border-radius: 15px;
     }
     
     /* Modal mobile optimization */
@@ -209,7 +177,6 @@ body {
       justify-content:unset;
     }
 
-    #a11y-toolbar { top: 10%; }
     .property-cards { width: 95vw; height: min(90vh, 820px);}
     .property-info { padding: 1.1rem; }
     .desc-text { font-size: .95rem; }
@@ -265,8 +232,63 @@ body {
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
   
-    .hero-subtitle {
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      /* Hide footer and contact info on mobile - Override any previous rules */
+    .bottom-bar {
+      display: none !important;
+    }
+  
+    .contact-fixed {
+      display: none !important;
+    }
+  
+    /* Reposition social icons for mobile - Override any previous rules */
+    .social-fixed {
+      position: fixed !important;
+      bottom: auto !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      top: calc(50% + 8rem) !important; /* Position 4rem below the CTA button area */
+      flex-direction: row !important;
+      gap: 1rem !important;
+      z-index: 1000 !important;
+      right: auto !important; /* Override any right positioning */
+      transition: opacity 0.3s ease, visibility 0.3s ease !important;
+    }
+    
+    /* Enhanced mobile menu experience */
+    .mobile-menu-backdrop.active {
+      background: rgba(0, 0, 0, 0.8) !important; /* Stronger dimming effect */
+      backdrop-filter: blur(2px) !important; /* Add blur for better focus */
+    }
+    
+    /* Hide social icons when mobile menu is active */
+    body.mobile-menu-open .social-fixed {
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+    
+    /* Ensure accessibility bar remains visible above menu backdrop */
+    #a11y-toolbar {
+      top: 70%;
+      z-index: 10000 !important; /* Higher than menu backdrop (999) and menu (1000) */
+    }
+    
+    /* Accessibility toolbar mobile adjustments */
+    #a11y-toolbar .a11y-btn {
+      top: 70%;
+    }
+    
+    #a11y-toolbar .a11y-panel {
+      overflow: visible !important;
+      max-height: 50vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #a11y-toolbar .a11y-list {
+      overflow-y: scroll !important;
+      max-height: 30vh;
+      scrollbar-width: inherit;
     }
 }
 
@@ -327,10 +349,6 @@ body {
   .hero-title {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  
-  .hero-subtitle {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
 }
 
 @media (min-width: 391px) and (max-width: 768px) {
@@ -350,10 +368,6 @@ body {
 
   /* Hero adjustments */
   .hero-title {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  
-  .hero-subtitle {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   
@@ -422,10 +436,6 @@ body {
     .hero-title {
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     } 
-  
-    .hero-subtitle {
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
         
     .cta-button {
         padding: 0.6rem 1.2rem;
@@ -628,9 +638,10 @@ body {
     .hero-title {
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-  
+
     .hero-subtitle {
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        max-width: 100%;
+        padding: 0 1rem;
     }
         
     .cta-button {
@@ -1123,7 +1134,7 @@ body {
     font-size: clamp(1.2rem, 2vw, 1.25rem);
     font-weight: 400;
     opacity: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     animation: fadeInUp 3s ease-out 0.8s forwards;
 }
 
@@ -1783,8 +1794,8 @@ body {
 /* ה־Toolbar מגיב להגדלה גלובלית */
 #a11y-toolbar {
   position: fixed;
-  top: 20%;
-  font-size: 1rem;
+  top: 60%;
+  font-size: 0.3rem;
   line-height: 1.4;
   z-index: var(--a11y-z);
 }
@@ -1795,7 +1806,6 @@ body {
 #a11y-toolbar .a11y-btn {
   display: inline-flex; align-items: center; justify-content: center; gap:.5rem;
   padding: 0.625rem; /* 10px */
-  font-size: 1.25rem; /* היה 20px */
   background:#fff; border:1px solid #ddd; border-radius:10px; cursor:pointer;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
@@ -3474,48 +3484,5 @@ text-align: center;
   50% { 
     transform: translate(-50%, -50%) scale(1.5); 
     opacity: 0.1; 
-  }
-}
-
-/* MOBILE OVERRIDES - Final priority for mobile viewport changes */
-@media (max-width: 768px) {
-  /* Hide footer and contact info on mobile - Override any previous rules */
-  .bottom-bar {
-    display: none !important;
-  }
-  
-  .contact-fixed {
-    display: none !important;
-  }
-  
-  /* Reposition social icons for mobile - Override any previous rules */
-  .social-fixed {
-    position: fixed !important;
-    bottom: auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: calc(50% + 8rem) !important; /* Position 4rem below the CTA button area */
-    flex-direction: row !important;
-    gap: 1rem !important;
-    z-index: 1000 !important;
-    right: auto !important; /* Override any right positioning */
-    transition: opacity 0.3s ease, visibility 0.3s ease !important;
-  }
-  
-  /* Enhanced mobile menu experience */
-  .mobile-menu-backdrop.active {
-    background: rgba(0, 0, 0, 0.8) !important; /* Stronger dimming effect */
-    backdrop-filter: blur(2px) !important; /* Add blur for better focus */
-  }
-  
-  /* Hide social icons when mobile menu is active */
-  body.mobile-menu-open .social-fixed {
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-  
-  /* Ensure accessibility bar remains visible above menu backdrop */
-  #a11y-toolbar {
-    z-index: 10000 !important; /* Higher than menu backdrop (999) and menu (1000) */
   }
 }
