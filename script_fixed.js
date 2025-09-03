@@ -3136,7 +3136,22 @@ function initAccessibilityToolbar() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-open-contact]");
     if (!btn) return;
-    openModal("contact");
+    
+    // Check if user found any properties
+    if (!likedProperties.length) {
+      // No properties found - show filtering page
+      if (swipeInterface) swipeInterface.style.display = "none";
+      onboardingOverlay.style.display = "flex";
+      setTimeout(() => {
+        onboardingOverlay.classList.add("active");
+        goToStepType("quick-qs");
+      }, 10);
+    } else {
+      // Properties found - return to homepage
+      closeOnboarding();
+      if (swipeInterface) swipeInterface.style.display = "none";
+      location.reload(); // Reset to homepage state
+    }
   });
 
   document.addEventListener("keydown", (e) => {
@@ -3870,8 +3885,8 @@ function showSwipeResults() {
   ">
         <i class="fas fa-heart-broken" style="font-size:4rem; margin-bottom:1rem; opacity:.7;"></i>
         <h3>לא מצאתם משהו שמתאים?</h3>
-        <p style="margin:1rem 0;">אין בעיה! בואו נדבר עם היועצים שלנו</p>
-        <button data-open-contact class="cta-endswipe-button">דברו עם יועץ</button>
+        <p style="margin:1rem 0;">שווה לנסות שוב.</p>
+        <button data-open-contact class="cta-endswipe-button">בחזרה לתהליך</button>
       </div>`; // Corrected closing div
   } else {
     propertyCards.innerHTML = `
@@ -3889,7 +3904,7 @@ function showSwipeResults() {
         <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
         <h3>מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
         <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
-        <button data-open-contact class="cta-endswipe-button">קבעו פגישה</button>
+        <button data-open-contact class="cta-endswipe-button">לדף הבית</button>
       </div>`; // Corrected closing div
   }
   const actions = document.querySelector(".swipe-actions");
