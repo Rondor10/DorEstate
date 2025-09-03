@@ -1816,7 +1816,7 @@ const modalContents = {
         <div class="contact-content">
           <!-- Hero Section -->
           <div class="contact-hero">
-            <h1 class="contact-title">Communication Hub</h1>
+            <h1 class="contact-title">דברו איתנו</h1>
             <p class="contact-subtitle">
               המסלול שלך מתחיל כאן.
             </p>
@@ -1826,7 +1826,7 @@ const modalContents = {
           <div class="communication-grid">
             <!-- Contact Information -->
             <div class="contact-methods">
-              <h3 class="methods-title">📡 Contact Information</h3>
+              <h3 class="methods-title">פרטי התקשרות</h3>
               
               <div class="method-item" onclick="copyToClipboard('ויצמן 37, גבעתיים')">
                 <div class="method-icon">📍</div>
@@ -1868,7 +1868,7 @@ const modalContents = {
             
             <!-- Contact Form -->
             <div class="contact-form-section">
-              <h3 class="form-title">🚀 Send Message</h3>
+              <h3 class="form-title">טופס פנייה</h3>
               
               <form id="contactForm" class="quantum-form">
                 <div class="input-group">
@@ -1907,7 +1907,7 @@ const modalContents = {
                 </div>
                 
                 <button type="submit" class="submit-btn">
-                  🚀 שלח הודעה
+                  שלח הודעה 🚀
                 </button>
               </form>
             </div>
