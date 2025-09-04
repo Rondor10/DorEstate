@@ -1164,9 +1164,10 @@ body {
   display: flex; /* Show by default */
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0; /* Increased by 50% */
+  /* padding: 1.5rem 0; */
   width: 100%;
-  position: relative;
+  /* position: relative; */
+  margin-top: 3rem;
 }
 
 .mobile-logo-link {
