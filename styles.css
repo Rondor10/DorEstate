@@ -199,6 +199,53 @@ body {
       justify-content:unset;
     }
 
+    /* Questionnaire mobile scrolling fix */
+    .onboarding-content:has(.question-container),
+    .onboarding-content.questionnaire-screen {
+        justify-content: unset !important;
+        align-items: unset !important;
+        display: block !important;
+        padding: 1.5rem 1rem !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Onboarding mobile fix for layout squeeze */
+    .onboarding-container {
+        max-width: 100% !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+    /* Intro screen mobile adjustments */
+    .intro-screen {
+        padding: 2rem 1.5rem !important;
+        min-height: calc(100vh - 120px) !important;
+    }
+    
+    .intro-screen img {
+        max-width: 280px !important;
+        width: 80% !important;
+        border-radius: 20px !important;
+    }
+    
+    .intro-screen h2 {
+        font-size: 1.7rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .intro-screen p {
+        font-size: 1.1rem !important;
+    }
+    
+    .intro-screen button {
+        padding: 1.2rem 2.5rem !important;
+        font-size: 1.1rem !important;
+        min-width: 250px !important;
+    }
+
     .property-cards { width: 95vw; height: min(90vh, 820px);}
     .property-info { padding: 1.1rem; }
     .desc-text { font-size: .95rem; }
@@ -312,10 +359,6 @@ body {
       max-height: 30vh;
       scrollbar-width: inherit;
     }
-}
-
-.register-screen {
-  padding: 1rem;
 }
 
 @media (max-width: 560px) {
@@ -532,8 +575,11 @@ body {
     
     /* Onboarding mobile optimization */
     .onboarding-container {
-        max-width: 100%;
-        margin: 0;
+        max-width: 100% !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        left: 0 !important;
+        right: 0 !important;
     }
     
     .onboarding-header {
@@ -543,6 +589,17 @@ body {
     
     .onboarding-content {
         padding: 1.5rem 1rem;
+    }
+
+    /* Questionnaire small screen fix */
+    .onboarding-content:has(.question-container),
+    .onboarding-content.questionnaire-screen {
+        justify-content: unset !important;
+        align-items: unset !important;
+        display: block !important;
+        padding: 1rem 0.8rem !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
     }
     
     .onboarding-navigation {
@@ -559,6 +616,20 @@ body {
     .question-title {
         font-size: 1.4rem;
         margin-bottom: 0.8rem;
+        margin-top: 0;
+    }
+    
+    .question-title:first-of-type {
+        margin-top: 0;
+    }
+
+    .question-title:not(:first-of-type) {
+        margin-top: 2rem;
+    }
+
+    /* Questionnaire button mobile */
+    .question-container + div {
+        margin-top: 1.5rem;
     }
     
     .question-subtitle {
@@ -584,6 +655,11 @@ body {
     .option-card {
         padding: 1rem;
         font-size: 0.9rem;
+        min-height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     
     .option-title {
@@ -817,9 +893,12 @@ body {
     
     /* Fix onboarding for iPhone 13 Pro */
     .onboarding-container {
-        max-width: 100vw;
-        margin: 0;
+        max-width: 100vw !important;
+        width: 100vw !important;
+        margin: 0 !important;
         border-radius: 0;
+        left: 0 !important;
+        right: 0 !important;
     }
     
     .question-container {
@@ -830,6 +909,20 @@ body {
     .question-title {
         font-size: 1.1rem;
         margin-bottom: 0.7rem;
+        margin-top: 0;
+    }
+    
+    .question-title:first-of-type {
+        margin-top: 0;
+    }
+
+    .question-title:not(:first-of-type) {
+        margin-top: 1.5rem;
+    }
+
+    /* Questionnaire button small screen */
+    .question-container + div {
+        margin-top: 1rem;
     }
     
     .question-subtitle {
@@ -845,6 +938,46 @@ body {
     .option-card {
         padding: 0.8rem;
         font-size: 0.85rem;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Intro screen adjustments for iPhone SE */
+    .intro-screen {
+        padding: 1.5rem 1rem !important;
+        min-height: calc(100vh - 100px) !important;
+    }
+    
+    .intro-screen > div:first-child {
+        margin-bottom: 2rem !important;
+    }
+    
+    .intro-screen img {
+        max-width: 240px !important;
+        width: 75% !important;
+        border-radius: 18px !important;
+    }
+    
+    .intro-screen .intro-text {
+        margin-bottom: 2rem !important;
+    }
+    
+    .intro-screen h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .intro-screen p {
+        font-size: 1rem !important;
+    }
+    
+    .intro-screen button {
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+        min-width: 220px !important;
     }
 }
 
@@ -1585,6 +1718,43 @@ body {
     justify-content: center;
 }
 
+/* Quick questionnaire specific styling */
+.onboarding-content:has(.question-container),
+.onboarding-content.questionnaire-screen {
+    display: block !important;
+    padding: 2rem 3rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* Responsive onboarding content centering */
+.intro-screen {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    position: relative;
+}
+
+/* Enhanced intro screen styling */
+.intro-screen img:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+}
+
+.intro-screen button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4) !important;
+}
+
+.intro-screen button:active {
+    transform: translateY(0) !important;
+}
+
+
 .onboarding-navigation {
     padding: 2rem;
     border-top: 1px solid #eee;
@@ -1609,12 +1779,17 @@ body {
     color: var(--text-primary);
 }
 
+.register-screen {
+  padding: 1rem;
+}
+
 .question-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0.2rem;
+    padding: 0.2rem 0.2rem 0rem 0.2rem;
     width: 100%;
     box-sizing: border-box;
+    min-height: 100%;
 }
 
 .question-title {
@@ -1622,7 +1797,25 @@ body {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
-    margin-top: 7rem;
+    margin-top: 0;
+}
+
+.question-title:first-of-type {
+    margin-top: 0;
+}
+
+.question-title:not(:first-of-type) {
+    margin-top: 2.5rem;
+}
+
+/* Questionnaire button styling */
+.question-container + div {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#toSwiping {
+    display: inline-block;
 }
 
 .question-subtitle {
@@ -1642,12 +1835,16 @@ body {
 .option-card {
   background: #fff;
   border: 2px solid rgba(212, 175, 55, 0.3);
-  border-radius: 18px;            /* pick 15px or 18px, not both */
-  padding: 1.25rem;               /* pick one padding */
+  border-radius: 18px;
+  padding: 1.25rem;
   cursor: pointer;
-  transition: .2s ease;           /* or .3s, choose one */
+  transition: .2s ease;
   box-shadow: 0 1px 0 rgba(0,0,0,.02);
-  text-align: right;              /* if you need RTL alignment */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
 }
 
 .option-card:hover {
@@ -1666,6 +1863,8 @@ body {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
+    text-align: center;
+    width: 100%;
 }
 
 .option-description {

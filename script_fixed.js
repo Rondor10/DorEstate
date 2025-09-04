@@ -2308,11 +2308,15 @@ function initializeOnboardingSteps() {
       title: "תכירו את הדרך החדשה למצוא בית",
       subtitle: "כמו טינדר, אבל לדירות. קליל, מהיר, כיפי.",
       content: `
-        <div class="intro-screen" style="text-align:center; padding:2rem;">
-          <img src="gen_pic/tinder_mock.png" alt="מסך דוגמה" style="max-width:280px; border-radius:20px; margin-bottom:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.15);" />
-          <h2 style="margin-bottom:1rem;">מצאו את הבית שלכם בהחלקה</h2>
-          <p style="color:#666; margin-bottom:2rem;">נכסים שיתאימו בדיוק למה שאתם מחפשים</p>
-          <button id="toRegistration" style="background:var(--primary-color); color:white; border:none; padding:1rem 2.5rem; border-radius:50px; cursor:pointer; font-size:1.1rem;">
+        <div class="intro-screen" style="text-align:center; padding:2.5rem 2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:calc(100vh - 140px); box-sizing:border-box; border-radius:0;">
+          <div style="margin-bottom:3rem;">
+            <img src="gen_pic/tinder_mock.png" alt="מסך דוגמה" style="max-width:320px; width:85%; height:auto; border-radius:24px; box-shadow:0 12px 32px rgba(0,0,0,0.15), 0 4px 16px rgba(212, 175, 55, 0.2); transition:transform 0.3s ease; display:block; margin:0 auto;" />
+          </div>
+          <div class="intro-text" style="margin-bottom:3rem; max-width:400px;">
+            <h2 style="margin-bottom:1.5rem; font-size:2rem; font-weight:700; line-height:1.2; color:var(--text-primary); background:linear-gradient(135deg, var(--primary-color), #c8a842); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">מצאו את הבית שלכם בהחלקה</h2>
+            <p style="color:#555; margin-bottom:0; font-size:1.2rem; line-height:1.5; font-weight:400;">נכסים שיתאימו בדיוק למה שאתם מחפשים</p>
+          </div>
+          <button id="toRegistration" style="background:linear-gradient(135deg, var(--primary-color), #c8a842); color:white; border:none; padding:1.3rem 3rem; border-radius:60px; cursor:pointer; font-size:1.3rem; font-weight:600; box-shadow:0 8px 24px rgba(212, 175, 55, 0.3); transition:all 0.3s ease; min-width:280px; position:relative; overflow:hidden;">
             מתחילים עכשיו
           </button>
         </div>
@@ -2329,18 +2333,17 @@ function initializeOnboardingSteps() {
               <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
               <input id="phoneNumber" type="tel" placeholder="מספר טלפון" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
 
-              <button id="sendCodeBtn" style="width:100%; background:var(--primary-color); color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; margin-bottom:1rem;">
+              <button id="sendCodeBtn" style="width:100%; background:var(--primary-color); color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; margin-bottom:1rem; font-weight:600;">
                 שלחו לי קוד אימות
               </button>
 
               <div id="smsStep" style="display:none;">
                 <input id="smsCode" type="text" placeholder="הכניסו את הקוד שקיבלתם" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
-                <button id="verifyCodeBtn" style="width:100%; background:green; color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer;">
+                <button id="verifyCodeBtn" style="width:100%; background:green; color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; font-weight:600;">
                   המשיכו
                 </button>
               </div>
 
-              <div id="recaptcha-container"></div>
             </div>
           `,
     },
@@ -2406,7 +2409,7 @@ function initializeOnboardingSteps() {
                 </div>
 
                 <div style="text-align:center; margin-top:2rem;">
-                  <button id="toSwiping" style="background:var(--primary-color); color:white; border:none; padding:1rem 3rem; border-radius:50px; font-size:1.1rem; cursor:pointer;">
+                  <button id="toSwiping" style="background:var(--primary-color); color:white; border:none; padding:1rem 3rem; border-radius:50px; font-size:1.1rem; cursor:pointer; font-weight: 600;">
                     מצאו את הבית שלכם
                   </button>
                 </div>
