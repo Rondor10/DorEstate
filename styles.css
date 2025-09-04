@@ -2744,7 +2744,7 @@ text-align: center;
 .about-title {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(45deg, var(--primary-color));
+  color: var(--primary-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2837,7 +2837,7 @@ text-align: center;
 .timeline-title {
   font-size: 2rem;
   font-weight: 600;
-  background: linear-gradient(45deg, var(--primary-color));
+  color: var(--primary-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
