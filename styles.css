@@ -2406,8 +2406,8 @@ html.a11y-font-200 { font-size: 200%; }
   height: min(90svh, 940px);
   height: min(90dvh, 940px);
   height: min(90vh, 940px);
-  margin-bottom: 2rem;
-  max-height: 500px;
+  margin-bottom: 1rem;
+  max-height: 550px;
 }
 
 /* Instant loading with smooth transitions */
@@ -2512,7 +2512,6 @@ html.a11y-font-200 { font-size: 200%; }
   z-index: 2;
 }
 .carousel-dot {
-  width: 12px; height: 12px;
   border-radius: 50%; border: 0;
   background: rgba(255,255,255,.6);
   cursor: pointer;
@@ -2521,8 +2520,8 @@ html.a11y-font-200 { font-size: 200%; }
 
 @media (pointer: coarse) {
   .carousel-nav, .carousel-dot {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 1rem;
+    min-height: 1rem;
   }
 }
 
