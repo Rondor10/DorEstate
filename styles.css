@@ -359,6 +359,22 @@ body {
       max-height: 30vh;
       scrollbar-width: inherit;
     }
+    
+    /* Consent checkboxes mobile responsiveness */
+    .consent-container .consent-item {
+      padding: 0.6rem !important;
+      margin-bottom: 0.6rem !important;
+      gap: 0.5rem !important;
+    }
+    
+    .consent-container label {
+      font-size: 13px !important;
+      line-height: 1.25 !important;
+    }
+    
+    .consent-container .custom-checkbox {
+      margin-top: 0.05rem !important;
+    }
 }
 
 @media (max-width: 560px) {
@@ -413,6 +429,17 @@ body {
   /* Hero adjustments */
   .hero-title {
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  
+  /* Consent checkboxes smaller screens */
+  .consent-container .consent-item {
+    padding: 0.5rem !important;
+    gap: 0.4rem !important;
+  }
+  
+  .consent-container label {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
   }
 }
 
@@ -3827,4 +3854,31 @@ background: rgba(0, 0, 0, 0.25);
     inset: 0;
     background: rgba(0, 0, 0, 0.25);
     z-index: 1;
+}
+
+/* CONSENT CHECKBOXES */
+.consent-container .consent-item:hover {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.15);
+  background: rgba(255, 102, 0, 0.05) !important;
+}
+
+.consent-container input[type="checkbox"]:checked + .checkbox-design {
+  border-color: var(--primary-color) !important;
+  background: var(--primary-color) !important;
+}
+
+.consent-container input[type="checkbox"]:checked + .checkbox-design .checkmark {
+  opacity: 1 !important;
+  color: white !important;
+}
+
+.consent-container .checkbox-design:hover {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+}
+
+.consent-container input[type="checkbox"]:focus + .checkbox-design {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
 }

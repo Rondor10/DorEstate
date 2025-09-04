@@ -82,6 +82,16 @@ async function setupPhoneAuth() {
     if (el) el.addEventListener("input", () => showInlineError(""));
   });
 
+  // Setup custom checkbox functionality
+  const mandatoryConsent = document.getElementById("mandatoryConsent");
+  const optionalConsent = document.getElementById("optionalConsent");
+  
+  [mandatoryConsent, optionalConsent].forEach((checkbox) => {
+    if (checkbox) {
+      checkbox.addEventListener("change", () => showInlineError(""));
+    }
+  });
+
   sendBtn.onclick = async () => {
     const phoneRaw = (
       document.getElementById("phoneNumber")?.value || ""
@@ -94,6 +104,13 @@ async function setupPhoneAuth() {
     }
     if (!phoneRaw) {
       showInlineError("אנא הזינו מספר טלפון");
+      return;
+    }
+
+    // Check mandatory consent
+    const mandatoryConsent = document.getElementById("mandatoryConsent");
+    if (!mandatoryConsent?.checked) {
+      showInlineError("יש לאשר את הסכמת הפרטיות החובה על מנת להמשיך");
       return;
     }
 
@@ -112,6 +129,11 @@ async function setupPhoneAuth() {
       );
       const step = document.getElementById("smsStep");
       if (step?.style) step.style.display = "block";
+      
+      // Hide consent checkboxes when SMS step is active
+      const consentContainer = document.getElementById("consentContainer");
+      if (consentContainer?.style) consentContainer.style.display = "none";
+      
       document.getElementById("smsCode")?.focus();
       showInlineError(""); // hide any previous error
       showToast("✨ קוד נשלח לנייד", "success");
@@ -2378,6 +2400,34 @@ function initializeOnboardingSteps() {
             <div class="register-screen">
               <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
               <input id="phoneNumber" type="tel" placeholder="מספר טלפון" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
+
+              <div class="consent-container" id="consentContainer" style="margin-bottom:1rem;">
+                <div class="consent-item" style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.8rem; padding:0.8rem; border:1px solid #e0e0e0; border-radius:12px; background:rgba(255,102,0,0.02);">
+                  <div class="custom-checkbox" style="position:relative; flex-shrink:0; margin-top:0.1rem;">
+                    <input type="checkbox" id="mandatoryConsent" style="opacity:0; width:18px; height:18px; position:absolute; cursor:pointer;" />
+                    <div class="checkbox-design" style="width:18px; height:18px; border:2px solid #ddd; border-radius:4px; background:white; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; cursor:pointer;">
+                      <span class="checkmark" style="color:var(--primary-color); font-size:12px; opacity:0; transition:opacity 0.3s ease;">✓</span>
+                    </div>
+                  </div>
+                  <label for="mandatoryConsent" style="font-size:14px; line-height:1.3; color:#333; cursor:pointer; flex:1; text-align:right;">
+                    <span style="color:red; margin-left:4px;">*</span>
+                      אני מאשר/ת שיפנו אליי בקשר לנכסים אותם אבחר, וכן בקשר לנכסים נוספים שעשויים להתאים לי, וזאת בהתאם
+                      <a href="https://www.gov.il/he/pages/guide_tikon13_professional" target="_blank" style="color:var(--primary-color); text-decoration:underline;">לתיקון 13 לחוק הגנת הפרטיות</a>.
+                    </label>
+                </div>
+
+                <div class="consent-item" style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.8rem; padding:0.8rem; border:1px solid #e0e0e0; border-radius:12px; background:rgba(255,102,0,0.02);">
+                  <div class="custom-checkbox" style="position:relative; flex-shrink:0; margin-top:0.1rem;">
+                    <input type="checkbox" id="optionalConsent" style="opacity:0; width:18px; height:18px; position:absolute; cursor:pointer;" />
+                    <div class="checkbox-design" style="width:18px; height:18px; border:2px solid #ddd; border-radius:4px; background:white; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; cursor:pointer;">
+                      <span class="checkmark" style="color:var(--primary-color); font-size:12px; opacity:0; transition:opacity 0.3s ease;">✓</span>
+                    </div>
+                  </div>
+                  <label for="optionalConsent" style="font-size:14px; line-height:1.3; color:#333; cursor:pointer; flex:1; text-align:right;">
+                    אני מאשר/ת קבלת עדכונים, דו״חות ותכנים שיווקיים באמצעות WhatsApp.
+                  </label>
+                </div>
+              </div>
 
               <button id="sendCodeBtn" style="width:100%; background:var(--primary-color); color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; margin-bottom:1rem; font-weight:600;">
                 שלחו לי קוד אימות
