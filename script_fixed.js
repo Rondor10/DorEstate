@@ -3618,16 +3618,6 @@ function renderFeaturePills(p) {
     </ul>`;
 }
 
-// --- Render description with toggle ---
-function renderDescription(p) {
-  const desc = p.description?.trim();
-  if (!desc) return "";
-  const safe = desc.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  return `
-    <div class="property-desc" dir="rtl">
-      <div class="desc-text">${safe}</div>
-    </div>`;
-}
 // --- Carousel controls wiring ---
 function wireCarousel(cardEl) {
   const track = cardEl.querySelector(".carousel-track");
@@ -3636,35 +3626,127 @@ function wireCarousel(cardEl) {
   const next = cardEl.querySelector(".carousel-next");
   const dots = Array.from(cardEl.querySelectorAll(".carousel-dot"));
   if (!track || slides.length === 0) return;
+  
   // Size track and slides: track = N*100%, each slide = 100% of viewport width
   const applyTrackLayout = () => {
-    track.style.width = `${slides.length * 100}%`;
-    const each = 100 / slides.length;
-    slides.forEach((s) => {
+    const currentSlides = Array.from(track.querySelectorAll(".carousel-slide"));
+    track.style.width = `${currentSlides.length * 100}%`;
+    const each = 100 / currentSlides.length;
+    currentSlides.forEach((s) => {
       s.style.width = `${each}%`;
       s.style.flex = `0 0 ${each}%`;
     });
   };
+  
   applyTrackLayout();
   window.addEventListener("resize", applyTrackLayout, { passive: true });
+  
   let index = 0;
+  
   // ✅ Move by one-slide fraction of the track: 100/N
   const goTo = (i) => {
-    index = Math.max(0, Math.min(i, slides.length - 1));
-    const perSlide = 100 / slides.length;
-    track.style.transform = `translateX(${-index * perSlide}%)`;
-    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+    const currentSlides = Array.from(track.querySelectorAll(".carousel-slide"));
+    const currentDots = Array.from(cardEl.querySelectorAll(".carousel-dot"));
+    if (currentSlides.length === 0) return;
+    
+    index = Math.max(0, Math.min(i, currentSlides.length - 1));
+    const perSlide = 100 / currentSlides.length;
+    track.style.transform = `translate3d(${-index * perSlide}%, 0, 0)`;
+    currentDots.forEach((d, di) => d.classList.toggle("active", di === index));
   };
+  
   prev?.addEventListener("click", () => goTo(index - 1));
   next?.addEventListener("click", () => goTo(index + 1));
   dots.forEach((d, di) => d.addEventListener("click", () => goTo(di)));
+  
   // Touch
   let startX = 0, dx = 0, touching = false;
   track.addEventListener("touchstart", (e) => { touching = true; startX = e.touches[0].clientX; dx = 0; }, { passive: true });
   track.addEventListener("touchmove", (e) => { if (!touching) return; dx = e.touches[0].clientX - startX; }, { passive: true });
-  track.addEventListener("touchend", () => { touching = false; if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1)); }, { passive: true });
+  track.addEventListener("touchend", () => { 
+    touching = false; 
+    if (Math.abs(dx) > 40) {
+      const currentSlides = Array.from(track.querySelectorAll(".carousel-slide"));
+      const newIndex = index + (dx < 0 ? 1 : -1);
+      if (newIndex >= 0 && newIndex < currentSlides.length) {
+        goTo(newIndex);
+      }
+    }
+  }, { passive: true });
+  
   goTo(0);
 }
+
+// --- Description Popup Functions ---
+window.showDescription = function(propertyId) {
+  if (!activeSwipePool) return;
+  
+  const property = activeSwipePool.find(p => p.id === propertyId);
+  if (!property) return;
+  
+  if (!property.description?.trim()) {
+    alert('אין תיאור זמין לנכס זה');
+    return;
+  }
+  
+  // Create popup HTML
+  const popupHTML = `
+    <div class="description-overlay" id="descriptionOverlay">
+      <div class="description-popup">
+        <button class="close-btn" onclick="hideDescription()">×</button>
+        <h3>${property.location || 'תיאור הנכס'}</h3>
+        <div class="description-text">${property.description.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+      </div>
+    </div>
+  `;
+  
+  // Add to body
+  document.body.insertAdjacentHTML('beforeend', popupHTML);
+  
+  // Show with animation
+  requestAnimationFrame(() => {
+    const overlay = document.getElementById('descriptionOverlay');
+    if (overlay) {
+      overlay.classList.add('active');
+    }
+  });
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+};
+
+window.hideDescription = function() {
+  const overlay = document.getElementById('descriptionOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    setTimeout(() => {
+      overlay.remove();
+      document.body.style.overflow = '';
+    }, 300);
+  }
+};
+
+// Event delegation for description buttons
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.classList.contains('description-btn')) {
+    const propertyId = e.target.getAttribute('data-property-id');
+    if (propertyId) {
+      showDescription(propertyId);
+    }
+  }
+  
+  // Close popup on overlay click
+  if (e.target && e.target.classList.contains('description-overlay')) {
+    hideDescription();
+  }
+});
+
+// Close popup on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    hideDescription();
+  }
+});
 
 // --- INSTANT Property Loading with Full Carousel - User-First Approach ---
 async function loadProperty() {
@@ -3701,7 +3783,7 @@ async function loadProperty() {
         </div>
         <div class="property-price">${fmtNIS(p.price)} ₪</div>
         ${renderFeaturePills(p)}
-        ${renderDescription(p)}
+        <button class="description-btn" data-property-id="${p.id}" style="margin-top: 0.8rem; padding: 0.6rem 1.2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.background='#e55a00'" onmouseout="this.style.background='var(--primary-color)'">📄 צפה בתיאור המלא</button>
       </div>
     </div>`;
 
@@ -3747,7 +3829,7 @@ async function loadPropertyCarouselAsync(property) {
         <img src="${heroUrl}" alt="${property.title || "property"}" 
              loading="eager"
              fetchpriority="high"
-             style="aspect-ratio:4/3;width:100%;height:auto;"
+             style="width:100%;"
              onload="smartImageResize(this)"/>
       </div>`;
     carouselDots.innerHTML = `<button class="carousel-dot active" aria-label="slide 1"></button>`;
@@ -3777,7 +3859,7 @@ async function loadPropertyCarouselAsync(property) {
             <img src="${src}" alt="${property.title || "property"}" 
                  loading="lazy"
                  fetchpriority="low"
-                 style="aspect-ratio:4/3;width:100%;height:auto;"
+                 style="width:100%;"
                  onload="smartImageResize(this)"/>
           </div>
         `).join("");

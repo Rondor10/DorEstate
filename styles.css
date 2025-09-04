@@ -19,6 +19,13 @@
     --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* Utility classes */
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 html, body {
     height: 100%;
     overflow-x: hidden;
@@ -246,9 +253,15 @@ body {
         min-width: 250px !important;
     }
 
-    .property-cards { width: 95vw; height: min(90vh, 820px);}
+    .property-cards {
+      width: min(95dvw, 820px);
+      width: min(95svw, 820px);
+      width: 95vw;
+      height: min(90svh, 820px);
+      height: min(90dvh, 820px);
+      height: min(90vh, 820px);
+    }
     .property-info { padding: 1.1rem; }
-    .desc-text { font-size: .95rem; }
     .container { padding: 0 1.5rem; }
     .options-grid { grid-template-columns: 1fr; }
 
@@ -827,7 +840,11 @@ body {
     
     .modal-container {
         width: 100vw;
+        height: 100svh;
+        height: 100dvh;
         height: 100vh;
+        max-height: 100svh;
+        max-height: 100dvh;
         max-height: 100vh;
         margin: 0;
         border-radius: 0;
@@ -1014,6 +1031,11 @@ body {
         min-width: 44px;
     }
     
+    .carousel-nav, .carousel-dot {
+      min-width: 44px;
+      min-height: 44px;
+    }
+
     /* Better touch targets for navigation */
     .nav-grid a {
         padding: 0.5rem;
@@ -1268,6 +1290,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100svh;
+  height: 100dvh;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
@@ -1684,6 +1708,8 @@ body {
 }
 
 .onboarding-container {
+    height: 100svh;
+    height: 100dvh;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -1913,12 +1939,16 @@ body {
 }
 
 .swipe-container {
+    height: 100svh;
+    height: 100dvh;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+    padding-top: max(env(safe-area-inset-top, 0px), 0px);
 }
 
 .swipe-header {
@@ -2367,12 +2397,17 @@ html.a11y-font-200 { font-size: 200%; }
 @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
 
 /* === Dor Real Estate — Property Card (Clean Responsive) === */
-
+  
 .property-cards {
   position: relative;
-  width: min(92vw, 860px);      /* stretch but cap */
-  height: min(90vh, 940px);     /* almost full viewport, capped */
+  width: min(92dvw, 860px);
+  width: min(92svw, 860px);
+  width: min(92vw, 860px);
+  height: min(90svh, 940px);
+  height: min(90dvh, 940px);
+  height: min(90vh, 940px);
   margin-bottom: 2rem;
+  max-height: 500px;
 }
 
 /* Instant loading with smooth transitions */
@@ -2405,7 +2440,6 @@ html.a11y-font-200 { font-size: 200%; }
 /* --- Carousel --- */
 .property-carousel {
   position: relative;
-  flex: 1 0 68%;               /* take ~2/3 of card */
   background: #f4f4f4;
   overflow: hidden;
   direction: ltr;              /* Force LTR for carousel to prevent RTL reversal */
@@ -2420,34 +2454,22 @@ html.a11y-font-200 { font-size: 200%; }
 }
 
 .carousel-slide {
-  height: 100%;                /* Keep height */
-  display: flex;               /* Ensure flex for centering if needed */
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;              /* Prevent shrinking; JS will set explicit width/flex */
-  /* Removed min-width: 100%; to avoid overriding JS sizing */
-}
-
-.carousel-slide {
-  background-color: #f8f9fa; /* Fill background for any gaps */
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f9fa;
 }
 
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Default for most images */
+  object-fit: cover;
   object-position: center;
   display: block;
 }
 
-/* For vertical images - prioritize width fill */
-.carousel-slide img.vertical-image {
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: center top; /* Prefer top portion for tall images */
-}
 
 .property-image.placeholder {
   height: 100%;
@@ -2474,8 +2496,14 @@ html.a11y-font-200 { font-size: 200%; }
   transition: background .2s ease, transform .1s ease;
 }
 .carousel-nav:hover { background: rgba(0,0,0,.5); transform: translateY(-50%) scale(1.08); }
-.carousel-prev { left: 12px; }
-.carousel-next { right: 12px; }
+.carousel-prev { 
+  inset-inline-start: 12px; 
+  left: 12px; 
+}
+.carousel-next { 
+  inset-inline-end: 12px; 
+  right: 12px; 
+}
 
 .carousel-dots {
   position: absolute;
@@ -2484,20 +2512,126 @@ html.a11y-font-200 { font-size: 200%; }
   z-index: 2;
 }
 .carousel-dot {
-  width: 10px; height: 10px;
+  width: 12px; height: 12px;
   border-radius: 50%; border: 0;
   background: rgba(255,255,255,.6);
   cursor: pointer;
 }
 .carousel-dot.active { background: #fff; }
 
+@media (pointer: coarse) {
+  .carousel-nav, .carousel-dot {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* --- Description Pop-out --- */
+.description-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  height: 100dvh;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+}
+
+.description-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.description-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  max-height: 80vh;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  direction: rtl;
+  position: relative;
+}
+
+.description-overlay.active .description-popup {
+  transform: scale(1) translateY(0);
+}
+
+.description-popup .close-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  color: #666;
+  z-index: 1;
+}
+
+.description-popup .close-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+ 
+.description-popup h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.description-popup .description-text {
+  line-height: 1.6;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .description-popup {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 15px;
+  }
+  
+  .description-popup h3 {
+    font-size: 1.3rem;
+  }
+  
+  .description-popup .description-text {
+    font-size: 1rem;
+  }
+}
+
 /* --- Info section --- */
 .property-info {
   flex: 1 0 auto;              /* grow naturally */
-  padding: 1.4rem 1.5rem 1.6rem;
+  padding: 1.4rem 0rem 0rem;
   display: flex;
   flex-direction: column;
   gap: .55rem;
+  text-align: center;
 }
 
 .property-title {
@@ -2521,25 +2655,26 @@ html.a11y-font-200 { font-size: 200%; }
   font-size: .95rem;
   color: #666;
 }
-
+  
 /* --- Feature pills --- */
 .feature-pills {
   display: flex;
   flex-wrap: wrap;
   gap: .55rem;
-  margin: .6rem 0 .3rem;
+  margin: .3rem 0 .3rem;
   padding: 0;
   list-style: none;
+  justify-content: center;
 }
 
 .feature-pill {
-  display: inline-flex; align-items: center; gap: .4rem;
+  align-items: center;
+  gap: .4rem;
   padding: .4rem .7rem;
   border-radius: 999px;
   background: #e9f7ef;
   color: #14532d;
   font-size: .9rem;
-  font-weight: 700;
   border: 1px solid #c7ead5;
 }
 
@@ -2551,29 +2686,6 @@ html.a11y-font-200 { font-size: 200%; }
   font-size: .85rem;
 }
 
-/* --- Description --- */
-.property-desc { margin-top: .4rem; }
-.desc-text {
-  font-size: 1rem;
-  color: #2a2a2a;
-  line-height: 1.55;
-  white-space: pre-wrap;
-}
-.line-clamp {
-  display: -webkit-box;          /* legacy flexbox-like mode */
-  -webkit-box-orient: vertical;  /* required for -webkit-line-clamp */
-  -webkit-line-clamp: 6;         /* Safari/Chromium */
-  line-clamp: 6;                 /* future-standard property */
-  overflow: hidden;              /* hide the rest */
-}
-.desc-toggle {
-  margin-top: .35rem;
-  background: none; border: 0;
-  color: var(--primary-color, #0f766e);
-  font-weight: 800;
-  cursor: pointer;
-  padding: .25rem 0;
-}
 
 /* === Executives Scroll (team modal only, isolated) === */
 
