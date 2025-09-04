@@ -358,14 +358,36 @@ const modalContents = {
                 <div class="feature-tag">Licensing Management</div>
               </div>
             </div>
+
+          <div class="service-hexagon">
+              <div class="service-header">
+                <div class="service-icon">🧠</div>
+                <div>
+                  <h3 class="service-title">
+                    ייעוץ אסטרטגי
+                    <span class="service-title-en">Strategic Advisory</span>
+                  </h3>
+                </div>
+              </div>
+              <p class="service-description">
+              ליווי אסטרטגי צמוד ליזמים ולמשקיעים. ניתוח שווקים ואזורים, תכניות ROI/IRR ממוקדות והכוונה ברמת הניואנסים. מיזמים חדשים זוכים לתכנון ובקרה קפדניים, ומשקיעים נהנים מהבנת שוק, מבנה עסקה ונתיבי יציאה ברורים.
+              </p>
+              <div class="service-features">
+                <div class="feature-tag">Market Intelligence</div>
+                <div class="feature-tag">Capital Strategy</div>
+                <div class="feature-tag">ROI / IRR Modeling</div>
+                <div class="feature-tag">Exit Strategy</div>
+              </div>
+            </div>
+          </div>
             
             <div class="service-hexagon">
               <div class="service-header">
                 <div class="service-icon">📈</div>
                 <div>
                   <h3 class="service-title">
-                    שיווק מתקדם
-                    <span class="service-title-en">Advanced Marketing</span>
+                    שיווק קוונטי
+                    <span class="service-title-en">Quantum Marketing</span>
                   </h3>
                 </div>
               </div>
@@ -375,34 +397,11 @@ const modalContents = {
               </p>
               <div class="service-features">
                 <div class="feature-tag">Data-Driven Strategy</div>
-                <div class="feature-tag">Quantum Marketing</div>
                 <div class="feature-tag">AI Market Segmentation</div>
-                <div class="feature-tag">Powerful Branding</div>
+                <div class="feature-tag">Brand Architecture</div>
+                <div class="feature-tag">Conversion Intelligence</div>
               </div>
             </div>
-            
-            <div class="service-hexagon">
-              <div class="service-header">
-                <div class="service-icon">💰</div>
-                <div>
-                  <h3 class="service-title">
-                    המחלקה הפיננסית
-                    <span class="service-title-en">Financial Department</span>
-                  </h3>
-                </div>
-              </div>
-              <p class="service-description">
-                מודלי תשואה מתקדמים, פתרונות מימון מותאמים ועסקאות מיזוגים ורכישות מנוהלות בקפדנות. 
-                בקרת סיכונים רציפה להבטחת יציבות וצמיחה בכל שלב.
-              </p>
-              <div class="service-features">
-                <div class="feature-tag">Advanced ROI Models</div>
-                <div class="feature-tag">Custom Financing</div>
-                <div class="feature-tag">M&A Management</div>
-                <div class="feature-tag">Risk Control</div>
-              </div>
-            </div>
-          </div>
           
           <!-- CTA Section -->
           <div class="cta-section">
@@ -770,8 +769,8 @@ const modalContents = {
           <div class="quantum-hero">
             <h1 class="quantum-title">הדור הבא של הנדל"ן</h1>
             <p class="quantum-subtitle">
-              בואו תהיו חלק מהמהפכה שמעצבת את עתיד הנדל"ן בישראל. 
-              אנחנו מחפשים חזונאים, חדשנים ומובילי שינוי שרוצים לבנות משהו גדול.
+               הצטרפו אלינו למסע שמגדיר מחדש את עולם הנדל״ן בישראל.  
+  אנחנו מחפשים מוחות יוצאי דופן, יזמים בנשמה ומובילי שינוי שרוצים להשפיע באמת.
             </p>
             
             <div class="stats-grid">
@@ -1633,111 +1632,9 @@ const modalContents = {
   projects: {
     title: "פרויקטים",
     content: `
-        <h2>פרויקטי דגל</h2>
-
-        <style>
-          .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-          }
-
-          .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            cursor: pointer;
-            aspect-ratio: 4 / 3;
-          }
-
-          .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            display: block;
-            z-index: 0;
-          }
-
-          .project-card:hover img {
-            transform: scale(1.05);
-          }
-
-          .project-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2;
-            padding: 1rem;
-            text-align: center;
-          }
-
-        /* شכבת כהות בפרויקטים רגילים – רק בהובר */
-        .project-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 1;
-          transition: background 0.3s ease;
-        }
-
-        /* רק כשמזיזים עכבר, השכבה תופיע */
-        .project-card:hover::before {
-          background: rgba(0, 0, 0, 0.25);
-        }
-
-
-          .project-card:hover .project-overlay {
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.25);
-          }
-
-          .project-overlay.show-always {
-              opacity: 1;
-              background: rgba(0, 0, 0, 0.5);
-        }
-
-          .project-sold::after {
-            content: "נמכר";
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: white;
-            color: black;
-            padding: 0.3rem 0.8rem;
-            font-weight: bold;
-            border-radius: 30px;
-            z-index: 3;
-          }
-
-          .project-sold::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-              background: rgba(0, 0, 0, 0.25);
-              z-index: 1;
-            }
-
-
-          @media (max-width: 900px) {
-            .projects-grid {
-              grid-template-columns: 1fr;
-            }
-          }
-
-
-        </style>
-
+    <div class="quantum-projects">
         <div class="projects-grid">
+
           <!-- Sold Projects -->
           <a class="project-card project-sold">
             <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
@@ -1749,7 +1646,8 @@ const modalContents = {
             <div class="project-overlay show-always">יצחק שדה 3, גבעתיים</div>
           </a>
 
-  <!-- Active Projects -->
+          <!-- Active Projects -->
+
             <a class="project-card">
               <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
               <div class="project-overlay">גולומב 54, גבעתיים</div>
@@ -1779,9 +1677,8 @@ const modalContents = {
                 <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-overlay">ברדיצ'בסקי 37, גבעתיים</div>
               </a>
-
         </div>
-
+      </div>
       `,
   },
     // צור קשר
@@ -3986,7 +3883,7 @@ window.DorTeam = (function () {
       description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
       skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"] },
     { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוות יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
       skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"] },
     { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics/Din.jpeg",
       description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
