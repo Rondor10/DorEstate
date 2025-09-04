@@ -2462,9 +2462,9 @@ function initializeOnboardingSteps() {
                   <!-- Q2: Budget -->
                   <h2 class="question-title" style="margin-top:2rem;">מה התקציב?</h2>
                   <div class="options-grid" data-group="budget">
-                    <div class="option-card" data-value="budget-low"><div class="option-title">עד 2 מ׳ ₪</div></div>
-                    <div class="option-card" data-value="budget-mid"><div class="option-title">2–4 מ׳ ₪</div></div>
-                    <div class="option-card" data-value="budget-high"><div class="option-title">מעל 4 מ׳ ₪</div></div>
+                    <div class="option-card" data-value="budget-low"><div class="option-title">₪0-2M</div></div>
+                    <div class="option-card" data-value="budget-mid"><div class="option-title">₪2-4M</div></div>
+                    <div class="option-card" data-value="budget-high"><div class="option-title">₪4M+</div></div>
                   </div>
 
                   <!-- Q3: Rooms -->
