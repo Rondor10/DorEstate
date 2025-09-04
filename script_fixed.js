@@ -42,10 +42,31 @@ async function setupPhoneAuth() {
   if (!window.recaptchaVerifier) {
     window.recaptchaVerifier = new RecaptchaVerifier(
       host,
-      { size: "invisible" },
+      { 
+        size: "invisible",
+        callback: function(response) {
+          // reCAPTCHA solved automatically - completely invisible to user
+          console.log("reCAPTCHA verified silently");
+        },
+        "expired-callback": function() {
+          // Handle expired reCAPTCHA by creating a new verifier
+          console.log("reCAPTCHA expired, reinitializing...");
+          window.recaptchaVerifier = null;
+          setupPhoneAuth(); // Reinitialize
+        }
+      },
       auth,
     );
-    window.recaptchaVerifier.render().then((id) => (recaptchaWidgetId = id));
+    
+    try {
+      await window.recaptchaVerifier.render().then((id) => {
+        recaptchaWidgetId = id;
+        console.log("Invisible reCAPTCHA ready - users won't see any captcha");
+      });
+    } catch (error) {
+      console.log("reCAPTCHA setup error:", error);
+      // Fallback: continue without reCAPTCHA (will work in development/localhost)
+    }
   }
 
   let confirmationResult = null;
@@ -95,7 +116,26 @@ async function setupPhoneAuth() {
       showInlineError(""); // hide any previous error
       showToast("✨ קוד נשלח לנייד", "success");
     } catch (err) {
-      showToast("בעיה בשליחת SMS: " + err.message, "error");
+      console.log("SMS send error:", err);
+      
+      // Handle specific captcha-related errors gracefully
+      if (err.code === 'auth/captcha-check-failed' || err.code === 'auth/quota-exceeded') {
+        // Reset captcha and try to reinitialize
+        window.recaptchaVerifier = null;
+        showToast("מנסה שוב... אנא המתן רגע", "info");
+        
+        // Retry after a brief delay
+        setTimeout(async () => {
+          try {
+            await setupPhoneAuth();
+            showToast("מוכן לשליחת SMS - נסה שוב", "success");
+          } catch (retryErr) {
+            showToast("בעיה בשליחת SMS. אנא נסה שוב מאוחר יותר", "error");
+          }
+        }, 1500);
+      } else {
+        showToast("בעיה בשליחת SMS: " + (err.message || "אנא נסה שוב"), "error");
+      }
     } finally {
       setLoading(sendBtn, false);
     }
@@ -136,16 +176,22 @@ async function setupPhoneAuth() {
   };
 }
 
-// Persistent, off-screen host for reCAPTCHA (created once)
+// Persistent, completely hidden host for reCAPTCHA (created once)
 function ensureRecaptchaRoot() {
   let el = document.getElementById("recaptcha-root");
   if (!el) {
     el = document.createElement("div");
     el.id = "recaptcha-root";
-    // keep it in the DOM (required) but out of sight
+    // Make it completely invisible - users will never see any captcha
     el.style.position = "fixed";
     el.style.left = "-9999px";
-    el.style.bottom = "0";
+    el.style.top = "-9999px";
+    el.style.width = "1px";
+    el.style.height = "1px";
+    el.style.opacity = "0";
+    el.style.visibility = "hidden";
+    el.style.pointerEvents = "none";
+    el.style.zIndex = "-1";
     document.body.appendChild(el);
   }
   return el;
