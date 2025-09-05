@@ -184,6 +184,8 @@ async function setupPhoneAuth() {
           cred.user.phoneNumber ||
           (document.getElementById("phoneNumber")?.value || "").trim(),
         name: (document.getElementById("fullName")?.value || "").trim(),
+        mandatoryConsent: document.getElementById("mandatoryConsent")?.checked || false,
+        optionalConsent: document.getElementById("optionalConsent")?.checked || false,
       };
       saveUserData();
 
@@ -2935,6 +2937,88 @@ function loadUserData() {
   }
 }
 
+// Send lead email with collected user data
+async function sendLeadEmail() {
+  try {
+    // Prepare user data
+    const fullName = userData?.auth?.name || "לא צוין";
+    const phoneNumber = userData?.auth?.phone || "לא צוין";
+    const whatsappPromotions = userData?.auth?.optionalConsent ? "כן" : "לא";
+    
+    // Get questionnaire answers
+    const quickQs = userData?.quickQs || {};
+    let preferredArea = "לא צוין";
+    let budget = "לא צוין";
+    let rooms = "לא צוין";
+    
+    // Convert area code to Hebrew
+    if (quickQs.area === "givatayim") preferredArea = "גבעתיים";
+    else if (quickQs.area === "ramat-gan") preferredArea = "רמת גן";
+    else if (quickQs.area === "tel-aviv") preferredArea = "תל אביב";
+    
+    // Convert budget code to Hebrew
+    if (quickQs.budget === "budget-low") budget = "₪0-2M";
+    else if (quickQs.budget === "budget-mid") budget = "₪2-4M";
+    else if (quickQs.budget === "budget-high") budget = "₪4M+";
+    
+    // Convert rooms to Hebrew
+    if (quickQs.rooms) {
+      rooms = quickQs.rooms === "7" ? "7+ חדרים" : `${quickQs.rooms} חדרים`;
+    }
+    
+    // Prepare properties list
+    let propertiesText = "";
+    if (likedProperties && likedProperties.length > 0) {
+      propertiesText = likedProperties.map(property => {
+        const title = property.title || "נכס ללא שם";
+        const price = property.price ? `${fmtNIS(property.price)} ₪` : "מחיר לא צוין";
+        return `${title} - ${price}`;
+      }).join("\n");
+    } else {
+      propertiesText = "לא נבחרו נכסים";
+    }
+    
+    // Prepare email content
+    const subject = `New Lead: ${fullName}`;
+    const body = `Full Name: ${fullName}
+Phone Number: ${phoneNumber}
+Confirms WhatsApp Promotions: ${whatsappPromotions}
+Preferred Area: ${preferredArea}
+Budget: ${budget}
+No. of Rooms: ${rooms}
+
+Properties he liked:
+
+${propertiesText}`;
+    
+    // Use mailto: to open user's email client with pre-filled lead information
+    // This is free, works immediately, and requires no setup!
+    const mailtoLink = `mailto:rondorscout@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+    
+    // Also log to console for debugging
+    console.log('📧 NEW LEAD EMAIL (sent via mailto):', {
+      subject: subject,
+      body: body,
+      timestamp: new Date().toISOString(),
+      userData: {
+        fullName,
+        phoneNumber, 
+        whatsappPromotions,
+        preferredArea,
+        budget,
+        rooms,
+        propertiesCount: likedProperties?.length || 0
+      }
+    });
+    
+  } catch (error) {
+    console.error('Error sending lead email:', error);
+  }
+}
+
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", function () {
   try {
@@ -3136,7 +3220,8 @@ function initAccessibilityToolbar() {
         goToStepType("quick-qs");
       }, 10);
     } else {
-      // Properties found - return to homepage
+      // Properties found - send email and return to homepage
+      sendLeadEmail();
       closeOnboarding();
       if (swipeInterface) swipeInterface.style.display = "none";
       location.reload(); // Reset to homepage state
