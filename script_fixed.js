@@ -2976,7 +2976,7 @@ async function sendLeadEmail() {
       }).join("\n");
     } else {
       propertiesText = "לא נבחרו נכסים";
-    }
+    } 
     
     // Prepare email content
     const subject = `New Lead: ${fullName}`;
@@ -3255,6 +3255,9 @@ function initAccessibilityToolbar() {
     saveState();
   });
 
+  // Add flag to prevent duplicate email sending
+  let isProcessingLead = false;
+
   // delegate clicks anywhere on the page
   document.addEventListener("click", async (e) => {
     const btn = e.target.closest("[data-open-contact]");
@@ -3270,13 +3273,36 @@ function initAccessibilityToolbar() {
         goToStepType("quick-qs");
       }, 10);
     } else {
-      // Properties found - send email and return to homepage
+      // Prevent duplicate processing
+      if (isProcessingLead) {
+        console.log('⏳ Already processing lead, please wait...');
+        return;
+      }
+      
+      isProcessingLead = true;
+      
+      // Show immediate feedback to user
+      const originalText = btn.textContent;
+      btn.textContent = "זמן לאתר עבורך את הבית המושלם..";
+      btn.style.opacity = "0.6";
+      btn.style.pointerEvents = "none";
+      
       console.log('🚀 Starting email send process...');
       try {
         await sendLeadEmail();
         console.log('✅ Email process completed, now redirecting...');
+        
+        // Update button to show success before redirect
+        btn.textContent = "מושלם!";
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Show success for 1 second
+        
       } catch (error) {
         console.error('❌ Email process failed:', error);
+        
+        // Show error state
+        btn.textContent = "שגיאה - נסה שוב";
+        btn.style.backgroundColor = "#e74c3c";
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Show error for 2 seconds
       }
       
       closeOnboarding();
