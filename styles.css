@@ -1927,17 +1927,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vh, 2.5rem); /* Consistent gap between card and actions */
+  justify-content: flex-start; /* Changed from center to start */
+  gap: clamp(1rem, 3vh, 1.5rem); /* Reduced gap to save space */
 
   /* Responsive horizontal padding */
   padding-left: clamp(1rem, 4vw, 2rem);
   padding-right: clamp(1rem, 4vw, 2rem);
 
-  /* Always at least 16px, scales with viewport, capped,
-     and never smaller than the notch/home-indicator insets */
-  padding-top: max(env(safe-area-inset-top, 0px), clamp(16px, 6vh, 72px));
-  padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(16px, 6vh, 72px));
+  /* Reduced top padding to move content higher */
+  padding-top: max(env(safe-area-inset-top, 0px), clamp(8px, 2vh, 24px));
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(16px, 4vh, 48px));
 }
 
 .swipe-header {
@@ -1990,6 +1989,55 @@ body {
 
 .swipe-btn:hover {
     transform: scale(1.1);
+}
+
+/* Mobile-specific improvements for swipe interface */
+@media (max-width: 768px) {
+  .swipe-container {
+    padding-top: max(env(safe-area-inset-top, 0px), 1rem); /* Minimal top padding */
+    gap: clamp(0.8rem, 2vh, 1.2rem); /* Even tighter gap on mobile */
+  }
+  
+  .property-card.big {
+    height: clamp(350px, 55vh, 450px); /* Optimized height for mobile */
+  }
+  
+  .swipe-header {
+    margin-bottom: 1rem; /* Reduce header margin */
+  }
+}
+
+/* Landscape and short screen optimizations */
+@media (max-height: 600px) {
+  .swipe-container {
+    gap: clamp(0.5rem, 1vh, 0.8rem); /* Very tight gaps on short screens */
+    padding-top: max(env(safe-area-inset-top, 0px), 0.5rem);
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 0.5rem);
+  }
+  
+  .property-card.big {
+    height: clamp(280px, 75vh, 350px); /* Smaller cards on short screens */
+  }
+  
+  .property-carousel {
+    min-height: 150px;
+    max-height: 60vh; /* Less space for carousel on short screens */
+  }
+  
+  .property-info {
+    padding: clamp(0.4rem, 1vw, 0.6rem); /* Minimal padding */
+    gap: 0.2rem; /* Very tight gaps */
+  }
+  
+  .swipe-header {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem; /* Smaller header text */
+  }
+  
+  .swipe-btn {
+    width: clamp(45px, 10vw, 55px); /* Smaller buttons */
+    height: clamp(45px, 10vw, 55px);
+  }
 }
 
 /* Animations */
@@ -2425,9 +2473,9 @@ html.a11y-font-200 { font-size: 200%; }
 /* Tinder-like big card - consistent responsive sizing */
 .property-card.big {
   width: clamp(320px, 90vw, 420px);
-  height: clamp(480px, 80vh, 600px);
+  height: clamp(400px, 60vh, 500px); /* Reduced height to fit with buttons */
   max-width: 420px;
-  aspect-ratio: 5/6; /* Maintain consistent proportions */
+  flex-shrink: 0; /* Prevent card from shrinking */
 }
 
 /* --- Carousel --- */
@@ -2436,8 +2484,9 @@ html.a11y-font-200 { font-size: 200%; }
   background: #f4f4f4;
   overflow: hidden;
   direction: ltr;              /* Force LTR for carousel to prevent RTL reversal */
-  flex: 1;                     /* Take up most of the card space */
-  min-height: 300px;           /* Ensure minimum height for images */
+  flex: 1;                     /* Take up available space, but allow info section */
+  min-height: 200px;           /* Reduced minimum height */
+  max-height: 70vh;            /* Prevent carousel from taking too much space */
 }
 
 .property-carousel .carousel-track {
@@ -2621,11 +2670,12 @@ html.a11y-font-200 { font-size: 200%; }
 /* --- Info section --- */
 .property-info {
     flex: 0 0 auto;               /* Don't grow, maintain content size */
-    padding: clamp(0.8rem, 2vw, 1.5rem); /* Responsive padding */
+    padding: clamp(0.6rem, 1.5vw, 1rem); /* More compact padding */
     display: flex;
     flex-direction: column;
-    gap: clamp(0.25rem, 1vw, 0.5rem);
+    gap: clamp(0.2rem, 0.5vw, 0.4rem);   /* Tighter gaps */
     text-align: center;
+    min-height: fit-content;      /* Ensure it takes only needed space */
 }
 
 .property-title {
