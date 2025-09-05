@@ -1939,16 +1939,24 @@ body {
 }
 
 .swipe-container {
-    height: 100svh;
-    height: 100dvh;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
-    padding-top: max(env(safe-area-inset-top, 0px), 0px);
+  /* viewport height, modern-first with fallbacks */
+  min-height: 100svh;
+  min-height: 100dvh;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Responsive top/bottom margins that never go below safe-area */
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  /* Always at least 16px, scales with viewport, capped,
+     and never smaller than the notch/home-indicator insets */
+  padding-top: max(env(safe-area-inset-top, 0px), clamp(16px, 6vh, 72px));
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(16px, 6vh, 72px));
 }
 
 .swipe-header {
@@ -1974,8 +1982,8 @@ body {
 }
 
 .swipe-btn {
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
