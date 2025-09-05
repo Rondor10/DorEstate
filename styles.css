@@ -253,15 +253,6 @@ body {
         min-width: 250px !important;
     }
  
-    .property-cards {
-      width: min(95dvw, 820px);
-      width: min(95svw, 820px);
-      width: 95vw;
-      height: min(90svh, 820px);
-      height: min(90dvh, 820px);
-      height: min(90vh, 820px);
-    }
-    .property-info { padding: 1.1rem; }
     .container { padding: 0 1.5rem; }
     .options-grid { grid-template-columns: 1fr; }
 
@@ -576,11 +567,6 @@ body {
         margin-bottom: 0.5rem;
     }
 
-    /* Property cards mobile */
-    .property-cards {
-        width: 280px;
-        height: 400px;
-    }
     
     /* Social links very small screens */
     .social-fixed .social-link {
@@ -826,12 +812,6 @@ body {
         margin-bottom: 0.5rem;
     }
     
-    /* Fix property cards */
-    .property-cards {
-        width: 100vw;
-        height: min(75vh, 600px);
-        margin: 0;
-    }
     
     /* Fix modal positioning - full screen on iPhone 13 Pro */
     .modal-overlay {
@@ -1948,10 +1928,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(1.5rem, 4vh, 2.5rem); /* Consistent gap between card and actions */
 
-  /* Responsive top/bottom margins that never go below safe-area */
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /* Responsive horizontal padding */
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
 
   /* Always at least 16px, scales with viewport, capped,
      and never smaller than the notch/home-indicator insets */
@@ -1978,12 +1959,14 @@ body {
 
 .swipe-actions {
     display: flex;
-    gap: 2rem;
+    gap: clamp(1.5rem, 6vw, 3rem); /* Responsive gap between buttons */
+    align-items: center;
+    justify-content: center;
 }
 
 .swipe-btn {
-    width: 40px;
-    height: 40px;
+    width: clamp(50px, 12vw, 70px);   /* Responsive button size */
+    height: clamp(50px, 12vw, 70px);
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -1991,7 +1974,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Add depth */
 }
 
 .dislike {
@@ -2408,14 +2392,10 @@ html.a11y-font-200 { font-size: 200%; }
   
 .property-cards {
   position: relative;
-  width: min(92dvw, 860px);
-  width: min(92svw, 860px);
-  width: min(92vw, 860px);
-  height: min(90svh, 940px);
-  height: min(90dvh, 940px);
-  height: min(90vh, 940px);
-  margin-bottom: 1rem;
-  max-height: 550px;
+  /* Let .property-card.big handle sizing for Tinder-like interface */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Instant loading with smooth transitions */
@@ -2442,12 +2422,22 @@ html.a11y-font-200 { font-size: 200%; }
   transition: opacity 0.15s ease;
 }
 
+/* Tinder-like big card - consistent responsive sizing */
+.property-card.big {
+  width: clamp(320px, 90vw, 420px);
+  height: clamp(480px, 80vh, 600px);
+  max-width: 420px;
+  aspect-ratio: 5/6; /* Maintain consistent proportions */
+}
+
 /* --- Carousel --- */
 .property-carousel {
   position: relative;
   background: #f4f4f4;
   overflow: hidden;
   direction: ltr;              /* Force LTR for carousel to prevent RTL reversal */
+  flex: 1;                     /* Take up most of the card space */
+  min-height: 300px;           /* Ensure minimum height for images */
 }
 
 .property-carousel .carousel-track {
@@ -2630,11 +2620,11 @@ html.a11y-font-200 { font-size: 200%; }
 
 /* --- Info section --- */
 .property-info {
-    flex: 1 0 auto;
-    padding: 0.6rem 0rem 0rem;
+    flex: 0 0 auto;               /* Don't grow, maintain content size */
+    padding: clamp(0.8rem, 2vw, 1.5rem); /* Responsive padding */
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: clamp(0.25rem, 1vw, 0.5rem);
     text-align: center;
 }
 
