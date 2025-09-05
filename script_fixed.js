@@ -2991,12 +2991,62 @@ Properties he liked:
 
 ${propertiesText}`;
     
-    // Use mailto: to open user's email client with pre-filled lead information
-    // This is free, works immediately, and requires no setup!
-    const mailtoLink = `mailto:rondorscout@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Send email automatically using EmailJS (200 free emails/month)
+    console.log('🔄 Starting email sending process...');
+    console.log('📊 Email data prepared:', { fullName, phoneNumber, whatsappPromotions, preferredArea, budget, rooms });
     
-    // Open the email client
-    window.location.href = mailtoLink;
+    if (typeof emailjs !== 'undefined') {
+      console.log('✅ EmailJS is loaded');
+      try {
+        console.log('🚀 Sending email via EmailJS...');
+        
+        // Add timeout to catch hanging requests
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('EmailJS timeout after 10 seconds')), 10000);
+        });
+        
+        const emailPromise = emailjs.send(
+          'service_5kcf4en',    // Your EmailJS service ID
+          'template_brfxd6n',   // Your EmailJS template ID
+          {
+            name: fullName,     // {{name}} in your template
+            time: new Date().toLocaleString('he-IL', {
+              timeZone: 'Asia/Jerusalem',
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit'
+            }),                 // {{time}} in your template
+            message: body       // {{message}} in your template - contains all the lead details
+          },
+          'QyYU0QOukPB3XS7xM'     // Your EmailJS public key
+        );
+        
+        const result = await Promise.race([emailPromise, timeoutPromise]);
+        console.log('✅ SUCCESS! Lead email sent via EmailJS:', result);
+      } catch (error) {
+        console.error('❌ EmailJS FAILED with error:', error);
+        console.error('❌ Error details:', error.message, error.status, error.text);
+        
+        // Try a simple test to verify configuration
+        console.log('🔧 Testing with simple parameters...');
+        try {
+          const testResult = await emailjs.send(
+            'service_5kcf4en',
+            'template_brfxd6n',
+            { name: 'Test', time: 'Now', message: 'Test' },
+            'QyYU0QOukPB3XS7xM'
+          );
+          console.log('✅ Simple test successful:', testResult);
+        } catch (testError) {
+          console.error('❌ Simple test also failed:', testError);
+        }
+      }
+    } else {
+      console.error('❌ EmailJS NOT LOADED! Check if script is included in HTML');
+      console.error('❌ Available globals:', Object.keys(window).filter(key => key.includes('email')));
+    }
     
     // Also log to console for debugging
     console.log('📧 NEW LEAD EMAIL (sent via mailto):', {
@@ -3206,7 +3256,7 @@ function initAccessibilityToolbar() {
   });
 
   // delegate clicks anywhere on the page
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", async (e) => {
     const btn = e.target.closest("[data-open-contact]");
     if (!btn) return;
     
@@ -3221,7 +3271,14 @@ function initAccessibilityToolbar() {
       }, 10);
     } else {
       // Properties found - send email and return to homepage
-      sendLeadEmail();
+      console.log('🚀 Starting email send process...');
+      try {
+        await sendLeadEmail();
+        console.log('✅ Email process completed, now redirecting...');
+      } catch (error) {
+        console.error('❌ Email process failed:', error);
+      }
+      
       closeOnboarding();
       if (swipeInterface) swipeInterface.style.display = "none";
       location.reload(); // Reset to homepage state
