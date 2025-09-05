@@ -3586,7 +3586,6 @@ const FEATURE_ICONS = {
   parking: "fas fa-parking",          // Parking icon
   elevator: "fas fa-elevator",        // Elevator icon
   ac: "fas fa-snowflake",             // Air conditioning icon
-  bars: "fas fa-lock",                // Bars (security) icon
   accessible: "fas fa-wheelchair",    // Accessibility icon
 };
 const FEATURE_LABELS_HE = {
@@ -3595,7 +3594,6 @@ const FEATURE_LABELS_HE = {
   parking: "חניה",
   elevator: "מעלית",
   ac: "מיזוג",
-  bars: "סורגים",
   accessible: "נגיש",
 };
 // --- Render feature pills ---

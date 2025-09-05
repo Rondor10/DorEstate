@@ -19,7 +19,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -51,7 +50,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -83,7 +81,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -146,7 +143,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -238,7 +234,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -300,8 +295,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac", 
       "accessible"
     ],
     "amenities": [],
@@ -363,8 +357,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",      
       "accessible"
     ],
     "amenities": [],
@@ -396,7 +389,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -428,7 +420,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -519,7 +510,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -551,7 +541,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -583,7 +572,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -646,7 +634,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -678,7 +665,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -740,7 +726,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -953,7 +938,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -982,8 +966,7 @@ export const PROPERTIES = [
     "features": [
       "parking",
       "elevator",
-      "ac",
-      "bars",
+      "ac", 
       "accessible"
     ],
     "amenities": [],
@@ -1100,7 +1083,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1131,8 +1113,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",   
       "accessible"
     ],
     "amenities": [],
@@ -1163,8 +1144,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1195,8 +1175,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1227,8 +1206,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1259,8 +1237,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1291,7 +1268,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1323,7 +1299,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1385,8 +1360,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1448,8 +1422,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",   
       "accessible"
     ],
     "amenities": [],
@@ -1508,8 +1481,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",   
       "accessible"
     ],
     "amenities": [],
@@ -1540,8 +1512,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",   
       "accessible"
     ],
     "amenities": [],
@@ -1572,8 +1543,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",    
       "accessible"
     ],
     "amenities": [],
@@ -1635,8 +1605,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",  
       "accessible"
     ],
     "amenities": [],
@@ -1667,8 +1636,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",    
       "accessible"
     ],
     "amenities": [],
@@ -1731,7 +1699,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1792,8 +1759,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",      
       "accessible"
     ],
     "amenities": [],
@@ -1855,8 +1821,7 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "safe-room",
-      "ac",
-      "bars",
+      "ac",      
       "accessible"
     ],
     "amenities": [],
@@ -1887,7 +1852,6 @@ export const PROPERTIES = [
       "elevator",
       "balcony",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1919,7 +1883,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -1951,7 +1914,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -2014,7 +1976,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
@@ -2107,7 +2068,6 @@ export const PROPERTIES = [
       "balcony",
       "safe-room",
       "ac",
-      "bars",
       "accessible"
     ],
     "amenities": [],
