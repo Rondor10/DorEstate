@@ -2438,7 +2438,7 @@ html.a11y-font-200 { font-size: 200%; }
   box-shadow: 0 22px 60px rgba(0,0,0,.18);
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  height: 100%;
   transition: opacity 0.15s ease;
 }
 
