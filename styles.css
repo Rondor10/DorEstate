@@ -1927,16 +1927,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Changed from center to start */
-  gap: clamp(1rem, 3vh, 1.5rem); /* Reduced gap to save space */
+  justify-content: center; /* Back to center for better balance */
+  gap: clamp(1rem, 3vh, 1.5rem); /* Keep optimized gap */
 
   /* Responsive horizontal padding */
   padding-left: clamp(1rem, 4vw, 2rem);
   padding-right: clamp(1rem, 4vw, 2rem);
 
-  /* Reduced top padding to move content higher */
-  padding-top: max(env(safe-area-inset-top, 0px), clamp(8px, 2vh, 24px));
-  padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(16px, 4vh, 48px));
+  /* Balanced padding - slightly more generous but still efficient */
+  padding-top: max(env(safe-area-inset-top, 0px), clamp(1rem, 3vh, 2rem));
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(1rem, 4vh, 2rem));
 }
 
 .swipe-header {
