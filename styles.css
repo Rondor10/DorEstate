@@ -2633,24 +2633,24 @@ html.a11y-font-200 { font-size: 200%; }
 
 /* --- Info section --- */
 .property-info {
-  flex: 1 0 auto;              /* grow naturally */
-  padding: 1.4rem 0rem 0rem;
-  display: flex;
-  flex-direction: column;
-  gap: .55rem;
-  text-align: center;
+    flex: 1 0 auto;
+    padding: 0.6rem 0rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    text-align: center;
 }
 
 .property-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-primary, #111);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary, #111);
 }
 
 .property-price {
-  font-size: 1.55rem;
-  font-weight: 900;
-  color: var(--primary-color, #0f766e);
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary-color, #0f766e);
 }
 
 .property-location {
@@ -2665,24 +2665,24 @@ html.a11y-font-200 { font-size: 200%; }
   
 /* --- Feature pills --- */
 .feature-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .55rem;
-  margin: .3rem 0 .3rem;
-  padding: 0;
-  list-style: none;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .2rem;
+    /* margin: .3rem 0 .3rem; */
+    padding: 0;
+    list-style: none;
+    justify-content: center;
 }
 
 .feature-pill {
-  align-items: center;
-  gap: .4rem;
-  padding: .4rem .7rem;
-  border-radius: 999px;
-  background: #e9f7ef;
-  color: #14532d;
-  font-size: .9rem;
-  border: 1px solid #c7ead5;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .4rem;
+    border-radius: 999px;
+    background: #e9f7ef;
+    color: #14532d;
+    font-size: .6rem;
+    border: 1px solid #c7ead5;
 }
 
 .feature-pill .checkmark {
@@ -2692,7 +2692,6 @@ html.a11y-font-200 { font-size: 200%; }
   border-radius: 4px;
   font-size: .85rem;
 }
-
 
 /* === Executives Scroll (team modal only, isolated) === */
 

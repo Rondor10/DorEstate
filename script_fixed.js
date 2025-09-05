@@ -3778,12 +3778,12 @@ async function loadProperty() {
       
       <div class="property-info" dir="rtl">
         <div class="property-title">${p.title || "נכס מעולה"}</div>
-        <div class="property-meta" style="margin-top:.2rem; color:#666; font-size:.95rem;">
+        <div class="property-meta" style="color:#666; font-size:.85rem;">
           ${p.rooms ?? "-"} חד׳ · ${p.sqm ?? "-"} מ״ר ${p.floor != null ? "· קומה " + p.floor : ""}
         </div>
         <div class="property-price">${fmtNIS(p.price)} ₪</div>
         ${renderFeaturePills(p)}
-        <button class="description-btn" data-property-id="${p.id}" style="margin-top: 0.8rem; padding: 0.6rem 1.2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.background='#e55a00'" onmouseout="this.style.background='var(--primary-color)'">📄 צפה בתיאור המלא</button>
+        <button class="description-btn" data-property-id="${p.id}" style="margin-top: 0.4rem; padding: 0.6rem 1.2rem; background: var(--primary-color); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease;" onmouseover="this.style.background='#e55a00'" onmouseout="this.style.background='var(--primary-color)'">📄 צפה בתיאור המלא</button>
       </div>
     </div>`;
 
