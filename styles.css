@@ -1169,7 +1169,7 @@ body {
   /* padding: 1.5rem 0; */
   width: 100%;
   /* position: relative; */
-  margin-top: 3rem;
+  margin-top: 4.5rem;
 }
 
 .mobile-logo-link {
@@ -1181,7 +1181,7 @@ body {
 }
 
 .mobile-logo {
-  height: 4.5rem;
+  height: 5.5rem;
   width: auto;
   display: block;
   max-width: 100%;
