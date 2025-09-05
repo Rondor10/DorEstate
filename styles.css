@@ -268,7 +268,7 @@ body {
     .timeline-dot { display: none; }
 
     .exec-profile { flex-direction: column; text-align: center; }
-    .exec-photo-container { align-self: center; margin: 0 auto 1rem auto; }
+    .exec-photo-container { align-self: center; }
     .exec-photo { width:120px; height:120px; display:block; margin: 0; }
     .team-content { padding: 1rem; }
     .executive-showcase { padding: 2rem 1rem; }
@@ -3421,7 +3421,7 @@ text-align: center;
 .team-particle:nth-child(4n) { background: var(--primary-color); animation-delay: -6s; }
 @keyframes teamFloat { 0% { transform: translateY(100vh) translateX(-20px) scale(0); opacity: 0; } 20% { opacity: 0.6; transform: scale(1); } 80% { opacity: 0.6; } 100% { transform: translateY(-100px) translateX(20px) scale(0); opacity: 0; } }
 .team-content { position: relative; z-index: 10; padding: 0.8rem; backdrop-filter: blur(2px); }
-.team-hero { text-align: center; margin-bottom: 1rem; }
+.team-hero { text-align: center; margin-bottom: 1rem; padding: 2rem 1rem 0rem 1rem;}
 .team-title { font-size: 2.5rem; font-weight: 700; background: linear-gradient(45deg, var(--primary-color), var(--primary-color), var(--primary-color)); -webkit-background-clip: text;  background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; animation: teamPulse 4s infinite alternate; }
 @keyframes teamPulse { 0% { transform: scale(1); filter: brightness(1); } 100% { transform: scale(1.02); filter: brightness(1.4); } }
 .team-subtitle { font-size: 1.1rem; color: #fff; max-width: 600px; margin: 0 auto 1rem; line-height: 1.6; }
