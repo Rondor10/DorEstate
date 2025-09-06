@@ -2127,7 +2127,7 @@ function initializeOnboardingSteps() {
                   </div>
 
                   <!-- Q2: Budget -->
-                  <h2 class="question-title" style="margin-top:1rem;">מה התקציב?</h2>
+                  <h2 class="question-title" style="margin-top:0.6rem;">מה התקציב?</h2>
                   <div class="options-grid" data-group="budget">
                     <div class="option-card" data-value="budget-low"><div class="option-title">₪0-2M</div></div>
                     <div class="option-card" data-value="budget-mid"><div class="option-title">₪2-4M</div></div>
@@ -2135,7 +2135,7 @@ function initializeOnboardingSteps() {
                   </div>
 
                   <!-- Q3: Rooms -->
-                  <h2 class="question-title" style="margin-top:1rem;">כמה חדרים יתאים לכם?</h2>
+                  <h2 class="question-title" style="margin-top:0.6rem;">כמה חדרים יתאים לכם?</h2>
                   <div class="options-grid" data-group="rooms">
                     <!-- We store the minimum rooms as a number in data-value -->
                     <div class="option-card" data-value="2">
@@ -2159,7 +2159,7 @@ function initializeOnboardingSteps() {
                   </div>
 
                   <!-- Q4: Type -->
-                  <h2 class="question-title" style="margin-top:1rem;">איזה סוג נכס מדבר אליכם?</h2>
+                  <h2 class="question-title" style="margin-top:0.6rem;">איזה סוג נכס מדבר אליכם?</h2>
                   <div class="options-grid" data-group="type">
                     <!-- Store slugs that match the DB directly -->
                     <div class="option-card" data-value="apartment"><div class="option-title">דירה</div></div>
@@ -2170,7 +2170,7 @@ function initializeOnboardingSteps() {
                     <div class="option-card" data-value="cottage"><div class="option-title">קוטג</div></div>
                   </div>
 
-                <div style="text-align:center; margin-top:1rem;">
+                <div style="text-align:center; margin-top:0.8rem;">
                   <button id="toSwiping" style="background:var(--primary-color); color:white; border:none; padding:1rem 3rem; border-radius:50px; font-size:1.1rem; cursor:pointer; font-weight: 600;">
                     מצאו את הבית שלכם
                   </button>
