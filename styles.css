@@ -1740,6 +1740,7 @@ body {
 
 .modal-content {
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 80vh;
 }
 
@@ -1747,6 +1748,7 @@ body {
 .modal-container.legal-modal {
     background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
     color: #ffffff;
+    padding: 1rem 1rem;
 }
 
 .modal-container.legal-modal .modal-content {
