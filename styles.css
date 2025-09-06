@@ -1285,6 +1285,80 @@ body {
   visibility: visible;
 }
 
+/* Mobile submenu styling */
+.mobile-submenu {
+  position: relative;
+}
+
+.mobile-submenu-trigger {
+  position: relative;
+}
+
+.mobile-submenu-trigger::after {
+  content: '▼';
+  position: absolute;
+  left: 1.5rem;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.mobile-submenu.expanded .mobile-submenu-trigger::after {
+  transform: rotate(180deg);
+}
+
+.mobile-submenu-content {
+  position: fixed;
+  left: -250px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
+  border-radius: 8px;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  overflow: visible;
+  max-height: none;
+}
+
+.mobile-submenu.expanded .mobile-submenu-content {
+  left: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-submenu-content li {
+  margin: 0;
+}
+
+.mobile-submenu-content li a {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: none;
+}
+
+.mobile-submenu-content li:first-child a {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.mobile-submenu-content li:last-child a {
+  border-bottom: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.mobile-submenu-content li a:hover {
+  background: rgba(255, 102, 0, 0.2);
+  color: var(--primary-color);
+  padding-left: 1.5rem;
+  padding-right: 1.25rem;
+}
+
 /* TOP BAR ENDS HERE */
 
 /* Hero Section - Reduce from 45vh to 35vh */
@@ -1667,6 +1741,86 @@ body {
 .modal-content {
     overflow-y: auto;
     max-height: 80vh;
+}
+
+/* Special styling for legal modals */
+.modal-container.legal-modal {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+    color: #ffffff;
+}
+
+.modal-container.legal-modal .modal-content {
+    color: #ffffff;
+}
+
+.modal-container.legal-modal h2 {
+    color: #ffffff !important;
+}
+
+.modal-container.legal-modal h3 {
+    color: #ffffff !important;
+}
+
+.modal-container.legal-modal p,
+.modal-container.legal-modal li {
+    color: #ffffff !important;
+}
+
+.modal-container.legal-modal strong {
+    color: #ffffff !important;
+}
+
+/* Submenu styling for legal items under "אחר" */
+.nav-submenu {
+    position: relative;
+}
+
+.nav-submenu-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-submenu:hover .nav-submenu-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-submenu-content a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-submenu-content a:last-child {
+    border-bottom: none;
+}
+
+.nav-submenu-content a:hover {
+    background: rgba(255, 102, 0, 0.2);
+    color: #FF6600 !important;
+}
+
+/* Override the ::after underline for submenu parent */
+.nav-submenu > a::after {
+    display: none !important;
 }
 
 /* Onboarding Styles */

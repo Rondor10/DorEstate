@@ -2128,7 +2128,7 @@ const modalContents = {
                        </p>
                      </div>
 
-                     <div style="background:#f8f9fa; border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
+                     <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
                        <p style="margin: .25rem 0;"><strong>כתובת לפניות פרטיות:</strong> privacy@dorealestate.com</p>
                        <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
                        <p style="margin: .25rem 0;"><strong>מענה:</strong> א'–ה', 9:00–17:00</p>
@@ -2169,7 +2169,7 @@ const modalContents = {
                        <div style="margin: 1.25rem 0;">
                          <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">פנייה בנושא נגישות</h3>
                          <p>נשמח לקבל משוב והצעות לשיפור.</p>
-                         <div style="background:#f8f9fa; border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
+                         <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
                            <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
                            <p style="margin: .25rem 0;"><strong>דוא"ל:</strong> accessibility@dorealestate.com</p>
                            <p style="margin: .25rem 0;"><strong>ימי מענה:</strong> א'–ה', 9:00–17:00</p>
@@ -2180,7 +2180,7 @@ const modalContents = {
                          עודכן לאחרונה: <span id="accessibility-updated">01/09/2025</span>
                        </p>
                      `,
-  },
+  }, 
   // כללי אתיקה
   ethics: {
     title: "כללי אתיקה",
@@ -2660,6 +2660,15 @@ function openModal(type) {
     modalOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
     
+    // Add legal-modal class for legal modals
+    const legalModals = ['terms', 'privacy', 'accessibility', 'ethics'];
+    const modalContainer = document.querySelector('.modal-container');
+    if (legalModals.includes(type)) {
+      modalContainer.classList.add('legal-modal');
+    } else {
+      modalContainer.classList.remove('legal-modal');
+    }
+    
     // Reset scroll position of modal content to top when opening modal
     modalContent.scrollTop = 0;
 
@@ -2713,6 +2722,10 @@ function closeModal() {
   document.body.style.overflow = ""; // instead of "hidden"
   const contactFixed = document.querySelector(".contact-fixed");
   if (contactFixed) contactFixed.style.display = "block";
+  
+  // Remove legal-modal class when closing
+  const modalContainer = document.querySelector('.modal-container');
+  modalContainer.classList.remove('legal-modal');
 }
 
 // Onboarding Functions
@@ -4436,6 +4449,11 @@ function initMobileMenu() {
     mobileMenuBackdrop.classList.remove('active');
     document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
+    
+    // Close all expanded submenus when closing main menu
+    document.querySelectorAll('.mobile-submenu.expanded').forEach(submenu => {
+      submenu.classList.remove('expanded');
+    });
   }
   
   // Toggle menu on hamburger click
@@ -4450,9 +4468,33 @@ function initMobileMenu() {
   // Close menu when clicking on backdrop
   mobileMenuBackdrop.addEventListener('click', closeMenu);
   
-  // Close menu when clicking on a menu item
+  // Handle mobile submenu toggles
+  const mobileSubmenuTriggers = document.querySelectorAll('.mobile-submenu-trigger');
+  mobileSubmenuTriggers.forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const submenu = this.closest('.mobile-submenu');
+      const isExpanded = submenu.classList.contains('expanded');
+      
+      // Close all other submenus
+      document.querySelectorAll('.mobile-submenu.expanded').forEach(openSubmenu => {
+        if (openSubmenu !== submenu) {
+          openSubmenu.classList.remove('expanded');
+        }
+      });
+      
+      // Toggle current submenu
+      submenu.classList.toggle('expanded', !isExpanded);
+    });
+  });
+  
+  // Close menu when clicking on a menu item (excluding submenu triggers)
   mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    if (!link.classList.contains('mobile-submenu-trigger')) {
+      link.addEventListener('click', closeMenu);
+    }
   });
   
   // Close menu on escape key
