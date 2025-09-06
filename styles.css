@@ -3173,7 +3173,6 @@ text-align: center;
   position: relative;
   opacity: 1;
   transform: translateY(0);
-  animation: timelineSlideIn 0.8s ease-out forwards;
 }
 
 .timeline-item:nth-child(even) {
@@ -4161,11 +4160,6 @@ background: rgba(0, 0, 0, 0.25);
 }
 
 /* CONSENT CHECKBOXES */
-.consent-container .consent-item:hover {
-  border-color: var(--primary-color) !important;
-  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.15);
-  background: rgba(255, 102, 0, 0.05) !important;
-}
 
 .consent-container input[type="checkbox"]:checked + .checkbox-design {
   border-color: var(--primary-color) !important;
@@ -4185,4 +4179,69 @@ background: rgba(0, 0, 0, 0.25);
 .consent-container input[type="checkbox"]:focus + .checkbox-design {
   border-color: var(--primary-color) !important;
   box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+}
+
+/* Container */
+.consent-container {
+  margin-bottom: 1rem;
+}
+
+/* Consent Item Card */
+.consent-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Checkbox Wrapper */
+.custom-checkbox {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Hidden Native Checkbox */
+.custom-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  cursor: pointer;
+}
+
+/* Custom Checkbox Design */
+.checkbox-design {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-radius: 4px; /* unified shape */
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Checkmark */
+.checkbox-design .checkmark {
+  color: var(--primary-color);
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Label */
+.consent-item label {
+  font-size: 14px;
+  line-height: 1.3;
+  color: #333;
+  cursor: pointer;
+  flex: 1;
+  text-align: right;
 }

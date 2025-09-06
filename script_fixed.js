@@ -1,225 +1,12 @@
 // @ts-nocheck
+console.log("🚀 SCRIPT LOADED - New registration flow active!", new Date().toISOString());
 import { PropertyDatabase } from "./propertyDatabase.js";
 
-// --- Firebase (module) ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+// Firebase removed - no longer needed
 
-// --- Firebase Initialization (single init) ---
-const firebaseConfig = {
-  apiKey: "AIzaSyAQQVDajaCdDDhL_bfBqJOl4b0zBgBSLic",
-  authDomain: "dor-real-estate.firebaseapp.com", // <-- fix this key
-  projectId: "dor-real-estate",
-  storageBucket: "dor-real-estate.appspot.com",
-  messagingSenderId: "501082745824",
-  appId: "1:501082745824:web:cda8afd68c1d8148b45985",
-};
+// Firebase authentication removed
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-window.firebaseApp = app;
-window.firebaseAuth = auth;
-
-// --- Helper: Basic IL phone normalization to E.164 ---
-function formatILPhoneE164(raw) {
-  const t = (raw || "").trim();
-  if (!t) return "";
-  if (t.startsWith("+")) return t;
-  return t.replace(/^\s*0/, "+972");
-}
-
-// --- Phone Auth Setup (called when register step is rendered) ---
-let recaptchaWidgetId = null;
-
-async function setupPhoneAuth() {
-  const host = ensureRecaptchaRoot(); // your existing persistent host
-  ensureUIRoot(); // create toast container if missing
-
-  if (!window.recaptchaVerifier) {
-    window.recaptchaVerifier = new RecaptchaVerifier(
-      host,
-      { 
-        size: "invisible",
-        callback: function(response) {
-          // reCAPTCHA solved automatically - completely invisible to user
-          console.log("reCAPTCHA verified silently");
-        },
-        "expired-callback": function() {
-          // Handle expired reCAPTCHA by creating a new verifier
-          console.log("reCAPTCHA expired, reinitializing...");
-          window.recaptchaVerifier = null;
-          setupPhoneAuth(); // Reinitialize
-        }
-      },
-      auth,
-    );
-    
-    try {
-      await window.recaptchaVerifier.render().then((id) => {
-        recaptchaWidgetId = id;
-        console.log("Invisible reCAPTCHA ready - users won't see any captcha");
-      });
-    } catch (error) {
-      console.log("reCAPTCHA setup error:", error);
-      // Fallback: continue without reCAPTCHA (will work in development/localhost)
-    }
-  }
-
-  let confirmationResult = null;
-  const sendBtn = document.getElementById("sendCodeBtn");
-  const verifyBtn = document.getElementById("verifyCodeBtn");
-  if (!sendBtn || !verifyBtn) return;
-
-  // Clear inline error whenever user types
-  const nameInput = document.getElementById("fullName");
-  const phoneInput = document.getElementById("phoneNumber");
-  const codeInput = document.getElementById("smsCode");
-  [nameInput, phoneInput, codeInput].forEach((el) => {
-    if (el) el.addEventListener("input", () => showInlineError(""));
-  });
-
-  // Setup custom checkbox functionality
-  const mandatoryConsent = document.getElementById("mandatoryConsent");
-  const optionalConsent = document.getElementById("optionalConsent");
-  
-  [mandatoryConsent, optionalConsent].forEach((checkbox) => {
-    if (checkbox) {
-      checkbox.addEventListener("change", () => showInlineError(""));
-    }
-  });
-
-  sendBtn.onclick = async () => {
-    const phoneRaw = (
-      document.getElementById("phoneNumber")?.value || ""
-    ).trim();
-    const fullName = (document.getElementById("fullName")?.value || "").trim();
-
-    if (!fullName) {
-      showInlineError("אנא הזינו שם מלא");
-      return;
-    }
-    if (!phoneRaw) {
-      showInlineError("אנא הזינו מספר טלפון");
-      return;
-    }
-
-    // Check mandatory consent
-    const mandatoryConsent = document.getElementById("mandatoryConsent");
-    if (!mandatoryConsent?.checked) {
-      showInlineError("יש לאשר את הסכמת הפרטיות החובה על מנת להמשיך");
-      return;
-    }
-
-    if (typeof grecaptcha !== "undefined" && recaptchaWidgetId != null) {
-      grecaptcha.reset(recaptchaWidgetId);
-    }
-
-    const phone = formatILPhoneE164(phoneRaw);
-    setLoading(sendBtn, true);
-
-    try {
-      confirmationResult = await signInWithPhoneNumber(
-        auth,
-        phone,
-        window.recaptchaVerifier,
-      );
-      const step = document.getElementById("smsStep");
-      if (step?.style) step.style.display = "block";
-      
-      // Hide consent checkboxes when SMS step is active
-      const consentContainer = document.getElementById("consentContainer");
-      if (consentContainer?.style) consentContainer.style.display = "none";
-      
-      document.getElementById("smsCode")?.focus();
-      showInlineError(""); // hide any previous error
-      showToast("✨ קוד נשלח לנייד", "success");
-    } catch (err) {
-      console.log("SMS send error:", err);
-      
-      // Handle specific captcha-related errors gracefully
-      if (err.code === 'auth/captcha-check-failed' || err.code === 'auth/quota-exceeded') {
-        // Reset captcha and try to reinitialize
-        window.recaptchaVerifier = null;
-        showToast("מנסה שוב... אנא המתן רגע", "info");
-        
-        // Retry after a brief delay
-        setTimeout(async () => {
-          try {
-            await setupPhoneAuth();
-            showToast("מוכן לשליחת SMS - נסה שוב", "success");
-          } catch (retryErr) {
-            showToast("בעיה בשליחת SMS. אנא נסה שוב מאוחר יותר", "error");
-          }
-        }, 1500);
-      } else {
-        showToast("בעיה בשליחת SMS: " + (err.message || "אנא נסה שוב"), "error");
-      }
-    } finally {
-      setLoading(sendBtn, false);
-    }
-  };
-
-  verifyBtn.onclick = async () => {
-    if (!confirmationResult) {
-      showInlineError('שלחו קוד קודם בלחיצה על "שלחו לי קוד אימות"');
-      return;
-    }
-    const code = (document.getElementById("smsCode")?.value || "").trim();
-    if (!code) {
-      showInlineError("אנא הזינו את הקוד");
-      return;
-    }
-
-    setLoading(verifyBtn, true);
-    try {
-      const cred = await confirmationResult.confirm(code);
-
-      userData.auth = {
-        uid: cred.user.uid,
-        phone:
-          cred.user.phoneNumber ||
-          (document.getElementById("phoneNumber")?.value || "").trim(),
-        name: (document.getElementById("fullName")?.value || "").trim(),
-        mandatoryConsent: document.getElementById("mandatoryConsent")?.checked || false,
-        optionalConsent: document.getElementById("optionalConsent")?.checked || false,
-      };
-      saveUserData();
-
-      showInlineError("");
-      goToStepType("quick-qs"); // continue onboarding
-    } catch (e) {
-      showToast("❌ קוד שגוי", "error");
-      console.warn(e);
-    } finally {
-      setLoading(verifyBtn, false);
-    }
-  };
-}
-
-// Persistent, completely hidden host for reCAPTCHA (created once)
-function ensureRecaptchaRoot() {
-  let el = document.getElementById("recaptcha-root");
-  if (!el) {
-    el = document.createElement("div");
-    el.id = "recaptcha-root";
-    // Make it completely invisible - users will never see any captcha
-    el.style.position = "fixed";
-    el.style.left = "-9999px";
-    el.style.top = "-9999px";
-    el.style.width = "1px";
-    el.style.height = "1px";
-    el.style.opacity = "0";
-    el.style.visibility = "hidden";
-    el.style.pointerEvents = "none";
-    el.style.zIndex = "-1";
-    document.body.appendChild(el);
-  }
-  return el;
-}
+// All Firebase authentication functions removed
 
 // DOM Elements
 const modalOverlay = document.getElementById("modalOverlay");
@@ -2378,67 +2165,14 @@ function initializeOnboardingSteps() {
             <h2 style="margin-bottom:1.5rem; font-size:2rem; font-weight:700; line-height:1.2; color:var(--text-primary); background:linear-gradient(135deg, var(--primary-color), #c8a842); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">מצאו את הבית שלכם בהחלקה</h2>
             <p style="color:#555; margin-bottom:0; font-size:1.2rem; line-height:1.5; font-weight:400;">נכסים שיתאימו בדיוק למה שאתם מחפשים</p>
           </div>
-          <button id="toRegistration" style="background:linear-gradient(135deg, var(--primary-color), #c8a842); color:white; border:none; padding:1.3rem 3rem; border-radius:60px; cursor:pointer; font-size:1.3rem; font-weight:600; box-shadow:0 8px 24px rgba(212, 175, 55, 0.3); transition:all 0.3s ease; min-width:280px; position:relative; overflow:hidden;">
+          <button id="toQuestionnaire" style="background:linear-gradient(135deg, var(--primary-color), #c8a842); color:white; border:none; padding:1.3rem 3rem; border-radius:60px; cursor:pointer; font-size:1.3rem; font-weight:600; box-shadow:0 8px 24px rgba(212, 175, 55, 0.3); transition:all 0.3s ease; min-width:280px; position:relative; overflow:hidden;">
             מתחילים עכשיו
           </button>
         </div>
       `,
     },
 
-    // 2) Registration / Login (Firebase Phone)
-    {
-      type: "register",
-      title: "הרשמה קצרה",
-      subtitle: "פחות מדקה ואתם בפנים",
-      content: `
-            <div class="register-screen">
-              <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
-              <input id="phoneNumber" type="tel" placeholder="מספר טלפון" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
-
-              <div class="consent-container" id="consentContainer" style="margin-bottom:1rem;">
-                <div class="consent-item" style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.8rem; padding:0.8rem; border:1px solid #e0e0e0; border-radius:12px; background:rgba(255,102,0,0.02);">
-                  <div class="custom-checkbox" style="position:relative; flex-shrink:0; margin-top:0.1rem;">
-                    <input type="checkbox" id="mandatoryConsent" style="opacity:0; width:18px; height:18px; position:absolute; cursor:pointer;" />
-                    <div class="checkbox-design" style="width:18px; height:18px; border:2px solid #ddd; border-radius:4px; background:white; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; cursor:pointer;">
-                      <span class="checkmark" style="color:var(--primary-color); font-size:12px; opacity:0; transition:opacity 0.3s ease;">✓</span>
-                    </div>
-                  </div>
-                  <label for="mandatoryConsent" style="font-size:14px; line-height:1.3; color:#333; cursor:pointer; flex:1; text-align:right;">
-                    <span style="color:red; margin-left:4px;">*</span>
-                      אני מאשר/ת שיפנו אליי בקשר לנכסים אותם אבחר, וכן בקשר לנכסים נוספים שעשויים להתאים לי, וזאת בהתאם
-                      <a href="https://www.gov.il/he/pages/guide_tikon13_professional" target="_blank" style="color:var(--primary-color); text-decoration:underline;">לתיקון 13 לחוק הגנת הפרטיות</a>.
-                    </label>
-                </div>
-
-                <div class="consent-item" style="display:flex; align-items:flex-start; gap:0.6rem; margin-bottom:0.8rem; padding:0.8rem; border:1px solid #e0e0e0; border-radius:12px; background:rgba(255,102,0,0.02);">
-                  <div class="custom-checkbox" style="position:relative; flex-shrink:0; margin-top:0.1rem;">
-                    <input type="checkbox" id="optionalConsent" style="opacity:0; width:18px; height:18px; position:absolute; cursor:pointer;" />
-                    <div class="checkbox-design" style="width:18px; height:18px; border:2px solid #ddd; border-radius:4px; background:white; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; cursor:pointer;">
-                      <span class="checkmark" style="color:var(--primary-color); font-size:12px; opacity:0; transition:opacity 0.3s ease;">✓</span>
-                    </div>
-                  </div>
-                  <label for="optionalConsent" style="font-size:14px; line-height:1.3; color:#333; cursor:pointer; flex:1; text-align:right;">
-                    אני מאשר/ת קבלת עדכונים, דו״חות ותכנים שיווקיים באמצעות WhatsApp.
-                  </label>
-                </div>
-              </div>
-
-              <button id="sendCodeBtn" style="width:100%; background:var(--primary-color); color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; margin-bottom:1rem; font-weight:600;">
-                שלחו לי קוד אימות
-              </button>
-
-              <div id="smsStep" style="display:none;">
-                <input id="smsCode" type="text" placeholder="הכניסו את הקוד שקיבלתם" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem;" />
-                <button id="verifyCodeBtn" style="width:100%; background:green; color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; font-weight:600;">
-                  המשיכו
-                </button>
-              </div>
-
-            </div>
-          `,
-    },
-
-    // 3) Micro Questionnaire (single screen)
+    // 2) Micro Questionnaire (single screen)
     {
       type: "quick-qs",
       title: "שאלון קצר",
@@ -2515,11 +2249,8 @@ function goToStepType(type) {
   currentStep = i;
   loadStep(currentStep);
 }
-
-// Check if user is authenticated
-function hasAuth() {
-  return !!(userData && userData.auth && userData.auth.uid);
-}
+ 
+// hasAuth function removed - no longer needed without Firebase
 
 // TAKING CARE OF SWITCHING BETWEEN EXECUTIVES
 
@@ -2742,20 +2473,8 @@ function startOnboarding() {
 
 let lastStepType = null;
 
-// Firebase Recaptcha and Phone Auth Setup
-function teardownRecaptcha() {
-  if (window.recaptchaVerifier?.clear) {
-    try {
-      window.recaptchaVerifier.clear();
-    } catch {}
-  }
-  window.recaptchaVerifier = null;
-  recaptchaWidgetId = null;
-}
-
-// Initialize Firebase Phone Auth
+// Close onboarding overlay
 function closeOnboarding() {
-  teardownRecaptcha();
   onboardingOverlay.classList.remove("active");
   setTimeout(() => {
     onboardingOverlay.style.display = "none";
@@ -2767,10 +2486,7 @@ function loadStep(stepIndex) {
   const step = onboardingSteps[stepIndex];
   if (!step) return;
 
-  // If we're leaving register, tear down the old widget
-  if (lastStepType === "register" && step.type !== "register") {
-    teardownRecaptcha();
-  }
+  // Firebase teardown removed - no longer needed
 
   // Inject new DOM
   onboardingContent.innerHTML = step.content;
@@ -2787,8 +2503,7 @@ function loadStep(stepIndex) {
     progressText.textContent = `שלב 1 מתוך 2`;
     prevBtn.style.display = "flex";
     nextBtn.style.display = "none"; // advance via verify
-    // init phone auth after DOM is injected
-    setupPhoneAuth();
+    // phone auth removed - no longer needed
   } else if (step.type === "quick-qs") {
     progressFill.style.width = "100%";
     progressText.textContent = `שלב 2 מתוך 2`;
@@ -2808,17 +2523,13 @@ function loadStep(stepIndex) {
   setTimeout(() => {
     addOptionListeners();
 
-    const regBtn = document.getElementById("toRegistration");
-    if (regBtn)
-      regBtn.addEventListener("click", () => goToStepType("register"));
+    const questBtn = document.getElementById("toQuestionnaire");
+    if (questBtn)
+      questBtn.addEventListener("click", () => goToStepType("quick-qs"));
 
     const swipeBtn = document.getElementById("toSwiping");
     if (swipeBtn) {
       swipeBtn.addEventListener("click", () => {
-        if (!hasAuth()) {
-          alert("לפני שממשיכים, נא לאמת מספר טלפון 🙂");
-          return goToStepType("register");
-        }
         saveStepData();
         closeOnboarding();
         setTimeout(() => startPropertySwiping(), 300);
@@ -2876,10 +2587,7 @@ function nextStep() {
   saveStepData();
   const next = currentStep + 1;
   const nextType = onboardingSteps[next]?.type;
-  if (nextType === "quick-qs" && !hasAuth()) {
-    alert("נא לאמת מספר טלפון לפני שממשיכים.");
-    return goToStepType("register");
-  }
+  // Removed phone validation - users can proceed directly to questionnaire
   if (currentStep < onboardingSteps.length - 1) {
     currentStep = next;
     loadStep(currentStep);
@@ -3736,21 +3444,7 @@ window.clearImageCache = function () {
   console.log('🗑️ Image cache cleared - next calls will re-read manifest/arrays');
 };
 
-// Smart image resizing based on aspect ratio (your original, kept)
-function smartImageResize(img) {
-  if (!img || !img.naturalWidth || !img.naturalHeight) return;
-
-  const aspectRatio = img.naturalWidth / img.naturalHeight;
-  const isVertical = aspectRatio < 0.75; // Portrait orientation
-
-  if (isVertical) {
-    img.classList.add('vertical-image');
-    console.log(`📱 Detected vertical image: ${img.src} (${img.naturalWidth}x${img.naturalHeight})`);
-  } else {
-    img.classList.remove('vertical-image');
-    console.log(`🖼️ Standard image: ${img.src} (${img.naturalWidth}x${img.naturalHeight})`);
-  }
-}
+// smartImageResize function removed - was causing errors
 
 // --- Feature map to Hebrew labels and icons ---
 const FEATURE_ICONS = {
@@ -4000,8 +3694,7 @@ async function loadPropertyCarouselAsync(property) {
         <img src="${heroUrl}" alt="${property.title || "property"}" 
              loading="eager"
              fetchpriority="high"
-             style="width:100%;"
-             onload="smartImageResize(this)"/>
+             style="width:100%;"/>
       </div>`;
     carouselDots.innerHTML = `<button class="carousel-dot active" aria-label="slide 1"></button>`;
     console.log(`✨ Hero displayed instantly`);
@@ -4030,8 +3723,7 @@ async function loadPropertyCarouselAsync(property) {
             <img src="${src}" alt="${property.title || "property"}" 
                  loading="lazy"
                  fetchpriority="low"
-                 style="width:100%;"
-                 onload="smartImageResize(this)"/>
+                 style="width:100%;"/>
           </div>
         `).join("");
         
@@ -4120,7 +3812,7 @@ function showSwipeResults() {
       <div style="
   text-align:center;
   color:white;
-  padding: 2rem; /* Changed 'padding' to use valid CSS syntax */
+  padding: 2rem;
   display: block;
   position: fixed;
   top: 50%;
@@ -4132,29 +3824,205 @@ function showSwipeResults() {
         <h3>לא מצאתם משהו שמתאים?</h3>
         <p style="margin:1rem 0;">שווה לנסות שוב.</p>
         <button data-open-contact class="cta-endswipe-button">בחזרה לתהליך</button>
-      </div>`; // Corrected closing div
+      </div>`;
   } else {
-    propertyCards.innerHTML = `
-      <div style="
+    showRegistrationForm();
+  }
+  const actions = document.querySelector(".swipe-actions");
+  if (actions) actions.style.display = "none";
+}
+
+// Show registration form after successful swiping
+function showRegistrationForm() {
+  console.log("🔥 DEBUG: showRegistrationForm called with", likedProperties.length, "liked properties");
+  const propertyCards = document.getElementById("propertyCards");
+  propertyCards.innerHTML = `
+    <div style="
   text-align:center;
   color:white;
-  padding: 2rem; /* Changed 'padding' to use valid CSS syntax */
+  padding: 2rem;
   display: block;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
+  max-width: 500px;
+  width: 90%;
+  background: rgba(0,0,0,0.9);
+  border-radius: 16px;
   ">
-        <i class="fas fa-heart" style="font-size:4rem; margin-bottom:1rem; color:#e74c3c;"></i>
-        <h3>מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
-        <p style="margin:1rem 0;">היועצים שלנו ייצרו איתכם קשר בקרוב</p>
-        <button data-open-contact class="cta-endswipe-button">לדף הבית</button>
-      </div>`; // Corrected closing div
-  }
-  const actions = document.querySelector(".swipe-actions");
-  if (actions) actions.style.display = "none";
+      <i class="fas fa-heart" style="font-size:3rem; margin-bottom:1.5rem; color:#e74c3c;"></i>
+      <h3 style="margin-bottom:1rem;">מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
+      <p style="margin:1rem 0 2rem 0; color:#ccc;">להמשך התהליך, נשמח לקבל את הפרטים שלכם</p>
+      
+      <div class="register-screen" style="text-align: right;">
+        <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem; box-sizing: border-box;" />
+        <input id="phoneNumber" type="tel" placeholder="מספר טלפון" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem; box-sizing: border-box;" />
+
+      <div class="consent-container" id="consentContainer">
+
+        <div class="consent-item">
+          <div class="custom-checkbox">
+            <input type="checkbox" id="mandatoryConsent" />
+            <div class="checkbox-design">
+              <span class="checkmark">✓</span>
+            </div>
+          </div>
+          <label for="mandatoryConsent">
+            <span style="color:red; margin-left:4px;">*</span>
+            אני מאשר/ת שיפנו אליי בקשר לנכסים אותם אבחר, וכן בקשר לנכסים נוספים שעשויים להתאים לי, וזאת בהתאם
+            <a href="https://www.gov.il/he/pages/guide_tikon13_professional" target="_blank" style="color:var(--primary-color); text-decoration:underline;">
+              לתיקון 13 לחוק הגנת הפרטיות
+            </a>.
+          </label>
+        </div>
+
+        <div class="consent-item">
+          <div class="custom-checkbox">
+            <input type="checkbox" id="optionalConsent" />
+            <div class="checkbox-design">
+              <span class="checkmark">✓</span>
+            </div>
+          </div>
+          <label for="optionalConsent">
+            אני מאשר/ת קבלת עדכונים, דו״חות ותכנים שיווקיים באמצעות WhatsApp.
+          </label>
+        </div>
+
+      </div>
+
+
+        <button id="submitRegistrationBtn" style="width:100%; background:var(--primary-color); color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; margin-bottom:1rem; font-weight:600; box-sizing: border-box;">
+          !Showtime
+        </button>
+
+        <div id="smsStep" style="display:none;">
+          <input id="smsCode" type="text" placeholder="הכניסו את הקוד שקיבלתם" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem; box-sizing: border-box;" />
+          <button id="verifyCodeBtn" style="width:100%; background:green; color:white; border:none; padding:0.9rem; border-radius:30px; cursor:pointer; font-weight:600; box-sizing: border-box;">
+            המשיכו
+          </button>
+        </div>
+
+        <button id="skipRegistrationBtn" style="width:100%; background:transparent; color:#ccc; border:1px solid #666; padding:0.6rem; border-radius:20px; cursor:pointer; font-size:0.9rem; margin-top:1rem; box-sizing: border-box;">
+          דלג על ההרשמה (חזרה לדף הבית)
+        </button>
+      </div>
+    </div>`;
+    
+    // Initialize checkbox interactions for the new registration form
+    initializeRegistrationCheckboxes();
+    
+    // Add event listener for the submit registration button
+    const submitBtn = document.getElementById("submitRegistrationBtn");
+    console.log("🔥 DEBUG: Setting up submitRegistrationBtn, found:", submitBtn);
+    if (submitBtn) {
+      submitBtn.onclick = async () => {
+        console.log("🔥 DEBUG: Submit registration button clicked!");
+        const phoneRaw = (document.getElementById("phoneNumber")?.value || "").trim();
+        const fullName = (document.getElementById("fullName")?.value || "").trim();
+
+        if (!fullName) {
+          showToast("אנא הזינו שם מלא", "error");
+          return;
+        }
+        if (!phoneRaw) {
+          showToast("אנא הזינו מספר טלפון", "error");
+          return;
+        }
+
+        // Check mandatory consent
+        const mandatoryConsent = document.getElementById("mandatoryConsent");
+        if (!mandatoryConsent?.checked) {
+          showToast("יש לאשר את הסכמת הפרטיות החובה על מנת להמשיך", "error");
+          return;
+        }
+
+        // Show loading state
+        submitBtn.textContent = "זמן לאתר עבורך את הבית המושלם";
+        submitBtn.disabled = true;
+        submitBtn.style.background = "#ccc";
+
+        try {
+          // Store user data
+          userData.auth = {
+            phone: phoneRaw,
+            name: fullName,
+            mandatoryConsent: mandatoryConsent?.checked || false,
+            optionalConsent: document.getElementById("optionalConsent")?.checked || false,
+          };
+          
+          // Send email using the existing functionality
+          await sendLeadEmail();
+          
+          // Show success state
+          submitBtn.textContent = "מושלם!";
+          submitBtn.style.background = "#28a745";
+          
+          // Wait a moment and redirect to home
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          
+        } catch (error) {
+          console.error("Registration error:", error);
+          submitBtn.textContent = "שלחו לי קוד אימות";
+          submitBtn.disabled = false;
+          submitBtn.style.background = "var(--primary-color)";
+          showToast("שגיאה בשליחה. אנא נסו שוב", "error");
+        }
+      };
+    }
+    
+    // Add event listener for skip registration button
+    const skipBtn = document.getElementById("skipRegistrationBtn");
+    if (skipBtn) {
+      skipBtn.onclick = () => {
+        console.log("🔥 DEBUG: Skip registration clicked");
+        // Force reload to home page
+        window.location.href = window.location.origin + window.location.pathname;
+      };
+    }
+    
+    // Hover effects removed via CSS above
 }
+
+// Initialize checkbox interactions for registration form
+function initializeRegistrationCheckboxes() {
+  console.log("🔥 DEBUG: Initializing registration checkboxes");
+  
+  const mandatoryCheckbox = document.getElementById("mandatoryConsent");
+  const optionalCheckbox = document.getElementById("optionalConsent");
+  
+  [mandatoryCheckbox, optionalCheckbox].forEach((checkbox) => {
+    if (checkbox) {
+      const checkboxDesign = checkbox.parentNode.querySelector('.checkbox-design');
+      const checkmark = checkboxDesign?.querySelector('.checkmark');
+      
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          checkboxDesign.style.borderColor = 'var(--primary-color)';
+          checkboxDesign.style.backgroundColor = 'var(--primary-color)';
+          if (checkmark) checkmark.style.opacity = '1';
+        } else {
+          checkboxDesign.style.borderColor = '#ddd';
+          checkboxDesign.style.backgroundColor = 'white';
+          if (checkmark) checkmark.style.opacity = '0';
+        }
+      });
+      
+      // Also handle clicks on the design element
+      if (checkboxDesign) {
+        checkboxDesign.addEventListener('click', function() {
+          checkbox.checked = !checkbox.checked;
+          checkbox.dispatchEvent(new Event('change'));
+        });
+      }
+    }
+  });
+}
+
+// skipRegistration function moved to event listener in showRegistrationForm
 
 /* ==== Unicorn UI helpers (no HTML edits required) ==== */
 function ensureUIRoot() {
