@@ -3785,7 +3785,7 @@ function showRegistrationForm() {
   color:white;
   display: block;
   position: fixed;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
@@ -3814,9 +3814,7 @@ function showRegistrationForm() {
           <label for="mandatoryConsent">
             <span style="color:red; margin-left:4px;">*</span>
             אני מאשר/ת שיפנו אליי בקשר לנכסים אותם אבחר, וכן בקשר לנכסים נוספים שעשויים להתאים לי, וזאת בהתאם
-            <a href="https://www.gov.il/he/pages/guide_tikon13_professional" target="_blank" style="color:var(--primary-color); text-decoration:underline;">
-              לתיקון 13 לחוק הגנת הפרטיות
-            </a>.
+            <a href="https://www.gov.il/he/pages/guide_tikon13_professional" target="_blank" style="color:var(--primary-color); text-decoration:underline;">לתיקון 13 לחוק הגנת הפרטיות</a>.
           </label>
         </div>
 
@@ -3849,10 +3847,10 @@ function showRegistrationForm() {
       </div>
     </div>
     
-    <!-- Skip button outside the registration window -->
-    <div style="text-align: center; margin-top: 3rem; position: fixed; top: 75%; left: 50%; transform: translateX(-50%); z-index: 10000;">
+    <!-- Skip button positioned below the modal -->
+    <div style="position: fixed; top: calc(45% + 250px + 0.8rem); left: 50%; transform: translateX(-50%); text-align: center; z-index: 10001;">
       <button id="skipRegistrationBtn" style="background:rgba(0,0,0,0.9); color:#ffffff; border:1px solid #666; padding:0.6rem 1.5rem; border-radius:20px; cursor:pointer; font-size:0.9rem; box-sizing: border-box;">
-        דלג על ההרשמה (חזרה לדף הבית)
+       אשמח לדלג
       </button>
     </div>`;
     
