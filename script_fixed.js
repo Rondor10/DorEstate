@@ -1566,7 +1566,7 @@ const modalContents = {
             <div class="contact-methods">
               <h3 class="methods-title">פרטי התקשרות</h3>
               
-              <div class="method-item" onclick="copyToClipboard('ויצמן 37, גבעתיים')">
+              <div class="method-item">
                 <div class="method-icon">📍</div>
                 <div class="method-details">
                   <div class="method-label">כתובת</div>
@@ -2107,46 +2107,6 @@ window.openWhatsApp = function(phone) {
   window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
 };
 
-// Copy to clipboard with feedback
-window.copyToClipboard = function(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    showCopySuccess("כתובת הועתקה ללוח");
-  }).catch(() => {
-    showCopySuccess("כתובת: " + text);
-  });
-};
-
-// Show copy success message
-function showCopySuccess(message) {
-  const copyMsg = document.createElement("div");
-  copyMsg.style.cssText = 
-    "position: fixed;" +
-    "top: 20px;" +
-    "right: 20px;" +
-    "background: linear-gradient(45deg, #FF7A00, #FF4D00);" +
-    "color: white;" +
-    "padding: 0.8rem 1.5rem;" +
-    "border-radius: 10px;" +
-    "box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);" +
-    "z-index: 1002;" +
-    "font-weight: 500;" +
-    "opacity: 0;" +
-    "transform: translateX(100px);" +
-    "transition: all 0.3s ease;";
-  copyMsg.textContent = message;
-  document.body.appendChild(copyMsg);
-  
-  setTimeout(() => {
-    copyMsg.style.opacity = "1";
-    copyMsg.style.transform = "translateX(0)";
-  }, 100);
-  
-  setTimeout(() => {
-    copyMsg.style.opacity = "0";
-    copyMsg.style.transform = "translateX(100px)";
-    setTimeout(() => document.body.removeChild(copyMsg), 300);
-  }, 2500);
-}
 
 // Onboarding Steps Configuration
 function initializeOnboardingSteps() {
