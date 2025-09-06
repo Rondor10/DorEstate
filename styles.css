@@ -610,7 +610,6 @@ body {
     
     .onboarding-header {
         padding: 1rem;
-        flex-wrap: wrap;
     }
     
     .onboarding-content {
@@ -1858,7 +1857,7 @@ body {
 }
 
 .onboarding-header {
-    padding: 2rem;
+    padding: .6rem;
     border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
@@ -1903,7 +1902,7 @@ body {
 
 .onboarding-content {
     flex: 1;
-    padding: 3rem;
+    padding: 1rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -1914,7 +1913,6 @@ body {
 .onboarding-content:has(.question-container),
 .onboarding-content.questionnaire-screen {
     display: block !important;
-    padding: 2rem 3rem !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
 }

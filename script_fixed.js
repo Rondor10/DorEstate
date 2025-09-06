@@ -2169,12 +2169,13 @@ function initializeOnboardingSteps() {
                     <div class="option-card" data-value="rooftop"><div class="option-title">דירת גג</div></div>
                     <div class="option-card" data-value="cottage"><div class="option-title">קוטג</div></div>
                   </div>
-                </div>
 
                 <div style="text-align:center; margin-top:2rem;">
                   <button id="toSwiping" style="background:var(--primary-color); color:white; border:none; padding:1rem 3rem; border-radius:50px; font-size:1.1rem; cursor:pointer; font-weight: 600;">
                     מצאו את הבית שלכם
                   </button>
+                </div>
+
                 </div>
                 `,
     },
