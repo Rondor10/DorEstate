@@ -1847,7 +1847,7 @@ body {
     max-height: 100svh;
     display: flex;
     flex-direction: column;
-    background: white;
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
     max-width: 900px;
     margin: 0 auto;
     position: relative;
@@ -1867,7 +1867,7 @@ body {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--text-secondary);
+    color: var(--primary-color);
     transition: var(--transition);
 }
 
@@ -2008,7 +2008,7 @@ body {
 .question-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--primary-color);
     margin-bottom: 0.6rem;
     margin-top: 0;
 }
@@ -2218,7 +2218,6 @@ body {
     width: clamp(45px, 10vw, 55px); /* Smaller buttons */
     height: clamp(45px, 10vw, 55px);
   }
-}
 
 /* Animations */
 @keyframes fadeInUp {
@@ -4392,4 +4391,12 @@ background: rgba(0, 0, 0, 0.25);
       border-top: none !important;
     }
   }
+}
+
+
+/* Shake animation for form validation errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
 }

@@ -2447,7 +2447,7 @@ function loadStep(stepIndex) {
   } else if (step.type === "quick-qs") {
     const progressBar = document.querySelector('.progress-bar');
     if (progressBar) progressBar.style.display = "none";
-    progressText.textContent = `מסננים`;
+    progressText.textContent = ``;
     progressText.style.textAlign = "center";
     progressText.style.width = "100%";
     prevBtn.style.display = "none"; // hide back on quick-qs
@@ -3783,7 +3783,6 @@ function showRegistrationForm() {
     <div style="
   text-align:center;
   color:white;
-  padding: 2rem;
   display: block;
   position: fixed;
   top: 50%;
@@ -3795,9 +3794,9 @@ function showRegistrationForm() {
   background: rgba(0,0,0,0.9);
   border-radius: 16px;
   ">
-      <i class="fas fa-heart" style="font-size:3rem; margin-bottom:1.5rem; color:#e74c3c;"></i>
-      <h3 style="margin-bottom:1rem;">מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
-      <p style="margin:1rem 0 2rem 0; color:#ccc;">להמשך התהליך, נשמח לקבל את הפרטים שלכם</p>
+      <i class="fas fa-heart" style="font-size:3rem; margin-top:0.6rem; margin-bottom:0.3rem; color:#e74c3c;"></i>
+      <h3 style="margin-bottom:0.3rem;">מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
+      <p style="margin-bottom:0.3rem; color:#ccc;">להמשך התהליך, נשמח לקבל את הפרטים שלכם</p>
       
       <div class="register-screen" style="text-align: right;">
         <input id="fullName" type="text" placeholder="שם מלא" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:12px; margin-bottom:1rem; box-sizing: border-box;" />
@@ -3847,14 +3846,62 @@ function showRegistrationForm() {
           </button>
         </div>
 
-        <button id="skipRegistrationBtn" style="width:100%; background:transparent; color:#ccc; border:1px solid #666; padding:0.6rem; border-radius:20px; cursor:pointer; font-size:0.9rem; margin-top:1rem; box-sizing: border-box;">
-          דלג על ההרשמה (חזרה לדף הבית)
-        </button>
       </div>
+    </div>
+    
+    <!-- Skip button outside the registration window -->
+    <div style="text-align: center; margin-top: 3rem; position: fixed; top: 75%; left: 50%; transform: translateX(-50%); z-index: 10000;">
+      <button id="skipRegistrationBtn" style="background:rgba(0,0,0,0.9); color:#ffffff; border:1px solid #666; padding:0.6rem 1.5rem; border-radius:20px; cursor:pointer; font-size:0.9rem; box-sizing: border-box;">
+        דלג על ההרשמה (חזרה לדף הבית)
+      </button>
     </div>`;
     
     // Initialize checkbox interactions for the new registration form
     initializeRegistrationCheckboxes();
+    
+    // Add input event listeners with validation
+    const nameInput = document.getElementById("fullName");
+    const phoneInput = document.getElementById("phoneNumber");
+    
+    if (nameInput) {
+      nameInput.addEventListener('input', (e) => {
+        clearInputError(nameInput);
+        // Optional: Show subtle hint if invalid characters are typed
+        const value = e.target.value;
+        if (value && !isValidFullName(value)) {
+          nameInput.style.borderColor = '#ffa500'; // Orange warning
+        } else if (value && isValidFullName(value)) {
+          nameInput.style.borderColor = '#28a745'; // Green success
+        }
+      });
+    }
+    
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        clearInputError(phoneInput);
+        const value = e.target.value;
+        
+        // Auto-format as user types
+        const cleanPhone = value.replace(/\D/g, '');
+        if (cleanPhone.length <= 10 && cleanPhone.startsWith('05')) {
+          let formatted = cleanPhone;
+          if (cleanPhone.length > 3) {
+            formatted = cleanPhone.substring(0, 3) + '-' + cleanPhone.substring(3);
+          }
+          if (cleanPhone.length > 6) {
+            formatted = cleanPhone.substring(0, 3) + '-' + cleanPhone.substring(3, 6) + '-' + cleanPhone.substring(6);
+          }
+          e.target.value = formatted;
+        }
+        
+        // Show validation feedback
+        if (value && !isValidIsraeliPhone(value)) {
+          phoneInput.style.borderColor = '#ffa500'; // Orange warning
+        } else if (value && isValidIsraeliPhone(value)) {
+          phoneInput.style.borderColor = '#28a745'; // Green success
+        }
+      });
+    }
     
     // Add event listener for the submit registration button
     const submitBtn = document.getElementById("submitRegistrationBtn");
@@ -3865,19 +3912,52 @@ function showRegistrationForm() {
         const phoneRaw = (document.getElementById("phoneNumber")?.value || "").trim();
         const fullName = (document.getElementById("fullName")?.value || "").trim();
 
+        // Clear any existing error states
+        clearInputErrors();
+
+        // Validate full name
         if (!fullName) {
-          showToast("אנא הזינו שם מלא", "error");
+          const nameInput = document.getElementById("fullName");
+          setInputError(nameInput);
           return;
         }
+        if (!isValidFullName(fullName)) {
+          const nameInput = document.getElementById("fullName");
+          setInputError(nameInput);
+          return;
+        }
+
+        // Validate phone number
         if (!phoneRaw) {
-          showToast("אנא הזינו מספר טלפון", "error");
+          const phoneInput = document.getElementById("phoneNumber");
+          setInputError(phoneInput);
+          return;
+        }
+        if (!isValidIsraeliPhone(phoneRaw)) {
+          const phoneInput = document.getElementById("phoneNumber");
+          setInputError(phoneInput);
           return;
         }
 
         // Check mandatory consent
         const mandatoryConsent = document.getElementById("mandatoryConsent");
         if (!mandatoryConsent?.checked) {
-          showToast("יש לאשר את הסכמת הפרטיות החובה על מנת להמשיך", "error");
+          // Make the consent item red instead of showing toast
+          const consentItem = mandatoryConsent.closest('.consent-item');
+          if (consentItem) {
+            consentItem.style.border = '2px solid #e74c3c';
+            consentItem.style.borderRadius = '8px';
+            consentItem.style.padding = '0.5rem';
+            consentItem.style.backgroundColor = '#fdf2f2';
+            
+            // Shake animation
+            consentItem.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+              if (consentItem.style.animation) {
+                consentItem.style.animation = '';
+              }
+            }, 500);
+          }
           return;
         }
 
@@ -3887,9 +3967,10 @@ function showRegistrationForm() {
         submitBtn.style.background = "#ccc";
 
         try {
-          // Store user data
+          // Store user data with formatted phone
+          const formattedPhone = formatIsraeliPhone(phoneRaw);
           userData.auth = {
-            phone: phoneRaw,
+            phone: formattedPhone,
             name: fullName,
             mandatoryConsent: mandatoryConsent?.checked || false,
             optionalConsent: document.getElementById("optionalConsent")?.checked || false,
@@ -3943,10 +4024,21 @@ function initializeRegistrationCheckboxes() {
       const checkmark = checkboxDesign?.querySelector('.checkmark');
       
       checkbox.addEventListener('change', function() {
+        const consentItem = this.closest('.consent-item');
+        
         if (this.checked) {
           checkboxDesign.style.borderColor = 'var(--primary-color)';
           checkboxDesign.style.backgroundColor = 'var(--primary-color)';
           if (checkmark) checkmark.style.opacity = '1';
+          
+          // Clear error state if this is the mandatory consent
+          if (this.id === 'mandatoryConsent' && consentItem) {
+            consentItem.style.border = '';
+            consentItem.style.borderRadius = '';
+            consentItem.style.padding = '';
+            consentItem.style.backgroundColor = '';
+            consentItem.style.animation = '';
+          }
         } else {
           checkboxDesign.style.borderColor = '#ddd';
           checkboxDesign.style.backgroundColor = 'white';
@@ -3963,6 +4055,75 @@ function initializeRegistrationCheckboxes() {
       }
     }
   });
+}
+
+// Helper functions for input validation styling
+function setInputError(inputElement) {
+  if (!inputElement) return;
+  
+  inputElement.style.border = '2px solid #e74c3c';
+  inputElement.style.backgroundColor = '#fdf2f2';
+  inputElement.style.animation = 'shake 0.5s ease-in-out';
+  
+  setTimeout(() => {
+    if (inputElement.style.animation) {
+      inputElement.style.animation = '';
+    }
+  }, 500);
+}
+
+function clearInputError(inputElement) {
+  if (!inputElement) return;
+  
+  inputElement.style.border = '1px solid #ddd';
+  inputElement.style.backgroundColor = '';
+  inputElement.style.animation = '';
+}
+
+function clearInputErrors() {
+  const nameInput = document.getElementById("fullName");
+  const phoneInput = document.getElementById("phoneNumber");
+  
+  clearInputError(nameInput);
+  clearInputError(phoneInput);
+  
+  // Also clear consent error
+  const mandatoryConsent = document.getElementById("mandatoryConsent");
+  if (mandatoryConsent) {
+    const consentItem = mandatoryConsent.closest('.consent-item');
+    if (consentItem) {
+      consentItem.style.border = '';
+      consentItem.style.borderRadius = '';
+      consentItem.style.padding = '';
+      consentItem.style.backgroundColor = '';
+      consentItem.style.animation = '';
+    }
+  }
+}
+
+// Validation helper functions
+function isValidFullName(name) {
+  // Check if name contains only letters, spaces, Hebrew characters, and common punctuation
+  const nameRegex = /^[a-zA-Zאבגדהוזחטיכלמנסעפצקרשתךםןףץ\s'-]+$/;
+  return nameRegex.test(name.trim()) && name.trim().length >= 2;
+}
+
+function isValidIsraeliPhone(phone) {
+  // Remove all non-digit characters
+  const cleanPhone = phone.replace(/\D/g, '');
+  
+  // Check if it's exactly 10 digits and starts with 05
+  const phoneRegex = /^05[0-9]{8}$/;
+  return phoneRegex.test(cleanPhone);
+}
+
+function formatIsraeliPhone(phone) {
+  // Clean the phone number and return in format 05X-XXX-XXXX
+  const cleanPhone = phone.replace(/\D/g, '');
+  if (cleanPhone.length === 10 && cleanPhone.startsWith('05')) {
+    return cleanPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+  }
+  return phone; // Return original if not valid format
 }
 
 // skipRegistration function moved to event listener in showRegistrationForm
