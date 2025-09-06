@@ -261,20 +261,13 @@ const modalContents = {
         </div>
         
         <div class="legacy-story">
-          <p class="story-text">
-          בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים.
-          </p>
-          <p class="story-text">
-            כדי לפעול מתוך תשוקה, אשר רק הולכת ומתחזקת, לאורך תקופת זמן שכזו, מוכרחת להיות כמיהה אמיתית.
-          </p>
-          <p class="story-text">
-            עבורנו, נדל"ן מהווה שליחות. המסע שלנו התחיל ברצון לגעת בכל אדם דרך האנרגיה הקיומית המרתקת של הנדל"ן, בתצורה של חיבור למרחב ההגשמה המדויק עבורו.
-          </p>
+          <p class="story-text">בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים, מתוך תשוקה שרק הולכת ומתחזקת.</p>
+          <p class="story-text">עבורנו, נדל"ן מהווה שליחות, דרך לחבר כל אדם באשר למרחב ההגשמה המדויק עבורו.</p>
         </div>
         
         <div class="quantum-timeline">
           <div class="timeline-header">
-            <h2 class="timeline-title">מסלול הזמן הקוונטי</h2>
+            <h2 class="timeline-title">ציר הזמן</h2>
           </div>
           
           <div class="timeline-container">
@@ -393,10 +386,6 @@ const modalContents = {
               <div class="tech-stat">
                 <span class="tech-number">24/7</span>
                 <span class="tech-label">דאטה בזמן אמת</span>
-              </div>
-              <div class="tech-stat">
-                <span class="tech-number">95%</span>
-                <span class="tech-label">אחוזי דיוק</span>
               </div>
               <div class="tech-stat">
                 <span class="tech-number">∞</span>
@@ -646,7 +635,7 @@ const modalContents = {
         
         .quantum-subtitle {
           font-size: 1.2rem;
-          color: #b0b3b8;
+          color: #ffffff;
           max-width: 600px;
           margin: 0 auto 2rem;
           line-height: 1.6;
@@ -702,11 +691,13 @@ const modalContents = {
           font-size: 1.3rem;
           font-weight: 600;
           margin-bottom: 0.5rem;
-          color: #ffffff;
+          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         
         .card-description {
-          color: #b0b3b8;
+          color: #ffffff;
           line-height: 1.5;
           font-size: 0.95rem;
         }
@@ -915,8 +906,8 @@ const modalContents = {
           
           <!-- CTA Section -->
           <div class="cta-section">
-            <h2 style="color: #ffffff; margin-bottom: 1rem;">?Ready to Build the Future</h2>
-            <p style="color: #b0b3b8; margin-bottom: 2rem;">
+            <h2 style="background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;; margin-bottom: 1rem;">Future Awaits You</h2>
+            <p style="color: #ffffff; margin-bottom: 1rem;">
               אם אתה מוכן לקחת את הקריירה שלך לשלב הבא ולהיות חלק ממשהו מהפכני, בוא נדבר.
             </p>
             <button class="quantum-cta contact" data-modal="contact" type="button">
@@ -976,7 +967,7 @@ const modalContents = {
       
       .background-section {
         background: linear-gradient(135deg, #FF7A00 0%, #FF4D00 100%);
-        padding: 4rem 2rem;
+        padding: 3rem 2rem;
         text-align: center;
         position: relative;
       }
@@ -992,7 +983,7 @@ const modalContents = {
       }
       
       .background-title {
-        font-size: 3.2rem;
+        font-size: 2.3rem;
         font-weight: 900;
         color: white;
         margin-bottom: 1.5rem;
@@ -1000,7 +991,7 @@ const modalContents = {
       }
       
       .background-text {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         color: rgba(255,255,255,0.95);
         max-width: 900px;
         margin: 0 auto;
@@ -1009,7 +1000,7 @@ const modalContents = {
       }
       
       .main-content {
-        padding: 2rem 2rem;
+        padding: 1rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
       }
@@ -1064,7 +1055,8 @@ const modalContents = {
       .bracket-content {
         font-size: 1.1rem;
         line-height: 1.6;
-        color: #e0e0e0;
+        color: #ffffff;
+        font-weight: 500;
       }
       
 
@@ -1090,7 +1082,7 @@ const modalContents = {
       
       .stat-label {
         font-size: 1rem;
-        color: #b0b0b0;
+        color: #ffffff;
         font-weight: 600;
       }
       
@@ -1154,7 +1146,7 @@ const modalContents = {
       .project-name {
         font-size: 1.1rem;
         font-weight: 600;
-        color: #e0e0e0;
+        color: #ffffff;
         margin-bottom: 0.5rem;
       }
       
@@ -1259,7 +1251,7 @@ const modalContents = {
       .pillar-content {
         font-size: 1rem;
         line-height: 1.5;
-        color: #d0d0d0;
+        color: #ffffff;
       }
       
       .marketing-system {
