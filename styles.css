@@ -1909,6 +1909,31 @@ body {
     display: block !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: auto !important; /* Firefox */
+}
+
+/* Show scrollbar on mobile webkit browsers */
+.onboarding-content:has(.question-container)::-webkit-scrollbar,
+.onboarding-content.questionnaire-screen::-webkit-scrollbar {
+    width: 5px !important;
+    display: block !important;
+}
+
+.onboarding-content:has(.question-container)::-webkit-scrollbar-track,
+.onboarding-content.questionnaire-screen::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1) !important;
+    border-radius: 4px !important;
+}
+
+.onboarding-content:has(.question-container)::-webkit-scrollbar-thumb,
+.onboarding-content.questionnaire-screen::-webkit-scrollbar-thumb {
+    background: var(--primary-color) !important;
+    border-radius: 4px !important;
+}
+
+.onboarding-content:has(.question-container)::-webkit-scrollbar-thumb:hover,
+.onboarding-content.questionnaire-screen::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color) !important;
 }
 
 /* Responsive onboarding content centering */
