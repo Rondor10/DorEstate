@@ -1108,6 +1108,7 @@ body {
   margin: 0;
   padding: 0;
   width: auto;
+  transform: translateX(50px);
 }
 
 /* Logo cell: no extra clickable area */
