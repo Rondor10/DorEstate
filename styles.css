@@ -212,7 +212,6 @@ body {
         justify-content: unset !important;
         align-items: unset !important;
         display: block !important;
-        padding: 1.5rem 1rem !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
     }
@@ -612,17 +611,12 @@ body {
         padding: 1rem;
     }
     
-    .onboarding-content {
-        padding: 1.5rem 1rem;
-    }
-
     /* Questionnaire small screen fix */
     .onboarding-content:has(.question-container),
     .onboarding-content.questionnaire-screen {
         justify-content: unset !important;
         align-items: unset !important;
         display: block !important;
-        padding: 1rem 0.8rem !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
     }
@@ -1902,7 +1896,7 @@ body {
 
 .onboarding-content {
     flex: 1;
-    padding: 1rem;
+    padding: .5rem .5rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
