@@ -2151,28 +2151,7 @@ function showCopySuccess(message) {
 // Onboarding Steps Configuration
 function initializeOnboardingSteps() {
   onboardingSteps = [
-    // 1) Intro Screen
-    {
-      type: "intro",
-      title: "תכירו את הדרך החדשה למצוא בית",
-      subtitle: "כמו טינדר, אבל לדירות. קליל, מהיר, כיפי.",
-      content: `
-        <div class="intro-screen" style="text-align:center; padding:2.5rem 2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:calc(100vh - 140px); box-sizing:border-box; border-radius:0;">
-          <div style="margin-bottom:3rem;">
-            <img src="gen_pic/tinder_mock.png" alt="מסך דוגמה" style="max-width:320px; width:85%; height:auto; border-radius:24px; box-shadow:0 12px 32px rgba(0,0,0,0.15), 0 4px 16px rgba(212, 175, 55, 0.2); transition:transform 0.3s ease; display:block; margin:0 auto;" />
-          </div>
-          <div class="intro-text" style="margin-bottom:3rem; max-width:400px;">
-            <h2 style="margin-bottom:1.5rem; font-size:2rem; font-weight:700; line-height:1.2; color:var(--text-primary); background:linear-gradient(135deg, var(--primary-color), #c8a842); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">מצאו את הבית שלכם בהחלקה</h2>
-            <p style="color:#555; margin-bottom:0; font-size:1.2rem; line-height:1.5; font-weight:400;">נכסים שיתאימו בדיוק למה שאתם מחפשים</p>
-          </div>
-          <button id="toQuestionnaire" style="background:linear-gradient(135deg, var(--primary-color), #c8a842); color:white; border:none; padding:1.3rem 3rem; border-radius:60px; cursor:pointer; font-size:1.3rem; font-weight:600; box-shadow:0 8px 24px rgba(212, 175, 55, 0.3); transition:all 0.3s ease; min-width:280px; position:relative; overflow:hidden;">
-            מתחילים עכשיו
-          </button>
-        </div>
-      `,
-    },
-
-    // 2) Micro Questionnaire (single screen)
+    // 1) Micro Questionnaire (single screen)
     {
       type: "quick-qs",
       title: "שאלון קצר",
