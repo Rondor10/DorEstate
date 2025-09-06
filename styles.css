@@ -1754,6 +1754,7 @@ body {
 
 .modal-container.legal-modal .modal-content {
     color: #ffffff;
+    padding: 2rem 2rem;
 }
 
 .modal-container.legal-modal h2 {
@@ -1895,7 +1896,7 @@ body {
 }
 
 .progress-text {
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
@@ -3153,6 +3154,7 @@ text-align: center;
 
 .timeline-container {
   position: relative;
+  padding: 0rem 1rem;
 }
 
 .timeline-line {

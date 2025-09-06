@@ -2444,8 +2444,11 @@ function loadStep(stepIndex) {
     nextBtn.style.display = "none"; // advance via verify
     // phone auth removed - no longer needed
   } else if (step.type === "quick-qs") {
-    progressFill.style.width = "100%";
-    progressText.textContent = `שלב 2 מתוך 2`;
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) progressBar.style.display = "none";
+    progressText.textContent = `מסננים`;
+    progressText.style.textAlign = "center";
+    progressText.style.width = "100%";
     prevBtn.style.display = "none"; // hide back on quick-qs
     nextBtn.style.display = "none"; // advance via button
   } else {
