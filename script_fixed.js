@@ -1167,7 +1167,7 @@ const modalContents = {
         </div>
         
         <!-- Flagship Projects -->
-        <div class="projects-section">
+        <div class="projects-menu-section">
           <h2 class="section-title">פרויקטי דגל</h2>
           <div class="projects-slider" id="projectsSlider">
             <div class="projects-track" id="projectsTrack">

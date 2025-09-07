@@ -79,24 +79,38 @@
             </nav>
         </div>
 
-        <!-- Hero Section -->
+        <!-- Hero Section with Video Background -->
         <section class="hero-section">
-            <div
-                class="hero-content"
-                style="
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    color: white;
-                    text-align: center;
-                "
-            >
+            <!-- Video Background -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="gen_pic/intro_vid.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+            </video>
+        </section>
+
+        <section class="hero-overlay">
+            <div class="hero-content">
                 <h1 class="hero-title">נדל"ן כפי שלא חווית מעולם.</h1>
-                <p class="hero-subtitle">
-                    שלושה עשורים של יזמות, של אסטרטגיה ושל שיווק.
-                </p>
-                <button class="cta-button" id="startJourney">
+                    <p class="hero-subtitle">
+                        שלושה עשורים של יזמות, של אסטרטגיה ושל שיווק.
+                    </p>
+            </div>
+        </section>
+
+        <!-- Legacy Story Section -->
+        <section class="legacy-section">
+            <div class="container">
+                <div class="legacy-story">
+                    <p class="story-text">בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים, מתוך תשוקה שרק הולכת ומתחזקת.</p>
+                    <p class="story-text">עבורנו, נדל"ן מהווה שליחות, דרך לחבר כל אדם באשר למרחב ההגשמה המדויק עבורו.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="main-cta-section">
+            <div class="container">
+                <button class="cta-button main-cta" id="startJourney">
                     <div class="btn-hero-content-container">
                         <span class="button-text">הדור הבא שלך מתחיל כאן</span>
                         <i class="fas fa-arrow-left"></i>
@@ -105,18 +119,105 @@
             </div>
         </section>
 
-        <!-- Social Links Fixed -->
-        <div class="social-fixed">
-            <a href="https://www.facebook.com/DorRealEstate" class="social-link facebook" target="_blank"
-                ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="https://il.linkedin.com/company/dor-real-estate" class="social-link linkedin" target="_blank"
-                ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a href="https://wa.me/972505534488" class="social-link whatsapp" target="_blank"
-                ><i class="fab fa-whatsapp"></i
-            ></a>
-        </div>
+        <!-- Steps Section -->
+        <section class="steps-section">
+            <div class="container">
+                <h2 class="section-title">מתודולוגיית השיווק</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">01</div>
+                        <h3 class="step-title">איתור הזדמנויות</h3>
+                        <p class="step-description">בדיקה מעמיקה של רמות המחירים באזור, מיפוי המתחרים בהווה ובעתיד, פילוח ואיפיון קהלי היעד. זיהוי הערך המוסף הייחודי של הפרויקט והתנגדויות פוטנציאליות.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">02</div>
+                        <h3 class="step-title">בניית אסטרטגיה</h3>
+                        <p class="step-description">בניית תוכנית שיווקית מותאמת-דאטה, הכוללת תקציבי פרסום מדויקים, הקצאת צוותי מכירה ייעודיים, KPI's ברורים ולוחות זמנים דינמיים. הגדרת אופי וסוג הפרסום מבוססי אנליטיקה.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">03</div>
+                        <h3 class="step-title">אפיון מעמיק</h3>
+                        <p class="step-description">תכנון המפרט, מאפייני הבניין ותמהיל הדירות הנכונים ביותר להצלחת הפרויקט בשיתוף היזם והאדריכל.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">04</div>
+                        <h3 class="step-title">עיצוב זהות חזותית</h3>
+                        <p class="step-description">עבודה עם חברות המיתוג המובילות בנדל"ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">05</div>
+                        <h3 class="step-title">אקסלרציית מכירות</h3>
+                        <p class="step-description">העברת הפרויקט לצוות מכירות מוכשר לאחר תהליך חפיפה מעמיק וכלים מתקדמים לטיפול בהתנגדויות.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">06</div>
+                        <h3 class="step-title">ניהול ביצועים</h3>
+                        <p class="step-description">מעקב רציף אחר ביצועים, אופטימיזציה של קמפיינים ודוחות שבועיים מפורטים. ליווי מו"מ משפטי עד סגירת העסקה. ניתוח בזמן אמת של כל נתוני המכירה.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <div class="container">
+                <h2 class="section-title">פרויקטי דגל</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                        <div class="project-overlay">
+                            <div class="project-name">גולומב 54, גבעתיים</div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                        <div class="project-overlay">
+                            <div class="project-name">יצחק שדה 5, גבעתיים</div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                        <div class="project-overlay">
+                            <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+                <h2 class="section-title">השירותים שלנו</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3 class="service-title">ליווי אסטרטגי</h3>
+                        <p class="service-description">ליווי אסטרטגי צמוד ליזמים ולמשקיעים. ניתוח שווקים ואזורים, תכניות ROI/IRR ממוקדות והכוונה ברמת הניואנסים.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">📈</div>
+                        <h3 class="service-title">שיווק קוונטי</h3>
+                        <p class="service-description">מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה. אסטרטגיות מבוססות דאטה וסגמנטציה חכמה של קהלי יעד.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3 class="service-title">מכירות מתקדמות</h3>
+                        <p class="service-description">ניהול מכירות מקצועי עם טכנולוגיות מתקדמות, CRM חכם ותהליכי מכירה מותאמים אישית.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Modal Overlay -->
         <div class="modal-overlay" id="modalOverlay">
@@ -181,34 +282,50 @@
         
         <script type="module" src="/script_fixed.js?v=2024090610"></script>
 
-        <!-- Contact Info Fixed -->
-        <div id="contact-fixed" class="contact-fixed">
-            <p>ויצמן 37</p>
-            <p>גבעתיים 5337204</p>
-            <p>050-5534488</p>
-            <p>inquiries@dorealestate.com</p>
-        </div>
-
-        <!-- Legal Stuff -->
-        <footer class="bottom-bar">
+        <!-- Footer Section -->
+        <footer class="main-footer">
             <div class="container">
-                <!-- Footer Menu -->
-                <nav class="footer-nav">
-                    <ul>
-                        <li>
-                            <a href="#" data-modal="terms" type="terms">תנאי שימוש</a>
-                        </li>
-                        <li>
-                            <a href="#" data-modal="privacy" type="privacy">מדיניות פרטיות</a>
-                        </li>
-                        <li>
-                            <a href="#" data-modal="accessibility" type="accessibility">הסדרי נגישות</a>
-                        </li>
-                        <li>
-                            <a href="#" data-modal="ethics" type="ethics">כללי אתיקה</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="footer-content">
+                    <!-- Right: Contact Info (Desktop Only) -->
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>inquiries@dorealestate.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>050-553-4488</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ויצמן 37, גבעתיים</span>
+                        </div>
+                    </div>
+                    <!-- Center: Legal Stuff (Desktop Only) -->
+                    <nav class="footer-legal">
+                        <ul>
+                            <li><a href="#" data-modal="terms" type="terms">תנאי שימוש</a></li>
+                            <li><a href="#" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
+                            <li><a href="#" data-modal="accessibility" type="accessibility">הסדרי נגישות</a></li>
+                            <li><a href="#" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
+                        </ul>
+                    </nav>
+                    <!-- Left: Social Media Icons -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/DorRealEstate" class="social-link facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://il.linkedin.com/company/dor-real-estate" class="social-link linkedin" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/972505534488" class="social-link whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dor_real_estate/" class="social-link instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </footer>
 
