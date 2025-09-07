@@ -737,7 +737,6 @@ body {
     
     /* Hero section adjustments - more space since nav is smaller */
     .hero-section {
-        height: 55vh;
         padding: 1rem 0.5rem;
         display: flex;
         align-items: center;
@@ -4775,9 +4774,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    min-height: 500px !important;
-  }
   
   .hero-title {
     font-size: 1.7rem !important;
