@@ -201,7 +201,6 @@ const modalContents = {
                 <div class="feature-tag">Machine Learning Models</div>
                 <div class="feature-tag">AI Predictions</div>
                 <div class="feature-tag">Zoning Analysis</div>
-                <div class="feature-tag">Licensing Management</div>
               </div>
             </div>
 
@@ -220,7 +219,6 @@ const modalContents = {
               </p>
               <div class="service-features">
                 <div class="feature-tag">Market Intelligence</div>
-                <div class="feature-tag">Capital Strategy</div>
                 <div class="feature-tag">ROI / IRR Modeling</div>
                 <div class="feature-tag">Exit Strategy</div>
               </div>
@@ -242,7 +240,6 @@ const modalContents = {
                 מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה.
               </p>
               <div class="service-features">
-                <div class="feature-tag">Data-Driven Strategy</div>
                 <div class="feature-tag">AI Market Segmentation</div>
                 <div class="feature-tag">Brand Architecture</div>
                 <div class="feature-tag">Conversion Intelligence</div>

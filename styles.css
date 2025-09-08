@@ -1325,10 +1325,6 @@ body {
 
 .mobile-submenu-content {
   position: fixed;
-  left: -250px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 220px;
   background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
   border-radius: 8px;
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
@@ -1342,7 +1338,6 @@ body {
 }
 
 .mobile-submenu.expanded .mobile-submenu-content {
-  left: 10px;
   opacity: 1;
   visibility: visible;
 }
@@ -1649,7 +1644,6 @@ body {
 
 .cta-button {
   display: inline-block;
-  margin-top: 1.5rem;
   padding: 1rem 2.5rem !important;
   background: var(--primary-color) !important;
   color: white !important;
@@ -3487,7 +3481,6 @@ text-align: center;
 .service-header {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .service-icon {
@@ -4570,7 +4563,7 @@ body {
 
 /* STEPS SECTION */
 .steps-section {
-  background: #fff;
+  background: linear-gradient(45deg, #1f181a, rgb(0 0 0 / 66%));;
 }
 
 .steps-grid {
@@ -4640,7 +4633,7 @@ body {
 
 .projects-section {
   color: white;
-  background: linear-gradient(45deg, var(--primary-color), rgb(46 0 235 / 66%));
+  background: linear-gradient(45deg, #f66200, rgb(0 0 0 / 66%));
 }
 
 .projects-grid {
@@ -4706,7 +4699,7 @@ body {
 
 /* SERVICES SECTION */
 .services-section {
-  background: #fff;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, #0c1b2b 100%);
 }
 
 .services-grid {
