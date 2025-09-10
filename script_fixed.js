@@ -843,11 +843,6 @@ const modalContents = {
         font-weight: 500;
       }
       
-
-      .stats-section {
-        margin: 2rem 0;
-      }
-      
       .stat-item {
         background: linear-gradient(135deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
         padding: 2rem;
@@ -1545,14 +1540,6 @@ const modalContents = {
         </div>
         
         <div class="contact-content">
-          <!-- Hero Section -->
-          <div class="contact-hero">
-            <h1 class="contact-title">דברו איתנו</h1>
-            <p class="contact-subtitle">
-              המסלול שלך מתחיל כאן.
-            </p>
-          </div>
-          
           <!-- Main Communication Grid -->
           <div class="communication-grid">
             <!-- Contact Information -->
@@ -2322,6 +2309,9 @@ function openModal(type) {
   if (content) {
     modalContent.innerHTML = content.content;
     modalOverlay.classList.add("active");
+    
+    // Enhanced scroll lock - prevents background scroll and scroll chaining
+    document.body.classList.add("modal-open");
     document.body.style.overflow = "hidden";
     
     // Add legal-modal class for legal modals
@@ -2383,7 +2373,11 @@ function openModal(type) {
 // Close modal
 function closeModal() {
   modalOverlay.classList.remove("active");
+  
+  // Enhanced scroll unlock - restore background scroll
+  document.body.classList.remove("modal-open");
   document.body.style.overflow = ""; // instead of "hidden"
+  
   const contactFixed = document.querySelector(".contact-fixed");
   if (contactFixed) contactFixed.style.display = "block";
   
@@ -4471,4 +4465,70 @@ function initMobileMenu() {
 // Initialize mobile menu when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
+  initCounterAnimation();
 });
+
+// ========================================
+// ENHANCED COUNTER ANIMATION
+// ========================================
+
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('.animated-counter');
+  const options = {
+    threshold: 0.7,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counting')) {
+        animateCounter(entry.target);
+      }
+    });
+  }, options);
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+}
+
+function animateCounter(counter) {
+  const target = parseInt(counter.dataset.target);
+  const suffix = counter.dataset.suffix || '';
+  const duration = 2000; // 2 seconds
+  const step = target / (duration / 16); // 60fps
+  
+  let current = 0;
+  counter.classList.add('counting');
+  
+  const timer = setInterval(() => {
+    current += step;
+    
+    if (current >= target) {
+      // Format final number with commas if >= 1000
+      let displayValue;
+      if (target >= 1000) {
+        displayValue = target.toLocaleString('he-IL');
+      } else {
+        displayValue = target;
+      }
+      counter.textContent = displayValue + suffix;
+      clearInterval(timer);
+    } else {
+      // Format the number based on its size
+      let displayValue;
+      if (target >= 1000) {
+        displayValue = Math.floor(current).toLocaleString('he-IL');
+      } else {
+        displayValue = Math.floor(current);
+      }
+      counter.textContent = displayValue + suffix;
+    }
+  }, 16);
+
+  // Add stagger effect to multiple counters
+  const allCounters = document.querySelectorAll('.animated-counter');
+  const currentIndex = Array.from(allCounters).indexOf(counter);
+  
+  counter.style.animationDelay = `${currentIndex * 0.2}s`;
+}
