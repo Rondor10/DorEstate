@@ -870,10 +870,6 @@ const modalContents = {
         font-weight: 600;
       }
       
-      .projects-section {
-        margin: 2rem 0;
-      }
-      
       .section-title {
         font-size: 2.5rem;
         font-weight: 800;
