@@ -5991,7 +5991,6 @@ body.modal-open {
 /* Ensure modal content can scroll independently */
 .modal-container {
   /* max-height: 100vh; */
-  overflow-y: auto;
   overscroll-behavior: contain; /* Prevents scroll chaining to background */
 }
 
