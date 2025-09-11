@@ -249,7 +249,7 @@ const modalContents = {
           <!-- CTA Section -->
           <div class="cta-section">
             <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">Experience The Future</h2>
-            <p style="color: #b8d8b8; margin-bottom: 2rem;">
+            <p style="margin-bottom: 2rem;">
             בוא נשנה יחד את כללי המשחק שלך.
             </p>
             <button class="quantum-cta-services" data-modal="team" type="button">
