@@ -117,7 +117,12 @@ const modalContents = {
         </div>
         
         <div class="legacy-footer">
-          <button class="legacy-cta" data-start-journey>על מה אתם חולמים?</button>
+          <button class="legacy-cta" data-start-journey>
+            <div class="btn-hero-content-container">
+              <span class="button-text">על מה אתם חולמים?</span>
+              <i class="fas fa-arrow-left"></i>
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -198,9 +203,9 @@ const modalContents = {
                 ניתוח תב"ע ותכנון מותאם, לצד ניהול רישוי וביצוע מוקפד. יצירת ערך אמיתי כבר מהרעיון ועד המפתח.
               </p>
               <div class="service-features">
-                <div class="feature-tag">Machine Learning Models</div>
-                <div class="feature-tag">AI Predictions</div>
-                <div class="feature-tag">Zoning Analysis</div>
+                <div class="feature-tag">מודלי למידת מכונה</div>
+                <div class="feature-tag">פרדיקציות מבוססות AI</div>
+                <div class="feature-tag">ניתוח תב״ע</div>
               </div>
             </div>
 
@@ -218,9 +223,9 @@ const modalContents = {
               ליווי אסטרטגי צמוד ליזמים ולמשקיעים. ניתוח שווקים ואזורים, תכניות ROI/IRR ממוקדות והכוונה ברמת הניואנסים. מיזמים חדשים זוכים לתכנון ובקרה קפדניים, ומשקיעים נהנים מהבנת שוק, מבנה עסקה ונתיבי יציאה ברורים.
               </p>
               <div class="service-features">
-                <div class="feature-tag">Market Intelligence</div>
-                <div class="feature-tag">ROI / IRR Modeling</div>
-                <div class="feature-tag">Exit Strategy</div>
+                <div class="feature-tag">מודיעין שוק</div>
+                <div class="feature-tag">מידול ROI / IRR</div>
+                <div class="feature-tag">אסטרטגיית יציאה</div>
               </div>
             </div>
 
@@ -229,7 +234,7 @@ const modalContents = {
                 <div class="service-icon">📈</div>
                 <div>
                   <h3 class="service-title">
-                    שיווק קוונטי
+                    שיווק חכם
                     <span class="service-title-en">Quantum Marketing</span>
                   </h3>
                 </div>
@@ -239,9 +244,9 @@ const modalContents = {
                 מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה.
               </p>
               <div class="service-features">
-                <div class="feature-tag">AI Market Segmentation</div>
-                <div class="feature-tag">Brand Architecture</div>
-                <div class="feature-tag">Conversion Intelligence</div>
+                <div class="feature-tag">פילוח שוק מבוסס AI</div>
+                <div class="feature-tag">ארכיטקטורת מותג</div>
+                <div class="feature-tag">אינטליגנציית המרה</div>
               </div>
             </div>
 
@@ -249,17 +254,21 @@ const modalContents = {
           
           <!-- CTA Section -->
           <div class="cta-section">
-            <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">Experience The Future</h2>
-            <p style="margin-bottom: 2rem;">
+            <h2 style="color: #ffffff; margin-bottom: 1rem; font-size: 1.8rem;">העתיד כבר כאן</h2>
+            <p style="margin-bottom: 1rem;">
             בוא נשנה יחד את כללי המשחק שלך.
             </p>
             <button class="quantum-cta-services" data-modal="team" type="button">
-              <i class="fas fa-users" style="margin-left: 0.5rem;"></i>
-              Meet The Team | פגשו את הצוות
+              <div class="btn-hero-content-container" style="color:#ffffff;">
+                <span class="button-text" style="color:#ffffff;">פגשו את הצוות</span>
+                <i class="fas fa-users"></i>
+              </div>
             </button>
             <button class="quantum-cta-services" data-modal="contact" type="button">
-              <i class="fas fa-rocket" style="margin-left: 0.5rem;"></i>
-              Start Your Journey | התחילו את המסע
+              <div class="btn-hero-content-container" style="color:#ffffff;">
+                <span class="button-text" style="color:#ffffff;">פתחו במסע</span>
+                <i class="fas fa-rocket"></i>
+              </div>
             </button>
           </div>
         </div>
@@ -306,7 +315,7 @@ const modalContents = {
 
   <div class="team-content">
     <div class="team-hero">
-      <h1 class="team-title">The Brain Trust</h1>
+      <h1 class="team-title">חבר הבכירים</h1>
       <p class="team-subtitle">
         צוות מובילים שמשלב חדשנות טכנולוגית עם מומחיות עמוקה. כל אחד מחברי הצוות מביא פרספקטיבה ייחודית
         שמעצבת יחד את עתיד הנדל"ן בישראל.
@@ -337,9 +346,13 @@ const modalContents = {
     </div>
 
     <div class="navigation-controls">
-        <button class="nav-btn" onclick="DorTeam.prev()" aria-label="Previous">‹</button>
+        <button class="projects-nav-btn team-prev" onclick="DorTeam.prev()" aria-label="Previous">
+            <i class="fas fa-chevron-right"></i>
+        </button>
       <div class="team-dots" id="team-dots"></div>
-        <button class="nav-btn" onclick="DorTeam.next()" aria-label="Next">›</button>
+        <button class="projects-nav-btn team-next" onclick="DorTeam.next()" aria-label="Next">
+            <i class="fas fa-chevron-left"></i>
+        </button>
     </div>
   </div>
 </div>
@@ -468,7 +481,6 @@ const modalContents = {
         
         .card-icon {
           font-size: 2.5rem;
-          margin-bottom: 1rem;
           color: #00ff88;
         }
         
@@ -643,7 +655,7 @@ const modalContents = {
           <div class="opportunities-grid">
             <div class="opportunity-card">
               <div class="card-icon">🚀</div>
-              <h3 class="card-title">Real Estate Innovation</h3>
+              <h3 class="card-title">חדשנות נדל"נית</h3>
               <p class="card-description">
                 הובל את המהפכה הטכנולוגית בנדל"ן. פתח פתרונות חדשניים שישנו את הדרך שבה אנשים קונים ומוכרים נכסים.
               </p>
@@ -651,7 +663,7 @@ const modalContents = {
             
             <div class="opportunity-card">
               <div class="card-icon">💡</div>
-              <h3 class="card-title">Strategic Partnerships</h3>
+              <h3 class="card-title">שת"פים אסטרטגיים</h3>
               <p class="card-description">
                 בנה קשרים אסטרטגיים עם השחקנים המובילים בשוק. צור שותפויות שיניבו תוצאות מדהימות.
               </p>
@@ -659,7 +671,7 @@ const modalContents = {
             
             <div class="opportunity-card">
               <div class="card-icon">📊</div>
-              <h3 class="card-title">Data-Driven Growth</h3>
+              <h3 class="card-title">צמיחה מבוססת-דאטה</h3>
               <p class="card-description">
                 השתמש בביג דאטה ובינה מלאכותית כדי לזהות הזדמנויות חדשות ולהוביל את השוק קדימה.
               </p>
@@ -667,7 +679,7 @@ const modalContents = {
             
             <div class="opportunity-card">
               <div class="card-icon">🎯</div>
-              <h3 class="card-title">Market Leadership</h3>
+              <h3 class="card-title">הובלה בשוק</h3>
               <p class="card-description">
                 הובל פרויקטים פורצי דרך שיקבעו את הסטנדרטים החדשים של התעשייה בישראל ובעולם.
               </p>
@@ -676,7 +688,7 @@ const modalContents = {
           
           <!-- Skills Section -->
           <div class="skills-section">
-            <h2 class="skills-title">What We're Looking For</h2>
+            <h2 class="skills-title">הפרופיל האידיאלי</h2>
             <div class="skills-grid">
               <div class="skill-tag">חשיבה אסטרטגית</div>
               <div class="skill-tag">מנהיגות טבעית</div>
@@ -689,20 +701,13 @@ const modalContents = {
             </div>
           </div>
           
-          <!-- CTA Section -->
-          <div class="cta-section">
-            <h2 style="background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;; margin-bottom: 1rem;">Future Awaits You</h2>
-            <p style="color: #ffffff; margin-bottom: 1rem;">
-              אם אתה מוכן לקחת את הקריירה שלך לשלב הבא ולהיות חלק ממשהו מהפכני, בוא נדבר.
-            </p>
-            <button class="quantum-cta contact" data-modal="contact" type="button">
-              <i class="fas fa-rocket" style="margin-left: 0.5rem;"></i>
-              Apply Now | הגש מועמדות
-            </button>
-            <button class="quantum-cta" onclick="window.open('https://wa.me/972505534488?text=היי, אני מעוניין לשמוע עוד על הזדמנויות קריירה ב-Dor Israel', '_blank')" style="background: linear-gradient(45deg, #25d366, #128c7e);">
-              <i class="fab fa-whatsapp" style="margin-left: 0.5rem;"></i>
-              WhatsApp Chat
-            </button>
+          <button class="quantum-cta contact" data-modal="contact" type="button">
+              <div class="btn-hero-content-container">
+                <span class="button-text">הגש מועמדות</span>
+                <i class="fas fa-rocket"></i>
+              </div>
+          </button>
+
           </div>
         </div>
       </div>
@@ -1360,7 +1365,10 @@ const modalContents = {
       <div class="ctasset-section">
         <h2 class="ctasset-title">בואו נבנה את סיפור ההצלחה הבא</h2>
         <button class="ctasset-button" data-modal="contact">
-          הצטרפו ליזמים שכבר איתנו
+          <div class="btn-hero-content-container">
+            <span class="button-text">הצטרפו ליזמים שכבר איתנו</span>
+            <i class="fas fa-arrow-left"></i>
+          </div>
         </button>
       </div>
     </div>
@@ -2211,6 +2219,141 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Event Listeners
 
+// Projects Horizontal Scrolling Functionality
+function initProjectsScrolling() {
+  const scrollTrack = document.getElementById('projectsScrollTrack');
+  const prevBtn = document.getElementById('projectsPrev');
+  const nextBtn = document.getElementById('projectsNext');
+  const dotsContainer = document.getElementById('projectsNavDots');
+  
+  if (!scrollTrack || !prevBtn || !nextBtn || !dotsContainer) return;
+  
+  const projectCards = scrollTrack.querySelectorAll('.project-card');
+  // Calculate actual card width including gap (350px card + 2rem gap)
+  const cardWidth = 350 + 32; // 350px card + 32px gap (2rem)
+  let currentIndex = 0;
+  
+  // Create navigation dots
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    projectCards.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `projects-nav-dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => scrollToProject(index));
+      dotsContainer.appendChild(dot);
+    });
+  }
+  
+  // Update dots active state
+  function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.projects-nav-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+  
+  // Scroll to specific project (fixed for RTL layout)
+  function scrollToProject(index) {
+    const oldIndex = currentIndex;
+    currentIndex = Math.max(0, Math.min(index, projectCards.length - 1));
+    
+    // For RTL layouts, we need to scroll in the opposite direction
+    // Calculate scroll position - in RTL, positive scroll moves right (backward)
+    const scrollPosition = -(currentIndex * cardWidth);
+    
+    console.log(`📍 Scrolling from ${oldIndex} to ${currentIndex}, RTL position: ${scrollPosition}px, cardWidth: ${cardWidth}px`);
+    console.log('ScrollTrack current scrollLeft:', scrollTrack.scrollLeft);
+    
+    // Use direct scrollLeft assignment for RTL compatibility
+    scrollTrack.scrollLeft = scrollPosition;
+    
+    // Fallback with scrollTo if direct assignment doesn't work
+    setTimeout(() => {
+      if (Math.abs(scrollTrack.scrollLeft - scrollPosition) > 10) {
+        console.log('⚠️ Direct scroll failed, trying scrollTo method');
+        scrollTrack.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+    
+    updateDots();
+    updateNavButtons();
+    
+    console.log(`🎯 Scrolled to project ${currentIndex}, RTL target position: ${scrollPosition}px`);
+  }
+  
+  // Update navigation button states
+  function updateNavButtons() {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= projectCards.length - 1;
+  }
+  
+  // Navigation event listeners - Fixed for RTL layout
+  prevBtn.addEventListener('click', () => {
+    console.log('Previous button clicked, currentIndex:', currentIndex);
+    if (currentIndex > 0) {
+      scrollToProject(currentIndex - 1);
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    console.log('Next button clicked, currentIndex:', currentIndex);
+    if (currentIndex < projectCards.length - 1) {
+      scrollToProject(currentIndex + 1);
+    }
+  });
+  
+  // Touch/swipe support
+  let startX = 0;
+  let scrollLeft = 0;
+  
+  scrollTrack.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    scrollLeft = scrollTrack.scrollLeft;
+  });
+  
+  scrollTrack.addEventListener('touchmove', (e) => {
+    if (!startX) return;
+    
+    const x = e.touches[0].clientX;
+    const diff = startX - x;
+    scrollTrack.scrollLeft = scrollLeft + diff;
+  });
+  
+  scrollTrack.addEventListener('touchend', () => {
+    startX = 0;
+    // Snap to closest project (RTL compatible)
+    const newIndex = Math.round(Math.abs(scrollTrack.scrollLeft) / cardWidth);
+    scrollToProject(newIndex);
+  });
+  
+  // Mouse wheel horizontal scrolling
+  scrollTrack.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      scrollTrack.scrollLeft += e.deltaY;
+    }
+  });
+  
+  // Sync with manual scroll events (RTL compatible)
+  scrollTrack.addEventListener('scroll', () => {
+    const newIndex = Math.round(Math.abs(scrollTrack.scrollLeft) / cardWidth);
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex;
+      updateDots();
+      updateNavButtons();
+    }
+  });
+  
+  // Initialize
+  createDots();
+  updateNavButtons();
+  
+  console.log(`🎨 Projects horizontal scrolling initialized with ${projectCards.length} cards, cardWidth: ${cardWidth}px`);
+}
+
 // Initialize all event listeners
 function initializeEventListeners() {
   // Modal triggers
@@ -2726,6 +2869,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeEventListeners(); // מודלים, אונבורדינג וכו'
   updateExecutiveCarousel(); // הקרוסלה של ההנהלה
   setupSubmenus(); // הפונקציה החדשה לתפריטים
+  initProjectsScrolling(); // גלילה אופקית של פרויקטים
 });
 
 // === Navigation Submenus ===
@@ -3290,8 +3434,37 @@ function startPropertySwiping() {
   loadProperty();
   const likeBtn = document.getElementById("likeBtn");
   const dislikeBtn = document.getElementById("dislikeBtn");
+  const exitBtn = document.getElementById("swipeExitBtn");
+  
   if (likeBtn) likeBtn.onclick = () => swipeProperty("like");
   if (dislikeBtn) dislikeBtn.onclick = () => swipeProperty("dislike");
+  if (exitBtn) exitBtn.onclick = () => exitSwipeInterface();
+}
+
+// Exit swipe interface function
+function exitSwipeInterface() {
+  const swipeInterface = document.getElementById("swipeInterface");
+  if (swipeInterface) {
+    swipeInterface.style.display = "none";
+    
+    // Reset swipe state
+    swipeIndex = 0;
+    likedProperties = [];
+    
+    // Return to onboarding or show results
+    if (likedProperties.length > 0) {
+      // Show results if user had likes
+      showRegistrationForm();
+    } else {
+      // Return to previous onboarding step
+      if (currentStep > 0) {
+        currentStep--;
+        renderOnboardingStep();
+      }
+    }
+    
+    console.log('🚪 Exited swipe interface');
+  }
 }
 
 // --- Helpers: load images for a property (manifest-based, zero probing) ---
@@ -3814,7 +3987,7 @@ function showRegistrationForm() {
             </div>
           </div>
           <label for="optionalConsent">
-            אני מאשר/ת קבלת עדכונים, דו״חות ותכנים שיווקיים באמצעות WhatsApp.
+            אני מאשר/ת קבלת עדכונים, דו״חות ותכנים שיווקיים.
           </label>
         </div>
 
@@ -4188,6 +4361,24 @@ function setLoading(btn, isLoading) {
 
 // ---- Team widget (global, executed always) ----
 window.DorTeam = (function () {
+  // Executive image cache
+  const imageCache = new Map();
+  
+  // Preload executive images
+  function preloadExecutiveImages() {
+    executiveData.forEach((exec, index) => {
+      const img = new Image();
+      img.onload = () => {
+        imageCache.set(exec.image, img);
+        console.log(`🎯 Cached executive image: ${exec.name}`);
+      };
+      img.onerror = () => {
+        console.warn(`⚠️ Failed to cache executive image: ${exec.name}`);
+      };
+      img.src = exec.image;
+    });
+  }
+  
   const executiveData = [
     { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
       description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
@@ -4233,7 +4424,16 @@ window.DorTeam = (function () {
     const desc  = document.getElementById('exec-description');
     const skills= document.getElementById('exec-skills');
 
-    if (photo) { photo.src = e.image; photo.alt = e.name; }
+    if (photo) { 
+      // Use cached image if available for smoother loading
+      const cachedImg = imageCache.get(e.image);
+      if (cachedImg) {
+        photo.src = cachedImg.src;
+      } else {
+        photo.src = e.image;
+      }
+      photo.alt = e.name; 
+    }
     if (name)  name.textContent = e.name;
     if (title) title.textContent = e.title;
     if (desc)  desc.textContent  = e.description;
@@ -4263,7 +4463,11 @@ window.DorTeam = (function () {
     });
   }
 
-  function init() { buildDots(); render(); }
+  function init() { 
+    buildDots(); 
+    render(); 
+    preloadExecutiveImages(); // Cache all executive images on initialization
+  }
 
   return {
     init,

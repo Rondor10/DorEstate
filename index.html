@@ -113,7 +113,7 @@
         <!-- 4. Stats Section -->
         <section class="stats-section dynamic-stats-showcase">
             <div class="container">
-                <h2 class="section-title">..Story in numbers</h2>
+                <h2 class="section-title">סיפור במספרים</h2>
                 <div class="stats-grid dynamic-stats-grid">
                     <div class="stat-item dynamic-stat-card">
                         <span class="stat-number animated-counter" data-target="5" data-suffix="B+">0</span>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="dynamic-stats-cta-container">
-                    <button class="cta-button main-cta dynamic-stats-cta" data-modal="services" type="services">
+                    <button class="cta-button main-cta premium-hero-cta" data-modal="services" type="services">
                         <div class="btn-hero-content-container">
                             <span class="button-text">שירותי הפירמה</span>
                             <i class="fas fa-arrow-left"></i>
@@ -143,39 +143,66 @@
           </div>
         </section>
 
-        <!-- 5. Projects Section -->
+        <!-- 5. Projects Section - Horizontal Scrolling Design -->
         <section class="projects-section flagship-projects-showcase">
             <div class="container">
                 <h2 class="section-title">פרויקטי דגל</h2>
-                <div class="projects-grid flagship-projects-grid">
-                    <div class="project-card flagship-project-card">
-                        <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
-                        <div class="project-overlay">
-                            <div class="project-name">גולומב 54, גבעתיים</div>
+                
+                <!-- Horizontal Scrolling Projects Container -->
+                <div class="projects-carousel-container">
+                    <div class="projects-scroll-track" id="projectsScrollTrack">
+                        <div class="project-card flagship-project-card">
+                            <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                            <div class="project-overlay">
+                                <div class="project-name">גולומב 54, גבעתיים</div>
+                                <div class="project-status">בשלבי בנייה</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card flagship-project-card">
+                            <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                            <div class="project-overlay">
+                                <div class="project-name">יצחק שדה 5, גבעתיים</div>
+                                <div class="project-status">נמכר במלואו</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card flagship-project-card">
+                            <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                            <div class="project-overlay">
+                                <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
+                                <div class="project-status">השקה בקרוב</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional projects for scrolling -->
+                        <div class="project-card flagship-project-card">
+                            <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+                            <div class="project-overlay">
+                                <div class="project-name">ריינס 23, גבעתיים</div>
+                                <div class="project-status">בשיווק</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card flagship-project-card">
+                            <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+                            <div class="project-overlay">
+                                <div class="project-name">יצחק שדה 7, גבעתיים</div>
+                                <div class="project-status">תכנון מתקדם</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="project-card flagship-project-card">
-                        <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
-                        <div class="project-overlay">
-                            <div class="project-name">יצחק שדה 5, גבעתיים</div>
-                        </div>
+                    <!-- Scroll Navigation -->
+                    <div class="projects-nav">
+                        <button class="projects-nav-btn projects-prev" id="projectsPrev" aria-label="הקודם">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="projects-nav-dots" id="projectsNavDots"></div>
+                        <button class="projects-nav-btn projects-next" id="projectsNext" aria-label="הבא">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
                     </div>
-                    
-                    <div class="project-card flagship-project-card">
-                        <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
-                        <div class="project-overlay">
-                            <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flagship-projects-cta-container">
-                    <button class="cta-button main-cta flagship-projects-cta" data-modal="projects" type="projects">
-                        <div class="btn-hero-content-container">
-                            <span class="button-text">פרויקטים</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </div>
-                    </button>
                 </div>
             </div>
         </section>
@@ -202,7 +229,7 @@
                     </div>
                 </div>
                 <div class="methodology-cta-container">
-                    <button class="cta-button main-cta methodology-cta" data-modal="assets" type="assets">
+                    <button class="cta-button main-cta premium-hero-cta" data-modal="assets" type="assets">
                         <div class="btn-hero-content-container">
                             <span class="button-text">ליזמים</span>
                             <i class="fas fa-arrow-left"></i>
@@ -220,24 +247,24 @@
                                         
                     <div class="service-card knowledge-card">
                         <div class="service-icon knowledge-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="service-title knowledge-title">ROI .vs. IRR Models</h3>
+                        <h3 class="service-title knowledge-title">ROI .vs. IRR</h3>
                         <p class="service-description knowledge-description">מודלים כלכליים מתקדמים להערכת החזר השקעה. ניתוח השוואתי מקיף של תשואות, חישובי NPV ותכנון תזרימי מזומנים אופטימליים לקבלת החלטות מושכלת.</p>
                     </div>
 
                     <div class="service-card knowledge-card">
                         <div class="service-icon knowledge-icon"><i class="fas fa-search"></i></div>
-                        <h3 class="service-title knowledge-title">Real-time Market Intelligence</h3>
+                        <h3 class="service-title knowledge-title">הבנת שוק בזמן-אמת</h3>
                         <p class="service-description knowledge-description">מערכת בינה עסקית מבוססת AI למעקב שוק רציף. אלגוריתמים מתקדמים לזיהוי טרנדים, ניתוח מתחרים וחיזוי שינויי שוק לקבלת יתרון תחרותי משמעותי.</p>
                     </div>
                     
                     <div class="service-card knowledge-card">
                         <div class="service-icon knowledge-icon"><i class="fas fa-lightbulb"></i></div>
-                        <h3 class="service-title knowledge-title">Entrepreneur's Playbook</h3>
+                        <h3 class="service-title knowledge-title">מתווה אסטרטגי-יזמי</h3>
                         <p class="service-description knowledge-description">מדריך אסטרטגי מותאם אישית ליזמים. מתודולוגיות מוכחות, תהליכי קבלת החלטות מובנים וכלים דיגיטליים לניהול פרויקטים ואקסלרציה של תוצאות עסקיות.</p>
                     </div>
                 </div>
                 <div class="knowledge-cta-container">
-                    <button class="cta-button main-cta" id="startJourney">
+                    <button class="cta-button main-cta premium-hero-cta" id="startJourney">
                         <div class="btn-hero-content-container">
                             <span class="button-text">הדור הבא שלך מתחיל כאן</span>
                             <i class="fas fa-arrow-left"></i>
@@ -289,6 +316,11 @@
 
         <!-- Property Swipe Interface -->
         <div class="swipe-interface" id="swipeInterface" style="display: none">
+            <!-- Exit/Close Button -->
+            <button class="swipe-exit-btn" id="swipeExitBtn" title="יציאה מממשק החדר" aria-label="יציאה מממשק החדר">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            
             <div class="swipe-container">
                 <div class="property-cards" id="propertyCards">
                     <!-- Property cards will be generated here -->
