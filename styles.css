@@ -1610,7 +1610,7 @@ body {
 .card-icon {
     position: relative;
     z-index: 2;
-    margin-bottom: 1rem;
+    margin-bottom: 4px;
 }
 
 .card-icon i {
@@ -4195,7 +4195,7 @@ text-align: center;
 .quantum-projects .projects-grid {
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
   gap: 2rem;
   position: relative;
   z-index: 2;
@@ -5290,7 +5290,7 @@ body {
 
 .hero-title-main {
   font-family: "Inter", "Heebo", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
   /* text-shadow: 0 0 40px rgba(255, 102, 0, 0.3), 0 0 80px rgba(255, 102, 0, 0.2); */
@@ -5990,7 +5990,7 @@ body.modal-open {
 
 /* Ensure modal content can scroll independently */
 .modal-container {
-  max-height: 100vh;
+  /* max-height: 100vh; */
   overflow-y: auto;
   overscroll-behavior: contain; /* Prevents scroll chaining to background */
 }

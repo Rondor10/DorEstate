@@ -223,8 +223,7 @@ const modalContents = {
                 <div class="feature-tag">Exit Strategy</div>
               </div>
             </div>
-          </div>
-            
+
             <div class="service-hexagon">
               <div class="service-header">
                 <div class="service-icon">📈</div>
@@ -245,6 +244,8 @@ const modalContents = {
                 <div class="feature-tag">Conversion Intelligence</div>
               </div>
             </div>
+
+          </div>
           
           <!-- CTA Section -->
           <div class="cta-section">
