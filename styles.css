@@ -65,7 +65,7 @@ body {
   }
   
   .hero-title-main {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
     line-height: 1.1;
   }
   
@@ -100,7 +100,7 @@ body {
   }
   
   .hero-title-main {
-    font-size: 2.8rem;
+    font-size: 2.8rem !important;
     line-height: 1.1;
   }
   
@@ -162,7 +162,7 @@ body {
     }
     
     .hero-title-main {
-        font-size: 2.2rem;
+        font-size: 2.2rem !important;
         line-height: 1.1;
     }
     
@@ -4835,9 +4835,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Show full video without cropping */
+  object-fit: cover; /* Fill container completely, crop if needed */
   object-position: center;
-  background: #000; /* Black background for video letterboxing if needed */
+  background: #000;
   z-index: 1;
 }
 
@@ -5695,7 +5695,7 @@ body {
 
 .hero-subtitle-small {
   font-family: "Inter", "Heebo", sans-serif;
-  font-size: 1.2rem !important;
+  font-size: 1.5rem !important;
   font-weight: 400;
   color: var(--primary-color);
   margin: 0;
@@ -5708,7 +5708,7 @@ body {
 
 .hero-title-main {
   font-family: "Inter", "Heebo", sans-serif;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
   margin: 0;
   /* text-shadow: 0 0 40px rgba(255, 102, 0, 0.3), 0 0 80px rgba(255, 102, 0, 0.2); */
