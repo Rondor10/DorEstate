@@ -38,7 +38,7 @@ const modalContents = {
   // מורשת בכתב
   about: {
   title: "Legacy Protocol | פרוטוקול המורשת",
-  content: ` 
+  content: `
     <div class="quantum-about">
       <div class="about-particles"></div>
       
@@ -47,11 +47,48 @@ const modalContents = {
           <h1 class="about-title">הסיפור שלנו</h1>
         </div>
         
-        <div class="legacy-story">
-          <p class="story-text">בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים, מתוך תשוקה שרק הולכת ומתחזקת.</p>
-          <p class="story-text">עבורנו, נדל"ן מהווה שליחות, דרך לחבר כל אדם באשר למרחב ההגשמה המדויק עבורו.</p>
+        <div class="legacy-story" dir="rtl">
+          <p class="story-text">בעולם שמשתנה ללא הרף,</p>
+          <p class="story-text">נדיר למצוא עסק אשר חי,</p>
+          <p class="story-text">נושם ומתרחב זה שלושה עשורים,</p>
+          <p class="story-text">מתוך תשוקה שרק הולכת ומתחזקת.</p>
+          <p class="story-text">עבורנו נדל"ן מהווה שליחות,</p>
+          <p class="story-text">דרך לחבר כל פרט למרחב המדויק.</p>
         </div>
-        
+
+
+        <div class="executives-section">
+          <h2 class="executives-title">חבר הבכירים</h2>
+
+          <div class="executive-progress">
+            <div class="exec-counter" id="about-executive-counter">1/8</div>
+            <div class="progress-track">
+              <div class="progressteam-fill" id="about-progress-bar" style="width: 12.5%;"></div>
+            </div>
+          </div>
+
+          <div class="executive-showcase" id="about-executive-showcase">
+            <div class="exec-profile">
+              <div class="exec-photo-container"> <img src="" class="exec-photo" id="about-exec-photo"> </div>
+              <div class="exec-info">
+                <h3 class="exec-name" id="about-exec-name"></h3>
+                <div class="exec-title" id="about-exec-title"></div>
+                <p class="exec-description" id="about-exec-description"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="navigation-controls">
+              <button class="projects-nav-btn team-prev" onclick="AboutTeam.prev()" aria-label="Previous">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+            <div class="team-dots" id="about-team-dots"></div>
+              <button class="projects-nav-btn team-next" onclick="AboutTeam.next()" aria-label="Next">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+          </div>
+        </div>
+
         <div class="quantum-timeline">
           <div class="timeline-header">
             <h2 class="timeline-title">ציר הזמן</h2>
@@ -381,15 +418,15 @@ const modalContents = {
           position: absolute;
           width: 2px;
           height: 2px;
-          background: #00ff88;
+          background: #FF7A00;
           border-radius: 50%;
           opacity: 0.7;
           animation: quantumFloat 4s infinite linear;
         }
         
-        .particle:nth-child(2n) { background: #0084ff; animation-delay: -1s; }
-        .particle:nth-child(3n) { background: #ff6b6b; animation-delay: -2s; }
-        .particle:nth-child(4n) { background: #feca57; animation-delay: -3s; }
+        .particle:nth-child(2n) { background: #FF4D00; animation-delay: -1s; }
+        .particle:nth-child(3n) { background: #FF7A00; animation-delay: -2s; }
+        .particle:nth-child(4n) { background: #ffffff; animation-delay: -3s; }
         
         @keyframes quantumFloat {
           0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
@@ -413,7 +450,7 @@ const modalContents = {
         .quantum-title {
           font-size: 2.5rem;
           font-weight: 700;
-          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
+          background: linear-gradient(45deg, #FF7A00, #FF4D00, #ffffff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           margin-bottom: 1rem;
@@ -438,11 +475,12 @@ const modalContents = {
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 1.5rem;
           margin: 2rem 0;
+          padding: 0 1rem;
         }
         
         .opportunity-card {
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(0, 255, 136, 0.2);
+          border: 1px solid rgba(255, 122, 0, 0.2);
           border-radius: 15px;
           padding: 2rem;
           transition: all 0.3s ease;
@@ -452,8 +490,8 @@ const modalContents = {
         
         .opportunity-card:hover {
           transform: translateY(-5px);
-          border-color: #00ff88;
-          box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+          border-color: #FF7A00;
+          box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
         }
         
         .opportunity-card::before {
@@ -475,14 +513,14 @@ const modalContents = {
         
         .card-icon {
           font-size: 2.5rem;
-          color: #00ff88;
+          color: #FF7A00;
         }
         
         .card-title {
           font-size: 1.3rem;
           font-weight: 600;
           margin-bottom: 0.5rem;
-          background: linear-gradient(45deg, #00ff88, #0084ff, #ff6b6b);
+          background: linear-gradient(45deg, #FF7A00, #FF4D00, #ffffff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -515,8 +553,8 @@ const modalContents = {
         }
         
         .skill-tag {
-          background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(0, 132, 255, 0.1));
-          border: 1px solid rgba(0, 255, 136, 0.3);
+          background: linear-gradient(45deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
+          border: 1px solid rgba(255, 122, 0, 0.3);
           padding: 0.8rem 1rem;
           border-radius: 25px;
           text-align: center;
@@ -526,9 +564,9 @@ const modalContents = {
         }
         
         .skill-tag:hover {
-          background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 132, 255, 0.2));
+          background: linear-gradient(45deg, rgba(255, 122, 0, 0.2), rgba(255, 77, 0, 0.2));
           transform: scale(1.05);
-          box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+          box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
         }
         
         .cta-section {
@@ -541,11 +579,11 @@ const modalContents = {
         }
         
         .quantum-cta {
-          background: linear-gradient(45deg, #00ff88, #0084ff);
+          background: linear-gradient(45deg, #FF7A00, #FF4D00);
           border: none;
           padding: 1rem 3rem;
           border-radius: 30px;
-          color: #000;
+          color: #ffffff;
           font-weight: 600;
           font-size: 1.1rem;
           cursor: pointer;
@@ -557,7 +595,7 @@ const modalContents = {
         
         .quantum-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+          box-shadow: 0 10px 25px rgba(255, 122, 0, 0.4);
         }
         
         .quantum-cta::before {
@@ -592,7 +630,7 @@ const modalContents = {
         .stat-number {
           font-size: 2rem;
           font-weight: 700;
-          color: #00ff88;
+          color: #FF7A00;
           display: block;
         }
         
@@ -794,6 +832,7 @@ const modalContents = {
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
         margin: 2rem 0;
+        padding: 0 1rem;
       }
       
       @media (max-width: 768px) {
@@ -981,6 +1020,7 @@ const modalContents = {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         margin: 2rem 0;
+        padding: 0 1rem;
       }
       
       @media (max-width: 768px) {
@@ -2495,7 +2535,13 @@ function openModal(type) {
     type === "contact" || type === "accessibility" || type === "privacy" ||
     type === "ethics" || type === "terms"
   ) {
-    if (type === "about") { try { initAboutTimeline(); } catch (_) {} }
+    if (type === "about") {
+      try { initAboutTimeline(); } catch (_) {}
+      // Initialize AboutTeam carousel
+      if (window.AboutTeam && typeof window.AboutTeam.init === "function") {
+        queueMicrotask(() => window.AboutTeam.init());
+      }
+    }
     if (type === "services") { try { initServicesTimeline(); } catch (_) {} }
     const contactFixed = document.querySelector(".contact-fixed");
     if (contactFixed) contactFixed.style.display = "none";
@@ -4447,6 +4493,122 @@ window.DorTeam = (function () {
   function init() { 
     buildDots(); 
     render(); 
+    preloadExecutiveImages(); // Cache all executive images on initialization
+  }
+
+  return {
+    init,
+    next() { if (total()) { idx = mod(idx + 1, total()); render(); } },
+    prev() { if (total()) { idx = mod(idx - 1, total()); render(); } }
+  };
+})();
+
+// ---- AboutTeam widget for About Modal ----
+window.AboutTeam = (function () {
+  // Executive image cache
+  const imageCache = new Map();
+
+  // Preload executive images
+  function preloadExecutiveImages() {
+    executiveData.forEach((exec, index) => {
+      const img = new Image();
+      img.onload = () => {
+        imageCache.set(exec.image, img);
+        console.log(`🎯 Cached executive image for About: ${exec.name}`);
+      };
+      img.onerror = () => {
+        console.warn(`⚠️ Failed to cache executive image for About: ${exec.name}`);
+      };
+      img.src = exec.image;
+    });
+  }
+
+  // Use same executive data as DorTeam
+  const executiveData = [
+    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+    },
+    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+    },
+    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics/Din.jpeg",
+      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
+    },
+    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics/Revital.png",
+      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+    },
+    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics/Ron.jpg",
+      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
+     },
+    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shahar.jpg",
+      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+    },
+    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics/Ari.jpg",
+      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+    },
+    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics/Niv.jpeg",
+      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
+    }
+  ];
+
+  let idx = 0;
+  const total = () => executiveData.length;
+  const mod = (n, m) => ((n % m) + m) % m;
+
+  function render() {
+    const t = total();
+    const counter = document.getElementById('about-executive-counter');
+    const bar = document.getElementById('about-progress-bar');
+    if (!t) { if (counter) counter.textContent = '0/0'; if (bar) bar.style.width = '0%'; return; }
+
+    const e = executiveData[idx = Math.max(0, Math.min(idx, t - 1))];
+
+    const photo = document.getElementById('about-exec-photo');
+    const name  = document.getElementById('about-exec-name');
+    const title = document.getElementById('about-exec-title');
+    const desc  = document.getElementById('about-exec-description');
+
+    if (photo) {
+      // Use cached image if available for smoother loading
+      const cachedImg = imageCache.get(e.image);
+      if (cachedImg) {
+        photo.src = cachedImg.src;
+      } else {
+        photo.src = e.image;
+      }
+      photo.alt = e.name;
+    }
+    if (name)  name.textContent = e.name;
+    if (title) title.textContent = e.title;
+    if (desc)  desc.textContent  = e.description;
+
+    if (counter) counter.textContent = (idx + 1) + '/' + t;
+    if (bar)     bar.style.width = (((idx + 1) / t) * 100) + '%';
+
+    document.querySelectorAll('#about-team-dots .team-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === idx);
+    });
+  }
+
+  function buildDots() {
+    const wrap = document.getElementById('about-team-dots');
+    if (!wrap) return;
+    let html = '';
+    for (let i = 0; i < total(); i++) {
+      html += '<div class="team-dot' + (i === 0 ? ' active' : '') + '" data-dot="' + i + '"></div>';
+    }
+    wrap.innerHTML = html;
+    wrap.addEventListener('click', (ev) => {
+      const el = ev.target.closest('[data-dot]');
+      if (!el) return;
+      idx = Number(el.getAttribute('data-dot')) || 0;
+      render();
+    });
+  }
+
+  function init() {
+    buildDots();
+    render();
     preloadExecutiveImages(); // Cache all executive images on initialization
   }
 

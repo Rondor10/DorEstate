@@ -3445,14 +3445,13 @@ html.a11y-font-200 { font-size: 200%; }
 
 .about-hero {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 15px;
 }
 
 .about-title {
   font-size: 3rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 1.5rem;
 }
 
 @keyframes aboutTitleGlow {
@@ -3514,6 +3513,14 @@ html.a11y-font-200 { font-size: 200%; }
 @keyframes aboutBorderGlow {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+
+.executives-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .story-text {
@@ -4064,6 +4071,7 @@ html.a11y-font-200 { font-size: 200%; }
   gap: 1.5rem;
   width: 100%;          /* use the full .main-content width */
   max-width: none;      /* remove the 1000px cap */
+  padding: 0 1rem;    /* add horizontal padding */
   margin: 2rem 0;       /* no auto-centering */
   text-align: center;
   direction: rtl;       /* first card starts at the right edge */
@@ -4991,15 +4999,17 @@ body {
 }
 
 .legacy-story {
-  max-width: 800px;
+  max-width: fit-content;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem 3rem;
 }
 
 .story-text {
   font-size: 1.2rem;
   line-height: 1.8;
-  margin-bottom: 1.5rem;
+  margin-bottom: 5px;
   color: var(--text-primary);
 }
 
@@ -5280,6 +5290,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
