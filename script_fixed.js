@@ -164,10 +164,9 @@ const modalContents = {
         <div class="services-content">
           <!-- Hero Section -->
           <div class="services-hero">
-            <h1 class="services-title">פתרונות מתקדמים</h1>
+            <h1 class="services-title">נדל"ן עם חזון</h1>
             <p class="services-subtitle">
-              אנחנו משלבים טכנולוגיות עתידניות עם מומחיות נדל"נית עמוקה כדי ליצור פתרונות שמעצבים את השוק המחר.
-              כל שירות שלנו בנוי על בסיס של חדשנות, דאטה ותוצאות מוכחות.
+            אנחנו משלבים מומחיות נדל"נית עמוקה וחדשנות טכנולוגית כדי לבנות עבורך עתיד פיננסי יציב ומלא בהזדמנויות.
             </p>
             
             <div class="tech-stats">
