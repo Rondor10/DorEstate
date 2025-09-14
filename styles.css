@@ -126,9 +126,13 @@ body {
   .mobile-header {
     display: none !important;
   }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr)) !important;
+  }
   
   .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(1, minmax(450px, 1fr)) !important;
   }
   /* Hero adjustments */
   .hero-title {
@@ -255,7 +259,7 @@ body {
 
     .tech-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(1, minmax(220px, 1fr)) !important;
     gap: 1.5rem;
     width: 100%;
     max-width: none;
@@ -2072,8 +2076,8 @@ body {
 
 /* Swipe Interface Exit Button */
 .swipe-exit-btn {
-    position: absolute;
-    top: 2rem;
+    position: fixed;
+    top: 6%;
     right: 2rem;
     z-index: 1000;
     width: 50px;

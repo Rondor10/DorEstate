@@ -331,16 +331,11 @@ const modalContents = {
 
     <div class="executive-showcase" id="executive-showcase">
       <div class="exec-profile">
-        <div class="exec-photo-container">
-        <img src="" class="exec-photo" id="exec-photo">
-        </div>
+        <div class="exec-photo-container"> <img src="" class="exec-photo" id="exec-photo"> </div>
         <div class="exec-info">
           <h2 class="exec-name" id="exec-name"></h2>
           <div class="exec-title" id="exec-title"></div>
-          <p class="exec-description" id="exec-description">
-          </p>
-          <div class="exec-skills" id="exec-skills">
-          </div>
+          <p class="exec-description" id="exec-description"></p>
         </div>
       </div>
     </div>
@@ -940,8 +935,8 @@ const modalContents = {
       }
       
       .project-status.sold {
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
+        background: var(--primary-color);
+        color: #ffffff;
       }
       
       .project-status.active {
@@ -1187,7 +1182,6 @@ const modalContents = {
                 <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">גולומב 54, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
               
@@ -1195,7 +1189,6 @@ const modalContents = {
                 <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 5, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
               
@@ -1203,7 +1196,6 @@ const modalContents = {
                 <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
               
@@ -1211,7 +1203,6 @@ const modalContents = {
                 <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ריינס 23, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
               
@@ -1219,7 +1210,6 @@ const modalContents = {
                 <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 7, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
               
@@ -1227,7 +1217,6 @@ const modalContents = {
                 <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
-                  <div class="project-status active">פעיל</div>
                 </div>
               </div>
             </div>
@@ -4006,13 +3995,6 @@ function showRegistrationForm() {
         </div>
 
       </div>
-    </div>
-    
-    <!-- Skip button positioned below the modal -->
-    <div style="position: fixed; top: calc(45% + 250px + 0.8rem); left: 50%; transform: translateX(-50%); text-align: center; z-index: 10001;">
-      <button id="skipRegistrationBtn" style="background:rgba(0,0,0,0.9); color:#ffffff; border:1px solid #666; padding:0.6rem 1.5rem; border-radius:20px; cursor:pointer; font-size:0.9rem; box-sizing: border-box;">
-       אשמח לדלג
-      </button>
     </div>`;
     
     // Initialize checkbox interactions for the new registration form
@@ -4382,28 +4364,28 @@ window.DorTeam = (function () {
   const executiveData = [
     { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics/David.jpg",
       description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
-      skills: ["Strategic Leadership", "Market Intelligence", "Deal Negotiation", "28 Years Experience"] },
+    },
     { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics/Talya.jpg",
       description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
-      skills: ["Sales Leadership", "Customer Experience", "Creative Strategy", "Human Psychology"] },
+    },
     { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics/Din.jpeg",
       description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
-      skills: ["Financial Strategy", "Risk Management", "Tax Optimization", "Leadership"] },
+    },
     { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics/Revital.png",
       description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
-      skills: ["Operations Excellence", "Process Optimization", "Quality Assurance", "Strategic Planning"] },
+    },
     { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics/Ron.jpg",
       description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-      skills: ["Business Intelligence", "Data Analytics", "Pattern Recognition", "Global Strategy"] },
-    { name: "שחר צור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shahar.jpg",
+     },
+    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics/Shahar.jpg",
       description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
-      skills: ["Brand Strategy", "Digital Marketing", "Content Creation", "Organic Growth"] },
+    },
     { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics/Ari.jpg",
       description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
-      skills: ["Investor Relations", "Community Building", "Data Translation", "Strategic Partnerships"] },
+    },
     { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics/Niv.jpeg",
       description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
-      skills: ["Deal Financing", "Due Diligence", "Strategic Analysis", "Financial Solutions"] }
+    }
   ];
 
   let idx = 0;
