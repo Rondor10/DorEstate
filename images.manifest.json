@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "generated": "2025-01-15T00:00:00Z",
+  "executives": {
+    "david": "David_240w.webp",
+    "talya": "Talya_240w.webp",
+    "din": "Din_240w.webp",
+    "revital": "Revital_240w.webp",
+    "ron": "Ron_240w.webp",
+    "shahar": "Shahar_240w.webp",
+    "ari": "Ari_240w.webp",
+    "niv": "Niv_240w.webp"
+  },
+  "projects": {
+    "hamaayan_7_givatayim": "hamaayan_7_givatayim_640w.webp",
+    "yitzchak_sade_3_givatayim": "yitzchak_sade_3_givatayim_640w.webp",
+    "golomb_54_givatayim": "golomb_54_givatayim_640w.webp",
+    "yitzchak_sade_5_givatayim": "yitzchak_sade_5_givatayim_640w.webp",
+    "zabo_37_givatayim": "zabo_37_givatayim_640w.webp",
+    "reines_23_givatayim": "reines_23_givatayim_640w.webp",
+    "yitzchak_sade_7_givatayim": "yitzchak_sade_7_givatayim_640w.webp",
+    "berdiv_37_givatayim": "berdiv_37_givatayim_640w.webp"
+  },
+  "logos": {
+    "main": "new_logo_80w.webp",
+    "small": "small_logo.webp",
+    "favicon": "small_logo_32w.webp"
+  },
+  "folders": {
+    "executives": "board_pics_optimized/",
+    "projects": "firm_projects_optimized/",
+    "properties": "prop_pics_optimized/",
+    "logos": "gen_pic_optimized/"
+  }
+}

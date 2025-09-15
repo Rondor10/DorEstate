@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="styles.css" />
         <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-        <link rel="icon" type="image/png" sizes="32x32" href="gen_pic/small_logo.png" />
+        <link rel="icon" type="image/webp" sizes="32x32" href="gen_pic_optimized/new_logo_80w.webp" />
 
         <!-- Open Graph (Facebook / LinkedIn) -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://dorealestate.co.il/" />
         <meta property="og:title" content="דור נכסים - Dor Real Estate" />
         <meta property="og:description" content="קבוצת נדל״ן מובילה מזה כשלושה עשורים. יזמות, אסטרטגיה ושיווק בגבעתיים, בתל אביב וברמת גן. דור נכסים מייצרת ערך ארוך-טווח ליזמים, למשקיעים ולרוכשים." />
-        <meta property="og:image" content="https://dorealestate.co.il/gen_pic/og-cover.jpg" />
+        <meta property="og:image" content="https://dorealestate.co.il/gen_pic_optimized/og-cover.webp" />
         <meta property="og:image:width" content="1500" />
         <meta property="og:image:height" content="574" />
 
@@ -30,7 +30,7 @@
         <meta name="twitter:url" content="https://dorealestate.co.il/" />
         <meta name="twitter:title" content="דור נכסים - Dor Real Estate" />
         <meta name="twitter:description" content="קבוצת נדל״ן יוקרתית מזה כשלושה עשורים. מתמחה ביזמות, באסטרטגיה ובשיווק, כשמרכז פעילותה בגבעתיים, בתל אביב וברמת גן." />
-        <meta name="twitter:image" content="https://dorealestate.co.il/gen_pic/og-cover.jpg" />
+        <meta name="twitter:image" content="https://dorealestate.co.il/gen_pic_optimized/og-cover.webp" />
 
         <!-- Structured Data (Schema.org) -->
         <script type="application/ld+json">
@@ -39,8 +39,8 @@
             "@type": "RealEstateAgent",
             "name": "Dor Real Estate | דור נכסים",
             "url": "https://dorealestate.co.il/",
-            "logo": "https://dorealestate.co.il/gen_pic/small_logo.png",
-            "image": "https://dorealestate.co.il/gen_pic/og-cover.jpg",
+            "logo": "https://dorealestate.co.il/gen_pic_optimized/new_logo_80w.webp",
+            "image": "https://dorealestate.co.il/gen_pic_optimized/og-cover.webp"
             "description": "דור נכסים פועלת מזה כשלושה עשורים ומתמחה ביזמות, באסטרטגיה ובשיווק נדל״ן בגבעתיים, בתל אביב וברמת גן.",
             "areaServed": ["Givatayim","Ramat Gan","Tel Aviv"],
             "address": {
@@ -74,7 +74,7 @@
                     <!-- Logo in its own li -->
                       <li class="logo-cell">
                         <a href="index.html" class="logo-link">
-                          <img src="gen_pic/new_logo.png" class="logo" alt="דור נכסים">
+                          <img data-category="logos" data-key="main" class="logo" alt="דור נכסים">
                         </a>
                       </li>
 
@@ -87,7 +87,7 @@
                 <!-- Mobile Navigation -->
                 <div class="mobile-header">
                     <a href="index.html" class="mobile-logo-link">
-                        <img src="gen_pic/new_logo.png" class="mobile-logo" alt="דור נכסים">
+                        <img data-category="logos" data-key="main" class="mobile-logo" alt="דור נכסים">
                     </a>
                     <button class="hamburger-btn" aria-label="פתח תפריט">
                         <span></span>
@@ -129,7 +129,7 @@
         <section class="hero-section">
             <!-- Video Background -->
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="gen_pic/intro_vid.mp4" type="video/mp4">
+                <source src="gen_pic_optimized/intro_vid_noaudio.mp4" type="video/mp4">
                 <!-- Fallback for browsers that don't support video -->
             </video>
         </section>
@@ -197,7 +197,7 @@
                 <div class="projects-carousel-container">
                     <div class="projects-scroll-track" id="projectsScrollTrack">
                         <div class="project-card flagship-project-card">
-                            <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                            <img data-category="projects" data-key="golomb_54_givatayim" alt="גולומב 54, גבעתיים" />
                             <div class="project-overlay">
                                 <div class="project-name">גולומב 54, גבעתיים</div>
                                 <div class="project-status">בשלבי בנייה</div>
@@ -205,7 +205,7 @@
                         </div>
                         
                         <div class="project-card flagship-project-card">
-                            <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                            <img data-category="projects" data-key="yitzchak_sade_5_givatayim" alt="יצחק שדה 5, גבעתיים" />
                             <div class="project-overlay">
                                 <div class="project-name">יצחק שדה 5, גבעתיים</div>
                                 <div class="project-status">נמכר במלואו</div>
@@ -213,7 +213,7 @@
                         </div>
                         
                         <div class="project-card flagship-project-card">
-                            <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                            <img data-category="projects" data-key="zabo_37_givatayim" alt="ז'בוטינסקי 37, גבעתיים" />
                             <div class="project-overlay">
                                 <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
                                 <div class="project-status">השקה בקרוב</div>
@@ -222,7 +222,7 @@
                         
                         <!-- Additional projects for scrolling -->
                         <div class="project-card flagship-project-card">
-                            <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+                            <img data-category="projects" data-key="reines_23_givatayim" alt="ריינס 23, גבעתיים" />
                             <div class="project-overlay">
                                 <div class="project-name">ריינס 23, גבעתיים</div>
                                 <div class="project-status">בשיווק</div>
@@ -230,7 +230,7 @@
                         </div>
                         
                         <div class="project-card flagship-project-card">
-                            <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+                            <img data-category="projects" data-key="yitzchak_sade_7_givatayim" alt="יצחק שדה 7, גבעתיים" />
                             <div class="project-overlay">
                                 <div class="project-name">יצחק שדה 7, גבעתיים</div>
                                 <div class="project-status">תכנון מתקדם</div>
@@ -462,5 +462,24 @@
           </div>
         </nav>
 
+        <!-- Manifest Loader -->
+        <script>
+        (async function() {
+          try {
+            const res = await fetch('/images.manifest.json');
+            const manifest = await res.json();
+            document.querySelectorAll('img[data-category][data-key]').forEach(img => {
+              const cat = img.dataset.category;
+              const key = img.dataset.key;
+              if (manifest[cat] && manifest[cat][key]) {
+                const folder = manifest.folders[cat] || '';
+                img.src = folder + manifest[cat][key];
+              }
+            });
+          } catch (e) {
+            console.error('Manifest load failed', e);
+          }
+        })();
+        </script>
     </body>
 </html>

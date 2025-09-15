@@ -1224,7 +1224,11 @@ body {
 /* Logo cell: no extra clickable area */
 .logo-cell { justify-self: center; width: max-content; }
 .logo-link { display: inline-block; line-height: 0; }
-.logo { height: 4rem; width: auto; display: block; } /* tune size here */
+.logo { display: block; height: calc(10vh * 0.7) !important;
+        max-height: 50px !important;
+        min-height: 40px !important;
+        width: auto !important;
+ } /* tune size here */
 
 /* Top-level links */
 .main-nav > ul.nav-grid > li > a {
