@@ -1201,7 +1201,7 @@ const modalContents = {
             <div class="projects-track" id="projectsTrack">
               <!-- Sold Projects -->
               <div class="project-slide">
-                <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
+                <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">המעיין 7, גבעתיים</div>
                   <div class="project-status sold">נמכר</div>
@@ -1209,7 +1209,7 @@ const modalContents = {
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
+                <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="יצחק שדה 3, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 3, גבעתיים</div>
                   <div class="project-status sold">נמכר</div>
@@ -1218,42 +1218,42 @@ const modalContents = {
               
               <!-- Active Projects -->
               <div class="project-slide">
-                <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+                <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">גולומב 54, גבעתיים</div>
                 </div>
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+                <img src="firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp" alt="יצחק שדה 5, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 5, גבעתיים</div>
                 </div>
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+                <img src="firm_projects_optimized/zabo_37_givatayim_640w.webp" alt="ז'בוטינסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
                 </div>
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+                <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ריינס 23, גבעתיים</div>
                 </div>
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+                <img src="firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp" alt="יצחק שדה 7, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 7, גבעתיים</div>
                 </div>
               </div>
               
               <div class="project-slide">
-                <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
+                <img src="firm_projects_optimized/berdiv_37_givatayim_640w.webp" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
                 </div>
@@ -1508,47 +1508,46 @@ const modalContents = {
     content: `
     <div class="quantum-projects">
         <div class="projects-grid">
-
           <!-- Sold Projects -->
           <a class="project-card project-sold">
-            <img src="firm_projects/hamaayan_7_givatayim.png" alt="המעיין 7, גבעתיים" />
+            <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
             <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
           </a>
 
           <a class="project-card project-sold">
-            <img src="firm_projects/yitzchak_sade_3_givatayim.jpg" alt="יצחק שדה 3, גבעתיים" />
+            <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="יצחק שדה 3, גבעתיים" />
             <div class="project-overlay show-always">יצחק שדה 3, גבעתיים</div>
           </a>
 
           <!-- Active Projects -->
 
             <a class="project-card">
-              <img src="firm_projects/golomb_54_givatayim.jpeg" alt="גולומב 54, גבעתיים" />
+              <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
               <div class="project-overlay">גולומב 54, גבעתיים</div>
             </a>
 
           <a class="project-card">
-            <img src="firm_projects/yitzchak_sade_5_givatayim.jpg" alt="יצחק שדה 5, גבעתיים" />
+            <img src="firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp" alt="יצחק שדה 5, גבעתיים" />
             <div class="project-overlay">יצחק שדה 5, גבעתיים</div>
           </a>
 
           <a class="project-card">
-            <img src="firm_projects/zabo_37_givatayim.jpg" alt="ז'בוטינסקי 37, גבעתיים" />
+            <img src="firm_projects_optimized/zabo_37_givatayim_640w.webp" alt="ז'בוטינסקי 37, גבעתיים" />
             <div class="project-overlay">ז'בוטינסקי 37, גבעתיים</div>
           </a>
 
           <a class="project-card">
-            <img src="firm_projects/reines_23_givatayim.jpg" alt="ריינס 23, גבעתיים" />
+            <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
             <div class="project-overlay">ריינס 23, גבעתיים</div>
           </a>
 
             <a class="project-card">
-              <img src="firm_projects/yitzchak_sade_7_givatayim.jpg" alt="יצחק שדה 7, גבעתיים" />
+              <img src="firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp" alt="יצחק שדה 7, גבעתיים" />
               <div class="project-overlay">יצחק שדה 7, גבעתיים</div>
             </a>
 
               <a class="project-card">
-                <img src="firm_projects/berdiv_37_givatayim.jpg" alt="ברדיצ'בסקי 37, גבעתיים" />
+                <img src="firm_projects_optimized/berdiv_37_givatayim_640w.webp" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-overlay">ברדיצ'בסקי 37, גבעתיים</div>
               </a>
         </div>
@@ -3527,7 +3526,7 @@ async function loadManifest() {
 
 // Build URLs from a manifest entry
 function urlsFromManifestEntry(propId, entry) {
-  const base = `/prop_pics/${propId}`;
+  const base = `/prop_pics_optimized/${propId}`;
   const ext  = entry.ext;
   return [
     `${base}/${entry.hero}.${ext}`,
@@ -3552,7 +3551,8 @@ async function getPropertyImages(p, _maxPics = 12) {
     urls = p.images;
   } else {
     const manifest = await loadManifest();
-    const entry = manifest[p.id];
+    // FIX: Use manifest.properties if present
+    const entry = manifest.properties ? manifest.properties[p.id] : manifest[p.id];
     if (entry && entry.ext && entry.hero) {
       urls = urlsFromManifestEntry(p.id, entry);
     }
@@ -3815,9 +3815,10 @@ async function loadPropertyCarouselAsync(property) {
     // Fast manifest lookup for hero only
     try {
       const manifest = await loadManifest();
-      const entry = manifest[property.id];
+      // FIX: Use manifest.properties if present
+      const entry = manifest.properties ? manifest.properties[property.id] : manifest[property.id];
       if (entry && entry.ext && entry.hero) {
-        heroUrl = `/prop_pics/${property.id}/${entry.hero}.${entry.ext}`;
+        heroUrl = `/prop_pics_optimized/${property.id}/${entry.hero}.${entry.ext}`;
         console.log(`📋 Hero from manifest: ${heroUrl}`);
       }
     } catch (e) {
@@ -4390,45 +4391,76 @@ function setLoading(btn, isLoading) {
 window.DorTeam = (function () {
   // Executive image cache
   const imageCache = new Map();
-  
+  let IMAGES_MANIFEST = null;
+
+  // Load images manifest
+  async function loadImagesManifest() {
+    if (IMAGES_MANIFEST) return IMAGES_MANIFEST;
+    try {
+      const res = await fetch('/images.manifest.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Images manifest fetch failed: ${res.status}`);
+      IMAGES_MANIFEST = await res.json();
+    } catch (e) {
+      console.error('[images manifest] failed to load:', e);
+      IMAGES_MANIFEST = { executives: {}, folders: { executives: 'board_pics_optimized/' } };
+    }
+    return IMAGES_MANIFEST;
+  }
+
+  // Get executive image URL from manifest
+  function getExecutiveImageUrl(execId) {
+    if (!IMAGES_MANIFEST) return null;
+    const filename = IMAGES_MANIFEST.executives[execId];
+    if (!filename) return null;
+    const folder = IMAGES_MANIFEST.folders?.executives || 'board_pics_optimized/';
+    return `${folder}${filename}`;
+  }
+
   // Preload executive images
-  function preloadExecutiveImages() {
+  async function preloadExecutiveImages() {
+    await loadImagesManifest();
     executiveData.forEach((exec, index) => {
+      const imageUrl = getExecutiveImageUrl(exec.imageId);
+      if (!imageUrl) {
+        console.warn(`⚠️ No image found for executive: ${exec.name} (${exec.imageId})`);
+        return;
+      }
+
       const img = new Image();
       img.onload = () => {
-        imageCache.set(exec.image, img);
+        imageCache.set(exec.imageId, img);
         console.log(`🎯 Cached executive image: ${exec.name}`);
       };
       img.onerror = () => {
         console.warn(`⚠️ Failed to cache executive image: ${exec.name}`);
       };
-      img.src = exec.image;
+      img.src = imageUrl;
     });
   }
-  
+
   const executiveData = [
-    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics_optimized/David.jpg",
+    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", imageId: "david",
       description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
     },
-    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics_optimized/Talya.jpg",
+    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", imageId: "talya",
       description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
     },
-    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics_optimized/Din.jpeg",
+    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", imageId: "din",
       description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
     },
-    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics_optimized/Revital.png",
+    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", imageId: "revital",
       description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
     },
-    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics_optimized/Ron.jpg",
+    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", imageId: "ron",
       description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
      },
-    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics_optimized/Shahar.jpg",
+    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", imageId: "shahar",
       description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
     },
-    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics_optimized/Ari.jpg",
+    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", imageId: "ari",
       description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
     },
-    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics_optimized/Niv.jpeg",
+    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", imageId: "niv",
       description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
     }
   ];
@@ -4451,15 +4483,16 @@ window.DorTeam = (function () {
     const desc  = document.getElementById('exec-description');
     const skills= document.getElementById('exec-skills');
 
-    if (photo) { 
+    if (photo) {
       // Use cached image if available for smoother loading
-      const cachedImg = imageCache.get(e.image);
+      const cachedImg = imageCache.get(e.imageId);
       if (cachedImg) {
         photo.src = cachedImg.src;
       } else {
-        photo.src = e.image;
+        const imageUrl = getExecutiveImageUrl(e.imageId);
+        photo.src = imageUrl || '/gen_pic/placeholder.jpg';
       }
-      photo.alt = e.name; 
+      photo.alt = e.name;
     }
     if (name)  name.textContent = e.name;
     if (title) title.textContent = e.title;
@@ -4490,9 +4523,10 @@ window.DorTeam = (function () {
     });
   }
 
-  function init() { 
-    buildDots(); 
-    render(); 
+  async function init() {
+    await loadImagesManifest();
+    buildDots();
+    render();
     preloadExecutiveImages(); // Cache all executive images on initialization
   }
 
@@ -4505,51 +4539,82 @@ window.DorTeam = (function () {
 
 // ---- AboutTeam widget for About Modal ----
 window.AboutTeam = (function () {
-  // Executive image cache
+  // Executive image cache for About modal
   const imageCache = new Map();
+  let IMAGES_MANIFEST = null;
+
+  // Load images manifest
+  async function loadImagesManifest() {
+    if (IMAGES_MANIFEST) return IMAGES_MANIFEST;
+    try {
+      const res = await fetch('/images.manifest.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Images manifest fetch failed: ${res.status}`);
+      IMAGES_MANIFEST = await res.json();
+    } catch (e) {
+      console.error('[images manifest] failed to load:', e);
+      IMAGES_MANIFEST = { executives: {}, folders: { executives: 'board_pics_optimized/' } };
+    }
+    return IMAGES_MANIFEST;
+  }
+
+  // Get executive image URL from manifest
+  function getExecutiveImageUrl(execId) {
+    if (!IMAGES_MANIFEST) return null;
+    const filename = IMAGES_MANIFEST.executives[execId];
+    if (!filename) return null;
+    const folder = IMAGES_MANIFEST.folders?.executives || 'board_pics_optimized/';
+    return `${folder}${filename}`;
+  }
+
+  // Use same executive data as DorTeam
+  const executiveData = [
+    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", imageId: "david",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+    },
+    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", imageId: "talya",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+    },
+    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", imageId: "din",
+      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
+    },
+    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", imageId: "revital",
+      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+    },
+    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", imageId: "ron",
+      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
+     },
+    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", imageId: "shahar",
+      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+    },
+    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", imageId: "ari",
+      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+    },
+    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", imageId: "niv",
+      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
+    }
+  ];
 
   // Preload executive images
-  function preloadExecutiveImages() {
+  async function preloadExecutiveImages() {
+    await loadImagesManifest();
     executiveData.forEach((exec, index) => {
+      const imageUrl = getExecutiveImageUrl(exec.imageId);
+      if (!imageUrl) {
+        console.warn(`⚠️ No image found for executive in About: ${exec.name} (${exec.imageId})`);
+        return;
+      }
+
       const img = new Image();
       img.onload = () => {
-        imageCache.set(exec.image, img);
+        imageCache.set(exec.imageId, img);
         console.log(`🎯 Cached executive image for About: ${exec.name}`);
       };
       img.onerror = () => {
         console.warn(`⚠️ Failed to cache executive image for About: ${exec.name}`);
       };
-      img.src = exec.image;
+      img.src = imageUrl;
     });
   }
-
-  // Use same executive data as DorTeam
-  const executiveData = [
-    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", image: "board_pics_optimized/David.jpg",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
-    },
-    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", image: "board_pics_optimized/Talya.jpg",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
-    },
-    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", image: "board_pics_optimized/Din.jpeg",
-      description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
-    },
-    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", image: "board_pics_optimized/Revital.png",
-      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
-    },
-    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", image: "board_pics_optimized/Ron.jpg",
-      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-     },
-    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", image: "board_pics_optimized/Shahar.jpg",
-      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
-    },
-    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", image: "board_pics_optimized/Ari.jpg",
-      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
-    },
-    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", image: "board_pics_optimized/Niv.jpeg",
-      description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
-    }
-  ];
 
   let idx = 0;
   const total = () => executiveData.length;
@@ -4570,11 +4635,12 @@ window.AboutTeam = (function () {
 
     if (photo) {
       // Use cached image if available for smoother loading
-      const cachedImg = imageCache.get(e.image);
+      const cachedImg = imageCache.get(e.imageId);
       if (cachedImg) {
         photo.src = cachedImg.src;
       } else {
-        photo.src = e.image;
+        const imageUrl = getExecutiveImageUrl(e.imageId);
+        photo.src = imageUrl || '/gen_pic/placeholder.jpg';
       }
       photo.alt = e.name;
     }
@@ -4606,7 +4672,8 @@ window.AboutTeam = (function () {
     });
   }
 
-  function init() {
+  async function init() {
+    await loadImagesManifest();
     buildDots();
     render();
     preloadExecutiveImages(); // Cache all executive images on initialization
