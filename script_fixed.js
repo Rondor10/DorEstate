@@ -276,7 +276,7 @@ const modalContents = {
                 </div>
               </div>
               <p class="service-description">
-                אסטרטגיה מונחית דאטה, בהשראה משיווק קוואנטי. חווית לקוח מותאמת אישית לצורך פילוח שוק מבוסס בינה מלאכותית. 
+                אסטרטגיה מונחית דאטה, בהשראה משיווק קוונטי. חווית לקוח מותאמת אישית לצורך פילוח שוק מבוסס בינה מלאכותית. 
                 מיתוג עוצמתי בעולמות הפרויקטים והיד-שנייה.
               </p>
               <div class="service-features">
@@ -543,7 +543,7 @@ const modalContents = {
           text-align: center;
           font-size: 1.8rem;
           margin-bottom: 2rem;
-          color: #ffffff;
+          color: var(--primary-color);
         }
         
         .skills-grid {
@@ -1271,7 +1271,7 @@ const modalContents = {
           <h2 class="section-title">מודל 360°</h2>
           <div class="pillars-grid">
             <div class="pillar-bracket">
-              <h3 class="pillar-title">שיווק קוונטי</h3>
+              <h3 class="pillar-title">שיווק חכם</h3>
               <p class="pillar-content">
               מחקר שוק מעמיק וזיהוי מאפייני הצלחה ייחודיים.
               אסטרטגיה שיווקית מדויקת המותאמת לפרויקט, לעידן ה-AI ולעולם ה-Big Data.
@@ -2335,25 +2335,25 @@ function initProjectsScrolling() {
   // Touch/swipe support
   let startX = 0;
   let scrollLeft = 0;
-  
+
   scrollTrack.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     scrollLeft = scrollTrack.scrollLeft;
   });
-  
+
   scrollTrack.addEventListener('touchmove', (e) => {
     if (!startX) return;
-    
+
     const x = e.touches[0].clientX;
     const diff = startX - x;
-    scrollTrack.scrollLeft = scrollLeft + diff;
+      scrollTrack.scrollLeft = scrollLeft + diff;
   });
-  
+
   scrollTrack.addEventListener('touchend', () => {
     startX = 0;
-    // Snap to closest project (RTL compatible)
-    const newIndex = Math.round(Math.abs(scrollTrack.scrollLeft) / cardWidth);
-    scrollToProject(newIndex);
+      // Snap to closest project (RTL compatible)
+      const newIndex = Math.round(Math.abs(scrollTrack.scrollLeft) / cardWidth);
+      scrollToProject(newIndex);
   });
   
   // Mouse wheel horizontal scrolling
@@ -3754,11 +3754,16 @@ document.addEventListener('keydown', (e) => {
 // --- INSTANT Property Loading with Full Carousel - User-First Approach ---
 async function loadProperty() {
   const propertyCards = document.getElementById("propertyCards");
+  const exitBtn = document.getElementById("swipeExitBtn");
+
   if (!activeSwipePool || currentPropertyIndex >= activeSwipePool.length) {
     showSwipeResults();
     return;
   }
-  
+
+  // Ensure exit button is visible during normal property swiping
+  if (exitBtn) exitBtn.style.display = "flex";
+
   const p = activeSwipePool[currentPropertyIndex];
   
   // INSTANT display with placeholder carousel structure
@@ -3946,7 +3951,12 @@ function swipeProperty(action) {
 // Show end-of-deck results
 function showSwipeResults() {
   const propertyCards = document.getElementById("propertyCards");
+  const exitBtn = document.getElementById("swipeExitBtn");
+
   if (!likedProperties.length) {
+    // Hide exit button when no properties found
+    if (exitBtn) exitBtn.style.display = "none";
+
     propertyCards.innerHTML = `
       <div style="
   text-align:center;
@@ -3965,6 +3975,8 @@ function showSwipeResults() {
         <button data-open-contact class="cta-endswipe-button">בחזרה לתהליך</button>
       </div>`;
   } else {
+    // Show exit button for registration form
+    if (exitBtn) exitBtn.style.display = "flex";
     showRegistrationForm();
   }
   const actions = document.querySelector(".swipe-actions");
@@ -3976,21 +3988,53 @@ function showRegistrationForm() {
   console.log("🔥 DEBUG: showRegistrationForm called with", likedProperties.length, "liked properties");
   const propertyCards = document.getElementById("propertyCards");
   propertyCards.innerHTML = `
-    <div style="
-  text-align:center;
-  color:white;
-  display: block;
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  max-width: 500px;
-  width: 90%;
-  background: rgba(0,0,0,0.9);
-  border-radius: 16px;
-  ">
-      <i class="fas fa-heart" style="font-size:3rem; margin-top:0.6rem; margin-bottom:0.3rem; color:#e74c3c;"></i>
+    <div class="registration-form-wrapper" style="
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+      width: 90%;
+    ">
+      <!-- Exit Button for Registration Form -->
+      <button class="swipe-exit-btn registration-exit-btn" id="regFormExitBtn" title="יציאה מממשק החדר" aria-label="יציאה מממשק החדר" style="
+        position: relative;
+        order: -1;
+        margin-bottom: 20px;
+        align-self: center;
+        z-index: 10000;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      ">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+
+      <div style="
+    text-align:center;
+    color:white;
+    display: block;
+    position: relative;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    border-radius: 16px;
+    ">
+        <i class="fas fa-heart" style="font-size:3rem; margin-top:0.6rem; margin-bottom:0.3rem; color:#e74c3c;"></i>
       <h3 style="margin-bottom:0.3rem;">מצוין! מצאתם ${likedProperties.length} נכסים שאהבתם</h3>
       <p style="margin-bottom:0.3rem; color:#ccc;">להמשך התהליך, נשמח לקבל את הפרטים שלכם</p>
       
@@ -4041,10 +4085,22 @@ function showRegistrationForm() {
         </div>
 
       </div>
+      </div>
     </div>`;
     
     // Initialize checkbox interactions for the new registration form
     initializeRegistrationCheckboxes();
+
+    // Add exit button event listener for registration form
+    const regFormExitBtn = document.getElementById('regFormExitBtn');
+    if (regFormExitBtn) {
+      regFormExitBtn.addEventListener('click', () => {
+        const swipeInterface = document.getElementById('swipeInterface');
+        if (swipeInterface) {
+          swipeInterface.style.display = 'none';
+        }
+      });
+    }
     
     // Add input event listeners with validation
     const nameInput = document.getElementById("fullName");
@@ -4439,28 +4495,28 @@ window.DorTeam = (function () {
   }
 
   const executiveData = [
-    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", imageId: "david",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+    { name: "דוד דור", title: "מנכ\"ל | Chief Executive Officer", imageId: "david",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים. הוא מחבר בין קריאות שוק מהירות, תמחור מדויק וסגירת עסקאות ברף הגבוה בענף.",
     },
-    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", imageId: "talya",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+    { name: "טליה קמינסקי", title: "סמנכ\"לית מכירות | Chief Sales Officer", imageId: "talya",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
     },
-    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", imageId: "din",
+    { name: "דין דור", title: "סמנכ\"ל כספים | Chief Financial Officer", imageId: "din",
       description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
     },
-    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", imageId: "revital",
-      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+    { name: "רויטל דור", title: "סמנכ\"לית תפעול | Chief Operations Officer", imageId: "revital",
+      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך האופרטיבי. היא מיישרת תהליכים, מגדירה סטנדרטים ומבטיחה מימוש בשטח.",
     },
-    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", imageId: "ron",
-      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-     },
-    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", imageId: "shahar",
-      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development", imageId: "ron",
+      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי.",
     },
-    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", imageId: "ari",
-      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+    { name: "שחר דור", title: "סמנכ\"לית שיווק | Chief Marketing Officer", imageId: "shahar",
+      description: "שחר דור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים שונים ומגוונים.",
     },
-    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", imageId: "niv",
+    { name: "ארי גבאי", title: "ראש קהילות המשקיעים | Head of Investor Relations", imageId: "ari",
+      description: "ארי גבאי מוביל קהילות משקיעים עם חזון ברור. הוא מתרגם דאטה לאינפורמציה פרקטית ומאתר עבור אינדיבידואלים הזדמנויות השקעה ייחודיות.",
+    },
+    { name: "ניב שירזי", title: "ראש המחלקה הפיננסית | Head of Finance", imageId: "niv",
       description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
     }
   ];
@@ -4568,28 +4624,28 @@ window.AboutTeam = (function () {
 
   // Use same executive data as DorTeam
   const executiveData = [
-    { name: "דוד דור", title: "Chief Executive Officer | מנכ\"ל", imageId: "david",
-      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים עם אינטליגנציה רגשית ועם דיוק קר ברגעי משא ומתן. הוא מחבר בין קריאות שוק מהירות, עם תמחור מדויק ועם סגירת עסקאות ברף הגבוה בענף.",
+    { name: "דוד דור", title: "מנכ\"ל | Chief Executive Officer", imageId: "david",
+      description: "דוד דור עומד בחזית הפירמה מאז היום הראשון, ומוביל אותה במשך שלושה עשורים. הוא מחבר בין קריאות שוק מהירות, תמחור מדויק וסגירת עסקאות ברף הגבוה בענף.",
     },
-    { name: "טליה קמינסקי", title: "Chief Sales Officer | סמנכ\"לית מכירות", imageId: "talya",
-      description: "טליה קמינסקי היא הלב הפועם של הפירמה ברובד המכירות. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
+    { name: "טליה קמינסקי", title: "סמנכ\"לית מכירות | Chief Sales Officer", imageId: "talya",
+      description: "טליה קמינסקי היא הלב הפועם של הפירמה. בעברה היוותה יזמית בתחומי המוזיקה והיצירה, והצליחה לשלב רבדים אנושיים עם מומחיות נדל\"נית באופן יוצא דופן.",
     },
-    { name: "דין דור", title: "Chief Financial Officer | סמנכ\"ל כספים", imageId: "din",
+    { name: "דין דור", title: "סמנכ\"ל כספים | Chief Financial Officer", imageId: "din",
       description: "דין דור גדל בתוך הפירמה והפך לעמוד תווך פיננסי עם אסטרטגיה מדויקת. הוא משלב חוש טבעי למנהיגות עם שליטה במספרים ובקיאות במיסוי ובניהול סיכונים.",
     },
-    { name: "רויטל דור", title: "Chief Operations Officer | סמנכ\"לית תפעול", imageId: "revital",
-      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך התפעולי מקצה לקצה. היא מיישרת תהליכים, עם הגדרת סטנדרטים ועם אימות שכל הבטחה שיווקית מתממשת בשטח ברמת דיוק גבוהה.",
+    { name: "רויטל דור", title: "סמנכ\"לית תפעול | Chief Operations Officer", imageId: "revital",
+      description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך האופרטיבי. היא מיישרת תהליכים, מגדירה סטנדרטים ומבטיחה מימוש בשטח.",
     },
-    { name: "רון דור", title: "Chief Business Development | סמנכ\"ל פיתוח עסקי", imageId: "ron",
-      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי, יחד עם ניתוח פילוסופיות התנהגות.",
-     },
-    { name: "שחר דור", title: "Chief Marketing Officer | סמנכ\"לית שיווק", imageId: "shahar",
-      description: "שחר צור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים מגוונים.",
+    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development", imageId: "ron",
+      description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי.",
     },
-    { name: "ארי גבאי", title: "Head of Investor Relations | ראש קהילות המשקיעים", imageId: "ari",
-      description: "ארי גבאי מוביל קהילות משקיעים עם תפיסה קהילתית עוצמתית. הוא מתרגם דאטה לאינפורמציה פרקטית ומחבר בין אנשים להזדמנויות השקעה מותאמות.",
+    { name: "שחר דור", title: "סמנכ\"לית שיווק | Chief Marketing Officer", imageId: "shahar",
+      description: "שחר דור מובילה את המותג משלב האסטרטגיה ועד הביצוע בפועל. היא מייצרת ביקוש אורגני ויוצרת חיבור רגשי עמוק עם קהלים שונים ומגוונים.",
     },
-    { name: "ניב שירזי", title: "Head of Finance | ראש המחלקה הפיננסית", imageId: "niv",
+    { name: "ארי גבאי", title: "ראש קהילות המשקיעים | Head of Investor Relations", imageId: "ari",
+      description: "ארי גבאי מוביל קהילות משקיעים עם חזון ברור. הוא מתרגם דאטה לאינפורמציה פרקטית ומאתר עבור אינדיבידואלים הזדמנויות השקעה ייחודיות.",
+    },
+    { name: "ניב שירזי", title: "ראש המחלקה הפיננסית | Head of Finance", imageId: "niv",
       description: "ניב שירזי משמש יד ימינו של הדרג הבכיר עם מומחיות גבוהה במימון עסקאות ובדיקות נאותות. הוא ממזג בין ניתוח קר ובין גמישות מחשבתית.",
     }
   ];

@@ -191,8 +191,7 @@
         <!-- 5. Projects Section - Horizontal Scrolling Design -->
         <section class="projects-section flagship-projects-showcase">
             <div class="container">
-                <h2 class="section-title">פרויקטי דגל</h2>
-                
+                <h2 class="section-title">פרויקטי דגל</h2>    
                 <!-- Horizontal Scrolling Projects Container -->
                 <div class="projects-carousel-container">
                     <div class="projects-scroll-track" id="projectsScrollTrack">
@@ -361,14 +360,15 @@
 
         <!-- Property Swipe Interface -->
         <div class="swipe-interface" id="swipeInterface" style="display: none">
-            <!-- Exit/Close Button -->
-            <button class="swipe-exit-btn" id="swipeExitBtn" title="יציאה מממשק החדר" aria-label="יציאה מממשק החדר">
-                <i class="fas fa-arrow-right"></i>
-            </button>
-            
             <div class="swipe-container">
-                <div class="property-cards" id="propertyCards">
-                    <!-- Property cards will be generated here -->
+                <div class="property-cards-wrapper">
+                    <!-- Exit/Close Button -->
+                    <button class="swipe-exit-btn" id="swipeExitBtn" title="יציאה מממשק החדר" aria-label="יציאה מממשק החדר">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <div class="property-cards" id="propertyCards">
+                        <!-- Property cards will be generated here -->
+                    </div>
                 </div>
 
                 <div class="swipe-actions">

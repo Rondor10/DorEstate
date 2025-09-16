@@ -3,7 +3,7 @@
 export const PROPERTIES = [
   {
     "id": "prop_001",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 3413000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -34,7 +34,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_002",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 5250000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -65,7 +65,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_003",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 7200000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -127,7 +127,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_005",
-    "title": "דירות 4 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 7100000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -158,7 +158,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_006",
-    "title": "דירות 4 חדרים – שדרות ירושלים, יד לבנים, רמת גן",
+    "title": "שדרות ירושלים, רמת גן",
     "price": 3150000,
     "area": "ramat-gan",
     "neighborhood": "יד לבנים",
@@ -218,7 +218,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_008",
-    "title": "דירות 2 חדרים – יוהנה, בן גוריון, רמת גן",
+    "title": "יוהנה, רמת גן",
     "price": 2200000,
     "area": "ramat-gan",
     "neighborhood": "בן גוריון",
@@ -249,7 +249,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_009",
-    "title": "דירות 4 חדרים – ז'בוטינסקי, ארלוזורוב, גבעתיים",
+    "title": "ז'בוטינסקי, גבעתיים",
     "price": 4350000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -280,7 +280,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_010",
-    "title": "דירות 4 חדרים – כצנלסון, הל\"ה, גבעתיים",
+    "title": "כצנלסון, גבעתיים",
     "price": 4180000,
     "area": "givatayim",
     "neighborhood": "הל\"ה",
@@ -342,7 +342,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_012",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",
+    "title": "ז'בוטינסקי 37, גבעתיים",
     "price": 6800000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -373,7 +373,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_013",
-    "title": "דירות 2 חדרים – יואב, חרוזים, רמת גן",
+    "title": "יואב, רמת גן",
     "price": 2850000,
     "area": "ramat-gan",
     "neighborhood": "חרוזים",
@@ -404,7 +404,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_014",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 8750000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -435,7 +435,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_015",
-    "title": "דירות 5 חדרים – תלפיות, שכונת גפן, רמת גן",
+    "title": "תלפיות, רמת גן",
     "price": 4600000,
     "area": "ramat-gan",
     "neighborhood": "שכונת גפן",
@@ -466,7 +466,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_016",
-    "title": "פנטהאוז 3 חדרים – טרומן, נגבה, רמת גן",
+    "title": "טרומן, רמת גן",
     "price": 3080000,
     "area": "ramat-gan",
     "neighborhood": "נגבה",
@@ -494,7 +494,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_017",
-    "title": "דירות 4 חדרים – המעיין, ארלוזורוב, גבעתיים",
+    "title": "המעיין, גבעתיים",
     "price": 4350000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -525,7 +525,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_018",
-    "title": "דירות 3 חדרים – שיינקין, שינקין, גבעתיים",
+    "title": "שיינקין, גבעתיים",
     "price": 2850000,
     "area": "givatayim",
     "neighborhood": "שינקין",
@@ -556,7 +556,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_019",
-    "title": "פנטהאוז 5 חדרים – אחד העם, רמת השקמה, רמת גן",
+    "title": "אחד העם, רמת גן",
     "price": 10500000,
     "area": "ramat-gan",
     "neighborhood": "רמת השקמה",
@@ -587,7 +587,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_020",
-    "title": "דירות 4 חדרים – זבוטינסקי, ארלוזורוב, גבעתיים",
+    "title": "זבוטינסקי, גבעתיים",
     "price": 4490000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -618,7 +618,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_021",
-    "title": "ברדיצ'בסקי 37, גבעתיים (ללא עמלת תיווך)",
+    "title": "ברדיצ'בסקי 37, גבעתיים",
     "price": 3700000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -649,7 +649,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_022",
-    "title": "דירות 4 חדרים – המעיין, ארלוזורוב, גבעתיים",
+    "title": "המעיין, גבעתיים",
     "price": 4350000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -680,7 +680,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_023",
-    "title": "פנטהאוז 6 חדרים – רות, חרוזים, רמת גן",
+    "title": "רות, רמת גן",
     "price": 7499999,
     "area": "ramat-gan",
     "neighborhood": "חרוזים",
@@ -710,7 +710,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_024",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 4950000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -741,7 +741,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_025",
-    "title": "דירות 4 חדרים – הרא\"ה, שכונת הלל, רמת גן",
+    "title": "הרא\"ה, רמת גן",
     "price": 3190000,
     "area": "ramat-gan",
     "neighborhood": "שכונת הלל",
@@ -772,7 +772,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_026",
-    "title": "דירות 4 חדרים – העמל, נחלת גנים, רמת גן",
+    "title": "העמל, רמת גן",
     "price": 3480000,
     "area": "ramat-gan",
     "neighborhood": "נחלת גנים",
@@ -803,7 +803,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_027",
-    "title": "דירות 4 חדרים – אבן עזרא, נווה רם, שיכון מזרחי, רמת גן",
+    "title": "אבן עזרא, רמת גן",
     "price": 3100000,
     "area": "ramat-gan",
     "neighborhood": "נווה רם, שיכון מזרחי",
@@ -833,7 +833,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_028",
-    "title": "דירות 4 חדרים – מורדי הגטאות, בורוכוב, גבעתיים",
+    "title": "מורדי הגטאות, גבעתיים",
     "price": 5350000,
     "area": "givatayim",
     "neighborhood": "בורוכוב",
@@ -864,7 +864,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_029",
-    "title": "דירות 3 חדרים – מורדי הגטאות, שכונת גפן, רמת גן",
+    "title": "מורדי הגטאות, רמת גן",
     "price": 3449999,
     "area": "ramat-gan",
     "neighborhood": "שכונת גפן",
@@ -895,7 +895,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_030",
-    "title": "קוטג' 5 חדרים – המאבק, חברת חשמל, גבעתיים",
+    "title": "המאבק, גבעתיים",
     "price": 6500000,
     "area": "givatayim",
     "neighborhood": "חברת חשמל",
@@ -922,7 +922,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_031",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 5000000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -953,7 +953,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_032",
-    "title": "דירות 3 חדרים – שדרות ירושלים, מרום נווה, רמת יצחק, רמת גן",
+    "title": "שדרות ירושלים, רמת גן",
     "price": 2630000,
     "area": "ramat-gan",
     "neighborhood": "מרום נווה, רמת יצחק",
@@ -982,7 +982,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_033",
-    "title": "פנטהאוז 3 חדרים – טרומן, נגבה, רמת גן",
+    "title": "טרומן, רמת גן",
     "price": 3080000,
     "area": "ramat-gan",
     "neighborhood": "נגבה",
@@ -1010,7 +1010,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_034",
-    "title": "דירות 3 חדרים – שדרות ירושלים, מרום נווה, רמת יצחק, רמת גן",
+    "title": "שדרות ירושלים, רמת גן",
     "price": 2630000,
     "area": "ramat-gan",
     "neighborhood": "מרום נווה, רמת יצחק",
@@ -1036,7 +1036,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_035",
-    "title": "דירות 4 חדרים – רות, חרוזים, רמת גן",
+    "title": "רות, רמת גן",
     "price": 4390000,
     "area": "ramat-gan",
     "neighborhood": "חרוזים",
@@ -1067,7 +1067,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_036",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 5100000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1098,7 +1098,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_037",
-    "title": "דירת גן 3 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 6250000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -1129,7 +1129,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_038",
-    "title": "דירות 4 חדרים – גולומב, ארלוזורוב, גבעתיים",
+    "title": "גולומב, גבעתיים",
     "price": 4250000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1160,7 +1160,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_039",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 4500000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1191,7 +1191,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_040",
-    "title": "דירת גן 4 חדרים – גולומב, ארלוזורוב, גבעתיים",
+    "title": "גולומב, גבעתיים",
     "price": 5000000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1222,7 +1222,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_041",
-    "title": "דירות 5 חדרים – גולומב, ארלוזורוב, גבעתיים",
+    "title": "גולומב, גבעתיים",
     "price": 5250000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1253,7 +1253,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_042",
-    "title": "דירות 2 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 3250000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -1283,7 +1283,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_043",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 5200000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1345,7 +1345,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_045",
-    "title": "פנטהאוז 5 חדרים – מלצ'ט, לב תל אביב, לב העיר צפון, תל אביב",
+    "title": "מלצ'ט, תל אביב",
     "price": 18055000,
     "area": "tel-aviv",
     "neighborhood": "לב תל אביב, לב העיר צפון",
@@ -1376,7 +1376,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_046",
-    "title": "דירות 4 חדרים – ז'בוטינסקי, ארלוזורוב, גבעתיים",
+    "title": "ז'בוטינסקי, גבעתיים",
     "price": 4350000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1438,7 +1438,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_048",
-    "title": "דירות 5 חדרים – שמעון בן צבי, שטח 9, גבעתיים",
+    "title": "שמעון בן צבי, גבעתיים",
     "price": 4900000,
     "area": "givatayim",
     "neighborhood": "שטח 9",
@@ -1466,7 +1466,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_049",
-    "title": "ברדיצ'בסקי 37, גבעתיים (ללא עמלת תיווך)",
+    "title": "ברדיצ'בסקי 37, גבעתיים",
     "price": 4500000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1497,7 +1497,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_050",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 5900000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1528,7 +1528,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_051",
-    "title": "דירות 4 חדרים – כצנלסון, הל\"ה, גבעתיים",
+    "title": "כצנלסון, גבעתיים",
     "price": 4250000,
     "area": "givatayim",
     "neighborhood": "הל\"ה",
@@ -1559,7 +1559,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_052",
-    "title": "דירות 5 חדרים – המעיין, ארלוזורוב, גבעתיים",
+    "title": "המעיין, גבעתיים",
     "price": 5450000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1590,7 +1590,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_053",
-    "title": "פנטהאוז 5 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 11000000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -1621,7 +1621,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_054",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 5500000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1652,7 +1652,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_055",
-    "title": "דירות 5 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 9375000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -1683,7 +1683,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_056",
-    "title": "דירות 6 חדרים – רמז, הצפון החדש - כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 18500000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -1714,7 +1714,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_057",
-    "title": "דירות 4 חדרים – אבן עזרא, נווה רם, שיכון מזרחי, רמת גן",
+    "title": "אבן עזרא, רמת גן",
     "price": 3100000,
     "area": "ramat-gan",
     "neighborhood": "נווה רם, שיכון מזרחי",
@@ -1744,7 +1744,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_058",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 10500000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1775,7 +1775,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_059",
-    "title": "פנטהאוז 4 חדרים – מורדי הגטאות, בורוכוב, גבעתיים",
+    "title": "מורדי הגטאות, גבעתיים",
     "price": 5350000,
     "area": "givatayim",
     "neighborhood": "בורוכוב",
@@ -1806,7 +1806,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_060",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 4414000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1837,7 +1837,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_061",
-    "title": "דירות 5 חדרים – שמעון בן צבי, שטח 9, גבעתיים",
+    "title": "שמעון בן צבי, גבעתיים",
     "price": 4700000,
     "area": "givatayim",
     "neighborhood": "שטח 9",
@@ -1867,7 +1867,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_062",
-    "title": "יצחק שדה 7, גבעתיים (ללא עמלת תיווך)",
+    "title": "יצחק שדה 7, גבעתיים",
     "price": 6900000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1898,7 +1898,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_063",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 8300000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1929,7 +1929,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_064",
-    "title": "דירות 4 חדרים – העמל, נחלת גנים, רמת גן",
+    "title": "העמל, רמת גן",
     "price": 3230000,
     "area": "ramat-gan",
     "neighborhood": "נחלת גנים",
@@ -1960,7 +1960,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_065",
-    "title": "ז'בוטינסקי 37, גבעתיים (ללא עמלת תיווך)",   
+    "title": "ז'בוטינסקי 37, גבעתיים",   
     "price": 4600000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
@@ -1991,7 +1991,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_066",
-    "title": "דירות 3 חדרים – רמז, הצפון החדש, כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב", 
     "price": 4430000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",
@@ -2021,7 +2021,7 @@ export const PROPERTIES = [
   },
   {
     "id": "prop_067",
-    "title": "דירת גן 3 חדרים – רמז, הצפון החדש, כיכר המדינה, תל אביב",
+    "title": "רמז 35, תל אביב",
     "price": 5750000,
     "area": "tel-aviv",
     "neighborhood": "הצפון החדש - כיכר המדינה",

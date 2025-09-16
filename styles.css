@@ -2114,9 +2114,10 @@ body {
 
 /* Swipe Interface Exit Button */
 .swipe-exit-btn {
-    position: fixed;
-    top: 6%;
-    right: 2rem;
+    position: relative;
+    order: -1;
+    margin-bottom: 20px;
+    align-self: center;
     z-index: 1000;
     width: 50px;
     height: 50px;
@@ -2148,11 +2149,15 @@ body {
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .swipe-exit-btn {
-        top: 1rem;
-        right: 1rem;
         width: 45px;
         height: 45px;
         font-size: 1rem;
+    }
+
+    .registration-exit-btn {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1rem !important;
     }
     
     /* Fix white line next to accessibility bar on mobile */
@@ -2326,6 +2331,7 @@ body {
   min-height: 100dvh;
   min-height: 100vh;
 
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2919,7 +2925,14 @@ html.a11y-font-200 { font-size: 200%; }
 @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
 
 /* === Dor Real Estate — Property Card (Clean Responsive) === */
-  
+
+.property-cards-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .property-cards {
   position: relative;
   /* Let .property-card.big handle sizing for Tinder-like interface */
@@ -3041,6 +3054,8 @@ html.a11y-font-200 { font-size: 200%; }
   border-radius: 50%; border: 0;
   background: rgba(255,255,255,.6);
   cursor: pointer;
+  width: 12px;
+  height: 12px;
 }
 .carousel-dot.active { background: #fff; }
 
@@ -4518,13 +4533,13 @@ html.a11y-font-200 { font-size: 200%; }
   border-radius: 25px;
   aspect-ratio: 4 / 3;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     0 0 40px rgba(255, 102, 0, 0.15),
     0 10px 60px rgba(0, 0, 0, 0.7),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 102, 0, 0.2);
-  background: linear-gradient(135deg, 
-    rgba(26, 26, 26, 0.95) 0%, 
+  background: linear-gradient(135deg,
+    rgba(26, 26, 26, 0.95) 0%,
     rgba(45, 45, 45, 0.9) 100%);
   backdrop-filter: blur(20px);
 }
@@ -4539,19 +4554,19 @@ html.a11y-font-200 { font-size: 200%; }
   border-radius: 25px;
 }
 
-.project-card:hover {
+  .project-card:hover {
   transform: translateY(-15px) scale(1.03);
-  box-shadow: 
-    0 0 60px rgba(255, 102, 0, 0.3),
-    0 20px 80px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 102, 0, 0.5);
-}
+    box-shadow:
+      0 0 60px rgba(255, 102, 0, 0.3),
+      0 20px 80px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 102, 0, 0.5);
+  }
 
-.project-card:hover img {
+  .project-card:hover img {
   transform: scale(1.08);
-  filter: brightness(1.1) contrast(1.1);
-}
+    filter: brightness(1.1) contrast(1.1);
+  }
 
 .project-overlay {
   position: absolute;
@@ -5007,7 +5022,7 @@ body {
   margin: 0 auto;
   text-align: center;
   margin-bottom: 1.5rem;
-  padding: 1rem 3rem;
+  /* padding: 1rem 3rem; */
 }
 
 .story-text {
@@ -6463,6 +6478,104 @@ body {
   
   .knowledge-icon {
     font-size: 2.5rem;
+  }
+}
+
+/* ========================================
+   FLAGSHIP PROJECTS CAROUSEL IMPROVEMENTS
+   ======================================== */
+
+/* Remove ALL hover effects for flagship project cards */
+.flagship-projects-showcase .flagship-project-card:hover {
+  transform: none !important;
+  box-shadow:
+    0 0 40px rgba(255, 102, 0, 0.15),
+    0 10px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.flagship-projects-showcase .flagship-project-card:hover img {
+  transform: none !important;
+  filter: none !important;
+}
+
+.flagship-projects-showcase .flagship-project-card:hover::before {
+  opacity: 0 !important;
+}
+
+/* Make the project overlay container transparent but keep children visible */
+.flagship-projects-showcase .project-overlay {
+  opacity: 1 !important;
+  background: none !important;
+  pointer-events: none;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure images are clear and visible */
+.flagship-projects-showcase .flagship-project-card img {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Project status label - clean, consistent, always visible */
+.flagship-projects-showcase .project-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 102, 0, 0.9);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 3;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Project name (address) - elegant with gradient background */
+.flagship-projects-showcase .project-name {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 100%);
+  color: #333;
+  padding: 0.5rem 0.9rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  z-index: 3;
+  opacity: 1;
+  pointer-events: none;
+  max-width: calc(100% - 2rem);
+  text-align: right;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+  .flagship-projects-showcase .project-status {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .flagship-projects-showcase .project-name {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    max-width: calc(100% - 1.5rem);
   }
 }
 
