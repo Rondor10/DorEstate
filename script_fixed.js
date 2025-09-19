@@ -1201,7 +1201,23 @@ const modalContents = {
                   <div class="project-status sold">נמכר</div>
                 </div>
               </div>
+
+              <div class="project-slide">
+                <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
+                <div class="project-info">
+                  <div class="project-name">רמז 35, תל אביב</div>
+                  <div class="project-status sold">נמכר</div>
+                </div>
+              </div>              
               
+              <div class="project-slide">
+                <img src="firm_projects_optimized/michal_6_tel_aviv_640w.webp" alt="מיכל 6, תל אביב" />
+                <div class="project-info">
+                  <div class="project-name">מיכל 6, תל אביב</div>
+                  <div class="project-status sold">נמכר</div>
+                </div>
+              </div>
+
               <div class="project-slide">
                 <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="יצחק שדה 3, גבעתיים" />
                 <div class="project-info">
@@ -1519,6 +1535,16 @@ const modalContents = {
               <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
               <div class="project-overlay">גולומב 54, גבעתיים</div>
             </a>
+
+            <a class="project-card">
+              <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
+              <div class="project-overlay">רמז 35, תל אביב</div>
+            </a>
+                
+            <a class="project-card">
+              <img src="firm_projects_optimized/michal_6_tel_aviv_640w.webp" alt="מיכל 6, תל אביב" />
+              <div class="project-overlay">מיכל 6, תל אביב</div>
+            </a>            
 
           <a class="project-card">
             <img src="firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp" alt="יצחק שדה 5, גבעתיים" />
@@ -2377,14 +2403,48 @@ function initProjectsScrolling() {
 
 // Initialize all event listeners
 function initializeEventListeners() {
-  // Modal triggers
+  // Modal triggers (original functionality + URL updates)
   document.querySelectorAll("[data-modal]").forEach((trigger) => {
     trigger.addEventListener("click", function (e) {
       e.preventDefault();
       const modalType = this.getAttribute("data-modal");
+
+      // Original modal opening
       openModal(modalType);
+
+      // Add URL update for SEO (only if running online)
+      if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
+        const url = this.getAttribute("href");
+        window.history.pushState({ modal: modalType }, '', url);
+        updateMetaTags(modalType);
+      }
     });
   });
+
+  // Handle browser back/forward buttons (only for online)
+  if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
+    window.addEventListener('popstate', function(e) {
+      const currentPath = window.location.pathname;
+      const path = currentPath.replace('/', '') || 'home';
+      if (modalContents[path]) {
+        openModal(path);
+        updateMetaTags(path);
+      } else if (path === 'home') {
+        closeModal();
+        updateMetaTags('home');
+      }
+    });
+
+    // Handle initial page load with URL
+    const currentPath = window.location.pathname;
+    if (currentPath !== '/') {
+      const path = currentPath.replace('/', '') || 'home';
+      if (modalContents[path]) {
+        openModal(path);
+        updateMetaTags(path);
+      }
+    }
+  }
 
   // Modal close
   modalClose.addEventListener("click", closeModal);
@@ -2544,17 +2604,99 @@ function openModal(type) {
 // Close modal
 function closeModal() {
   modalOverlay.classList.remove("active");
-  
+
   // Enhanced scroll unlock - restore background scroll
   document.body.classList.remove("modal-open");
   document.body.style.overflow = ""; // instead of "hidden"
-  
+
   const contactFixed = document.querySelector(".contact-fixed");
   if (contactFixed) contactFixed.style.display = "block";
-  
+
   // Remove legal-modal class when closing
   const modalContainer = document.querySelector('.modal-container');
   modalContainer.classList.remove('legal-modal');
+
+  // Update URL to home when closing modal (only for online)
+  if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
+    if (window.location.pathname !== '/') {
+      window.history.pushState({ modal: null }, '', '/');
+      updateMetaTags('home');
+    }
+  }
+}
+
+// Dynamic SEO Meta Tags Update
+function updateMetaTags(page) {
+  const metaData = {
+    home: {
+      title: "דור נכסים - Dor Real Estate",
+      description: "דור נכסים פועלת מזה כשלושה עשורים ומובילה פרויקטים מורכבים בנדל״ן. אנו מייצרים ערך ליזמים, למשקיעים ולרוכשים באמצעות מומחיות נדל״נית, חשיבה קפיטלית וטכנולוגיה מבוססת דאטה.",
+      url: "https://dorealestate.co.il/"
+    },
+    about: {
+      title: "מורשת בכתב - דור נכסים",
+      description: "הסיפור של דור נכסים - שלושה עשורים של מצוינות בנדל״ן. חבר הבכירים, ציר הזמן והליבה שלנו בגבעתיים, ברמת גן ובתל אביב.",
+      url: "https://dorealestate.co.il/about"
+    },
+    services: {
+      title: "שירותי הפירמה - דור נכסים",
+      description: "שירותי נדל״ן מתקדמים: מחקר שוק, מידול יציאה לשוק, האצה וביצועים. מתודולוגיית השיווק שלנו מבוססת על דאטה וטכנולוגיה.",
+      url: "https://dorealestate.co.il/services"
+    },
+    projects: {
+      title: "פרויקטי דגל - דור נכסים",
+      description: "פרויקטי נדל״ן מובילים בגבעתיים ותל אביב. גולומב 54, ברדיצ'בסקי 37, יצחק שדה ועוד פרויקטים איכותיים.",
+      url: "https://dorealestate.co.il/projects"
+    },
+    assets: {
+      title: "ליזמים - דור נכסים",
+      description: "שירותים מקצועיים ליזמי נדל״ן: מתודולוגיית השיווק, זיהוי והתאמה, מידול יציאה לשוק והאצת ביצועים.",
+      url: "https://dorealestate.co.il/assets"
+    },
+    contact: {
+      title: "צור קשר - דור נכסים",
+      description: "צור קשר עם דור נכסים. ויצמן 37, גבעתיים. טלפון: 050-553-4488. אימייל: inquiries@dorestates.com",
+      url: "https://dorealestate.co.il/contact"
+    },
+    join: {
+      title: "קריירה ב-Dor Israel - דור נכסים",
+      description: "הצטרף לצוות דור נכסים. הזדמנויות קריירה בתחום הנדל״ן, השיווק והפיתוח. בואו להיות חלק מהדור הבא.",
+      url: "https://dorealestate.co.il/join"
+    }
+  };
+
+  const data = metaData[page] || metaData.home;
+
+  // Update title
+  document.title = data.title;
+
+  // Update meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', data.description);
+
+  // Update canonical URL
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', data.url);
+
+  // Update Open Graph tags
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', data.title);
+
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', data.description);
+
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', data.url);
+
+  // Update Twitter Card tags
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) twitterTitle.setAttribute('content', data.title);
+
+  const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDesc) twitterDesc.setAttribute('content', data.description);
+
+  const twitterUrl = document.querySelector('meta[name="twitter:url"]');
+  if (twitterUrl) twitterUrl.setAttribute('content', data.url);
 }
 
 // Onboarding Functions
@@ -4501,7 +4643,7 @@ window.DorTeam = (function () {
     { name: "רויטל דור", title: "סמנכ\"לית תפעול | Chief Operations Officer", imageId: "revital",
       description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך האופרטיבי. היא מיישרת תהליכים, מגדירה סטנדרטים ומבטיחה מימוש בשטח.",
     },
-    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development", imageId: "ron",
+    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development Officer", imageId: "ron",
       description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי.",
     },
     { name: "שחר דור", title: "סמנכ\"לית שיווק | Chief Marketing Officer", imageId: "shahar",
@@ -4630,7 +4772,7 @@ window.AboutTeam = (function () {
     { name: "רויטל דור", title: "סמנכ\"לית תפעול | Chief Operations Officer", imageId: "revital",
       description: "רויטל דור מהווה, יחד עם דוד, את שלד הפירמה מראשית דרכה ומנהלת את המערך האופרטיבי. היא מיישרת תהליכים, מגדירה סטנדרטים ומבטיחה מימוש בשטח.",
     },
-    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development", imageId: "ron",
+    { name: "רון דור", title: "סמנכ\"ל פיתוח עסקי | Chief Business Development Officer", imageId: "ron",
       description: "רון דור מביא תפיסה אינטגרטיבית המבוססת על מתודולוגיות איתור שפיתח בספורט, בדגש על זיהוי אסימטריות ודפוסים חבויים בקנה מידה עולמי.",
     },
     { name: "שחר דור", title: "סמנכ\"לית שיווק | Chief Marketing Officer", imageId: "shahar",

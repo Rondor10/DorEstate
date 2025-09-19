@@ -94,6 +94,118 @@
         }]
         }
         </script>
+
+        <!-- Structured Data (Projects ItemList) -->
+        <script type="application/ld+json">
+        {
+            "@context":"https://schema.org",
+            "@type":"ItemList",
+            "name":"פרויקטי דגל",
+            "itemListElement":[
+            {
+                "@type":"ListItem","position":1,
+                "item":{
+                "@type":"Place",
+                "name":"גולומב 54, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"גולומב 54","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/golomb_54_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                }
+            },
+            {
+                "@type":"ListItem","position":2,
+                "item":{
+                "@type":"Place",
+                "name":"ברדיצ'בסקי 37, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"ברדיצ'בסקי 37","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/berdiv_37_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                }
+            },
+            {
+                "@type":"ListItem","position":3,
+                "item":{
+                "@type":"Place",
+                "name":"יצחק שדה 5, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 5","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/yitzchak_sade_5_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                }
+            },
+            {
+                "@type":"ListItem","position":4,
+                "item":{
+                "@type":"Place",
+                "name":"מיכל 6, תל אביב",
+                "address":{"@type":"PostalAddress","streetAddress":"מיכל 6","addressLocality":"תל אביב","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/michal_6_tel_aviv.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                }
+            },
+            {
+                "@type":"ListItem","position":5,
+                "item":{
+                "@type":"Place",
+                "name":"יצחק שדה 3, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 3","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/yitzchak_sade_3_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                }
+            },
+            {
+                "@type":"ListItem","position":6,
+                "item":{
+                "@type":"Place",
+                "name":"המעיין 7, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"המעיין 7","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/hamaayan_7_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                }
+            },
+            {
+                "@type":"ListItem","position":7,
+                "item":{
+                "@type":"Place",
+                "name":"רמז 35, תל אביב",
+                "address":{"@type":"PostalAddress","streetAddress":"רמז 35","addressLocality":"תל אביב","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/remez_35_tel_aviv.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                }
+            },
+            {
+                "@type":"ListItem","position":8,
+                "item":{
+                "@type":"Place",
+                "name":"ז'בוטינסקי 37, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"ז'בוטינסקי 37","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/zabo_37_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                }
+            },
+            {
+                "@type":"ListItem","position":9,
+                "item":{
+                "@type":"Place",
+                "name":"ריינס 23, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"ריינס 23","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/reines_23_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/InStock"}
+                }
+            },
+            {
+                "@type":"ListItem","position":10,
+                "item":{
+                "@type":"Place",
+                "name":"יצחק שדה 7, גבעתיים",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 7","addressLocality":"גבעתיים","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/gen_pic_optimized/yitzchak_sade_7_givatayim.jpg",
+                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                }
+            }
+            ]
+        }
+        </script>
+
     </head>
     <body>
         <!-- 1. Top Bar -->
@@ -102,20 +214,20 @@
                 <!-- Desktop Navigation -->
                 <nav class="main-nav">
                   <ul class="nav-grid">
-                    <li><a href="#legacy" data-modal="about" type="about">מורשת בכתב</a></li>
-                    <li><a href="#" data-modal="services" type="services">שירותי הפירמה</a></li>
-                    <li><a href="#" data-modal="join" type="contact">קריירה ב-Dor Israel</a></li>
+                    <li><a href="/about" data-modal="about" type="about">מורשת בכתב</a></li>
+                    <li><a href="/services" data-modal="services" type="services">שירותי הפירמה</a></li>
+                    <li><a href="/join" data-modal="join" type="contact">קריירה ב-Dor Israel</a></li>
 
                     <!-- Logo in its own li -->
                       <li class="logo-cell">
-                        <a href="index.html" class="logo-link">
+                        <a href="/" class="logo-link">
                           <img data-category="logos" data-key="main" class="logo" alt="דור נכסים">
                         </a>
                       </li>
 
-                    <li><a href="#" data-modal="assets" type="assets">ליזמים</a></li>
-                    <li><a href="#" data-modal="projects" type="projects">פרויקטים</a></li>
-                    <li><a href="#" data-modal="contact" type="contact">צור קשר</a></li>
+                    <li><a href="/assets" data-modal="assets" type="assets">ליזמים</a></li>
+                    <li><a href="/projects" data-modal="projects" type="projects">פרויקטים</a></li>
+                    <li><a href="/contact" data-modal="contact" type="contact">צור קשר</a></li>
                   </ul>
                 </nav>
 
@@ -141,19 +253,19 @@
         <div class="mobile-menu-overlay">
             <nav class="mobile-menu">
                 <ul>
-                    <li><a href="#legacy" data-modal="about" type="about">מורשת בכתב</a></li>
-                    <li><a href="#" data-modal="services" type="services">שירותי הפירמה</a></li>
-                    <li><a href="#" data-modal="join" type="contact">קריירה ב-Dor Israel</a></li>
-                    <li><a href="#" data-modal="assets" type="assets">ליזמים</a></li>
-                    <li><a href="#" data-modal="projects" type="projects">פרויקטים</a></li>
-                    <li><a href="#" data-modal="contact" type="contact">צור קשר</a></li>
+                    <li><a href="/about" data-modal="about" type="about">מורשת בכתב</a></li>
+                    <li><a href="/services" data-modal="services" type="services">שירותי הפירמה</a></li>
+                    <li><a href="/join" data-modal="join" type="contact">קריירה ב-Dor Israel</a></li>
+                    <li><a href="/assets" data-modal="assets" type="assets">ליזמים</a></li>
+                    <li><a href="/projects" data-modal="projects" type="projects">פרויקטים</a></li>
+                    <li><a href="/contact" data-modal="contact" type="contact">צור קשר</a></li>
                     <li class="mobile-submenu">
                         <a href="#" class="mobile-submenu-trigger">מדיניות</a>
                         <ul class="mobile-submenu-content">
-                            <li><a href="#" data-modal="terms" type="terms">תנאי שימוש</a></li>
-                            <li><a href="#" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
-                            <li><a href="#" data-modal="accessibility" type="accessibility">הסדרי נגישות</a></li>
-                            <li><a href="#" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
+                            <li><a href="/terms" data-modal="terms" type="terms">תנאי שימוש</a></li>
+                            <li><a href="/privacy" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
+                            <li><a href="/accessibility" data-modal="accessibility" type="accessibility">הסדרי נגישות</a></li>
+                            <li><a href="/ethics" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -532,10 +644,10 @@
                     <!-- Center: Legal Stuff (Desktop Only) -->
                     <nav class="footer-legal">
                         <ul>
-                            <li><a href="#" data-modal="terms" type="terms">תנאי שימוש</a></li>
-                            <li><a href="#" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
-                            <li><a href="#" data-modal="accessibility" type="accessibility">הסדרי נגישות</a></li>
-                            <li><a href="#" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
+                            <li><a href="/terms" data-modal="terms" type="terms">תנאי שימוש</a></li>
+                            <li><a href="/privacy" data-modal="privacy" type="privacy">מדיניות פרטיות</a></li>
+                            <li><a href="/accessibility" data-modal="accessibility" type="accessibility">הסדרי נגישות</a></li>
+                            <li><a href="/ethics" data-modal="ethics" type="ethics">כללי אתיקה</a></li>
                         </ul>
                     </nav>
                     <!-- Left: Social Media Icons -->
