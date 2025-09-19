@@ -100,8 +100,15 @@ const modalContents = {
             <div class="timeline-item">
               <div class="timeline-content">
                 <div class="timeline-year">1997</div>
-                <h3 class="timeline-milestone">בית מסחר נכסים</h3>
-                <p class="timeline-description">כניסה לעולם העסקאות, מיקוד בתמחור מדויק ובמצוינות משא ומתן. הונחו היסודות לאמון ארוך טווח.</p>
+                <h3 class="timeline-milestone">לידת החזון</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2002</div>
+                <h3 class="timeline-milestone">שיווק פרויקטים</h3>
               </div>
               <div class="timeline-dot"></div>
             </div>
@@ -110,16 +117,6 @@ const modalContents = {
               <div class="timeline-content">
                 <div class="timeline-year">2006</div>
                 <h3 class="timeline-milestone">יזמות</h3>
-                <p class="timeline-description">הרחבת הפעילות לפיתוח פרויקטים: מימון, תכנון ורישוי, ניהול קצה לקצה.</p>
-              </div>
-              <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <div class="timeline-year">2008</div>
-                <h3 class="timeline-milestone">שיווק פרויקטים</h3>
-                <p class="timeline-description">בניית מנוע שיווקי עם דאטת שוק, קהלים וחוויית לקוח, על מנת להאיץ קליטה ומכירות.</p>
               </div>
               <div class="timeline-dot"></div>
             </div>
@@ -127,26 +124,23 @@ const modalContents = {
             <div class="timeline-item">
               <div class="timeline-content">
                 <div class="timeline-year">2012</div>
-                <h3 class="timeline-milestone">חיזוק תשתיות</h3>
-                <p class="timeline-description">בניית יכולות פנימיות, שיפור תהליכים, והרחבת הידע והמומחיות המקצועית.</p>
+                <h3 class="timeline-milestone">נדל"ן מסחרי</h3>
               </div>
               <div class="timeline-dot"></div>
             </div>
             
             <div class="timeline-item">
               <div class="timeline-content">
-                <div class="timeline-year">2020</div>
-                <h3 class="timeline-milestone">דיגיטליזציה</h3>
-                <p class="timeline-description">מתודות מבוססות דאטה, אוטומציה וניתוח קבלת החלטות, מכפילי ביצוע ותשואה.</p>
+                <div class="timeline-year">2018</div>
+                <h3 class="timeline-milestone">טרסנפורמציה טכנולוגית</h3>
               </div>
               <div class="timeline-dot"></div>
             </div>
             
             <div class="timeline-item current">
               <div class="timeline-content">
-                <div class="timeline-year">2025</div>
-                <h3 class="timeline-milestone">עתיד חכם</h3>
-                <p class="timeline-description">יוזמת השקעות ממוקדת. מסגרות קפיטליות, תהליכי סינון ושותפויות. בשלבי פריסה והרחבה.</p>
+                <div class="timeline-year">2022</div>
+                <h3 class="timeline-milestone">השקעות גלובליות</h3>
               </div>
               <div class="timeline-dot"></div>
             </div>
@@ -669,7 +663,7 @@ const modalContents = {
                 <span class="stat-label">₪ בעסקאות</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">5,000+</span>
+                <span class="stat-number">25,000+</span>
                 <span class="stat-label">לקוחות מרוצים</span>
               </div>
               <div class="stat-item">
@@ -1180,7 +1174,7 @@ const modalContents = {
               <span class="stat-label">₪ בעסקאות</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">5,000+</span>
+              <span class="stat-number">25,000+</span>
               <span class="stat-label">לקוחות מרוצים</span>
             </div>
             <div class="stat-item">
@@ -1510,7 +1504,7 @@ const modalContents = {
         <div class="projects-grid">
           <!-- Sold Projects -->
           <a class="project-card project-sold">
-            <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
+            <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
             <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
           </a>
 
@@ -1598,11 +1592,11 @@ const modalContents = {
                 </div>
               </div>
               
-              <div class="method-item" onclick="sendEmail('inquiries@dorealestate.com')">
+              <div class="method-item" onclick="sendEmail('inquiries@dorestates.com')">
                 <div class="method-icon">📧</div>
                 <div class="method-details">
                   <div class="method-label">אימייל</div>
-                  <div class="method-value">inquiries@dorealestate.com</div>
+                  <div class="method-value">inquiries@dorestates.com</div>
                 </div>
               </div>
               
@@ -1709,7 +1703,7 @@ const modalContents = {
           // Open email client with form data
           const emailSubject = encodeURIComponent('פנייה חדשה מאתר DorEstate');
           const encodedBody = encodeURIComponent(emailBody);
-          window.open('mailto:inquiries@dorealestate.com?subject=' + emailSubject + '&body=' + encodedBody, '_blank');
+          window.open('mailto:inquiries@dorestates.com?subject=' + emailSubject + '&body=' + encodedBody, '_blank');
           
           // Show success message
           showSuccessMessage();
@@ -1932,7 +1926,7 @@ const modalContents = {
                      </div>
 
                      <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
-                       <p style="margin: .25rem 0;"><strong>כתובת לפניות פרטיות:</strong> privacy@dorealestate.com</p>
+                       <p style="margin: .25rem 0;"><strong>כתובת לפניות פרטיות:</strong> privacy@dorestates.com</p>
                        <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
                        <p style="margin: .25rem 0;"><strong>מענה:</strong> א'–ה', 9:00–17:00</p>
                      </div>
@@ -1974,7 +1968,7 @@ const modalContents = {
                          <p>נשמח לקבל משוב והצעות לשיפור.</p>
                          <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
                            <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
-                           <p style="margin: .25rem 0;"><strong>דוא"ל:</strong> accessibility@dorealestate.com</p>
+                           <p style="margin: .25rem 0;"><strong>דוא"ל:</strong> accessibility@dorestates.com</p>
                            <p style="margin: .25rem 0;"><strong>ימי מענה:</strong> א'–ה', 9:00–17:00</p>
                          </div>
                        </div>
@@ -2453,7 +2447,7 @@ function initContactForm(scope = document) {
       // --- OPTION A (no backend): open a mailto with the message ---
       const subject = `פנייה מהאתר`;
       const body = `${msg}\n\nשם: ${name}\nאימייל: ${email}`;
-      window.location.href = `mailto:inquiries@dorealestate.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:inquiries@dorestates.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       // UX
       showToast("✅ תודה! קיבלנו את פנייתכם וניצור קשר בהקדם.", "success");
