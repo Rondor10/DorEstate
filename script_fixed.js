@@ -21,6 +21,8 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const startJourneyBtn = document.getElementById("startJourney");
 const swipeInterface = document.getElementById("swipeInterface");
+const floatingCtaContainer = document.getElementById("floating-cta");
+const floatingCtaBtn = document.getElementById("floating-cta-btn");
 
 // State Management
 let currentStep = 0;
@@ -660,15 +662,15 @@ const modalContents = {
             <div class="stats-grid">
               <div class="stat-item">
                 <span class="stat-number">5B+</span>
-                <span class="stat-label">₪ בעסקאות</span>
+                <span class="stat-label">₪ רכישות</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number">25,000+</span>
                 <span class="stat-label">לקוחות מרוצים</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">25+</span>
-                <span class="stat-label">פרויקטים פעילים</span>
+                <span class="stat-number">2,500+</span>
+                <span class="stat-label">נכסים ששווקו</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number">250+</span>
@@ -1171,19 +1173,19 @@ const modalContents = {
           <div class="stats-grid">
             <div class="stat-item">
               <span class="stat-number">5B+</span>
-              <span class="stat-label">₪ בעסקאות</span>
+              <span class="stat-label">₪ רכישות</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">25,000+</span>
               <span class="stat-label">לקוחות מרוצים</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">25+</span>
-              <span class="stat-label">פרויקטים פעילים</span>
+              <span class="stat-number">2,500+</span>
+              <span class="stat-label">נכסים ששווקו</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">250+</span>
-              <span class="stat-label">נכסים משווקים</span>
+              <span class="stat-label">נכסים בשיווק</span>
             </div>
           </div>
         </div>
@@ -1193,51 +1195,61 @@ const modalContents = {
           <h2 class="section-title">פרויקטי דגל</h2>
           <div class="projects-slider" id="projectsSlider">
             <div class="projects-track" id="projectsTrack">
-              <!-- Sold Projects -->
-              <div class="project-slide">
-                <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
-                <div class="project-info">
-                  <div class="project-name">המעיין 7, גבעתיים</div>
-                  <div class="project-status sold">נמכר</div>
-                </div>
-              </div>
-
-              <div class="project-slide">
-                <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
-                <div class="project-info">
-                  <div class="project-name">רמז 35, תל אביב</div>
-                  <div class="project-status sold">נמכר</div>
-                </div>
-              </div>              
-              
-              <div class="project-slide">
-                <img src="firm_projects_optimized/michal_6_tel_aviv_640w.webp" alt="מיכל 6, תל אביב" />
-                <div class="project-info">
-                  <div class="project-name">מיכל 6, תל אביב</div>
-                  <div class="project-status sold">נמכר</div>
-                </div>
-              </div>
 
               <div class="project-slide">
                 <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="יצחק שדה 3, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 3, גבעתיים</div>
-                  <div class="project-status sold">נמכר</div>
+                  <div class="project-status sold">סולד אאוט</div>
                 </div>
               </div>
               
-              <!-- Active Projects -->
               <div class="project-slide">
-                <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
+                <img src="firm_projects_optimized/michal_6_tel_aviv_640w.webp" alt="מיכל 6, תל אביב" />
                 <div class="project-info">
-                  <div class="project-name">גולומב 54, גבעתיים</div>
+                  <div class="project-name">מיכל 6, תל אביב</div>
+                  <div class="project-status sold">בשיווק</div>
                 </div>
               </div>
+
+              <div class="project-slide">
+                <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">המעיין 7, גבעתיים</div>
+                  <div class="project-status sold">סולד אאוט</div>
+                </div>
+              </div>  
+              
+              <div class="project-slide">
+                <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
+                <div class="project-info">
+                  <div class="project-name">רמז 35, תל אביב</div>
+                  <div class="project-status sold">בשיווק</div>
+                </div>
+              </div>           
+              
+
+              <div class="project-slide">
+                <img src="firm_projects_optimized/reines_30_givatayim_640w.webp" alt="ריינס 30, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ריינס 30, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>
+                </div>
+              </div>                
+
+              <div class="project-slide">
+                <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ריינס 23, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>
+                </div>
+              </div>                    
               
               <div class="project-slide">
                 <img src="firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp" alt="יצחק שדה 5, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 5, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>
                 </div>
               </div>
               
@@ -1245,28 +1257,74 @@ const modalContents = {
                 <img src="firm_projects_optimized/zabo_37_givatayim_640w.webp" alt="ז'בוטינסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ז'בוטינסקי 37, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>                  
                 </div>
-              </div>
-              
-              <div class="project-slide">
-                <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
-                <div class="project-info">
-                  <div class="project-name">ריינס 23, גבעתיים</div>
-                </div>
-              </div>
+              </div>  
               
               <div class="project-slide">
                 <img src="firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp" alt="יצחק שדה 7, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">יצחק שדה 7, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>                  
+                </div>
+              </div>              
+                            
+              <div class="project-slide">
+                <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">גולומב 54, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>                  
                 </div>
               </div>
-              
+
               <div class="project-slide">
                 <img src="firm_projects_optimized/berdiv_37_givatayim_640w.webp" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-info">
                   <div class="project-name">ברדיצ'בסקי 37, גבעתיים</div>
+                  <div class="project-status sold">בשיווק</div>                  
+                </div> 
+              </div>             
+                        
+              <div class="project-slide">
+                <img src="firm_projects_optimized/soon_640w.webp" alt="קקל 17, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">קק"ל, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>                  
                 </div>
+              </div>
+            
+                <div class="project-slide">
+                <img src="firm_projects_optimized/soon_640w.webp" alt="ברדיצ'בסקי 10, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ברדיצ'בסקי, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>                  
+                </div>
+              </div>
+
+              <div class="project-slide">
+                <img src="firm_projects_optimized/soon_640w.webp" alt="ברדיצ'בסקי 12, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">ברדיצ'בסקי, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>                  
+                </div>
+              </div>
+
+                <div class="project-slide">
+                <img src="firm_projects_optimized/soon_640w.webp" alt="שדה בוקר 1, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">שדה בוקר, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>                  
+                </div>
+              </div>
+
+                <div class="project-slide">
+                <img src="firm_projects_optimized/soon_640w.webp" alt="שדה בוקר 3, גבעתיים" />
+                <div class="project-info">
+                  <div class="project-name">שדה בוקר, גבעתיים</div>
+                  <div class="project-status sold">בקרוב</div>                  
+                </div>
+              </div>   
+
               </div>
             </div>
           </div>
@@ -1518,58 +1576,89 @@ const modalContents = {
     content: `
     <div class="quantum-projects">
         <div class="projects-grid">
-          <!-- Sold Projects -->
-          <a class="project-card project-sold">
-            <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
-            <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
-          </a>
+
+
 
           <a class="project-card project-sold">
             <img src="firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp" alt="יצחק שדה 3, גבעתיים" />
             <div class="project-overlay show-always">יצחק שדה 3, גבעתיים</div>
           </a>
 
-          <!-- Active Projects -->
-
-            <a class="project-card">
-              <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
-              <div class="project-overlay">גולומב 54, גבעתיים</div>
-            </a>
-
-            <a class="project-card">
-              <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
-              <div class="project-overlay">רמז 35, תל אביב</div>
-            </a>
-                
-            <a class="project-card">
+          <a class="project-card project-ongoing">
               <img src="firm_projects_optimized/michal_6_tel_aviv_640w.webp" alt="מיכל 6, תל אביב" />
               <div class="project-overlay">מיכל 6, תל אביב</div>
             </a>            
 
-          <a class="project-card">
+         <a class="project-card project-sold">
+            <img src="firm_projects_optimized/hamaayan_7_givatayim_640w.webp" alt="המעיין 7, גבעתיים" />
+            <div class="project-overlay show-always">המעיין 7, גבעתיים</div>
+          </a>
+
+            <a class="project-card project-ongoing">
+              <img src="firm_projects_optimized/remez_35_tel_aviv_640w.webp" alt="רמז 35, תל אביב" />
+              <div class="project-overlay">רמז 35, תל אביב</div>
+            </a>     
+            
+            <a class="project-card project-soon">
+            <img src="firm_projects_optimized/reines_30_givatayim_640w.webp" alt="ריינס 30, גבעתיים" />
+            <div class="project-overlay">ריינס 30, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-ongoing">
+            <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
+            <div class="project-overlay">ריינס 23, גבעתיים</div>
+          </a>
+                      
+          <a class="project-card project-ongoing">
             <img src="firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp" alt="יצחק שדה 5, גבעתיים" />
             <div class="project-overlay">יצחק שדה 5, גבעתיים</div>
           </a>
 
-          <a class="project-card">
+          <a class="project-card project-ongoing">
             <img src="firm_projects_optimized/zabo_37_givatayim_640w.webp" alt="ז'בוטינסקי 37, גבעתיים" />
             <div class="project-overlay">ז'בוטינסקי 37, גבעתיים</div>
           </a>
-
-          <a class="project-card">
-            <img src="firm_projects_optimized/reines_23_givatayim_640w.webp" alt="ריינס 23, גבעתיים" />
-            <div class="project-overlay">ריינס 23, גבעתיים</div>
-          </a>
-
-            <a class="project-card">
+  
+          <a class="project-card project-ongoing">
               <img src="firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp" alt="יצחק שדה 7, גבעתיים" />
               <div class="project-overlay">יצחק שדה 7, גבעתיים</div>
+          </a>
+
+            <a class="project-card project-ongoing">
+              <img src="firm_projects_optimized/golomb_54_givatayim_640w.webp" alt="גולומב 54, גבעתיים" />
+              <div class="project-overlay">גולומב 54, גבעתיים</div>
             </a>
 
-              <a class="project-card">
+            <a class="project-card project-ongoing">
                 <img src="firm_projects_optimized/berdiv_37_givatayim_640w.webp" alt="ברדיצ'בסקי 37, גבעתיים" />
                 <div class="project-overlay">ברדיצ'בסקי 37, גבעתיים</div>
-              </a>
+            </a>
+
+          <a class="project-card project-soon">
+            <img src="firm_projects_optimized/soon_640w.webp" alt="קקל 17, גבעתיים" />
+            <div class="project-overlay">קק"ל, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-soon">
+            <img src="firm_projects_optimized/soon_640w.webp" alt="ברדיצ'בסקי 10, גבעתיים" />
+            <div class="project-overlay">ברדיצ'בסקי, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-soon">
+            <img src="firm_projects_optimized/soon_640w.webp" alt="ברדיצ'בסקי 12, גבעתיים" />
+            <div class="project-overlay">ברדיצ'בסקי, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-soon">
+            <img src="firm_projects_optimized/soon_640w.webp" alt="שדה בוקר 1, גבעתיים" />
+            <div class="project-overlay">שדה בוקר, גבעתיים</div>
+          </a>
+
+          <a class="project-card project-soon">
+            <img src="firm_projects_optimized/soon_640w.webp" alt="שדה בוקר 3, גבעתיים" />
+            <div class="project-overlay">שדה בוקר, גבעתיים</div>
+          </a>
+
         </div>
       </div>
       `,
@@ -1885,7 +1974,7 @@ const modalContents = {
                </div>
 
                <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                 עודכן לאחרונה: <span id="terms-updated">01/09/2025</span>
+                 עודכן לאחרונה: <span id="terms-updated">19/09/2025</span>
                </p>
              `,
   },
@@ -1914,12 +2003,12 @@ const modalContents = {
                        </p>
                      </div>
 
-<div style="margin: 1.25rem 0;">
-  <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">Cookies</h3>
-  <p>
-    האתר של דור נכסים משתמש בקובצי Cookies לשיפור חוויית המשתמש, להתאמת תכנים ושירותים, למדידת שימוש וסטטיסטיקה, ולהצגת פרסומות ומסרים שיווקיים אישיים. Cookies הם קובצי טקסט קטנים הנשמרים במכשירך באמצעות הדפדפן: חלקם זמניים ונמחקים עם סגירת הדפדפן, וחלקם נשמרים לפרק זמן קצוב או עד למחיקה יזומה. עשוי להיעשות שימוש גם בקובצי Cookies של צדדים שלישיים, כגון כלי אנליטיקה וספקי פרסום, בכפוף להגדרותיך. באפשרותך לנהל או לחסום Cookies דרך הגדרות הדפדפן. חסימה מלאה או חלקית עלולה לפגוע בפעולת האתר ובחוויית השימוש.
-  </p>
-</div>
+                    <div style="margin: 1.25rem 0;">
+                      <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">Cookies</h3>
+                      <p>
+                        האתר של דור נכסים משתמש בקובצי Cookies לשיפור חוויית המשתמש, להתאמת תכנים ושירותים, למדידת שימוש וסטטיסטיקה, ולהצגת פרסומות ומסרים שיווקיים אישיים. Cookies הם קובצי טקסט קטנים הנשמרים במכשירך באמצעות הדפדפן: חלקם זמניים ונמחקים עם סגירת הדפדפן, וחלקם נשמרים לפרק זמן קצוב או עד למחיקה יזומה. עשוי להיעשות שימוש גם בקובצי Cookies של צדדים שלישיים, כגון כלי אנליטיקה וספקי פרסום, בכפוף להגדרותיך. באפשרותך לנהל או לחסום Cookies דרך הגדרות הדפדפן. חסימה מלאה או חלקית עלולה לפגוע בפעולת האתר ובחוויית השימוש.
+                      </p>
+                    </div>
 
                      <div style="margin: 1.25rem 0;">
                        <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">אבטחת מידע ושמירה</h3>
@@ -1958,7 +2047,7 @@ const modalContents = {
                      </div>
 
                      <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                       עודכן לאחרונה: <span id="privacy-updated">01/09/2025</span>
+                       עודכן לאחרונה: <span id="privacy-updated">19/09/2025</span>
                      </p>
                    `,
   },
@@ -2000,7 +2089,7 @@ const modalContents = {
                        </div>
 
                        <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                         עודכן לאחרונה: <span id="accessibility-updated">01/09/2025</span>
+                         עודכן לאחרונה: <span id="accessibility-updated">19/09/2025</span>
                        </p>
                      `,
   }, 
@@ -2040,7 +2129,7 @@ const modalContents = {
                 </div>
 
                 <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
-                  עודכן לאחרונה: <span id="ethics-updated">01/09/2025</span>
+                  עודכן לאחרונה: <span id="ethics-updated">19/09/2025</span>
                 </p>
               `,
   },
@@ -2475,6 +2564,11 @@ function initializeEventListeners() {
   onboardingClose.addEventListener("click", closeOnboarding);
   prevBtn.addEventListener("click", previousStep);
   nextBtn.addEventListener("click", nextStep);
+
+  // Floating CTA button
+  if (floatingCtaBtn) {
+    floatingCtaBtn.addEventListener("click", startOnboarding);
+  }
 
   // Escape key handling
   document.addEventListener("keydown", function (e) {
@@ -5069,10 +5163,66 @@ function initMobileMenu() {
   });
 }
 
+// ========================================
+// FLOATING CTA BUTTON VISIBILITY CONTROL
+// ========================================
+
+function updateFloatingCtaVisibility() {
+  if (!floatingCtaContainer) return;
+
+  // Check if mobile menu is open
+  const isMobileMenuOpen = document.body.classList.contains('mobile-menu-open');
+
+  // Check if any modal is open
+  const isModalOpen = modalOverlay && modalOverlay.classList.contains('active');
+
+  // Check if onboarding/property interface is active
+  const isOnboardingActive = onboardingOverlay && onboardingOverlay.classList.contains('active');
+  const isSwipeInterfaceActive = swipeInterface && swipeInterface.style.display !== 'none';
+
+  // Hide button if any of these conditions are true
+  const shouldHide = isMobileMenuOpen || isModalOpen || isOnboardingActive || isSwipeInterfaceActive;
+
+  if (shouldHide) {
+    floatingCtaContainer.classList.add('hidden');
+  } else {
+    floatingCtaContainer.classList.remove('hidden');
+  }
+}
+
+// Initialize floating CTA visibility updates
+function initFloatingCta() {
+  if (!floatingCtaContainer) return;
+
+  // Initial visibility check
+  updateFloatingCtaVisibility();
+
+  // Monitor for changes that affect visibility
+  const observer = new MutationObserver(() => {
+    updateFloatingCtaVisibility();
+  });
+
+  // Watch for class changes on body and overlay elements
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  if (modalOverlay) {
+    observer.observe(modalOverlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  if (onboardingOverlay) {
+    observer.observe(onboardingOverlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  if (swipeInterface) {
+    observer.observe(swipeInterface, { attributes: true, attributeFilter: ['style'] });
+  }
+}
+
 // Initialize mobile menu when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
   initCounterAnimation();
+  initFloatingCta();
 });
 
 // ========================================

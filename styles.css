@@ -190,7 +190,7 @@ body {
     }
     
     .premium-hero-description {
-        font-size: 1.05rem;
+        font-size: 1.05rem !important;
         line-height: 1.5;
     }
     
@@ -2543,7 +2543,7 @@ body {
 /* Enhanced Floating Toolbar with better positioning */
 #a11y-toolbar {
   position: fixed;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   font-size: 0.875rem;
   line-height: 1.4;
@@ -2601,6 +2601,75 @@ body {
   #a11y-toolbar .a11y-panel::-webkit-scrollbar-thumb:hover {
     background: #e55a00;
   }
+}
+
+/* Floating CTA Button */
+.floating-cta-container {
+  position: fixed;
+  /* right: calc(var(--a11y-w) + 20px); */
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 998;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  /* backdrop-filter: blur(15px); */
+  /* -webkit-backdrop-filter: blur(15px); */
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+              0 4px 16px rgba(255, 102, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 8px;
+}
+
+.floating-cta-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+              0 6px 20px rgba(255, 102, 0, 0.3);
+  border-color: var(--primary-color);
+}
+
+.floating-cta-button:focus {
+  outline: 0.1875rem solid #7aa7ff;
+  outline-offset: 3px;
+}
+
+.floating-cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.floating-cta-content i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.floating-cta-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+/* Hide floating CTA when not needed */
+.floating-cta-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.8);
 }
 
 /* Enhanced floating button design */
@@ -4610,6 +4679,8 @@ html.a11y-font-200 { font-size: 200%; }
     backdrop-filter: none;
 }
 
+/* THIS IS FOR PROJECTS SOLD LABEL */
+
 .project-sold:hover .project-overlay.show-always {
     opacity: 1;
     background: linear-gradient(135deg, 
@@ -4621,7 +4692,7 @@ html.a11y-font-200 { font-size: 200%; }
 }
 
 .project-sold::after {
-  content: "נמכר";
+  content: "סולד אאוט";
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
@@ -4643,6 +4714,93 @@ html.a11y-font-200 { font-size: 200%; }
 }
 
 .project-sold::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    z-index: 1;
+    backdrop-filter: none;
+}
+
+/* THIS IS FOR PROJECTS SOON LABEL */
+
+.project-soon:hover .project-overlay.show-always {
+    opacity: 1;
+    background: linear-gradient(135deg, 
+      transparent 0%, 
+      rgba(0, 0, 0, 0.4) 30%, 
+      rgba(255, 102, 0, 0.3) 70%, 
+      rgba(0, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.project-soon::after {
+  content: "בקרוב";
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    #FF8C00 100%);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 25px;
+  z-index: 3;
+  box-shadow: 
+    0 0 20px rgba(255, 102, 0, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.project-soon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    z-index: 1;
+    backdrop-filter: none;
+}
+
+
+/* THIS IS FOR PROJECTS ONGOING LABEL*/
+
+.project-ongoing:hover .project-overlay.show-always {
+    opacity: 1;
+    background: linear-gradient(135deg, 
+      transparent 0%, 
+      rgba(0, 0, 0, 0.4) 30%, 
+      rgba(255, 102, 0, 0.3) 70%, 
+      rgba(0, 0, 0, 0.9) 100%);
+    backdrop-filter: blur(15px);
+}
+
+.project-ongoing::after {
+  content: "בשיווק";
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    #FF8C00 100%);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 25px;
+  z-index: 3;
+  box-shadow: 
+    0 0 20px rgba(255, 102, 0, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.project-ongoing::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -5451,7 +5609,7 @@ body {
   
   .story-text {
     font-size: 1.1rem;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
   }
 }
 
