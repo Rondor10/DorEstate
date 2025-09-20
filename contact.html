@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Hub | מרכז תקשורת - צור קשר - Dor Estate</title>
+    <meta name="description" content="צור קשר עם קבוצת דור נכסים. ויצמן 37, גבעתיים | טלפון: 050-5534488 | אימייל: inquiries@dorestates.com | WhatsApp זמין. טופס פנייה מהיר וקל.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="quantum-contact">
+        <!-- Background Elements -->
+        <div class="quantum-glow"></div>
+
+        <!-- Floating Particles -->
+        <div class="contact-particles">
+          <div class="contact-particle" style="left: 10%; animation-duration: 7s;"></div>
+          <div class="contact-particle" style="left: 20%; animation-duration: 8s;"></div>
+          <div class="contact-particle" style="left: 30%; animation-duration: 6s;"></div>
+          <div class="contact-particle" style="left: 40%; animation-duration: 9s;"></div>
+          <div class="contact-particle" style="left: 50%; animation-duration: 5s;"></div>
+          <div class="contact-particle" style="left: 60%; animation-duration: 7.5s;"></div>
+          <div class="contact-particle" style="left: 70%; animation-duration: 6.5s;"></div>
+          <div class="contact-particle" style="left: 80%; animation-duration: 8.5s;"></div>
+          <div class="contact-particle" style="left: 90%; animation-duration: 5.5s;"></div>
+        </div>
+
+        <div class="contact-content">
+          <!-- Main Communication Grid -->
+          <div class="communication-grid">
+            <!-- Contact Information -->
+            <div class="contact-methods">
+              <h3 class="methods-title">פרטי התקשרות</h3>
+
+              <div class="method-item">
+                <div class="method-icon">📍</div>
+                <div class="method-details">
+                  <div class="method-label">כתובת</div>
+                  <div class="method-value">ויצמן 37, גבעתיים</div>
+                </div>
+              </div>
+
+              <div class="method-item" onclick="callPhone('050-5534488')">
+                <div class="method-icon">📞</div>
+                <div class="method-details">
+                  <div class="method-label">טלפון</div>
+                  <div class="method-value">050-5534488</div>
+                </div>
+              </div>
+
+              <div class="method-item" onclick="sendEmail('inquiries@dorestates.com')">
+                <div class="method-icon">📧</div>
+                <div class="method-details">
+                  <div class="method-label">אימייל</div>
+                  <div class="method-value">inquiries@dorestates.com</div>
+                </div>
+              </div>
+
+              <!-- Quick Contact Methods -->
+              <div class="contact-methods-quick">
+                <div class="quick-contact-btn" onclick="callPhone('050-5534488')">
+                  <div class="quick-contact-icon">📱</div>
+                  <div class="quick-contact-text">התקשר עכשיו</div>
+                </div>
+
+                <div class="quick-contact-btn" onclick="openWhatsApp('972505534488')">
+                  <div class="quick-contact-icon">💬</div>
+                  <div class="quick-contact-text">WhatsApp</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+              <h3 class="form-title">טופס פנייה</h3>
+
+              <form id="contactForm" class="quantum-form">
+                <div class="input-group">
+                  <input
+                    id="contactName"
+                    type="text"
+                    placeholder="שם מלא *"
+                    class="quantum-input"
+                    required>
+                </div>
+
+                <div class="input-group">
+                  <input
+                    id="contactEmail"
+                    type="email"
+                    placeholder="כתובת אימייל *"
+                    class="quantum-input"
+                    required>
+                </div>
+
+                <div class="input-group">
+                  <input
+                    id="contactPhone"
+                    type="tel"
+                    placeholder="מספר טלפון"
+                    class="quantum-input">
+                </div>
+
+                <div class="input-group">
+                  <textarea
+                    id="contactMsg"
+                    placeholder="הודעה *"
+                    rows="4"
+                    class="quantum-textarea"
+                    required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                  שלח הודעה 🚀
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Message Template -->
+        <div id="successMessage" class="success-message">
+          ✅ ההודעה נשלחה בהצלחה!<br>
+          <small style="opacity: 0.8;">נחזור אליך בהקדם</small>
+        </div>
+      </div>
+
+    <script src="script_fixed.js"></script>
+    <script>
+        // Enhanced form submission with validation and success feedback
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById("contactName").value.trim();
+          const email = document.getElementById("contactEmail").value.trim();
+          const phone = document.getElementById("contactPhone").value.trim();
+          const message = document.getElementById("contactMsg").value.trim();
+
+          // Basic validation
+          if (!name || !email || !message) {
+            showValidationError("אנא מלא את כל השדות הנדרשים");
+            return;
+          }
+
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showValidationError("כתובת האימייל אינה תקינה");
+            return;
+          }
+
+          // Create email body with form data
+          const emailBody = 'שם: ' + name + '\n' +
+                           'אימייל: ' + email + '\n' +
+                           'טלפון: ' + (phone || 'לא צוין') + '\n\n' +
+                           'הודעה:\n' + message + '\n\n' +
+                           '---\nהודעה זו נשלחה מאתר DorEstate';
+
+          // Open email client with form data
+          const emailSubject = encodeURIComponent('פנייה חדשה מאתר DorEstate');
+          const encodedBody = encodeURIComponent(emailBody);
+          window.open('mailto:inquiries@dorestates.com?subject=' + emailSubject + '&body=' + encodedBody, '_blank');
+
+          // Show success message
+          showSuccessMessage();
+
+          // Reset form
+          document.getElementById("contactForm").reset();
+        });
+
+        function showSuccessMessage() {
+          const successMsg = document.getElementById("successMessage");
+          successMsg.classList.add("show");
+
+          setTimeout(() => {
+            successMsg.classList.remove("show");
+          }, 2000);
+        }
+
+        function showValidationError(message) {
+          // Create temporary error message
+          const errorDiv = document.createElement("div");
+          errorDiv.style.cssText =
+            "position: fixed;" +
+            "top: 50%;" +
+            "left: 50%;" +
+            "transform: translate(-50%, -50%);" +
+            "background: linear-gradient(45deg, #ff5722, #ff7043);" +
+            "color: white;" +
+            "padding: 1rem 2rem;" +
+            "border-radius: 15px;" +
+            "box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);" +
+            "z-index: 1001;" +
+            "font-weight: 600;" +
+            "text-align: center;" +
+            "opacity: 0;" +
+            "transition: opacity 0.3s ease;";
+          errorDiv.textContent = message;
+          document.body.appendChild(errorDiv);
+
+          // Show error
+          setTimeout(() => errorDiv.style.opacity = "1", 100);
+
+          // Hide and remove error
+          setTimeout(() => {
+            errorDiv.style.opacity = "0";
+            setTimeout(() => document.body.removeChild(errorDiv), 300);
+          }, 3000);
+        }
+
+
+        // Add real-time validation styling
+        document.addEventListener('DOMContentLoaded', function() {
+          const inputs = document.querySelectorAll('.quantum-input, .quantum-textarea');
+
+          inputs.forEach(input => {
+            input.addEventListener('input', function() {
+              if (this.checkValidity() && this.value.trim()) {
+                this.style.borderColor = '#ff8a65';
+                this.style.boxShadow = '0 0 15px rgba(255, 138, 101, 0.2)';
+              } else if (this.value.trim() && !this.checkValidity()) {
+                this.style.borderColor = '#ff5722';
+                this.style.boxShadow = '0 0 15px rgba(255, 87, 34, 0.3)';
+              } else {
+                this.style.borderColor = 'rgba(255, 122, 0, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+
+            input.addEventListener('focus', function() {
+              this.style.borderColor = '#FF7A00';
+              this.style.boxShadow = '0 0 20px rgba(255, 122, 0, 0.3), inset 0 0 20px rgba(255, 122, 0, 0.1)';
+            });
+
+            input.addEventListener('blur', function() {
+              if (!this.value.trim()) {
+                this.style.borderColor = 'rgba(255, 122, 0, 0.3)';
+                this.style.boxShadow = 'none';
+              }
+            });
+          });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Protocol | פרוטוקול המורשת - Dor Estate</title>
+    <meta name="description" content="הסיפור שלנו - בעולם שמשתנה ללא הרף, נדיר למצוא עסק אשר חי, נושם ומתרחב זה שלושה עשורים, מתוך תשוקה שרק הולכת ומתחזקת.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="quantum-about">
+      <div class="about-particles"></div>
+
+      <div class="about-content">
+        <div class="about-hero">
+          <h1 class="about-title">הסיפור שלנו</h1>
+        </div>
+
+        <div class="legacy-story" dir="rtl">
+          <p class="story-text">בעולם שמשתנה ללא הרף,</p>
+          <p class="story-text">נדיר למצוא עסק אשר חי,</p>
+          <p class="story-text">נושם ומתרחב זה שלושה עשורים,</p>
+          <p class="story-text">מתוך תשוקה שרק הולכת ומתחזקת.</p>
+          <p class="story-text">עבורנו נדל"ן מהווה שליחות,</p>
+          <p class="story-text">דרך לחבר כל פרט למרחב המדויק.</p>
+        </div>
+
+
+        <div class="executives-section">
+          <h2 class="executives-title">חבר הבכירים</h2>
+
+          <div class="executive-progress">
+            <div class="exec-counter" id="about-executive-counter">1/8</div>
+            <div class="progress-track">
+              <div class="progressteam-fill" id="about-progress-bar" style="width: 12.5%;"></div>
+            </div>
+          </div>
+
+          <div class="executive-showcase" id="about-executive-showcase">
+            <div class="exec-profile">
+              <div class="exec-photo-container"> <img src="" class="exec-photo" id="about-exec-photo"> </div>
+              <div class="exec-info">
+                <h3 class="exec-name" id="about-exec-name"></h3>
+                <div class="exec-title" id="about-exec-title"></div>
+                <p class="exec-description" id="about-exec-description"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="navigation-controls">
+              <button class="projects-nav-btn team-prev" onclick="AboutTeam.prev()" aria-label="Previous">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+            <div class="team-dots" id="about-team-dots"></div>
+              <button class="projects-nav-btn team-next" onclick="AboutTeam.next()" aria-label="Next">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+          </div>
+        </div>
+
+        <div class="quantum-timeline">
+          <div class="timeline-header">
+            <h2 class="timeline-title">ציר הזמן</h2>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">1997</div>
+                <h3 class="timeline-milestone">לידת החזון</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2002</div>
+                <h3 class="timeline-milestone">שיווק פרויקטים</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2006</div>
+                <h3 class="timeline-milestone">יזמות</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2012</div>
+                <h3 class="timeline-milestone">נדל"ן מסחרי</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-year">2018</div>
+                <h3 class="timeline-milestone">טרסנפורמציה טכנולוגית</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item current">
+              <div class="timeline-content">
+                <div class="timeline-year">2022</div>
+                <h3 class="timeline-milestone">השקעות גלובליות</h3>
+              </div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="legacy-footer">
+          <button class="legacy-cta" data-start-journey>
+            <div class="btn-hero-content-container">
+              <span class="button-text">על מה אתם חולמים?</span>
+              <i class="fas fa-arrow-left"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script_fixed.js"></script>
+    <script>
+      // Create floating particles
+      (function() {
+        const particlesContainer = document.querySelector('.about-particles');
+        if (!particlesContainer) return;
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'about-particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 12 + 's';
+          particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+          particlesContainer.appendChild(particle);
+        }
+      })();
+    </script>
+</body>
+</html>

@@ -27,7 +27,7 @@
   <url>
     <loc>https://dorealestate.co.il/assets</loc>
     <lastmod>2025-09-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -42,6 +42,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://dorealestate.co.il/team</loc>
+    <lastmod>2025-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url> 
   <url>
     <loc>https://dorealestate.co.il/terms</loc>
     <lastmod>2025-09-19</lastmod>

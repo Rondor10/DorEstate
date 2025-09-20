@@ -236,6 +236,16 @@ body {
         overflow: hidden;
         overflow-y: scroll;
     }
+
+    /* Fix padding specifically for assets modal */
+    .modal-content:has(.developer-portal) {
+        padding: 0 !important;
+    }
+
+    /* Assets page CTA title mobile styling */
+    .ctasset-title {
+        font-size: 30px !important;
+    }
     
     .modal-close {
         position: fixed !important;
@@ -708,6 +718,11 @@ body {
         padding: 1.5rem 1rem;
         font-size: 0.85rem;
     }
+
+    /* Fix padding specifically for assets modal */
+    .modal-content:has(.developer-portal) {
+        padding: 0 !important;
+    }
     
     /* Onboarding mobile optimization */
     .onboarding-container {
@@ -944,6 +959,11 @@ body {
         -webkit-overflow-scrolling: touch;
         max-width: unset;
         max-height: unset;
+    }
+
+    /* Fix padding specifically for assets modal */
+    .modal-content:has(.developer-portal) {
+        padding: 0 !important;
     }
     
     .modal-close {
@@ -1773,6 +1793,26 @@ body {
   color: white !important;
 }
 
+/* Fix text alignment for CTA buttons converted to anchor tags */
+a.cta-button {
+  text-decoration: none !important;
+  text-align: center !important;
+  direction: rtl !important;
+}
+
+a.cta-button .btn-hero-content-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  direction: rtl !important;
+  text-align: center !important;
+}
+
+a.cta-button .button-text {
+  text-align: center !important;
+  direction: rtl !important;
+}
+
 .cta-button:hover {
 /*  background: var(--primary-color); */
   transform: translateY(-2px);
@@ -2538,7 +2578,7 @@ body {
 }
 
 /* === Enhanced Floating Accessibility Toolbar (A11Y) === */
-:root { --a11y-w: 200px; --a11y-z: 9999; }
+:root { --a11y-w: 200px; --a11y-z: 10000; }
 
 /* Enhanced Floating Toolbar with better positioning */
 #a11y-toolbar {
@@ -2574,6 +2614,10 @@ body {
   #a11y-toolbar {
     top: 40%;
     transform: translateY(-50%);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10000 !important;
   }
   
   #a11y-toolbar .a11y-panel {
@@ -5341,7 +5385,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 12px;
   margin-top: 2rem;
 }
 
@@ -6748,7 +6792,16 @@ body.modal-open {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: 0 !important;
+}
+
+/* Ensure accessibility toolbar is always visible - critical for accessibility compliance */
+body.modal-open #a11y-toolbar,
+body.mobile-menu-open #a11y-toolbar {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 10000 !important;
 }
 
 /* Ensure modal content can scroll independently */

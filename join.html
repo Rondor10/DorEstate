@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape The Future | עצב את העתיד - קריירה ב-Dor Estate</title>
+    <meta name="description" content="הצטרפו אלינו למסע שמגדיר מחדש את עולם הנדל״ן בישראל. אנחנו מחפשים מוחות יוצאי דופן, יזמים בנשמה ומובילי שינוי שרוצים להשפיע באמת.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        .quantum-career {
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+          color: #ffffff;
+          position: relative;
+          overflow: hidden;
+          padding: 0;
+          margin: -2rem;
+          min-height: 80vh;
+        }
+
+        .quantum-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #FF7A00;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: quantumFloat 4s infinite linear;
+        }
+
+        .particle:nth-child(2n) { background: #FF4D00; animation-delay: -1s; }
+        .particle:nth-child(3n) { background: #FF7A00; animation-delay: -2s; }
+        .particle:nth-child(4n) { background: #ffffff; animation-delay: -3s; }
+
+        @keyframes quantumFloat {
+          0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+          10% { opacity: 0.7; }
+          90% { opacity: 0.7; }
+          100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        .career-content {
+          position: relative;
+          z-index: 10;
+          padding: 3rem 2rem;
+          backdrop-filter: blur(5px);
+        }
+
+        .quantum-hero {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .quantum-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #FF7A00, #FF4D00, #ffffff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: quantumPulse 2s infinite alternate;
+        }
+
+        @keyframes quantumPulse {
+          0% { transform: scale(1); filter: brightness(1); }
+          100% { transform: scale(1.02); filter: brightness(1.2); }
+        }
+
+        .quantum-subtitle {
+          font-size: 1.2rem;
+          color: #ffffff;
+          max-width: 600px;
+          margin: 0 auto 2rem;
+          line-height: 1.6;
+        }
+
+        .opportunities-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+          padding: 0 1rem;
+        }
+
+        .opportunity-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 122, 0, 0.2);
+          border-radius: 15px;
+          padding: 2rem;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .opportunity-card:hover {
+          transform: translateY(-5px);
+          border-color: #FF7A00;
+          box-shadow: 0 10px 30px rgba(255, 122, 0, 0.3);
+        }
+
+        .opportunity-card::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          z-index: -1;
+          border-radius: 15px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .opportunity-card:hover::before {
+          opacity: 1;
+        }
+
+        .card-icon {
+          font-size: 2.5rem;
+          color: #FF7A00;
+        }
+
+        .card-title {
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          background: linear-gradient(45deg, #FF7A00, #FF4D00, #ffffff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .card-description {
+          color: #ffffff;
+          line-height: 1.5;
+          font-size: 0.95rem;
+        }
+
+        .skills-section {
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 20px;
+          padding: 2rem;
+          margin: 3rem 0;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-title {
+          text-align: center;
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
+          color: var(--primary-color);
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+        }
+
+        .skill-tag {
+          background: linear-gradient(45deg, rgba(255, 122, 0, 0.1), rgba(255, 77, 0, 0.1));
+          border: 1px solid rgba(255, 122, 0, 0.3);
+          padding: 0.8rem 1rem;
+          border-radius: 25px;
+          text-align: center;
+          color: #ffffff;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .skill-tag:hover {
+          background: linear-gradient(45deg, rgba(255, 122, 0, 0.2), rgba(255, 77, 0, 0.2));
+          transform: scale(1.05);
+          box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+        }
+
+        .cta-section {
+          text-align: center;
+          margin-top: 3rem;
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quantum-cta {
+          background: linear-gradient(45deg, #FF7A00, #FF4D00);
+          border: none;
+          padding: 1rem 3rem;
+          border-radius: 30px;
+          color: #ffffff;
+          font-weight: 600;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          margin: 0.5rem;
+        }
+
+        .quantum-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(255, 122, 0, 0.4);
+        }
+
+        .quantum-cta::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .quantum-cta:hover::before {
+          left: 100%;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+          margin: 2rem 0;
+          text-align: center;
+        }
+
+        .stat-item {
+          padding: 1rem;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #FF7A00;
+          display: block;
+        }
+
+        .stat-label {
+          color: #b0b3b8;
+          font-size: 0.9rem;
+        }
+    </style>
+
+    <div class="quantum-career">
+        <!-- Quantum Particle Background -->
+        <div class="quantum-particles">
+          <div class="particle" style="left: 10%; animation-duration: 3s;"></div>
+          <div class="particle" style="left: 20%; animation-duration: 4s;"></div>
+          <div class="particle" style="left: 30%; animation-duration: 5s;"></div>
+          <div class="particle" style="left: 40%; animation-duration: 3.5s;"></div>
+          <div class="particle" style="left: 50%; animation-duration: 4.5s;"></div>
+          <div class="particle" style="left: 60%; animation-duration: 3.8s;"></div>
+          <div class="particle" style="left: 70%; animation-duration: 4.2s;"></div>
+          <div class="particle" style="left: 80%; animation-duration: 5.5s;"></div>
+          <div class="particle" style="left: 90%; animation-duration: 3.2s;"></div>
+        </div>
+
+        <div class="career-content">
+          <!-- Hero Section -->
+          <div class="quantum-hero">
+            <h1 class="quantum-title">הדור הבא של הנדל"ן</h1>
+            <p class="quantum-subtitle">
+               הצטרפו אלינו למסע שמגדיר מחדש את עולם הנדל״ן בישראל.
+  אנחנו מחפשים מוחות יוצאי דופן, יזמים בנשמה ומובילי שינוי שרוצים להשפיע באמת.
+            </p>
+
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">5B+</span>
+                <span class="stat-label">₪ רכישות</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">25,000+</span>
+                <span class="stat-label">לקוחות מרוצים</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">2,500+</span>
+                <span class="stat-label">נכסים ששווקו</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">250+</span>
+                <span class="stat-label">נכסים בשיווק</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opportunities -->
+          <div class="opportunities-grid">
+            <div class="opportunity-card">
+              <div class="card-icon">🚀</div>
+              <h3 class="card-title">חדשנות נדל"נית</h3>
+              <p class="card-description">
+                הובל את המהפכה הטכנולוגית בנדל"ן. פתח פתרונות חדשניים שישנו את הדרך שבה אנשים קונים ומוכרים נכסים.
+              </p>
+            </div>
+
+            <div class="opportunity-card">
+              <div class="card-icon">💡</div>
+              <h3 class="card-title">שת"פים אסטרטגיים</h3>
+              <p class="card-description">
+                בנה קשרים אסטרטגיים עם השחקנים המובילים בשוק. צור שותפויות שיניבו תוצאות מדהימות.
+              </p>
+            </div>
+
+            <div class="opportunity-card">
+              <div class="card-icon">📊</div>
+              <h3 class="card-title">צמיחה מבוססת-דאטה</h3>
+              <p class="card-description">
+                השתמש בביג דאטה ובינה מלאכותית כדי לזהות הזדמנויות חדשות ולהוביל את השוק קדימה.
+              </p>
+            </div>
+
+            <div class="opportunity-card">
+              <div class="card-icon">🎯</div>
+              <h3 class="card-title">הובלה בשוק</h3>
+              <p class="card-description">
+                הובל פרויקטים פורצי דרך שיקבעו את הסטנדרטים החדשים של התעשייה בישראל ובעולם.
+              </p>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="skills-section">
+            <h2 class="skills-title">הפרופיל האידיאלי</h2>
+            <div class="skills-grid">
+              <div class="skill-tag">חשיבה אסטרטגית</div>
+              <div class="skill-tag">מנהיגות טבעית</div>
+              <div class="skill-tag">יכולות אנליטיות</div>
+              <div class="skill-tag">חדשנות דיגיטלית</div>
+              <div class="skill-tag">ניהול פרויקטים</div>
+              <div class="skill-tag">תקשורת מצוינת</div>
+              <div class="skill-tag">חזון עסקי</div>
+              <div class="skill-tag">מוטיבציה עצמית</div>
+            </div>
+          </div>
+
+          <button class="quantum-cta contact" data-modal="contact" type="button">
+              <div class="btn-hero-content-container">
+                <span class="button-text">הגש מועמדות</span>
+                <i class="fas fa-rocket"></i>
+              </div>
+          </button>
+
+          </div>
+        </div>
+
+    <script src="script_fixed.js"></script>
+    <script>
+        // Initialize quantum effects
+        setTimeout(() => {
+          const particles = document.querySelectorAll('.particle');
+          particles.forEach((particle, i) => {
+            particle.style.animationDelay = (i * 0.3) + 's';
+            particle.style.left = Math.random() * 100 + '%';
+          });
+
+          // Add interactive hover effects
+          const cards = document.querySelectorAll('.opportunity-card');
+          cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+              card.style.transform = 'translateY(-8px) rotateX(5deg)';
+            });
+            card.addEventListener('mouseleave', () => {
+              card.style.transform = 'translateY(0) rotateX(0)';
+            });
+          });
+        }, 100);
+    </script>
+</body>
+</html>

@@ -2,6 +2,39 @@
 console.log("🚀 SCRIPT LOADED - New registration flow active!", new Date().toISOString());
 import { PropertyDatabase } from "./propertyDatabase.js";
 
+// ========================================
+// URL REFRESH HANDLING - CRITICAL FOR UX
+// ========================================
+
+// Handle page refresh on modal URLs - redirect to homepage to prevent 404 errors
+(function handleModalUrlRefresh() {
+  // Only run this for online environments, not localhost
+  if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
+    const currentPath = window.location.pathname;
+
+    // If user is on a modal URL path (not root), check if it's valid
+    if (currentPath !== '/' && currentPath !== '/index.html') {
+      const modalPath = currentPath.replace('/', '');
+
+      // List of valid modal paths - these should match the data-modal attributes
+      const validModalPaths = [
+        'about', 'services', 'join', 'assets', 'projects', 'contact',
+        'accessibility', 'privacy', 'ethics', 'terms', 'team'
+      ];
+
+      // If it's not a valid modal path, redirect to home immediately
+      if (!validModalPaths.includes(modalPath)) {
+        console.log(`🔄 Invalid URL path: ${currentPath}, redirecting to home`);
+        window.location.replace('/');
+        return;
+      }
+
+      // If it's a valid modal path, the modal will be opened by the regular initialization code
+      console.log(`✅ Valid modal URL detected: ${modalPath}, will open modal after page loads`);
+    }
+  }
+})();
+
 // Firebase removed - no longer needed
 
 // Firebase authentication removed
@@ -2494,44 +2527,50 @@ function initProjectsScrolling() {
 function initializeEventListeners() {
   // Modal triggers (original functionality + URL updates)
   document.querySelectorAll("[data-modal]").forEach((trigger) => {
-    trigger.addEventListener("click", function (e) {
+    trigger.addEventListener("click", async function (e) {
       e.preventDefault();
       const modalType = this.getAttribute("data-modal");
 
       // Original modal opening
-      openModal(modalType);
-
-      // Add URL update for SEO (only if running online)
-      if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
-        const url = this.getAttribute("href");
-        window.history.pushState({ modal: modalType }, '', url);
-        updateMetaTags(modalType);
-      }
+      await openModal(modalType);
     });
   });
 
-  // Handle browser back/forward buttons (only for online)
-  if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
-    window.addEventListener('popstate', function(e) {
-      const currentPath = window.location.pathname;
-      const path = currentPath.replace('/', '') || 'home';
-      if (modalContents[path]) {
-        openModal(path);
-        updateMetaTags(path);
-      } else if (path === 'home') {
-        closeModal();
-        updateMetaTags('home');
-      }
-    });
-
-    // Handle initial page load with URL
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', async function(e) {
     const currentPath = window.location.pathname;
-    if (currentPath !== '/') {
-      const path = currentPath.replace('/', '') || 'home';
-      if (modalContents[path]) {
-        openModal(path);
+    const path = currentPath.replace('/', '') || 'home';
+    const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
+
+    if (validPaths.includes(path)) {
+      await openModal(path);
+      updateMetaTags(path);
+    } else if (path === 'home' || path === 'homepage') {
+      closeModal();
+      updateMetaTags('home');
+    }
+  });
+
+  // Handle initial page load with URL
+  const currentPath = window.location.pathname;
+  if (currentPath !== '/') {
+    const path = currentPath.replace('/', '') || 'home';
+    const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
+
+    if (validPaths.includes(path)) {
+      // Valid modal path - open the modal
+      setTimeout(async () => {
+        await openModal(path);
         updateMetaTags(path);
-      }
+      }, 100);
+    } else if (path === 'homepage') {
+      // Handle homepage URL - just update meta tags, no modal
+      updateMetaTags('home');
+    } else {
+      // Invalid path - redirect to home
+      console.log(`🔄 Invalid modal path: ${path}, redirecting to home`);
+      window.history.replaceState({ modal: null }, '', '/');
+      updateMetaTags('home');
     }
   }
 
@@ -2623,16 +2662,51 @@ function initContactForm(scope = document) {
 }
 
 // Modal Functions
-function openModal(type) {
-  const content = modalContents[type];
-  if (content) {
-    modalContent.innerHTML = content.content;
+async function openModal(type) {
+  let contentLoaded = false;
+
+  // List of modals that have separate HTML files
+  const htmlPages = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team'];
+
+  if (htmlPages.includes(type)) {
+    try {
+      // Fetch content from the HTML file
+      const response = await fetch(`${type}.html`);
+      if (response.ok) {
+        const htmlContent = await response.text();
+        // Extract content from body tag
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlContent, 'text/html');
+        const bodyContent = doc.body.innerHTML;
+        modalContent.innerHTML = bodyContent;
+        contentLoaded = true;
+      }
+    } catch (error) {
+      console.warn(`Failed to load ${type}.html, falling back to inline content:`, error);
+    }
+  }
+
+  // Fallback to modalContents if HTML file failed or for other modals
+  if (!contentLoaded) {
+    const content = modalContents[type];
+    if (content) {
+      modalContent.innerHTML = content.content;
+      contentLoaded = true;
+    }
+  }
+
+  // Only proceed if content was loaded
+  if (contentLoaded) {
     modalOverlay.classList.add("active");
-    
+
+    // Update URL for any modal opening
+    window.history.pushState({ modal: type }, '', `/${type}`);
+    updateMetaTags(type);
+
     // Enhanced scroll lock - prevents background scroll and scroll chaining
     document.body.classList.add("modal-open");
     document.body.style.overflow = "hidden";
-    
+
     // Add legal-modal class for legal modals
     const legalModals = ['terms', 'privacy', 'accessibility', 'ethics'];
     const modalContainer = document.querySelector('.modal-container');
@@ -2658,10 +2732,10 @@ function openModal(type) {
     initContactForm(modalContent);
 
     modalContent.querySelectorAll("[data-modal]").forEach((trigger) => {
-      trigger.addEventListener("click", function (e) {
+      trigger.addEventListener("click", async function (e) {
         e.preventDefault();
         const modalType = this.getAttribute("data-modal");
-        openModal(modalType);
+        await openModal(modalType);
       });
     });
   }
@@ -2710,12 +2784,10 @@ function closeModal() {
   const modalContainer = document.querySelector('.modal-container');
   modalContainer.classList.remove('legal-modal');
 
-  // Update URL to home when closing modal (only for online)
-  if (window.location.protocol.startsWith('http') && window.location.hostname !== 'localhost') {
-    if (window.location.pathname !== '/') {
-      window.history.pushState({ modal: null }, '', '/');
-      updateMetaTags('home');
-    }
+  // Update URL to home when closing modal
+  if (window.location.pathname !== '/') {
+    window.history.pushState({ modal: null }, '', '/');
+    updateMetaTags('home');
   }
 }
 
@@ -2723,7 +2795,7 @@ function closeModal() {
 function updateMetaTags(page) {
   const metaData = {
     home: {
-      title: "דור נכסים - Dor Real Estate",
+      title: "דף הבית - דור נכסים",
       description: "דור נכסים פועלת מזה כשלושה עשורים ומובילה פרויקטים מורכבים בנדל״ן. אנו מייצרים ערך ליזמים, למשקיעים ולרוכשים באמצעות מומחיות נדל״נית, חשיבה קפיטלית וטכנולוגיה מבוססת דאטה.",
       url: "https://dorealestate.co.il/"
     },
@@ -2738,7 +2810,7 @@ function updateMetaTags(page) {
       url: "https://dorealestate.co.il/services"
     },
     projects: {
-      title: "פרויקטי דגל - דור נכסים",
+      title: "פרויקטים - דור נכסים",
       description: "פרויקטי נדל״ן מובילים בגבעתיים ותל אביב. גולומב 54, ברדיצ'בסקי 37, יצחק שדה ועוד פרויקטים איכותיים.",
       url: "https://dorealestate.co.il/projects"
     },
@@ -2753,10 +2825,35 @@ function updateMetaTags(page) {
       url: "https://dorealestate.co.il/contact"
     },
     join: {
-      title: "קריירה ב-Dor Israel - דור נכסים",
+      title: "קריירה - דור נכסים",
       description: "הצטרף לצוות דור נכסים. הזדמנויות קריירה בתחום הנדל״ן, השיווק והפיתוח. בואו להיות חלק מהדור הבא.",
       url: "https://dorealestate.co.il/join"
-    }
+    },
+    team: {
+      title: "חבר הבכירים - דור נכסים",
+      description: "צוות דור נכסים - הכירו את הרשת הנוירונית של המומחים שלנו בתחום הנדל״ן והשיווק.",
+      url: "https://dorealestate.co.il/team"
+    },
+    terms: {
+      title: "תנאי שימוש - דור נכסים",
+      description: "תנאי השימוש של דור נכסים - כללים ותקנות לשימוש באתר ובשירותים.",
+      url: "https://dorealestate.co.il/terms"
+    },
+    privacy: {
+      title: "מדיניות פרטיות - דור נכסים",
+      description: "מדיניות הפרטיות של דור נכסים - איסוף, שימוש ושמירה על מידע אישי.",
+      url: "https://dorealestate.co.il/privacy"
+    },
+    accessibility: {
+      title: "הסדרי נגישות - דור נכסים",
+      description: "הסדרי הנגישות של דור נכסים - מידע על נגישות האתר והשירותים לאנשים עם מוגבלויות.",
+      url: "https://dorealestate.co.il/accessibility"
+    },
+    ethics: {
+      title: "כללי אתיקה - דור נכסים",
+      description: "כללי האתיקה של דור נכסים - עקרונות מוסריים ומקצועיים המנחים את פעילותנו.",
+      url: "https://dorealestate.co.il/ethics"
+    },
   };
 
   const data = metaData[page] || metaData.home;
@@ -3133,6 +3230,32 @@ document.addEventListener("DOMContentLoaded", function () {
   updateExecutiveCarousel(); // הקרוסלה של ההנהלה
   setupSubmenus(); // הפונקציה החדשה לתפריטים
   initProjectsScrolling(); // גלילה אופקית של פרויקטים
+
+  // Check for URL parameters (e.g., ?open=projects)
+  const urlParams = new URLSearchParams(window.location.search);
+  const openParam = urlParams.get('open');
+
+  // Check if we need to reopen a modal after refresh redirect
+  const modalToOpen = sessionStorage.getItem('openModal');
+
+  const modalToOpenNow = openParam || modalToOpen;
+
+  if (modalToOpenNow) {
+    console.log('🎯 Opening modal:', modalToOpenNow);
+    sessionStorage.removeItem('openModal');
+
+    // Wait a bit for everything to initialize, then open the modal
+    setTimeout(async () => {
+      const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
+      if (validPaths.includes(modalToOpenNow)) {
+        await openModal(modalToOpenNow);
+
+        // Update URL without triggering navigation
+        window.history.replaceState({ modal: modalToOpenNow }, '', `/${modalToOpenNow}`);
+        updateMetaTags(modalToOpenNow);
+      }
+    }, 200);
+  }
 });
 
 // === Navigation Submenus ===
@@ -3525,7 +3648,7 @@ function deriveSwipeFilters() {
 window.switchExecutive = switchExecutive;
 // bottom of script_fixed.js
 // one global, no confusion
-window.contactAdvisor = () => openModal("contact");
+window.contactAdvisor = async () => await openModal("contact");
 
 // Map Hebrew UI -> DB slugs
 function hebTypeToSlug(t) {
@@ -5218,11 +5341,62 @@ function initFloatingCta() {
   }
 }
 
+// ========================================
+// ACCESSIBILITY TOOLBAR VISIBILITY CONTROL
+// ========================================
+
+function updateAccessibilityToolbarVisibility() {
+  const toolbar = document.getElementById("a11y-toolbar");
+  if (!toolbar) return;
+
+  // Always ensure accessibility toolbar is visible regardless of mobile menu or modal state
+  // This is critical for accessibility compliance - users must always have access to accessibility tools
+  toolbar.style.display = '';
+  toolbar.style.visibility = 'visible';
+  toolbar.style.opacity = '1';
+  toolbar.style.pointerEvents = 'auto';
+
+  // Ensure proper z-index to stay above modals and mobile menu
+  toolbar.style.zIndex = '10000';
+}
+
+// Initialize accessibility toolbar visibility management
+function initAccessibilityToolbarVisibility() {
+  const toolbar = document.getElementById("a11y-toolbar");
+  if (!toolbar) return;
+
+  // Initial visibility check
+  updateAccessibilityToolbarVisibility();
+
+  // Monitor for changes that might affect visibility
+  const observer = new MutationObserver(() => {
+    updateAccessibilityToolbarVisibility();
+  });
+
+  // Watch for class changes on body and overlay elements
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  if (modalOverlay) {
+    observer.observe(modalOverlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  const onboardingOverlay = document.getElementById("onboardingOverlay");
+  if (onboardingOverlay) {
+    observer.observe(onboardingOverlay, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  const swipeInterface = document.getElementById("swipeInterface");
+  if (swipeInterface) {
+    observer.observe(swipeInterface, { attributes: true, attributeFilter: ['style'] });
+  }
+}
+
 // Initialize mobile menu when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
   initCounterAnimation();
   initFloatingCta();
+  initAccessibilityToolbarVisibility();
 });
 
 // ========================================

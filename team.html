@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network | הרשת הנוירונית - דור נכסים</title>
+    <meta name="description" content="הכירו את צוות המובילים של דור נכסים - חבר הבכירים שמשלב חדשנות טכנולוגית עם מומחיות עמוקה בתחום הנדל״ן">
+    <meta name="keywords" content="צוות דור נכסים, חבר בכירים, צוות מומחים נדל״ן, מומחי נדל״ן">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        /* Modal-specific styles within body for compatibility */
+        .quantum-team {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            margin: -2rem;
+            height: fit-content;
+        }
+
+        .team-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .team-particle {
+            position: absolute;
+            width: 1.5px;
+            height: 1.5px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: teamFloat 7s infinite linear;
+        }
+
+        .team-particle:nth-child(2n) {
+            background: var(--primary-color);
+            animation-delay: -2s;
+        }
+
+        .team-particle:nth-child(3n) {
+            background: var(--primary-color);
+            animation-delay: -4s;
+        }
+
+        .team-particle:nth-child(4n) {
+            background: var(--primary-color);
+            animation-delay: -6s;
+        }
+
+        @keyframes teamFloat {
+            0% { transform: translateY(100vh) translateX(-20px) scale(0); opacity: 0; }
+            20% { opacity: 0.6; transform: scale(1); }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(20px) scale(0); opacity: 0; }
+        }
+
+        .team-content {
+            position: relative;
+            z-index: 10;
+            padding: 0.8rem;
+            backdrop-filter: blur(2px);
+        }
+
+        .team-hero {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 2rem 1rem 0rem 1rem;
+        }
+
+        .team-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: teamPulse 4s infinite alternate;
+        }
+
+        @keyframes teamPulse {
+            0% { transform: scale(1); filter: brightness(1); }
+            100% { transform: scale(1.02); filter: brightness(1.4); }
+        }
+
+        .team-subtitle {
+            font-size: 1.1rem;
+            color: #fff;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            line-height: 1.6;
+        }
+
+        .executive-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            gap: 1rem;
+        }
+
+        .exec-counter {
+            background: rgba(255,122,0,.1);
+            border: 1px solid rgba(255,122,0,.3);
+            padding: .5rem 1rem;
+            border-radius: 25px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .progress-track {
+            width: 200px;
+            height: 6px;
+            background: rgba(255,255,255,.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progressteam-fill {
+            height: 100%;
+            background: linear-gradient(90deg,var(--primary-color),var(--primary-color));
+            border-radius: 3px;
+            transition: width .5s ease;
+            box-shadow: 0 0 10px rgba(255,122,0,.5);
+        }
+
+        .executive-showcase {
+            background: rgba(255,255,255,.02);
+            border: 1px solid rgba(255,122,0,.2);
+            border-radius: 25px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            backdrop-filter: blur(5px);
+            transition: all .3s ease;
+        }
+
+        .executive-showcase:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(255,122,0,.2);
+        }
+    </style>
+
+    <div class="quantum-team">
+        <div class="team-particles">
+            <div class="team-particle" style="left: 12%; animation-duration: 6s;"></div>
+            <div class="team-particle" style="left: 22%; animation-duration: 7s;"></div>
+            <div class="team-particle" style="left: 32%; animation-duration: 5.5s;"></div>
+            <div class="team-particle" style="left: 42%; animation-duration: 6.5s;"></div>
+            <div class="team-particle" style="left: 52%; animation-duration: 5s;"></div>
+            <div class="team-particle" style="left: 62%; animation-duration: 7.5s;"></div>
+            <div class="team-particle" style="left: 72%; animation-duration: 6.2s;"></div>
+            <div class="team-particle" style="left: 82%; animation-duration: 5.8s;"></div>
+        </div>
+
+        <div class="team-content">
+            <div class="team-hero">
+                <h1 class="team-title">חבר הבכירים</h1>
+                <p class="team-subtitle">
+                    צוות מובילים שמשלב חדשנות טכנולוגית עם מומחיות עמוקה. כל אחד מחברי הצוות מביא פרספקטיבה ייחודית
+                    שמעצבת יחד את עתיד הנדל"ן בישראל.
+                </p>
+            </div>
+
+            <div class="executive-progress">
+                <div class="exec-counter" id="executive-counter">1/8</div>
+                <div class="progress-track">
+                    <div class="progressteam-fill" id="progress-bar" style="width: 12.5%;"></div>
+                </div>
+            </div>
+
+            <div class="executive-showcase" id="executive-showcase">
+                <div class="exec-profile">
+                    <div class="exec-photo-container"> <img src="" class="exec-photo" id="exec-photo"> </div>
+                    <div class="exec-info">
+                        <h2 class="exec-name" id="exec-name"></h2>
+                        <div class="exec-title" id="exec-title"></div>
+                        <p class="exec-description" id="exec-description"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-controls">
+                <button class="projects-nav-btn team-prev" onclick="DorTeam.prev()" aria-label="Previous">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="team-dots" id="team-dots"></div>
+                <button class="projects-nav-btn team-next" onclick="DorTeam.next()" aria-label="Next">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script_fixed.js"></script>
+</body>
+</html>
