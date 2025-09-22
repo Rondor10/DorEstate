@@ -1,0 +1,17 @@
+# Netlify Redirects for Clean URLs
+# Maps /about to /about.html etc.
+
+/about           /about.html           200
+/services        /services.html        200
+/join            /join.html            200
+/assets          /assets.html          200
+/projects        /projects.html        200
+/contact         /contact.html         200
+/team            /team.html            200
+/accessibility   /accessibility.html   200
+/privacy         /privacy.html         200
+/terms           /terms.html           200
+/ethics          /ethics.html          200
+
+# Fallback - any other paths redirect to home
+/*               /index.html           404

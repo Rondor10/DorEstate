@@ -87,7 +87,7 @@ const modalContents = {
           <p class="story-text">נדיר למצוא עסק אשר חי,</p>
           <p class="story-text">נושם ומתרחב זה שלושה עשורים,</p>
           <p class="story-text">מתוך תשוקה שרק הולכת ומתחזקת.</p>
-          <p class="story-text">עבורנו נדל"ן מהווה שליחות,</p>
+          <p class="story-text">עבורנו נדל״ן מהווה שליחות,</p>
           <p class="story-text">דרך לחבר כל פרט למרחב המדויק.</p>
         </div>
 
@@ -159,7 +159,7 @@ const modalContents = {
             <div class="timeline-item">
               <div class="timeline-content">
                 <div class="timeline-year">2012</div>
-                <h3 class="timeline-milestone">נדל"ן מסחרי</h3>
+                <h3 class="timeline-milestone">נדל״ן מסחרי</h3>
               </div>
               <div class="timeline-dot"></div>
             </div>
@@ -210,9 +210,9 @@ const modalContents = {
     </script>
   `,
   },
-  // שירותי הפירמה
+  // חבר הבכירים
   services: {
-    title: "Innovation Hub | רכזת החדשנות",
+    title: "שירותי הפירמה",
     content: `      
       <div class="quantum-services">
         <!-- Service Particles Background -->
@@ -230,9 +230,9 @@ const modalContents = {
         <div class="services-content">
           <!-- Hero Section -->
           <div class="services-hero">
-            <h1 class="services-title">נדל"ן עם חזון</h1>
+            <h1 class="services-title">נדל״ן עם חזון</h1>
             <p class="services-subtitle">
-            אנחנו משלבים מומחיות נדל"נית עמוקה וחדשנות טכנולוגית כדי לבנות עבורך עתיד פיננסי יציב ומלא בהזדמנויות.
+            אנחנו משלבים מומחיות נדל״נית עמוקה וחדשנות טכנולוגית כדי לבנות עבורך עתיד פיננסי יציב ומלא בהזדמנויות.
             </p>
             
             <div class="tech-stats">
@@ -258,7 +258,7 @@ const modalContents = {
                 <div class="service-icon">🏗️</div>
                 <div>
                   <h3 class="service-title">
-                    יזמות נדל"ן
+                    יזמות נדל״ן
                     <span class="service-title-en">Real Estate Entrepreneurship</span>
                   </h3>
                 </div>
@@ -364,7 +364,7 @@ const modalContents = {
   },
   // הצוות שלנו
   team: {
-  title: "Neural Network | הרשת הנוירונית",
+  title: "חבר הבכירים",
   content: `
 <div class="quantum-team">
   <div class="team-particles">
@@ -383,7 +383,7 @@ const modalContents = {
       <h1 class="team-title">חבר הבכירים</h1>
       <p class="team-subtitle">
         צוות מובילים שמשלב חדשנות טכנולוגית עם מומחיות עמוקה. כל אחד מחברי הצוות מביא פרספקטיבה ייחודית
-        שמעצבת יחד את עתיד הנדל"ן בישראל.
+        שמעצבת יחד את עתיד הנדל״ן בישראל.
       </p>
     </div>
 
@@ -686,7 +686,7 @@ const modalContents = {
         <div class="career-content">
           <!-- Hero Section -->
           <div class="quantum-hero">
-            <h1 class="quantum-title">הדור הבא של הנדל"ן</h1>
+            <h1 class="quantum-title">הדור הבא של הנדל״ן</h1>
             <p class="quantum-subtitle">
                הצטרפו אלינו למסע שמגדיר מחדש את עולם הנדל״ן בישראל.  
   אנחנו מחפשים מוחות יוצאי דופן, יזמים בנשמה ומובילי שינוי שרוצים להשפיע באמת.
@@ -716,9 +716,9 @@ const modalContents = {
           <div class="opportunities-grid">
             <div class="opportunity-card">
               <div class="card-icon">🚀</div>
-              <h3 class="card-title">חדשנות נדל"נית</h3>
+              <h3 class="card-title">חדשנות נדל״נית</h3>
               <p class="card-description">
-                הובל את המהפכה הטכנולוגית בנדל"ן. פתח פתרונות חדשניים שישנו את הדרך שבה אנשים קונים ומוכרים נכסים.
+                הובל את המהפכה הטכנולוגית בנדל״ן. פתח פתרונות חדשניים שישנו את הדרך שבה אנשים קונים ומוכרים נכסים.
               </p>
             </div>
             
@@ -1049,7 +1049,7 @@ const modalContents = {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
         margin: 2rem 0;
-        padding: 0 1rem;
+        padding: 0 3rem;
       }
       
       @media (max-width: 768px) {
@@ -1178,7 +1178,7 @@ const modalContents = {
       <div class="background-section">
         <h1 class="background-title">קבוצת דור נכסים</h1>
         <p class="background-text">
-        מזה כשלושה עשורים, אנו מובילים את שוק הנדל"ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה ומגוונת.
+        מזה כשלושה עשורים, אנו מובילים את שוק הנדל״ן בגוש דן, מציבים סטנדרט של מצוינות ומעניקים ליזמים מעטפת שיווקית שלמה ומגוונת.
         </p>
       </div>
       
@@ -1188,7 +1188,7 @@ const modalContents = {
           <div class="bracket-block">
             <h3 class="bracket-title">חזון | Vision</h3>
             <p class="bracket-content">
-              להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל"ניים שמגדירים מחדש את הסטנדרט בתחום.
+              להיות השותף הבלעדי ליזמים מובילים. לייצר סיפורי הצלחה נדל״ניים שמגדירים מחדש את הסטנדרט בתחום.
             </p>
           </div>
           
@@ -1456,7 +1456,7 @@ const modalContents = {
               </div>
               <div class="step-content">
                 <div class="step-description">
-                  עבודה עם חברות המיתוג המובילות בנדל"ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.
+                  עבודה עם חברות המיתוג המובילות בנדל״ן, יצירת זהות ויזואלית ייחודית ובניית קמפיין פרסומי מבוסס תוצאות.
                 </div>
               </div>
             </div>
@@ -1943,7 +1943,7 @@ const modalContents = {
     content: `
                <h2 style="margin-bottom: 1rem;">תנאי שימוש</h2>
                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                 השימוש באתר דור נכסים כפוף לתנאים שלהלן ומהווה הסכמה להם. אם אינך מסכים, אנא הימנע משימוש באתר.
+                 השימוש באתר קבוצת דור נכסים כפוף לתנאים שלהלן ומהווה הסכמה להם. אם אינך מסכים, אנא הימנע משימוש באתר.
                </p>
 
                <div style="margin: 1.25rem 0;">
@@ -2002,7 +2002,7 @@ const modalContents = {
                <div style="margin: 1.25rem 0;">
                  <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">פתרון מחלוקות וסמכות שיפוט</h3>
                  <p>
-                   הדין החל הוא הדין הישראלי. סמכות השיפוט הבלעדית נתונה לבתי המשפט המוסמכים במחוז תל אביב–יפו.
+                   הדין החל הוא הדין הישראלי. סמכות השיפוט הבלעדית נתונה לבתי המשפט המוסמכים במחוז תל אביב-יפו.
                  </p>
                </div>
 
@@ -2039,7 +2039,7 @@ const modalContents = {
                     <div style="margin: 1.25rem 0;">
                       <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">Cookies</h3>
                       <p>
-                        האתר של דור נכסים משתמש בקובצי Cookies לשיפור חוויית המשתמש, להתאמת תכנים ושירותים, למדידת שימוש וסטטיסטיקה, ולהצגת פרסומות ומסרים שיווקיים אישיים. Cookies הם קובצי טקסט קטנים הנשמרים במכשירך באמצעות הדפדפן: חלקם זמניים ונמחקים עם סגירת הדפדפן, וחלקם נשמרים לפרק זמן קצוב או עד למחיקה יזומה. עשוי להיעשות שימוש גם בקובצי Cookies של צדדים שלישיים, כגון כלי אנליטיקה וספקי פרסום, בכפוף להגדרותיך. באפשרותך לנהל או לחסום Cookies דרך הגדרות הדפדפן. חסימה מלאה או חלקית עלולה לפגוע בפעולת האתר ובחוויית השימוש.
+                        האתר של קבוצת דור נכסים משתמש בקובצי Cookies לשיפור חוויית המשתמש, להתאמת תכנים ושירותים, למדידת שימוש וסטטיסטיקה, ולהצגת פרסומות ומסרים שיווקיים אישיים. Cookies הם קובצי טקסט קטנים הנשמרים במכשירך באמצעות הדפדפן: חלקם זמניים ונמחקים עם סגירת הדפדפן, וחלקם נשמרים לפרק זמן קצוב או עד למחיקה יזומה. עשוי להיעשות שימוש גם בקובצי Cookies של צדדים שלישיים, כגון כלי אנליטיקה וספקי פרסום, בכפוף להגדרותיך. באפשרותך לנהל או לחסום Cookies דרך הגדרות הדפדפן. חסימה מלאה או חלקית עלולה לפגוע בפעולת האתר ובחוויית השימוש.
                       </p>
                     </div>
 
@@ -2069,14 +2069,14 @@ const modalContents = {
                        <h3 style="margin-bottom: .5rem; color: var(--text-secondary);">עדכונים ומחלוקות</h3>
                        <p>
                          אנו רשאים לעדכן מדיניות זו מעת לעת. תוקף העדכון ממועד פרסומו.
-                         על מחלוקת יחול הדין הישראלי וסמכות השיפוט תהיה לבתי המשפט במחוז תל אביב–יפו.
+                         על מחלוקת יחול הדין הישראלי וסמכות השיפוט תהיה לבתי המשפט במחוז תל אביב-יפו.
                        </p>
                      </div>
 
                      <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
                        <p style="margin: .25rem 0;"><strong>כתובת לפניות פרטיות:</strong> privacy@dorestates.com</p>
                        <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
-                       <p style="margin: .25rem 0;"><strong>מענה:</strong> א'–ה', 9:00–17:00</p>
+                       <p style="margin: .25rem 0;"><strong>מענה:</strong> א'-ה', 9:00-17:00</p>
                      </div>
 
                      <p style="font-size: .9rem; color: var(--text-secondary); margin-top: 1rem;">
@@ -2088,7 +2088,7 @@ const modalContents = {
   accessibility: {
     title: "הסדרי נגישות",
     content: `
-                       <h2 style="margin-bottom: 1rem;">הצהרת נגישות</h2>
+                       <h2 style="margin-bottom: 1rem;">הסדרי נגישות</h2>
                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
                          אנו פועלים לאפשר שירות שוויוני ונגיש לכל לקוחותינו, באתר ובמשרדינו, בהתאם לדין ולתקנים הרלוונטיים.
                        </p>
@@ -2117,7 +2117,7 @@ const modalContents = {
                          <div style="border:1px solid #eee; border-radius:10px; padding: .75rem 1rem; margin-top: 1rem;">
                            <p style="margin: .25rem 0;"><strong>טלפון:</strong> 050-5534488</p>
                            <p style="margin: .25rem 0;"><strong>דוא"ל:</strong> accessibility@dorestates.com</p>
-                           <p style="margin: .25rem 0;"><strong>ימי מענה:</strong> א'–ה', 9:00–17:00</p>
+                           <p style="margin: .25rem 0;"><strong>ימי מענה:</strong> א'-ה', 9:00-17:00</p>
                          </div>
                        </div>
 
@@ -2132,8 +2132,8 @@ const modalContents = {
     content: `
                 <h2 style="margin-bottom: 1rem;">כללי אתיקה</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                  דור נכסים מחויבת לפעול ביושרה, בשקיפות ובכבוד כלפי לקוחות, שותפים, ספקים ועובדים.
-                  כללי האתיקה שלהלן מנחים את פעילותנו בכל הקשור להצגת מידע, מתן שירות וביצוע עסקאות נדל"ן.
+                  קבוצת דור נכסים מחויבת לפעול ביושרה, בשקיפות ובכבוד כלפי לקוחות, שותפים, ספקים ועובדים.
+                  כללי האתיקה שלהלן מנחים את פעילותנו בכל הקשור להצגת מידע, מתן שירות וביצוע עסקאות נדל״ן.
                 </p>
 
                 <div style="margin: 1.5rem 0;">
@@ -2171,15 +2171,15 @@ const modalContents = {
 
   // מאגר ידע  
   knowledge: {
-    title: 'רגע של נדל"ן',
+    title: 'רגע של נדל״ן',
     content: `
             <h2>מאגר הידע והמדריכים שלנו</h2>
-            <p style="margin-bottom: 2rem;">כל מה שרציתם לדעת על נדל"ן במקום אחד.</p>
+            <p style="margin-bottom: 2rem;">כל מה שרציתם לדעת על נדל״ן במקום אחד.</p>
 
             <div style="display: grid; gap: 1rem; margin-top: 2rem;">
                 <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-calculator" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מיסוי נדל"ן</h3>
-                    <p>הכל על מיסוי בעולם הנדל"ן</p>
+                    <h3><i class="fas fa-calculator" style="margin-left: 0.5rem; color: var(--primary-color);"></i>מיסוי נדל״ן</h3>
+                    <p>הכל על מיסוי בעולם הנדל״ן</p>
                 </div>
 
                 <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
@@ -2199,12 +2199,12 @@ const modalContents = {
 
                 <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
                     <h3><i class="fas fa-chart-line" style="margin-left: 0.5rem; color: var(--primary-color);"></i>ניתוחי שווקים</h3>
-                    <p>ניתוחים מקצועיים של שוק הנדל"ן</p>
+                    <p>ניתוחים מקצועיים של שוק הנדל״ן</p>
                 </div>
 
                 <div style="border: 1px solid #eee; padding: 1rem; border-radius: 10px; cursor: pointer;" onclick="this.style.background='#f8f9fa'">
-                    <h3><i class="fas fa-lightbulb" style="margin-left: 0.5rem; color: var(--primary-color);"></i>קבלת החלטות בנדל"ן</h3>
-                    <p>כלים לקבלת החלטות חכמות בנדל"ן</p>
+                    <h3><i class="fas fa-lightbulb" style="margin-left: 0.5rem; color: var(--primary-color);"></i>קבלת החלטות בנדל״ן</h3>
+                    <p>כלים לקבלת החלטות חכמות בנדל״ן</p>
                 </div>
             </div>
         `,
@@ -2526,61 +2526,97 @@ function initProjectsScrolling() {
 // Initialize all event listeners
 function initializeEventListeners() {
   // Modal triggers (original functionality + URL updates)
-  document.querySelectorAll("[data-modal]").forEach((trigger) => {
-    trigger.addEventListener("click", async function (e) {
-      e.preventDefault();
-      const modalType = this.getAttribute("data-modal");
+  // Only intercept modal clicks on index.html, not on standalone pages
+  if (!window.isStandalonePage) {
+    document.querySelectorAll("[data-modal]").forEach((trigger) => {
+      trigger.addEventListener("click", async function (e) {
+        e.preventDefault();
+        const modalType = this.getAttribute("data-modal");
 
-      // Original modal opening
-      await openModal(modalType);
+        // Original modal opening
+        await openModal(modalType);
+      });
     });
-  });
+  } else {
+    // On standalone pages, convert modal triggers to navigation links
+    console.log('🔗 Setting up navigation buttons for standalone page');
+    const modalTriggers = document.querySelectorAll("[data-route], [data-modal], a[type]:not([type='button']), button[type='button'][data-route]");
+    console.log(`🔗 Found ${modalTriggers.length} navigation triggers on standalone page`);
+
+    if (modalTriggers.length > 0) {
+      modalTriggers.forEach((trigger) => {
+        // Priority: data-route > data-modal > type attribute
+        const target = trigger.dataset.route || trigger.getAttribute("data-modal") || trigger.getAttribute("type");
+        console.log(`🔗 Setting up navigation for element with target="${target}"`);
+
+        if (target && target !== 'button') {
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log(`🔗 Navigation element clicked: ${target}`);
+
+            // Navigate to the appropriate standalone page
+            window.location.href = `/${target}.html`;
+          });
+        }
+      });
+    }
+  }
 
   // Handle browser back/forward buttons
   window.addEventListener('popstate', async function(e) {
     const currentPath = window.location.pathname;
-    const path = currentPath.replace('/', '') || 'home';
+    let path = (currentPath.replace(/^\//, '') || '').replace(/\.html$/, '') || 'home';
     const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
 
     if (validPaths.includes(path)) {
-      await openModal(path);
-      updateMetaTags(path);
+      if (window.isStandalonePage) {
+        // On standalone pages, navigate to HTML page
+        window.location.href = `/${path}.html`;
+      } else {
+        // On index page, open modal
+        await openModal(path);
+        updateMetaTags(path);
+      }
     } else if (path === 'home' || path === 'homepage') {
       closeModal();
       updateMetaTags('home');
     }
   });
 
-  // Handle initial page load with URL
-  const currentPath = window.location.pathname;
-  if (currentPath !== '/') {
-    const path = currentPath.replace('/', '') || 'home';
-    const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
+  // Handle initial page load with URL - ONLY FOR NON-STANDALONE PAGES
+  if (!window.isStandalonePage) {
+    const currentPath = window.location.pathname;
+    if (currentPath !== '/') {
+      const path = currentPath.replace('/', '').replace('.html', '') || 'home';
+      const validPaths = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team', ...Object.keys(modalContents)];
 
-    if (validPaths.includes(path)) {
-      // Valid modal path - open the modal
-      setTimeout(async () => {
-        await openModal(path);
-        updateMetaTags(path);
-      }, 100);
-    } else if (path === 'homepage') {
-      // Handle homepage URL - just update meta tags, no modal
-      updateMetaTags('home');
-    } else {
-      // Invalid path - redirect to home
-      console.log(`🔄 Invalid modal path: ${path}, redirecting to home`);
-      window.history.replaceState({ modal: null }, '', '/');
-      updateMetaTags('home');
+      if (validPaths.includes(path)) {
+        // Valid modal path - open the modal
+        setTimeout(async () => {
+          await openModal(path);
+          updateMetaTags(path);
+        }, 100);
+      } else if (path === 'homepage') {
+        // Handle homepage URL - just update meta tags, no modal
+        updateMetaTags('home');
+      } else {
+        // Invalid path - redirect to home
+        console.log(`🔄 Invalid modal path: ${path}, redirecting to home`);
+        window.history.replaceState({ modal: null }, '', '/');
+        updateMetaTags('home');
+      }
     }
   }
 
-  // Modal close
-  modalClose.addEventListener("click", closeModal);
-  modalOverlay.addEventListener("click", function (e) {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
-  });
+  // Modal close - ONLY FOR NON-STANDALONE PAGES
+  if (!window.isStandalonePage && modalClose && modalOverlay) {
+    modalClose.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", function (e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
 
   // מאזין כולל לכל הכפתורים שמתחילים מסע, גם בדף וגם בתוך מודלים
   document.addEventListener("click", function (e) {
@@ -2599,10 +2635,18 @@ function initializeEventListeners() {
   });
 
   // Onboarding
-  startJourneyBtn.addEventListener("click", startOnboarding);
-  onboardingClose.addEventListener("click", closeOnboarding);
-  prevBtn.addEventListener("click", previousStep);
-  nextBtn.addEventListener("click", nextStep);
+  if (startJourneyBtn) {
+    startJourneyBtn.addEventListener("click", startOnboarding);
+  }
+  if (onboardingClose) {
+    onboardingClose.addEventListener("click", closeOnboarding);
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener("click", previousStep);
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", nextStep);
+  }
 
   // Floating CTA button
   if (floatingCtaBtn) {
@@ -2665,8 +2709,8 @@ function initContactForm(scope = document) {
 async function openModal(type) {
   let contentLoaded = false;
 
-  // List of modals that have separate HTML files
-  const htmlPages = ['about', 'services', 'join', 'assets', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team'];
+  // List of modals that have separate HTML files (assets uses original modalContents design)
+  const htmlPages = ['about', 'services', 'join', 'projects', 'contact', 'terms', 'accessibility', 'privacy', 'ethics', 'team'];
 
   if (htmlPages.includes(type)) {
     try {
@@ -2674,11 +2718,17 @@ async function openModal(type) {
       const response = await fetch(`${type}.html`);
       if (response.ok) {
         const htmlContent = await response.text();
-        // Extract content from body tag
+        // Extract only the #page-content section for modal display
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlContent, 'text/html');
-        const bodyContent = doc.body.innerHTML;
-        modalContent.innerHTML = bodyContent;
+        const pageContentElement = doc.querySelector('#page-content');
+        if (pageContentElement) {
+          modalContent.innerHTML = pageContentElement.innerHTML;
+        } else {
+          // Fallback to body content if #page-content not found
+          const bodyContent = doc.body.innerHTML;
+          modalContent.innerHTML = bodyContent;
+        }
         contentLoaded = true;
       }
     } catch (error) {
@@ -2731,13 +2781,25 @@ async function openModal(type) {
     // (re)bind inside the modal
     initContactForm(modalContent);
 
-    modalContent.querySelectorAll("[data-modal]").forEach((trigger) => {
-      trigger.addEventListener("click", async function (e) {
-        e.preventDefault();
-        const modalType = this.getAttribute("data-modal");
-        await openModal(modalType);
+    // Only bind modal triggers within modals if we're on index.html
+    if (!window.isStandalonePage) {
+      modalContent.querySelectorAll("[data-modal], [data-route]").forEach((trigger) => {
+        trigger.addEventListener("click", async function (e) {
+          e.preventDefault();
+          const modalType = this.getAttribute("data-modal") || this.getAttribute("data-route");
+
+          // Special case: About modal button should go to filtering page via onboarding
+          if (type === "about" && this.classList.contains("legacy-cta") && modalType === "contact") {
+            // Close modal and start onboarding (which leads to filtering)
+            closeModal();
+            startOnboarding();
+            return;
+          }
+
+          await openModal(modalType);
+        });
       });
-    });
+    }
   }
 
   if (type === "assets") {
@@ -2769,6 +2831,95 @@ async function openModal(type) {
   }
 }
 
+// Initialize standalone page functionality
+function initStandalonePage() {
+  const currentPath = window.location.pathname;
+  const page = currentPath.replace('/', '').replace('.html', '') || 'index';
+
+  console.log(`🚀 Initializing standalone page: ${page}`);
+
+  // Universal standalone initializations first
+  setTimeout(async () => {
+    // Ensure main manifest loader works
+    if (typeof loadManifest === 'function') {
+      await loadManifest().catch(e => console.warn('⚠️ Main manifest load failed:', e));
+    }
+
+    // Also ensure DorTeam's manifest is loaded for executive images
+    if (window.DorTeam && window.DorTeam.init) {
+      try {
+        // Pre-load the manifest for DorTeam (but only if not on team page to avoid conflicts)
+        if (page !== 'team') {
+          await window.DorTeam.init();
+          console.log('✅ DorTeam manifest pre-loaded for standalone page');
+        }
+      } catch (e) {
+        console.warn('⚠️ DorTeam manifest pre-load failed:', e);
+      }
+    }
+
+    console.log('✅ Universal standalone initializations complete');
+  }, 50);
+
+  // Initialize page-specific functionality
+  switch (page) {
+    case 'about':
+      // Initialize AboutTeam carousel - AFTER manifest loader
+      if (window.AboutTeam && typeof window.AboutTeam.init === "function") {
+        setTimeout(async () => {
+          console.log('🔄 Attempting to initialize AboutTeam for standalone page...');
+          await window.AboutTeam.init();
+          console.log('✅ AboutTeam initialized for standalone page');
+        }, 400);
+      }
+      // Initialize about timeline
+      try {
+        initAboutTimeline();
+        console.log('✅ About timeline initialized');
+      } catch (e) {
+        console.warn('⚠️ About timeline failed:', e);
+      }
+      break;
+
+    case 'services':
+      // Initialize services timeline
+      try {
+        initServicesTimeline();
+        console.log('✅ Services timeline initialized');
+      } catch (e) {
+        console.warn('⚠️ Services timeline failed:', e);
+      }
+      break;
+
+    case 'team':
+      // Initialize team functionality - AFTER manifest loader
+      if (window.DorTeam && typeof window.DorTeam.init === "function") {
+        console.log('🔄 Attempting to initialize DorTeam for standalone page...');
+        window.DorTeam.init().then(() => {
+          console.log('✅ DorTeam initialized for standalone page');
+        });
+      }
+      break;
+
+    case 'contact':
+      // Initialize contact form
+      setTimeout(() => {
+        console.log('🔄 Attempting to initialize contact form for standalone page...');
+        initContactForm(document);
+        console.log('✅ Contact form initialized for standalone page');
+      }, 300);
+      break;
+
+    case 'projects':
+      // Initialize projects functionality if needed
+      console.log('✅ Projects page loaded');
+      break;
+
+    default:
+      console.log(`ℹ️ No specific initialization for page: ${page}`);
+  }
+}
+
 // Close modal
 function closeModal() {
   modalOverlay.classList.remove("active");
@@ -2795,63 +2946,63 @@ function closeModal() {
 function updateMetaTags(page) {
   const metaData = {
     home: {
-      title: "דף הבית - דור נכסים",
-      description: "דור נכסים פועלת מזה כשלושה עשורים ומובילה פרויקטים מורכבים בנדל״ן. אנו מייצרים ערך ליזמים, למשקיעים ולרוכשים באמצעות מומחיות נדל״נית, חשיבה קפיטלית וטכנולוגיה מבוססת דאטה.",
+      title: "קבוצת דור נכסים | Dor Real Estate - יזמות ושיווק נדל״ן",
+      description: "קבוצת דור נכסים פועלת מזה כשלושה עשורים ומובילה פרויקטים בעלי מורכבות גבוהה בנדל״ן. היא מייצרת ערך ליזמים, למשקיעים ולרוכשים באמצעות מומחיות עמוקה, חשיבה קפיטלית וטכנולוגיה מבוססת דאטה. הליבה שלה בגבעתיים, בתל אביב וברמת גן",
       url: "https://dorealestate.co.il/"
     },
     about: {
-      title: "מורשת בכתב - דור נכסים",
-      description: "הסיפור של דור נכסים - שלושה עשורים של מצוינות בנדל״ן. חבר הבכירים, ציר הזמן והליבה שלנו בגבעתיים, ברמת גן ובתל אביב.",
+      title: "מורשת בכתב - קבוצת דור נכסים",
+      description: "הסיפור של קבוצת דור נכסים - שלושה עשורים של מצוינות בנדל״ן, יזמות ושיווק פרויקטים. חבר הבכירים, ציר הזמן והליבה שלנו בגבעתיים, תל אביב ורמת גן.",
       url: "https://dorealestate.co.il/about"
     },
     services: {
-      title: "שירותי הפירמה - דור נכסים",
-      description: "שירותי נדל״ן מתקדמים: מחקר שוק, מידול יציאה לשוק, האצה וביצועים. מתודולוגיית השיווק שלנו מבוססת על דאטה וטכנולוגיה.",
+      title: "שירותי הפירמה - קבוצת דור נכסים",
+      description: "שירותי הפירמה של קבוצת דור נכסים - יזמות נדל״ן, ייעוץ אסטרטגי ושיווק חכם. שילוב של מומחיות עמוקה וחדשנות טכנולוגית.",
       url: "https://dorealestate.co.il/services"
     },
     projects: {
-      title: "פרויקטים - דור נכסים",
-      description: "פרויקטי נדל״ן מובילים בגבעתיים ותל אביב. גולומב 54, ברדיצ'בסקי 37, יצחק שדה ועוד פרויקטים איכותיים.",
+      title: "פרויקטים - קבוצת דור נכסים",
+      description: "פרויקטי הנדל״ן המובילים של קבוצת דור נכסים - בגבעתיים, תל אביב ורמת גן. יזמות ושיווק פרויקטים איכותיים באזור המרכז.",
       url: "https://dorealestate.co.il/projects"
     },
     assets: {
-      title: "ליזמים - דור נכסים",
-      description: "שירותים מקצועיים ליזמי נדל״ן: מתודולוגיית השיווק, זיהוי והתאמה, מידול יציאה לשוק והאצת ביצועים.",
+      title: "ליזמים - קבוצת דור נכסים",
+      description: "מעטפת ליזמים של קבוצת דור נכסים - ייעוץ, איתור והובלה של פרויקטי נדל״ן בגבעתיים, תל אביב ורמת גן.",
       url: "https://dorealestate.co.il/assets"
     },
     contact: {
-      title: "צור קשר - דור נכסים",
-      description: "צור קשר עם דור נכסים. ויצמן 37, גבעתיים. טלפון: 050-553-4488. אימייל: inquiries@dorestates.com",
+      title: "צור קשר - קבוצת דור נכסים",
+      description: "צור קשר עם קבוצת דור נכסים - משרדים בגבעתיים, טלפון ווואטסאפ זמינים לשירותי נדל״ן, יזמות ותיווך נכסים.",
       url: "https://dorealestate.co.il/contact"
     },
     join: {
-      title: "קריירה - דור נכסים",
-      description: "הצטרף לצוות דור נכסים. הזדמנויות קריירה בתחום הנדל״ן, השיווק והפיתוח. בואו להיות חלק מהדור הבא.",
+      title: "קריירה - קבוצת דור נכסים",
+      description: "הצטרף לקבוצת דור נכסים - הזדמנויות קריירה בנדל״ן, שיווק ויזמות בגבעתיים, תל אביב ורמת גן. בוא להיות חלק מהדור הבא בנדל״ן.",
       url: "https://dorealestate.co.il/join"
     },
     team: {
-      title: "חבר הבכירים - דור נכסים",
-      description: "צוות דור נכסים - הכירו את הרשת הנוירונית של המומחים שלנו בתחום הנדל״ן והשיווק.",
+      title: "חבר הבכירים - קבוצת דור נכסים",
+      description: "הכירו את חבר הבכירים והצוות המקצועי של קבוצת דור נכסים, המובילים את תחום הנדל״ן באזור המרכז זה שלושה עשורים.",
       url: "https://dorealestate.co.il/team"
     },
     terms: {
-      title: "תנאי שימוש - דור נכסים",
-      description: "תנאי השימוש של דור נכסים - כללים ותקנות לשימוש באתר ובשירותים.",
+      title: "תנאי שימוש - קבוצת דור נכסים",
+      description: "תנאי השימוש של קבוצת דור נכסים - כללים ותקנות לשימוש באתר ובשירותי נדל״ן.",
       url: "https://dorealestate.co.il/terms"
     },
     privacy: {
-      title: "מדיניות פרטיות - דור נכסים",
-      description: "מדיניות הפרטיות של דור נכסים - איסוף, שימוש ושמירה על מידע אישי.",
+      title: "מדיניות פרטיות - קבוצת דור נכסים",
+      description: "מדיניות הפרטיות של אתר קבוצת דור נכסים - איסוף, שימוש ושמירה על מידע אישי בשירותי נדל״ן.",
       url: "https://dorealestate.co.il/privacy"
     },
     accessibility: {
-      title: "הסדרי נגישות - דור נכסים",
-      description: "הסדרי הנגישות של דור נכסים - מידע על נגישות האתר והשירותים לאנשים עם מוגבלויות.",
+      title: "הסדרי נגישות - קבוצת דור נכסים",
+      description: "הסדרי הנגישות של אתר קבוצת דור נכסים - מידע על שירותים נגישים בגבעתיים, תל אביב ורמת גן.",
       url: "https://dorealestate.co.il/accessibility"
     },
     ethics: {
-      title: "כללי אתיקה - דור נכסים",
-      description: "כללי האתיקה של דור נכסים - עקרונות מוסריים ומקצועיים המנחים את פעילותנו.",
+      title: "כללי אתיקה - קבוצת דור נכסים",
+      description: "כללי האתיקה המקצועיים של קבוצת דור נכסים - עקרונות מוסריים ומקצועיים בפעילות נדל״ן.",
       url: "https://dorealestate.co.il/ethics"
     },
   };
@@ -3228,6 +3379,14 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeOnboardingSteps(); // סטפים
   initializeEventListeners(); // מודלים, אונבורדינג וכו'
   updateExecutiveCarousel(); // הקרוסלה של ההנהלה
+
+  // Initialize standalone page-specific functionality
+  if (window.isStandalonePage) {
+    // Use setTimeout to ensure DOM is fully ready
+    setTimeout(() => {
+      initStandalonePage();
+    }, 200);
+  }
   setupSubmenus(); // הפונקציה החדשה לתפריטים
   initProjectsScrolling(); // גלילה אופקית של פרויקטים
 
@@ -3911,7 +4070,7 @@ async function getPropertyImages(p, _maxPics = 12) {
     }
   }
 
-  if (!urls.length) urls = ['/gen_pic/placeholder.jpg'];
+  if (!urls.length) urls = ['/gen_pic_optimized/new_logo_80w.webp'];
 
   imageCache.set(p.id, urls);
   return urls;
@@ -4806,11 +4965,12 @@ window.DorTeam = (function () {
   async function loadImagesManifest() {
     if (IMAGES_MANIFEST) return IMAGES_MANIFEST;
     try {
-      const res = await fetch('/images.manifest.json', { cache: 'no-store' });
+      const res = await fetch('/images.manifest.json');
       if (!res.ok) throw new Error(`Images manifest fetch failed: ${res.status}`);
       IMAGES_MANIFEST = await res.json();
+      console.log('🔄 DorTeam: Images manifest loaded successfully');
     } catch (e) {
-      console.error('[images manifest] failed to load:', e);
+      console.error('[DorTeam images manifest] failed to load:', e);
       IMAGES_MANIFEST = { executives: {}, folders: { executives: 'board_pics_optimized/' } };
     }
     return IMAGES_MANIFEST;
@@ -4818,11 +4978,21 @@ window.DorTeam = (function () {
 
   // Get executive image URL from manifest
   function getExecutiveImageUrl(execId) {
-    if (!IMAGES_MANIFEST) return null;
+    console.log(`🔄 DorTeam.getExecutiveImageUrl: Looking for ${execId}`);
+    if (!IMAGES_MANIFEST) {
+      console.warn(`⚠️ DorTeam.getExecutiveImageUrl: No manifest loaded`);
+      return null;
+    }
     const filename = IMAGES_MANIFEST.executives[execId];
-    if (!filename) return null;
+    if (!filename) {
+      console.warn(`⚠️ DorTeam.getExecutiveImageUrl: No filename found for ${execId}`);
+      console.log('Available executives:', Object.keys(IMAGES_MANIFEST.executives));
+      return null;
+    }
     const folder = IMAGES_MANIFEST.folders?.executives || 'board_pics_optimized/';
-    return `${folder}${filename}`;
+    const fullPath = `/${folder}${filename}`;
+    console.log(`✅ DorTeam.getExecutiveImageUrl: ${execId} -> ${fullPath}`);
+    return fullPath;
   }
 
   // Preload executive images
@@ -4880,11 +5050,18 @@ window.DorTeam = (function () {
 
   function render() {
     const t = total();
+    console.log(`🔄 DorTeam.render: Total executives: ${t}, Current index: ${idx}`);
     const counter = document.getElementById('executive-counter');
     const bar = document.getElementById('progress-bar');
-    if (!t) { if (counter) counter.textContent = '0/0'; if (bar) bar.style.width = '0%'; return; }
+    if (!t) {
+      console.warn('⚠️ DorTeam.render: No executives found!');
+      if (counter) counter.textContent = '0/0';
+      if (bar) bar.style.width = '0%';
+      return;
+    }
 
     const e = executiveData[idx = Math.max(0, Math.min(idx, t - 1))];
+    console.log(`🔄 DorTeam.render: Rendering executive ${idx + 1}/${t}: ${e.name} (${e.imageId})`);
 
     const photo = document.getElementById('exec-photo');
     const name  = document.getElementById('exec-name');
@@ -4896,17 +5073,20 @@ window.DorTeam = (function () {
       // Use cached image if available for smoother loading
       const cachedImg = imageCache.get(e.imageId);
       if (cachedImg) {
+        console.log(`🎯 DorTeam.render: Using cached image for ${e.name}`);
         photo.src = cachedImg.src;
       } else {
         const imageUrl = getExecutiveImageUrl(e.imageId);
-        photo.src = imageUrl || '/gen_pic/placeholder.jpg';
+        console.log(`🔄 DorTeam.render: Loading image URL for ${e.name}: ${imageUrl}`);
+        photo.src = imageUrl || '/gen_pic_optimized/new_logo_80w.webp';
+        if (!imageUrl) console.warn(`⚠️ DorTeam.render: No image URL found for ${e.name}, using fallback`);
       }
       photo.alt = e.name;
     }
     if (name)  name.textContent = e.name;
     if (title) title.textContent = e.title;
     if (desc)  desc.textContent  = e.description;
-    if (skills) skills.innerHTML = e.skills.map(s => '<div class="skill-chip">' + s + '</div>').join('');
+    if (skills && e.skills) skills.innerHTML = e.skills.map(s => '<div class="skill-chip">' + s + '</div>').join('');
 
     if (counter) counter.textContent = (idx + 1) + '/' + t;
     if (bar)     bar.style.width = (((idx + 1) / t) * 100) + '%';
@@ -4914,6 +5094,7 @@ window.DorTeam = (function () {
     document.querySelectorAll('.team-dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === idx);
     });
+    console.log(`✅ DorTeam.render: Render complete for ${e.name}`);
   }
 
   function buildDots() {
@@ -4933,10 +5114,20 @@ window.DorTeam = (function () {
   }
 
   async function init() {
-    await loadImagesManifest();
+    console.log('🔄 DorTeam.init: Starting initialization...');
+    try {
+      await loadImagesManifest();
+      console.log('🔄 DorTeam.init: Images manifest loaded successfully');
+      console.log('🔄 DorTeam.init: Manifest content:', IMAGES_MANIFEST);
+    } catch (e) {
+      console.error('🔄 DorTeam.init: Failed to load manifest:', e);
+    }
     buildDots();
+    console.log('🔄 DorTeam.init: Dots built');
     render();
+    console.log('🔄 DorTeam.init: Initial render complete');
     preloadExecutiveImages(); // Cache all executive images on initialization
+    console.log('🔄 DorTeam.init: Preloading images started');
   }
 
   return {
@@ -4956,7 +5147,7 @@ window.AboutTeam = (function () {
   async function loadImagesManifest() {
     if (IMAGES_MANIFEST) return IMAGES_MANIFEST;
     try {
-      const res = await fetch('/images.manifest.json', { cache: 'no-store' });
+      const res = await fetch('/images.manifest.json');
       if (!res.ok) throw new Error(`Images manifest fetch failed: ${res.status}`);
       IMAGES_MANIFEST = await res.json();
     } catch (e) {
@@ -4972,7 +5163,7 @@ window.AboutTeam = (function () {
     const filename = IMAGES_MANIFEST.executives[execId];
     if (!filename) return null;
     const folder = IMAGES_MANIFEST.folders?.executives || 'board_pics_optimized/';
-    return `${folder}${filename}`;
+    return `/${folder}${filename}`;
   }
 
   // Use same executive data as DorTeam
@@ -5049,7 +5240,7 @@ window.AboutTeam = (function () {
         photo.src = cachedImg.src;
       } else {
         const imageUrl = getExecutiveImageUrl(e.imageId);
-        photo.src = imageUrl || '/gen_pic/placeholder.jpg';
+        photo.src = imageUrl || '/gen_pic_optimized/new_logo_80w.webp';
       }
       photo.alt = e.name;
     }
