@@ -1320,7 +1320,7 @@ export const PROPERTIES = [
   {
     "id": "prop_052",
     "title": "המעיין, גבעתיים",
-    "price": 5450000,
+    "price": 5390000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "המעיין",

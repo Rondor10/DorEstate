@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Read(/C:\\Users\\dor\\Desktop\\Real Estate\\Website\\DorEstate (Backup 28-08-2025) - NEARLY DONE\\DorEstate/**)"
+      "Read(/C:\\Users\\dor\\Desktop\\Real Estate\\Website\\DorEstate (Backup 28-08-2025) - NEARLY DONE\\DorEstate/**)",
+      "Read(//c/Users/dor/Downloads/**)"
     ],
     "deny": [],
     "ask": []

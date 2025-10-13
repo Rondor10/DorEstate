@@ -17,8 +17,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <!-- Preload critical fonts -->
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+        <!-- Defer Font Awesome to reduce render blocking -->
+        <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></noscript>
         <link rel="icon" type="image/webp" sizes="32x32" href="gen_pic_optimized/new_logo_80w.webp" />
 
         <!-- Open Graph (Facebook / LinkedIn) -->
@@ -46,7 +52,6 @@
         "name": "קבוצת דור נכסים",
         "alternateName": "Dor Real Estate",
         "foundingDate": "1997",
-        "inLanguage": "he-IL",
         "founder": {
             "@type": "Person",
             "name": "דוד דור"
@@ -117,16 +122,15 @@
             "@context":"https://schema.org",
             "@type":"ItemList",
             "name":"פרויקטי דגל",
-            "inLanguage": "he-IL",
             "itemListElement":[
             {
                 "@type":"ListItem","position":1,
                 "item":{
                 "@type":"Place",
                 "name":"יצחק שדה 3, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 3","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                "identifier":"5346718",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 3","addressLocality":"גבעתיים","postalCode":"5346718","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_3_givatayim_640w.webp"
                 }
             },
             {
@@ -134,9 +138,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"מיכל 6, תל אביב",
-                "address":{"@type":"PostalAddress","streetAddress":"מיכל 6","addressLocality":"תל אביב","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/michal_6_tel_aviv_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"6326106",
+                "address":{"@type":"PostalAddress","streetAddress":"מיכל 6","addressLocality":"תל אביב","postalCode":"6326106","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/michal_6_tel_aviv_640w.webp"
                 }
             },
             {
@@ -144,9 +148,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"המעיין 7, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"המעיין 7","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/hamaayan_7_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/SoldOut"}
+                "identifier":"5337504",
+                "address":{"@type":"PostalAddress","streetAddress":"המעיין 7","addressLocality":"גבעתיים","postalCode":"5337504","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/hamaayan_7_givatayim_640w.webp"
                 }
             },
             {
@@ -154,9 +158,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"רמז 35, תל אביב",
-                "address":{"@type":"PostalAddress","streetAddress":"רמז 35","addressLocality":"תל אביב","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/remez_35_tel_aviv_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"6219218",
+                "address":{"@type":"PostalAddress","streetAddress":"רמז 35","addressLocality":"תל אביב","postalCode":"6219218","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/remez_35_tel_aviv_640w.webp"
                 }
             },
             {
@@ -164,9 +168,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"ריינס 30, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"ריינס 30","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/reines_30_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "identifier":"5346046",
+                "address":{"@type":"PostalAddress","streetAddress":"ריינס 30","addressLocality":"גבעתיים","postalCode":"5346046","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/reines_30_givatayim_640w.webp"
                 }
             },
             {
@@ -174,9 +178,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"ריינס 23, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"ריינס 23","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/reines_23_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5346035",
+                "address":{"@type":"PostalAddress","streetAddress":"ריינס 23","addressLocality":"גבעתיים","postalCode":"5346035","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/reines_23_givatayim_640w.webp"
                 }
             },
             {
@@ -184,9 +188,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"יצחק שדה 5, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 5","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5346724",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 5","addressLocality":"גבעתיים","postalCode":"5346724","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_5_givatayim_640w.webp"
                 }
             },
             {
@@ -194,9 +198,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"ז'בוטינסקי 37, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"ז'בוטינסקי 37","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/zabo_37_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5331702",
+                "address":{"@type":"PostalAddress","streetAddress":"ז'בוטינסקי 37","addressLocality":"גבעתיים","postalCode":"5331702","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/zabo_37_givatayim_640w.webp"
                 }
             },
             {
@@ -204,9 +208,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"יצחק שדה 7, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 7","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5346726",
+                "address":{"@type":"PostalAddress","streetAddress":"יצחק שדה 7","addressLocality":"גבעתיים","postalCode":"5346726","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/yitzchak_sade_7_givatayim_640w.webp"
                 }
             },
             {
@@ -214,9 +218,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"גולומב 54, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"גולומב 54","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/golomb_54_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5346433",
+                "address":{"@type":"PostalAddress","streetAddress":"גולומב 54","addressLocality":"גבעתיים","postalCode":"5346433","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/golomb_54_givatayim_640w.webp"
                 }
             },
             {
@@ -224,9 +228,9 @@
                 "item":{
                 "@type":"Place",
                 "name":"ברדיצ'בסקי 37, גבעתיים",
-                "address":{"@type":"PostalAddress","streetAddress":"ברדיצ'בסקי 37","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/berdiv_37_givatayim_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreSale"}
+                "identifier":"5336623",
+                "address":{"@type":"PostalAddress","streetAddress":"ברדיצ'בסקי 37","addressLocality":"גבעתיים","postalCode":"5336623","addressCountry":"IL"},
+                "image":"https://dorealestate.co.il/firm_projects_optimized/berdiv_37_givatayim_640w.webp"
                 }
             },
             {
@@ -235,8 +239,7 @@
                 "@type":"Place",
                 "name":"קקל 17, גבעתיים",
                 "address":{"@type":"PostalAddress","streetAddress":"קקל 17","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp"
                 }
             },
             {
@@ -245,8 +248,7 @@
                 "@type":"Place",
                 "name":"ברדיצ'בסקי 10, גבעתיים",
                 "address":{"@type":"PostalAddress","streetAddress":"ברדיצ'בסקי 10","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp"
                 }
             },
             {
@@ -255,8 +257,7 @@
                 "@type":"Place",
                 "name":"ברדיצ'בסקי 12, גבעתיים",
                 "address":{"@type":"PostalAddress","streetAddress":"ברדיצ'בסקי 12","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp"
                 }
             },
             {
@@ -265,8 +266,7 @@
                 "@type":"Place",
                 "name":"שדה בוקר 1, גבעתיים",
                 "address":{"@type":"PostalAddress","streetAddress":"שדה בוקר 1","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp"
                 }
             },
             {
@@ -275,8 +275,7 @@
                 "@type":"Place",
                 "name":"שדה בוקר 3, גבעתיים",
                 "address":{"@type":"PostalAddress","streetAddress":"שדה בוקר 3","addressLocality":"גבעתיים","addressCountry":"IL"},
-                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp",
-                "offers":{"@type":"Offer","availability":"https://schema.org/PreOrder"}
+                "image":"https://dorealestate.co.il/firm_projects_optimized/soon_640w.webp"
                 }
             }
             ]
@@ -315,7 +314,24 @@
         })();
         </script>
     </head>
-    <body>
+    <body itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="קבוצת דור נכסים" />
+        <meta itemprop="alternateName" content="Dor Real Estate" />
+        <meta itemprop="url" content="https://dorealestate.co.il/" />
+        <link itemprop="logo" href="https://dorealestate.co.il/gen_pic_optimized/new_logo_80w.webp" />
+        <meta itemprop="description" content="קבוצת דור נכסים פועלת מזה כשלושה עשורים, מובילה פרויקטים בעלי מורכבות גבוהה ומייצרת ערך ארוך טווח ליזמים, למשקיעים ולרוכשים. היא משלבת מומחיות נדל״נית עמוקה, חשיבה קפיטלית וטכנולוגיה מבוססת דאטה. הליבה שלה בגבעתיים, בתל אביב וברמת גן" />
+        <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <meta itemprop="streetAddress" content="ויצמן 37" />
+            <meta itemprop="addressLocality" content="גבעתיים" />
+            <meta itemprop="addressRegion" content="מחוז תל אביב" />
+            <meta itemprop="postalCode" content="5337204" />
+            <meta itemprop="addressCountry" content="IL" />
+        </span>
+        <meta itemprop="telephone" content="+972505534488" />
+        <meta itemprop="email" content="inquiries@dorestates.com" />
+        <link itemprop="sameAs" href="https://www.facebook.com/DorRealEstate" />
+        <link itemprop="sameAs" href="https://www.instagram.com/dor_real_estate" />
+        <link itemprop="sameAs" href="https://www.linkedin.com/company/dorealestate" />
         <!-- 1. Top Bar -->
         <header class="top-bar">
             <div class="container">
@@ -383,8 +399,9 @@
         <!-- 2. Hero Section with Video Background -->
         <section class="hero-section">
             <!-- Video Background -->
-            <video class="hero-video" autoplay muted loop playsinline>
+            <video class="hero-video" autoplay muted loop playsinline preload="auto">
                 <source src="gen_pic_optimized/intro_vid_noaudio.mp4" type="video/mp4">
+                <track kind="captions" srclang="he" label="Hebrew" default>
                 <!-- Fallback for browsers that don't support video -->
             </video>
         </section>
@@ -458,142 +475,219 @@
                     <div class="projects-scroll-track" id="projectsScrollTrack">
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="yitzchak_sade_3_givatayim" alt="יצחק שדה 3, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346718" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="yitzchak_sade_3_givatayim" alt="פרויקט יצחק שדה 3, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">יצחק שדה 3, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">סולד אאוט</div>
+                                <div class="project-status">סולד אאוט</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="יצחק שדה 3" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/SoldOut" />
                                 </span>
                             </div>
                         </div>
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="michal_6_tel_aviv" alt="מיכל 6, תל אביב" itemprop="image" />
+                            <meta itemprop="identifier" content="6326106" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="michal_6_tel_aviv" alt="פרויקט מיכל 6, תל אביב - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">מיכל 6, תל אביב</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="תל אביב" />
                                     <meta itemprop="streetAddress" content="מיכל 6" />
+                                    <meta itemprop="addressLocality" content="תל אביב" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>      
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="hamaayan_7_givatayim" alt="המעיין 7, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5337504" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="hamaayan_7_givatayim" alt="פרויקט המעיין 7, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">המעיין 7, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">סולד אאוט</div>
+                                <div class="project-status">סולד אאוט</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="המעיין 7" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/SoldOut" />
                                 </span>
                             </div>
                         </div>                                              
                         
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="remez_35_tel_aviv" alt="רמז 35, תל אביב" itemprop="image" />
+                            <meta itemprop="identifier" content="6219218" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="remez_35_tel_aviv" alt="פרויקט רמז 35, תל אביב - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">רמז 35, תל אביב</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="תל אביב" />
                                     <meta itemprop="streetAddress" content="רמז 35" />
+                                    <meta itemprop="addressLocality" content="תל אביב" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>
                       
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="reines_30_givatayim" alt="ריינס 30, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346046" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="reines_30_givatayim" alt="פרויקט ריינס 30, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ריינס 30, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ריינס 30" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
                                 </span>
-                                </div>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/PreOrder" />
+                                </span>
+                            </div>
                         </div>        
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="reines_23_givatayim" alt="ריינס 23, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346035" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="reines_23_givatayim" alt="פרויקט ריינס 23, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ריינס 23, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ריינס 23" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="yitzchak_sade_5_givatayim" alt="יצחק שדה 5, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346724" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="yitzchak_sade_5_givatayim" alt="פרויקט יצחק שדה 5, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">יצחק שדה 5, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="יצחק שדה 5" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>
                   
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="zabo_37_givatayim" alt="ז'בוטינסקי 37, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5331702" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="zabo_37_givatayim" alt="פרויקט ז'בוטינסקי 37, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ז'בוטינסקי 37, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ז'בוטינסקי 37" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>
                         
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="yitzchak_sade_7_givatayim" alt="יצחק שדה 7, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346726" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="yitzchak_sade_7_givatayim" alt="פרויקט יצחק שדה 7, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">יצחק שדה 7, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="יצחק שדה 7" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
+                                </span>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
                                 </span>
                             </div>
                         </div>
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="golomb_54_givatayim" alt="גולומב 54, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5346433" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="golomb_54_givatayim" alt="פרויקט גולומב 54, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">גולומב 54, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="גולומב 54" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
                                 </span>
-                                </div>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
+                                </span>
+                            </div>
                         </div>
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
-                            <img data-category="projects" data-key="berdiv_37_givatayim" alt="ברדיצ'בסקי 37, גבעתיים" itemprop="image" />
+                            <meta itemprop="identifier" content="5336623" />
+                            <meta itemprop="url" content="https://dorealestate.co.il/projects" />
+                            <img data-category="projects" data-key="berdiv_37_givatayim" alt="פרויקט ברדיצ'בסקי 37, גבעתיים - קבוצת דור נכסים" itemprop="image" loading="lazy" decoding="async" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ברדיצ'בסקי 37, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בשיווק</div>
+                                <div class="project-status">בשיווק</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                                    <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ברדיצ'בסקי 37" />
+                                    <meta itemprop="addressLocality" content="גבעתיים" />
+                                    <meta itemprop="addressRegion" content="מחוז תל אביב" />
+                                    <meta itemprop="addressCountry" content="IL" />
                                 </span>
-                                </div>
+                                <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                    <meta itemprop="availability" content="https://schema.org/InStock" />
+                                </span>
+                            </div>
                         </div>     
 
                         <div class="project-card flagship-project-card" itemscope itemtype="https://schema.org/RealEstateListing">
                             <img data-category="projects" data-key="kakal_17_givatayim" alt="קקל 17, גבעתיים" itemprop="image" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">קק"ל, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="קקל" />
@@ -605,7 +699,7 @@
                             <img data-category="projects" data-key="berdiv_10_givatayim" alt="ברדיצ'בסקי 10, גבעתיים" itemprop="image" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ברדיצ'בסקי, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ברדיצ'בסקי" />
@@ -617,7 +711,7 @@
                             <img data-category="projects" data-key="berdiv_12_givatayim" alt="ברדיצ'בסקי 12, גבעתיים" itemprop="image" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">ברדיצ'בסקי, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="ברדיצ'בסקי" />
@@ -629,7 +723,7 @@
                             <img data-category="projects" data-key="sde_boker_1_givatayim" alt="שדה בוקר 1, גבעתיים" itemprop="image" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">שדה בוקר, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="שדה בוקר" />
@@ -641,7 +735,7 @@
                             <img data-category="projects" data-key="sde_boker_3_givatayim" alt="שדה בוקר 3, גבעתיים" itemprop="image" />
                             <div class="project-overlay">
                                 <div class="project-name" itemprop="name">שדה בוקר, גבעתיים</div>
-                                <div class="project-status" itemprop="leaseStatus">בקרוב</div>
+                                <div class="project-status">בקרוב</div>
                                 <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <meta itemprop="addressLocality" content="גבעתיים" />
                                     <meta itemprop="streetAddress" content="שדה בוקר" />
@@ -796,12 +890,134 @@
             </div>
         </div>
 
-        <!-- EmailJS for automatic email sending (200 free emails/month) -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        
-        <script type="module" src="/script_fixed.js?v=2024090610"></script>
+        <!-- EmailJS for automatic email sending (200 free emails/month) - Deferred -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
-        <!-- 8. Footer Section -->
+        <script type="module" src="/script_fixed.js?v=2024090610" defer></script>
+
+        <!-- 8. FAQ Section -->
+        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="container">
+                <h2 class="section-title">שאלות נפוצות</h2>
+                <div class="faq-grid">
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">מה מייחד את קבוצת דור נכסים בשוק התיווך?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">ניסיון של שלושה עשורים, שימוש בטכנולוגיות מבוססות דאטה, ליווי אישי וזיהוי חכם של הזדמנויות נדל״ן. החברה רואה בנדל״ן שליחות ויוצרת מעטפת אסטרטגית מלאה.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">אילו שירותים אתם מציעים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">שיווק פרויקטים, תיווך דירות יד שנייה ונכסי יוקרה, יזמות נדל״ן, ליווי אסטרטגי למשקיעים ויזמים, וייעוץ מבוסס דאטה.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">באילו אזורים אתם מתמחים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">ליבה בגבעתיים, פעילות ענפה ברמת גן ותל אביב, וליווי משקיעים ברחבי הארץ ובעולם.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">תוכלו לתת רקע מספרי?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">מעל 5 מיליארד ₪ ברכישות, 25,000+ לקוחות מרוצים, 2,500+ נכסים שווקו, ו־250+ נכסים בשיווק.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">איך אפשר ליצור קשר?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">טלפון 050-5534488, אימייל inquiries@dorestates.com, משרדים ברחוב ויצמן 37 גבעתיים, או בערוצים: WhatsApp, טופס באתר, פייסבוק, לינקדאין, אינסטגרם.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">היכן ממוקמים המשרדים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">ויצמן 37, גבעתיים.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">האם יש מדיניות עבודה ברורה?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">קיימים דפי מדיניות פרטיות, נגישות, אתיקה ותנאי שימוש באתר.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">מי מתאים לעבוד בדור נכסים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">יזמים בנשמה, חדשניים, בעלי חשיבה אסטרטגית ואנליטית, יכולת ניהול פרויקטים, ותקשורת מצוינת.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">אילו אפשרויות קריירה קיימות?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">הובלת מהפכות טכנולוגיות, שותפויות אסטרטגיות, התפתחות מקצועית, השתלבות בחברה עם פרויקטים מובילים בשוק.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">איזו תמיכה טכנולוגית קיימת?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">מערכות בינה מלאכותית לניטור שוק, זיהוי הזדמנויות בזמן אמת ושיפור ביצועים עסקיים.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">מה הערך המוסף ליזמים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">מתודולוגיית 360°, דאטה בזמן אמת, גישה ללקוחות איכותיים, צוות מכירות מקצועי וליווי מלא מהרעיון עד סגירה.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">אילו פרויקטים אתם משווקים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">פרויקטי מגורים מובילים בגבעתיים ותל אביב (יצחק שדה, ריינס, גולומב, ברדיצ'בסקי, קק״ל ועוד), בסטטוסים משתנים: סולד אאוט, בשיווק, בקרוב.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">האם יש שירות ייעוץ ליזמים ומשקיעים?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">כן, ליווי אסטרטגי עם ניתוח ROI/IRR, מודיעין שוק וכלים דיגיטליים מתקדמים.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">כיצד מתבצע שיווק פרויקט?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">ניתוח שוק וערך ייחודי, בניית אסטרטגיה פרסומית, עיצוב זהות חזותית, האצת מכירות וניהול ביצועים שקוף.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">מי עומד מאחורי החברה?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">המייסד והמנכ״ל דוד דור, יחד עם הנהלה בכירה הפועלת מאז 1997 בתחומי שיווק פרויקטים, יזמות, טרנספורמציה טכנולוגית והשקעות.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">מה מייחד את דור נכסים בעולם הנדל״ן?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">שילוב של ניסיון של 30 שנה עם חדשנות טכנולוגית, גישה מבוססת דאטה, יצירת ערך ארוך־טווח וחשיבה מותאמת לעידן ה־AI.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Footer Section -->
         <footer class="main-footer">
             <div class="container">
                 <div class="footer-content">

@@ -3,6 +3,47 @@ console.log("🚀 SCRIPT LOADED - New registration flow active!", new Date().toI
 import { PropertyDatabase } from "./propertyDatabase.js";
 
 // ========================================
+// ROUTING PATCH - Auto-detect standalone pages
+// ========================================
+
+// Prevent modal redirects on standalone pages
+(function preventModalRedirectOnStandalone() {
+  // Auto-detect standalone pages by pathname
+  const staticPages = ['about.html', 'services.html', 'team.html', 'join.html', 'assets.html', 'projects.html', 'contact.html', 'ethics.html', 'terms.html', 'accessibility.html', 'privacy.html'];
+  const currentPage = window.location.pathname.split('/').pop();
+  const isStandalonePage = staticPages.includes(currentPage) || currentPage.endsWith('.html');
+
+  if (isStandalonePage) {
+    // Set global flag for compatibility with existing code
+    window.isStandalonePage = true;
+
+    // Override modal URL handling for standalone pages
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+
+    window.history.pushState = function(state, title, url) {
+      // Block modal state changes on standalone pages
+      if (state && state.modal) {
+        console.log('🔒 Modal pushState blocked on standalone page');
+        return;
+      }
+      return originalPushState.apply(this, arguments);
+    };
+
+    window.history.replaceState = function(state, title, url) {
+      // Block modal state changes on standalone pages
+      if (state && state.modal) {
+        console.log('🔒 Modal replaceState blocked on standalone page');
+        return;
+      }
+      return originalReplaceState.apply(this, arguments);
+    };
+
+    console.log(`🔒 Standalone page detected: ${currentPage} - Modal redirects blocked`);
+  }
+})();
+
+// ========================================
 // URL REFRESH HANDLING - CRITICAL FOR UX
 // ========================================
 
@@ -864,10 +905,6 @@ const modalContents = {
         padding: 0 1rem;
       }
       
-      @media (max-width: 768px) {
-        .vision-mission { grid-template-columns: 1fr; }
-      }
-      
       .bracket-block {
         position: relative;
         padding: 2.5rem;
@@ -1050,10 +1087,6 @@ const modalContents = {
         gap: 2rem;
         margin: 2rem 0;
         padding: 0 3rem;
-      }
-      
-      @media (max-width: 768px) {
-        .pillars-grid { grid-template-columns: 1fr; }
       }
       
       .pillar-bracket {
@@ -1722,7 +1755,7 @@ const modalContents = {
           <div class="communication-grid">
             <!-- Contact Information -->
             <div class="contact-methods">
-              <h3 class="methods-title">פרטי התקשרות</h3>
+              <h3 class="methods-title">בואו הביתה</h3>
               
               <div class="method-item">
                 <div class="method-icon">📍</div>
@@ -2474,29 +2507,63 @@ function initProjectsScrolling() {
     }
   });
   
-  // Touch/swipe support
-  let startX = 0;
-  let scrollLeft = 0;
+  // Enhanced touch/swipe with gesture detection + CSS optimization
+  let startX = 0, startY = 0, scrollLeft = 0;
+  let isHorizontalSwipe = false, touchStarted = false;
+
+  // Add CSS touch-action for better performance
+  scrollTrack.style.touchAction = 'pan-y pinch-zoom';
 
   scrollTrack.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     scrollLeft = scrollTrack.scrollLeft;
-  });
+    touchStarted = true;
+    isHorizontalSwipe = false;
+
+    // Disable smooth scrolling during touch for better responsiveness
+    scrollTrack.style.scrollBehavior = 'auto';
+  }, { passive: true });
 
   scrollTrack.addEventListener('touchmove', (e) => {
-    if (!startX) return;
+    if (!touchStarted) return;
 
     const x = e.touches[0].clientX;
-    const diff = startX - x;
-      scrollTrack.scrollLeft = scrollLeft + diff;
-  });
+    const y = e.touches[0].clientY;
+    const deltaX = Math.abs(startX - x);
+    const deltaY = Math.abs(startY - y);
 
-  scrollTrack.addEventListener('touchend', () => {
-    startX = 0;
+    // Determine swipe direction on first significant movement (15px threshold)
+    if (!isHorizontalSwipe && (deltaX > 15 || deltaY > 15)) {
+      isHorizontalSwipe = deltaX > deltaY * 1.5; // Bias toward vertical scroll
+    }
+
+    // Only handle horizontal swipes for carousel
+    if (isHorizontalSwipe) {
+      // Use passive: false only when we actually need to prevent default
+      e.preventDefault();
+      const diff = startX - x;
+      scrollTrack.scrollLeft = scrollLeft + diff;
+    }
+  }, { passive: false }); // Must be false for preventDefault
+
+  scrollTrack.addEventListener('touchend', (e) => {
+    if (!touchStarted) return;
+
+    touchStarted = false;
+    scrollTrack.style.scrollBehavior = 'smooth';
+
+    if (isHorizontalSwipe) {
       // Snap to closest project (RTL compatible)
       const newIndex = Math.round(Math.abs(scrollTrack.scrollLeft) / cardWidth);
-      scrollToProject(newIndex);
-  });
+      scrollToProject(Math.min(newIndex, projectCards.length - 1));
+    }
+
+    // Reset state
+    startX = 0;
+    startY = 0;
+    isHorizontalSwipe = false;
+  }, { passive: true });
   
   // Mouse wheel horizontal scrolling
   scrollTrack.addEventListener('wheel', (e) => {
