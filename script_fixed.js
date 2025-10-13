@@ -878,7 +878,7 @@ const modalContents = {
         font-size: 2.3rem;
         font-weight: 900;
         color: white;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.8rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       }
       
@@ -886,7 +886,7 @@ const modalContents = {
         font-size: 1.3rem;
         color: rgba(255,255,255,0.95);
         max-width: 900px;
-        margin: 0 auto;
+        margin: 0 1rem 0 1rem;
         line-height: 1.6;
         font-weight: 500;
       }
@@ -1132,7 +1132,7 @@ const modalContents = {
       }
       
       .marketing-system {
-        margin: 2rem 0;
+        margin: 1rem 1rem 1rem 1rem;
       }
       
       .steps-container {

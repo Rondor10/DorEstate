@@ -255,7 +255,7 @@ body {
     
     /* PREMIUM QUANTUM HERO Mobile - Very Small screens */
     .hero-subtitle-small {
-        font-size: 0.9rem !important;
+        font-size: 1.1rem !important;
         letter-spacing: 0.1em;
     }
     
@@ -387,9 +387,9 @@ body {
       justify-content:unset;
     }
 
-    .pillars-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr !important; }
 
-    .vision-mission { grid-template-columns: 1fr; }
+    .vision-mission { grid-template-columns: 1fr !important; }
 
     /* Questionnaire mobile scrolling fix */
     .onboarding-content:has(.question-container),
@@ -772,7 +772,7 @@ body {
   
   .projects-grid,
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1.5rem;
   }
   
@@ -889,11 +889,7 @@ body {
   .hero-overlay .container {
     padding: 0 1rem;
   }
-  
-  .hero-overlay .hero-content {
-    padding: 1.5rem;
-  }
-  
+    
   .hero-overlay .hero-title {
     font-size: 1.8rem;
     line-height: 1.2;
@@ -4129,8 +4125,6 @@ html.a11y-font-200 { font-size: 200%; }
 
 .legacy-footer {
   text-align: center;
-  margin-top: 4rem;
-  padding: 2rem;
 }
 
 .legacy-cta {
@@ -4482,6 +4476,7 @@ html.a11y-font-200 { font-size: 200%; }
   font-size: 2.5rem;
   font-weight: 800;
   color: white;
+  margin: 1rem 1rem 1rem 1rem;
   margin-bottom: 2rem;
   margin-top: -2rem;
 }
@@ -5672,7 +5667,6 @@ body {
 
 .projects-nav-dots {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
 }
 
@@ -5877,7 +5871,7 @@ body {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
 }
@@ -6094,7 +6088,7 @@ body {
 
 .hero-subtitle-small {
   font-family: "Inter", "Heebo", sans-serif;
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--primary-color);
   margin: 0;
@@ -6647,6 +6641,7 @@ body {
 }
 
 .knowledge-cards-grid {
+  justify-content: center;
   position: relative;
   z-index: 2;
   display: grid;
