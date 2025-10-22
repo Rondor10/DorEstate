@@ -587,7 +587,7 @@ export const PROPERTIES = [
   {
     "id": "prop_024",
     "title": "ז'בוטינסקי 37, גבעתיים",   
-    "price": 4950000,
+    "price": 4800000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "ז'בוטינסקי",
@@ -710,7 +710,7 @@ export const PROPERTIES = [
   {
     "id": "prop_028",
     "title": "מורדי הגטאות, גבעתיים",
-    "price": 5350000,
+    "price": 5100000,
     "area": "givatayim",
     "neighborhood": "בורוכוב",
     "street": "מורדי הגטאות",
@@ -983,7 +983,7 @@ export const PROPERTIES = [
   {
     "id": "prop_039",
     "title": "ז'בוטינסקי 37, גבעתיים",   
-    "price": 4500000,
+    "price": 4150000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "ז'בוטינסקי",
@@ -1382,7 +1382,7 @@ export const PROPERTIES = [
   {
     "id": "prop_054",
     "title": "ז'בוטינסקי 37, גבעתיים",   
-    "price": 5500000,
+    "price": 5300000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "ז'בוטינסקי",
@@ -1537,7 +1537,7 @@ export const PROPERTIES = [
   {
     "id": "prop_061",
     "title": "שמעון בן צבי, גבעתיים",
-    "price": 4700000,
+    "price": 4500000,
     "area": "givatayim",
     "neighborhood": "שטח 9",
     "street": "שמעון בן צבי",
@@ -1598,7 +1598,7 @@ export const PROPERTIES = [
   {
     "id": "prop_063",
     "title": "ז'בוטינסקי 37, גבעתיים",   
-    "price": 8300000,
+    "price": 7950000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "ז'בוטינסקי",
@@ -1660,7 +1660,7 @@ export const PROPERTIES = [
   {
     "id": "prop_065",
     "title": "ז'בוטינסקי 37, גבעתיים",   
-    "price": 4600000,
+    "price": 4250000,
     "area": "givatayim",
     "neighborhood": "ארלוזורוב",
     "street": "ז'בוטינסקי",
